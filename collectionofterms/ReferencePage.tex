@@ -1,0 +1,309 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{stmaryrd}
+\usepackage{fullpage}
+\usepackage{ifthen}
+\usepackage{subfigure}
+\usepackage{epic}
+\usepackage{authblk}
+\usepackage{textcomp}
+\usepackage[small]{caption}
+
+
+\usepackage[hypertexnames=false,colorlinks=true,linkcolor=blue,citecolor=blue]{hyperref}
+\usepackage[numbers,comma,square,sort&compress]{natbib}
+\usepackage[letterpaper,text={7in,9in},centering]{geometry}
+
+\usepackage{bm}
+\usepackage{color}
+\usepackage{titlesec}
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{1.0ex plus0.2ex minus0.2ex}
+\renewcommand{\baselinestretch}{1.1}
+\graphicspath{{eps/}{pdf/}}
+%\setcaptionmargin{0.25in}
+\def\captionfont{\itshape\small}
+\def\captionlabelfont{\upshape\small}
+
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+\newcommand{\bqq}{\begin{equation}}
+\newcommand{\eqq}{\end{equation}}
+\newcommand{\bqs}{\begin{equation*}}
+\newcommand{\eqs}{\end{equation*}}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}} 
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\rme}{\mathrm{e}}
+\newcommand{\rmi}{\mathrm{i}}
+\newcommand{\rmd}{\mathrm{d}}
+\newcommand{\rmo}{{\scriptstyle\mathcal{O}}}
+\newcommand{\rmO}{\mathcal{O}}
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\Rho}{\bm{\rho}}
+\newcommand{\bigma}{\bm{\sigma}}
+\newcommand{\diag}{\operatorname{diag}}
+
+\numberwithin{equation}{section}
+
+\newenvironment{Hypothesis}[1]%
+  {\begin{trivlist}\item[]{\bf Hypothesis #1 }\em}{\end{trivlist}}
+
+\renewcommand{\arraystretch}{1.25}
+
+
+% Define Theorem Styles ----------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{main}[theorem]{Main Result}
+\newtheorem{rmk}[theorem]{rmk}
+
+
+\newcommand{\etal}{\textit{et al.}\ }
+
+\newcommand{\greg}[1]{%
+  {\color{blue}\textbf{Greg:} #1}%
+ }
+ 
+\newcommand{\arnd}[1]{%
+  {\color{red}\textbf{Arnd:} #1}%
+ }
+
+\newenvironment{Proof}[1][.]%
+ {\begin{trivlist}\item[]\textbf{Proof#1 }}%
+ {\hspace*{\fill}$\rule{0.3\baselineskip}{0.35\baselineskip}$\end{trivlist}}
+
+\renewcommand\labelitemi{$\bullet$}
+
+
+\title{Passage through a fold without a phase space}
+\author{author}
+\date{2016}
+
+\begin{document}
+\section{Reference}
+Equation
+\begin{align}
+\begin{split}
+\frac{d}{dt}u(t) &= (\mu+u^2+u^3)(t) \\
+\frac{d}{dt}\mu (t)&=  \eps 
+\end{split}
+\end{align}
+with B.C.
+\begin{equation}
+\mu(0) = -\delta, \hspace{0.2in} u(T) = \delta.
+\end{equation}
+
+where $\delta,\eps, T$ are parameters.
+\begin{enumerate}
+\item $\bold{Region \hspace{0.05in}1} $
+\begin{itemize}
+\item Ansatz and rescale in time
+\[
+u_-(t)= \eps^{1/3}u_R(\tau(t)-\tau_0), \hspace{0.2in}\mu(t) = \eps t -\delta = \eps^{2/3}(\tau-\tau_0).
+\] 
+With 
+\[
+\tau(t)=\eps^{1/3}t, \hspace{0.2in} \tau_0 = \eps^{-2/3}\delta.
+\]
+After define $s:= \tau-\tau_0$, $(u_R, s)^T$ solves
+\[
+\frac{d}{ds} u_R(s) = s+u_R(s)^2, \hspace{0.2in} \frac{d}{ds} s=1 
+\]
+Which implies 
+\[
+\frac{d}{dt} u_-(t) = \mu(t) + u_-(t)^2
+\]
+Yet another rescaling in time $\sigma$, defined via 
+\begin{align*}
+s = \psi(\sigma) =\begin{cases}
+-(-\frac{3}{2} \sigma)^{2/3} , \text{ for }\sigma \le -M\\
+\Omega_0 -e^{-\sigma}, \text{ for }\sigma \ge M,
+\end{cases}
+\end{align*}
+and smooth interpolation in between, here $\Omega_0$ is the blow-up time for $u_R(s)$. 
+
+Note if $\varphi:=\frac{d}{d\sigma}\psi(\sigma)$, then
+\[
+\varphi\frac{d}{ds} = \frac{d}{d\sigma}, \text{ and }\eps^{-1/3}\varphi \frac{d}{dt} = \frac{d}{d\sigma}
+\]
+\item Asymptotics for $u_R$ and $\varphi$.
+\begin{equation*}
+\varphi(\sigma) =\begin{cases}
+ (-\frac{3}{2}\sigma)^{-1/3}, \text{ as }\sigma \to -\infty\\
+e^{-\sigma} , \text{ as }\sigma \to \infty.
+\end{cases}
+\end{equation*}
+
+\begin{equation*}
+u_R(\psi(\sigma)) \to \begin{cases}
+ -(-\frac{3}{2}\sigma)^{1/3}, \text{ as }\sigma \to -\infty\\
+e^{\sigma} , \text{ as }\sigma \to \infty.
+\end{cases}
+\end{equation*}
+
+\begin{equation*}
+2u_R\varphi(\sigma) to\begin{cases}
+-2+ \rmO((-\sigma)^{-3/2}), \text{ as }\sigma \to -\infty\\
+2+ \rmO(e^{-2\sigma}), \text{ as }\sigma \to \infty.
+\end{cases}
+\end{equation*}
+\item FP argument
+petrubation 
+\[
+u(t) = \eps^{1/3}(u_R+v)(\sigma), \hspace{0.2in} \mu(t) = \eps^{2/3}(s+\rho)(\sigma).
+\]
+Equation for $(v,\rho)$
+\[
+\frac{d}{d\sigma} v = 2(u_R\varphi) v+\varphi v^2 +\varphi\rho+\eps^{1/3}\varphi(u_R+v)^3, \hspace{ 0.2in } \rho = 0.
+\]
+\item Gluing time
+
+
+the gluing time $\sigma_*$ is set to equal to $ \log(\eps^{-1/6}\delta )$, notice in terms of the original time $t$, this is at
+\[
+s(\sigma_*) = \Omega_0-\delta^{-1}\eps^{1/6} = \tau -\tau_0 = \eps^{1/3}t - \eps^{-2/3}\delta \implies   t=t_*:= \eps^{-1/3}[\Omega_0+\eps^{-2/3}\delta -\delta^{-1} \eps^{1/6}]
+\]
+
+We note then 
+\[
+ u_-(t_*) = \eps^{1/3}[(\Omega_0-(\Omega_0-\delta\eps^{1/6}))^{-1} + \rmO(\eps^{1/6})]  = \eps^{1/6}\delta^{-1}+\rmO(\eps^{1/2})
+\]
+\item norms
+
+We will stop at  $\sigma=\sigma_*$, decide norm from the nonhomogeneous term $\eps^{1/3}\varphi u_R^3 $. We have for $0 \le \sigma \le \sigma_*$, that
+\[
+\sup_{\sigma \le \sigma_*} \eps^{1/3}\varphi u_R^3 \le \eps^{1/3}e^{2\sigma_*} = \delta = \rmO_\eps(1)
+\]
+This is the nonhomogeneous term, so we just need to use the usual sup norm.
+\end{itemize} 
+
+
+\item $\bold{Region \hspace{0.1in} 2}$ 
+\begin{itemize}
+\item Ansatz and rescale
+\[
+u_+(t) = (\delta\eps^{-1/6} +t_*-t)^{-1}
+\]
+This is designed so that $u_+(t_*) = \eps^{1/6}\delta^{-1}$ and 
+\[
+|u_-(t)-u_+(t)| \simeq \rmO(\eps^{2/3}|t-t_*|+\delta\eps^{1/2} ) = \rmO(\eps^{1/2})
+\]
+for $t$ close enough to $t_*$.
+
+Recall that we stop when $u(t=T)=\delta$, we need to consider the interval $[t_*, T]$. Note the B.C. gives
+\[
+T \sim \delta\eps^{-1/6} + t_* -\delta^{-1} = \eps^{-1/3}\Omega_0 +\eps^{-1}\delta -\delta^{-1}
+\]
+
+We introduce the time $\xi$ with the scaling
+\[
+e^{-\xi} = u_+(t)^{-1}
+\]
+\item Asymptotics
+\begin{equation*}
+u_+(t) =e^\xi
+\end{equation*}
+As for $\mu(t) = \eps t -\delta$, we have
+\begin{align*}
+\mu &= \eps(t_*+\delta\eps^{-1/6}-u_+^{-1}) -\delta = \eps^{2/3}\Omega_0 +(\delta-\delta^{-1})\eps^{5/6} -\eps u_+^{-1}\\
+&=\Omega_0\eps^{2/3} +(\delta-\delta^{-1})\eps^{5/6}-\eps e^{-\xi}
+\end{align*}
+
+
+\item Gluing time
+
+
+We will glue at $\xi = \xi_*$, defined via
+\[
+e^{\xi_*} = u_+(t_*) = \eps^{1/6}\delta^{-1} \implies \xi_* = \log (\eps^{1/6}\delta^{-1})
+\]
+
+\item FP argument with ansatz
+\[
+u(t) = u_+(t) +w(t)
+\]
+By definition, $u_+(t)$ solves 
+\[
+\frac{d}{dt} u_+(t) = u_+(t)^2,
+\]
+Convert the equation in $\xi$ time via 
+\[
+e^{-\xi}\frac{d}{dt}  = \frac{d}{d\xi},
+\]
+so we get the equation for $w$ in $\xi$ variable
+\[
+\frac{d}{d\xi} w = e^{-\xi}\mu +2(e^{-\xi}u_+) w +e^{-\xi}w^2+e^{-\xi}(u_++w)^3, \hspace{0.2in} \frac{d}{d\xi} \mu = \eps e^{-\xi}
+\]
+
+\item norms
+
+We have
+\[ 
+e^{-\xi}u_+^3 \sim e^{2\xi}
+\]
+
+also from definition of $u_+(t)$
+\[
+\mu(t)=\Omega_0\eps^{2/3} +(\delta-\delta^{-1})\eps^{5/6}-\eps e^{-\xi}
+\]
+Note $|e^{-\xi} | \le e^{-\xi_*} \le \delta \eps^{-1/6}$, so that
+\[
+\eps e^{-2\xi} \le \eps\delta^2\eps^{-1/3} \le \delta^2\eps^{2/3}  \implies |\eps e^{-\xi}\mu| =\rmO(\eps^{2/3})
+\]
+which suggests the nonhomogeneous term is dominated by $e^{-\xi}u_+^3$ and hence a $e^{-2\xi}$ weight in the norm.
+
+In fact, due to the resonance of $e^{2\xi}$ with the linear part, we need to choose a slightly weaker norm, let $\eta \in ]0,1[$, and our weight will be $e^{-(2-\eta)\xi}$.
+We check the nonhomogeneous term
+
+\begin{align*}
+e^{-(2-\eta)\xi} e^{-\xi}\mu &=e^{-(3-\eta)\xi} (\Omega_0 \eps^{2/3} + (\delta-\delta^{-1})\eps^{5/6}-\eps e^{-\xi} )\\
+& \le e^{-(3-\eta)\xi} (\eps^{2/3}+\eps^{5/6}+\eps e^{-\xi}) \le  \\
+&\sim \delta^{3-\eta}\eps^{\frac{\eta+1}{6}}
+\end{align*}
+
+
+We also check breifly the norm should work with the nonlinearity
+
+quadratic
+\[
+\sup_{\xi\ge \xi_*} e^{-(2-\eta)\xi}|e^{-\xi}w^2| \le \|w\|\sup |e^{-\xi}w| \le \|w\| e^{-\xi}e^{(2-\eta)\xi} =\|w\|e^{(1-\eta)\xi}
+\]
+quadratic again
+\[
+\sup_{\xi\ge \xi_*} e^{-(2-\eta)\xi}|e^{-\xi}u_+w^2|\le \|w\| \sup |e^{-\xi}w u_+| \le \|w\|e^{(2-\eta)\xi}
+\]
+cubic
+\[
+\sup_{\xi\ge \xi_*} |e^{-(2-\eta)\xi}e^{-\xi}w^3| \le \|w\|\sup_{\xi \ge \xi_*} |e^{-\xi} w^2| \le \|w\| e^{-\xi}e^{(4-2\eta)\xi}
+\]
+
+Linear
+\[
+\sup_{\xi\ge \xi_*} e^{-(2-\eta)\xi}|e^{-\xi}u_+^2w| \le \|w\| \sup |e^{\xi}u_+^2| \le \|w\|e^{(1-\eta)\xi}
+\]
+The Lipschitz constant will be of order $e^{-\xi}w \sim e^{(1-\eta)\xi}$, which is small on the relevant interval $\xi_* \le \xi \le 0$.
+\pagebreak
+
+\end{itemize}
+\end{enumerate}
+
+\end{document}

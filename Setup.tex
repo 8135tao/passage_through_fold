@@ -1,0 +1,2475 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{stmaryrd}
+\usepackage{fullpage}
+\usepackage{ifthen}
+\usepackage{subfigure}
+\usepackage{epic}
+\usepackage{authblk}
+\usepackage{textcomp}
+\usepackage[small]{caption}
+
+
+\usepackage[hypertexnames=false,colorlinks=true,linkcolor=blue,citecolor=blue]{hyperref}
+\usepackage[numbers,comma,square,sort&compress]{natbib}
+\usepackage[letterpaper,text={7in,9in},centering]{geometry}
+
+\usepackage{bm}
+\usepackage{color}
+\usepackage{titlesec}
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{1.0ex plus0.2ex minus0.2ex}
+\renewcommand{\baselinestretch}{1.1}
+\graphicspath{{eps/}{pdf/}}
+%\setcaptionmargin{0.25in}
+\def\captionfont{\itshape\small}
+\def\captionlabelfont{\upshape\small}
+
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+\newcommand{\bqq}{\begin{equation}}
+\newcommand{\eqq}{\end{equation}}
+\newcommand{\bqs}{\begin{equation*}}
+\newcommand{\eqs}{\end{equation*}}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}} 
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\rme}{\mathrm{e}}
+\newcommand{\rmi}{\mathrm{i}}
+\newcommand{\rmd}{\mathrm{d}}
+\newcommand{\rmo}{{\scriptstyle\mathcal{O}}}
+\newcommand{\rmO}{\mathcal{O}}
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\Rho}{\bm{\rho}}
+\newcommand{\bigma}{\bm{\sigma}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\supp}{\operatorname{supp}}
+
+\numberwithin{equation}{section}
+
+\newenvironment{Hypothesis}[1]%
+  {\begin{trivlist}\item[]{\bf Hypothesis #1 }\em}{\end{trivlist}}
+
+\renewcommand{\arraystretch}{1.25}
+
+
+% Define Theorem Styles ----------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{main}[theorem]{Main Result}
+\newtheorem{rmk}[theorem]{rmk}
+
+
+\newcommand{\etal}{\textit{et al.}\ }
+
+\newcommand{\greg}[1]{%
+  {\color{blue}\textbf{Greg:} #1}%
+ }
+ 
+\newcommand{\arnd}[1]{%
+  {\color{red}\textbf{Arnd:} #1}%
+ }
+
+\newenvironment{Proof}[1][.]%
+ {\begin{trivlist}\item[]\textbf{Proof#1 }}%
+ {\hspace*{\fill}$\rule{0.3\baselineskip}{0.35\baselineskip}$\end{trivlist}}
+
+\renewcommand\labelitemi{$\bullet$}
+
+
+\title{Passage through a fold without a phase space}
+\author{author}
+\date{2016}
+\begin{document}
+
+\iffalse
+\section{Introduction}
+
+Nonlocal models describe a wealth of phenomena, neural field
+
+
+-(SP?) PDE dynamics under slowly varying parameters..(even in ODE!)
+
+
+\begin{itemize}
+
+\item Setup 
+\item goal
+\end{itemize}
+\fi
+
+
+\section{Hyperbolic Gluing}
+Consider the $2$-d system
+\[
+\dot{u} = Au + f(u), \hspace{0.2in} u=(u^1(t),u^2(t))^T,
+\] 
+
+Where $A$ is a constant coefficient hyperbolic matrix, with exactly $1$ stable/unstable direction. And the dot is $d/dt$. $f$ denotes higher order terms so $f(0)=0$ and $Df(0)=0$.
+
+Fix some $\delta > 0$ small, we have a $1$-d (local) stable and unstable manifold $u_{-}$ and $u_{+}$, which can be locally straightened: $u_- : \{u^1 = 0\}$ and $u_+ : \{ u^2 = 0\}$
+
+so that $u_{\mp} \to (0,0)^T$ as $t\to \pm \infty$ and $u_{-}^2 (0) =\delta, u_{+}^1 (0) =\delta$ (after some shift in time).
+
+Fix $T > 0$ (not necessarily large), we want to solve the boundary value problem $u^1(T) = u^2(-T)=\delta$ by looking for a solution $u$ to the system in the vicinity of the stable/unstable manifold $u_{\pm}$.
+
+We need the following property: $u_{\pm}$ satisfies the estimate
+\[
+\|u_-(t)\| \le \delta e^{-\gamma t} \text{ for }t\ge 0
+\]
+and
+\[
+\|u_+(t)\| \le \delta e^{\gamma t} \text{ for }t \le 0
+\]
+
+for some constants $\gamma >0$ and.
+
+\subsection{The Ansatz}
+
+Let $\chi_{\pm}(t)$ be a smooth partition of unity of the real line $(-\infty,\infty)$ such that 
+\begin{enumerate}	
+\item $\chi_{-}+\chi_+= 1$; 
+\item $\chi_{-} = 1$ for $t<-1$, $\chi_- =0$ for $t>1$;
+\item $\chi_+ = 0$ for $t<-1$, $\chi_+ =1$ for $t>1$ 
+\end{enumerate}
+
+Our ansatz would take the form (note the time shift)
+\[
+u(t) =  u_-(t+T) + u_+(t-T)+w_-(t+T)+w_+(t-T)
+\]
+
+Here the corrector term $w=w_-+w_+$ is split into two parts $w_-$ and $w_+$, which we consider on the halfline $\mathbb{R}^+ = (0,\infty)$ and $\mathbb{R}^- = (-\infty,0)$.
+
+We then introduce exponentially weighted function space on $\mathbb{R}^+$ and $\mathbb{R}^-$. Let us fix an exponential weight $\eta>0$ whose exact value will be determined later, so that for $t \in \mathbb{R}^+ =(0,\infty)$ we have
+\[
+\|w_-\|_{C^1_\eta}:=|e^{\eta t} (w_-(t)+\dot{w}_-(t))|_{\infty} < \infty 
+\]   
+and for $t \in \mathbb{R}^- =(-\infty,0)$ we have
+\[
+\|w_+\|_{C^1_\eta}:= |e^{-\eta t} (w_+(t)+\dot{w}_+(t))|_{\infty} < \infty
+\]
+these $w_\pm$ are unshifted!     
+
+
+
+
+We need to determine equations in $w_{\pm}$ separately! Note the equation is to be solved for $|t|<T$, together with the boundary values $u^1(T) = u^2(-T) = \delta$.
+
+\begin{enumerate}
+\item turns out $w_-(2T)+w_+(0) =  (0,u^2(T))^T$ and $w_-(0)+w_+(-2T)=(u^1(-T),0)^T$. 
+
+\item need $\dot{u} = Au+ f(u)$, so we have on the left
+\[
+\dot{u}=(\dot{\chi}_- u_- +\chi_- \dot{u}_- )+(\dot{\chi}_+ u_+ +\chi_+ \dot{u}_+ )+\dot{w}_-+\dot{w}_+
+\]
+
+which must equal to the right
+\[
+Au+f(u)=A(\chi_- u_- + \chi_+ u_+ + w_-+w_+)+f(\chi_- u_- + \chi_+ u_+ + w_-+w_+).
+\]
+
+Using the fact that $u_{\pm}$ are solutions to the ODE and $\chi_{\pm}$ are scalar-valued which can be pulled out in front of $A$, we simplify:
+\[
+(\dot{w}_-+\dot{w}_+)-A(w_-+w_+) =  \dot{\chi}_-  u_- + \dot{\chi}_+ u_+ + f(\chi_-u_-+\chi_+u_+ + w_- + w_+) - \chi_- f(u_-)-\chi_+f(u_+)
+\]
+
+We next split the above equation separately in $w_-$ and $w_+$....			
+\end{enumerate}
+
+\subsection{Spliting the error}
+Let us first adjust the linear part into
+\[
+(\dot{w}_-+\dot{w}_+)-A(w_-+w_+) -(f'(u_+)w_+ +f'(u_-)w_-).
+\]
+
+Then we first group the right hand as follows:
+\[
+R:=\underbrace{ \dot{\chi}_-  u_- + \dot{\chi}_+ u_+}_{:=R_0} + f(\chi_-u_-+\chi_+u_+ + w_- + w_+) - \chi_- f(u_-)-\chi_+f(u_+)-(f'(u_+)w_+ +f'(u_-)w_-).
+\]
+Next, define the commutator ($f'$ is shorthand for $Df$, also keep in mind the time shift $u_\pm(t\mp T)$ on $u_j$.
+\[
+[f,\chi_{\pm}] = \sum_{j=\pm} \chi_j f(u_j) - f(\sum_{j=\pm} \chi_ju_j); \hspace{0.2in} [f',\chi_{\pm}] = \sum_{j=\pm} \chi_j f'(u_j) - f'(\sum_{j=\pm} \chi_ju_j),
+\]
+We then group $R-R_0$ as follows:
+\[
+R-R_0 =  f(\sum_j \chi_ju_j + w_j) - f(\sum_j \chi_j u_j) -\underbrace{ [f,\chi_{\pm}] }_{:= -R_1}-\sum_{j} f'(u_j)w_j,
+\]
+
+We next decompose $R-R_0-R_1$ by first Taylor expand $f$ around $\sum_j \chi_j u_j$
+\[
+R-R_0-R_1 = f'(\sum_j \chi_ju_j) \sum_j w_j -\sum_{j} f'(u_j)w_j+ R_2
+\]
+Here $R_2$ would be of the order $O(w^2)$ with $w = w_-+w_+$.	
+We then have $R-R_0-R_1-R_2$ being decomposed again:
+\begin{align*}
+R-\sum_{j=0}^2 R_j &= f'(\sum_j \chi_ju_j) \sum_j w_j -\sum_{j} f'(u_j)w_j\\ &= \sum_{j} \chi_jf'(u_j) \sum_j w_j -\underbrace{ [f', \chi_{\pm}]\sum_j w_{j} }_{:=-R_3\sum w_j} -\sum_{j} f'(u_j)w_j \\
+&= R_3\sum_j w_j -( \chi_-f'(u_+)w_+ + \chi_+ f'(u_-)w_- + (\chi_-f'(u_-)w_++\chi_+f'(u_+)w_-)
+\end{align*}
+in the end we expand the first term $R_3\sum w_j$ and group $R_3w_+, \chi_-f'(u_+)w_+$ and $\chi_-f'(u_-)w_+$ to be $R_4$, and the rest $R_3w_-, \chi_+f'(u_-)w_-$ with $\chi_+f'(u_+)w_-$ to be $R_5$.
+
+
+Thus we have split the error $R$ into $6$ parts, summarize:
+\begin{align*}
+R_0 &= \dot{\chi}_-  u_- + \dot{\chi}_+ u_+\\
+R_1 &= -[f,\chi_{\pm}]=[\chi_{\pm},f]\\
+R_2 &= f(\sum_j \chi_ju_j+w_j)-f(\sum_j \chi_j u_j)-f'(\sum_j \chi_ju_j) \sum w_j\\
+R_3 &= -[f', \chi_{\pm}] = [\chi_{\pm},f']\\
+R_4 &= -  \chi_-f'(u_+)w_+ + \chi_-f'(u_-)w_+ + R_3w_+ \\
+R_5 &= -\chi_+ f'(u_-)w_-+\chi_+f'(u_+)w_-+R_3w_-
+\end{align*}
+\subsection{Equation of the corrector and estimates}
+We first set up the equation for $w_-$ and $w_+$, note these $w_{\pm}$ are shifted, we define $w_-T(\cdot) :=w_-(\cdot + T)$ and $w_+T(\cdot) :=w_+(\cdot - T)$, the equation we have will be equation for $w_-^T$ and $w_+^T$, respectively, and the domain for both $w_{\pm}^T$ is $(-T,T)$.
+
+equation for $w_-^T$:
+
+\[
+\mathcal{L}_- w_-^T := \dot{w}_-^T - (A+f'(u_-^T)+R_3)w_-^T = \dot{\chi}_-u_-^T+ \chi_-(R_1+R_2)+R_4:=R_-(w_-^T;w_+^T)
+\]
+
+and equation for $w_+^T$:
+\[
+\mathcal{L}_+ w_+^T:=\dot{w}_+^T - (A+f'(u_+^T)+R_3)w_+^T = \dot{\chi}_+u_+^T+ \chi_+(R_1+R_2)+R_5:=R_+(w_+^T;w_-^T)
+\]
+
+Want to solve $w_-^T$ and $w_+^T$ through a fixed point argument. Use the space $C^1_\eta(R_-)$ for $w_+$ and $C^1_\eta(R_+)$, consider $\mathcal{L}_\pm$ as an operator from $C^1_\eta$ to $C^0_\eta$. The control for linear parts must be done using exponential dichotomy inherited from the hyperbolicity of the matrix $A$ and the smallness of $u_{\pm}^T+R_3$ in $(-T,T)$.
+\begin{enumerate}
+
+\item \textbf{Estimates for $R_0,R_1,R_3$}
+
+These terms do not involve $w$, we shall show they are small in the $\eta$-weighted norm. The linear part will be controlled by using exponential dichtomy from the hyperbolicity of $A$ and the fact that $f'(u_{\pm}^T)+R_3$ are uniformly small.
+
+
+
+Let us focus on the equation for $w_-$ first, 
+\begin{itemize}
+
+\item note I have distributed $R_0$ into a $\chi_-$-part and a $\chi_+$-part, for the equation for $w_-^T$, what needs to be estimated is just $\dot{\chi}_-u_-^T$.
+
+Since $\chi_-$ is constant outside of $|t|>T$, we need only consider $|t|<T$, but then $u_-^T(t)=u_-(t+T)$ will satisfy $\|u_-^T(t)\| \le \delta$ (sup norm). Hence if $\delta$ is sufficiently small, then in the weighted norm $\dot{\chi}_- u_-^T$ will be as small as needed.
+
+
+
+
+\item for the commutator term $R_1$, because of the $\chi_\pm$, the time interval that are relevant is $(-T,T)$ (outside of which $R_1=0$) But on these intervals again using $\|u_-^T(t)\| <\delta$. and $f(0) = 0$ to get $R_1$ and $R_3$ are as small as needed.
+
+\item similarly for $R_3$, using $f'(0)=0$.
+\end{itemize}
+
+Here I am not using any information about $T$ being large, but just the smallness of $u_{\pm}^T$ on the time interval $(-T,T)$.
+\item  \textbf{Estimates for $R_2$}
+
+Recall that for $|t|<T$, we have
+\[
+R_2(t)= f(\sum_j \chi_ju_j+w_-(t-T)+w_+(t-T))-f(\sum_j \chi_j u_j)-f'\left(\sum_j \chi_ju_j\right) \{w_-(t-T)+w_+(t-T)\}.
+\]
+This is the remainder term which is of higher order in  $w(t)=w_-(t+T)+w_+(t-T)$, since for $|t|<T$, we have $|u_\pm(t\mp T)|\le \delta$ by set up, using Taylor's theorem, we have $|R_2(t)| = \rmO(|w|^2)$, which will be small if we are working in some small ball in the function space $C^1_\eta$ for $w$.
+\item \textbf{Estimates for $R_4$ and $R_5$}
+
+We have set
+\[
+R_4 = -  \chi_-f'(u^T_+)w^T_+ + \chi_-f'(u^T_-)w^T_+ 
+\] 
+
+Again, due to the cut off $\chi_-$, for $t<-T$, the decay at infinity of $w_+$ ensures $e^{\eta(t+T)}w_+(t-T)$ is exponentially small. And the focus is on $|t|<T$.
+
+For these $t$ in these range, we need to estimate sup norm of $R_4$ under the weight $e^{\eta(t+T)}$. If I just use $\|u_\pm\|\le \delta$, I will end up with
+$\|e^{t+T}R_4(t)\| \le g(\delta) e^{\eta(t+T)}e^{\eta(t-T)} \le e^{2\eta t} g(\delta)$ for some function $g(\delta) = O(\delta^2)$. Note $t\in [-T,T]$ could make $e^{2\eta t}$ big. But if $\delta$ is sufficiently small I think this can be taken care of.
+
+A similar argument applies to $R_5$.
+
+\end{enumerate}
+from here we need to show the equation $\mathcal{L}_\pm w_\pm = R_\pm$ can be solved using an iteration argument, which amounts to show $\|R_\pm\|$ is small given $w_\pm$ small, and $\mathcal{L}_\pm^{-1}R_\pm$ is a contraction, say when we working on some balls in the function space.
+
+
+
+\textbf{conclusion for the ``flying time''} if $T$ is given, then the size of the boundary condition will depend on $T$. (if $T$ is large, then $\delta$ need to be sufficiently small), which is quite natural since the flying time goes to infinity as the trajectories get close to the invariant manifolds.
+
+\pagebreak
+
+\section{Non-hyperbolic Gluing}
+\subsection{A decoupled system}
+Start with the following very simple $2$-d system:
+
+\begin{align}\label{NH}
+\dot{u} &= -u^2\\
+\dot{v} &= v  \nonumber 
+\end{align}
+
+This system decouples, of course. But we wish to demonstrate the method from a simple example.
+
+Clearly, the $u$-axis $\{v=0\}$ is invariant and the solution is explicitly parameterized by 
+\[
+U_-(t) = (\frac{1}{t+C_-},0)^T:=(u_*(t),0)^T
+\] for some constant $C_-$. Likewise, the invariant $v$-axis $\{u=0\}$ is parametrized by 
+\[
+U_+(t) = (0, C_+e^t)^T:=(0,v_*)^T
+\] for some constant $C_+$.
+
+We want to solve a boundary value problem $U(t) = (u(t),v(t))^T$ such that $(u,v)$ satisfies the ODE, with the boundary condition $u(1) = \delta$, $v(1)=\delta$. We follow the hyperbolic case, take an ansatz of the form 
+\[
+U(t) = \chi_-(t)U_-(t+T+1) + \chi_+(t)U_+(t-T+1) + w_-(t+T+1)+w_+(t-T+1).
+\]
+Now, use the fact that $U$ satisfy the system $\dot{U} = AU + F(U)$, where $A$ is the matrix 
+$\begin{pmatrix}
+0&0\\
+0&1
+\end{pmatrix}$, and the nonlinear term $F(U) = F(u,v) = (-u^2,0)^T$, after some calculation we arrived at the following equations for $w_\pm$.
+\begin{equation}
+\dot{w}_- - Aw_- = -\dot{\chi}_- U_- + F(\chi_{\pm}U_{\pm}+w_\pm)-\chi_{\pm}F(U_\pm)
+\end{equation}
+
+
+\begin{equation}
+\dot{w}_+ - Aw_+ = - \dot{\chi}_+ U_+
+\end{equation}
+
+Notice here $w_\pm$ are vector-valued, $w_\pm =  (w_\pm^1, w_\pm^2)^T$. Let us focus on the equation for $w_+$ first, by the structure of $A$ and $U_+$, the equation for the first component of $w_+$ is actually just
+\[
+\dot{w}^1_+ = 0,
+\]
+
+and the equation for the second component is
+\[
+\dot{w}^2_+  = w^2_+ - \dot{\chi}_+ v_*
+\]
+Following the moral of the hyperbolic gluing, $w_+(\cdot)$ should be decaying at $-\infty$, hence we must have $w_+^1 \equiv 0$. And we may explicitly solve $w_+^2$, which is given by
+\[
+w_+^2 (t) = w_+^2(0)e^{t} + C_+e^{t}\left( \chi_+(T-1)-\chi_+(t+T-1)\right)
+\]
+Of course in the general case we would not get such an explicit formula, but we can get the estimate that show $w_+$ lies in some exponentially weighted space on the interval $(-\infty,0)$.
+
+
+Next we focus on the equation for $w_-$, first we subtract both sides of the equation by the term $f'(U_-)w_-$, which equals $\begin{pmatrix}
+-2u_*&0\\
+0&0
+\end{pmatrix} w_-$ to adjust the linear term.
+
+
+
+The equation for $w_-$ now reads
+\[
+\dot{w}_- - \begin{pmatrix}
+-2u_*&0\\
+0&1
+\end{pmatrix} w_-= -\dot{\chi}_- U_- + \begin{pmatrix}
+\chi_-u_*^2-(\chi_-u_*+w_+^1+w_-^1)^2 +2u_*w_-^1\\
+0
+\end{pmatrix}
+\]
+
+Again, the equation for the second component of $w_-$ is just
+\[
+\dot{w}_-^2 - w_-^2 = 0 
+\]
+we got $w_-(t) = A e^t$ for some constant $A$, however, in order for $w_-(\cdot)$ to decay at $+\infty$, we must choose $A=0$, thus we have $w_-^2 = 0$.
+
+Therefore, we end up with the equation for the first component, which is
+\[
+\dot{w}_-^1 - (-2u_*)w_-^1 = -\dot{\chi}_- u_* + (\chi_-u_*^2 - (\chi_-u_*+w_-^1)^2 + 2u_*w_-^1)
+\]
+
+To solve it, we need to rescale in time.
+
+Define the new time variable $\tau$ such that $dt/d\tau = (-2u_*(t+T+1))^{-1}$. Put $\tilde{w}(\tau) = w_-^1(t(\tau))$, after multiplying the equation by $(-2u_*)^{-1}$. We have
+\[
+\frac{d}{d\tau} \tilde{w} - \tilde{w} = (-2u_*)^{-1}\left( -\dot{\chi}_-u_* + (\chi_--\chi_-^2)u_*^2 +2(1-\chi_-)u_* \tilde{w} -(\tilde{w})^2 \right) := (-2u_*)^{-1} R
+\] 
+
+We can now work with exponentially weighted space (in the variable $\tau$, let us solve the above equation for $ \tau \in [0,\infty)$ (corresponding to $t \in [1,\infty)$, since explicitly $t = \exp(\tau)$.)
+
+Now if we assume $\tilde{w} \in C^1_\nu$ for some weight $\nu$, due to the multiplication of the right hand side by $(-2u_*)^{-1} \sim t \sim \exp(\tau)$, we lose the localization from $\nu$ to $\nu-1$. Which means we need to estimate the remainder $R$ in the $C_{\nu-1}^1$ norm.
+
+\begin{itemize}
+\item Estimates for $R$
+\end{itemize}
+
+In fact, one can check that $w_-^1$ and $w_+^2$ are given explicitly by $w_-^1 = \chi_+ u_*$ and $w_+^2 = \chi_- v_*$.
+
+\pagebreak
+
+\subsection{Equation with more general nonlinear terms}
+\begin{align}
+\dot{u} &= -u^2+f(u,v) \label{Nhyp}\\
+\dot{v} &= v +g(u,v) \label{Nhyp2}, 
+\end{align}
+
+where $f(u,v)=\rmO(uv,v^2,u^3)$ and $g(u,v) = \rmO(uv,u^2,v^2)$ as $|(u,v)| \to 0$.
+
+We want to do the same thing as in the hyperbolic case, now the problem is that due to non-hyperbolicity, we need to work in an appropritely re-scaled time (and accordingly choose the correct function space) to recover the Fredholm properties.
+
+Now, by standard theory, equation \eqref{Nhyp} has a solution which  asymptotically decays algebraically: $u_*(t) = \rmO(t^{-1})$ as $t\to \infty$. 
+
+The $v$ equation determines uniquely the unstable manifold $v_*$, which decays exponentially in backward time $v_*(t) = \rmO(e^t)$ as $t\to -\infty$.
+
+
+Our goal is to find an orbit near the origin by solve the following boundary value problem: $(u,v)(t)$ solves \eqref{Nhyp} and $u(-T) = \delta, v(T) = \delta$ for flying time $T$ and small $\delta>0$ given.
+
+
+\subsubsection{Construction of the center manifold}
+For this example we consider the equation 
+\[
+\dot{u} (t)= -u^2(t) + u^3(t)
+\]
+
+we want to construct the solution which decays to $0$ with order $t^{-1}$ as $t \to \infty$. However, plug in the ansatz $u = t^{-1} +v$ gives an equation
+\[
+\dot{v}(t) = -\frac{2}{t} v(t) -v^2(t)+(v(t)+\frac{1}{t})^3
+\]
+if we do the rescaling $\frac{d}{d\tau} = t\frac{d}{dt}$, let $' = \frac{d}{d\tau}$ and $w(\tau)=v(t(\tau))$, we have
+\[
+w'(\tau)+2w(\tau) =- e^\tau w^2(\tau) +e^\tau(e^{-\tau}+w(\tau))^3
+\]
+Variation of constants/integration factor gives
+\[
+w(\tau) = e^{2(\sigma-\tau)}w(\sigma)+e^{-2\tau}\int_{\sigma}^{\tau} e^{3s}(w^2(s)+(e^{-s}+w(s))^3)
+\]
+
+This is problematic when choosing the right function space for $w$: we cannot have $w(\tau) = O(e^{-2\tau})$ as $\tau \to \infty$, because of the $e^{3s}(e^{-s})^3 = 1$ term in the integrand. This implies some logarithmic correction in the asymptotics of the center manifold we are constructing.
+
+
+Instead, let us try the ansatz
+\[
+u(t)=t^{-1}+t^{-2}\log(t) +v(t) := u_\#(t)+v(t)
+\]
+we end up with the equation 
+\[
+\dot{v}(t)+2u_\#(t)v(t) = -v^2+3\frac{1}{t^2}(\frac{\log t}{t^2}+v)+3\frac{1}{t}(\frac{\log t}{t^2}+v)^2+(\frac{\log t}{t^2}+v)^3 -\frac{\log^2 t}{t^4} := f(v,t)
+\]
+ we have $f(v,t) = \rmO(\frac{\log^2 t}{t^4}+(\frac{\log t}{t^3}+\frac{1}{t^2}) v+v^2)$, as $v\to 0$, uniformly in $t$.
+
+Use again integration factor, set $p(t) = \exp(\int 2u_\#(t)dt)$, we have
+\[
+v(t)=p(t)^{-1}p(\sigma) v(\sigma)+p(t)^{-1}\int_\sigma^t p(s)f(v(s),s)ds
+\]
+We have $u_\#(t) = \rmO(t^{-1})$ as $t \to \infty$, so $p(t) = \rmO(t^2)$.
+
+Fix $\delta>0$ small, we impose the decay $v(t) = \rmO(t^{\delta-3})$ as $t \to \infty$, then letting $\sigma \to \infty$, we have
+\[
+v(t) = p(t)^{-1}\int_\infty^t p(s)f(v(s),s)ds := F(v,t)
+\]
+
+
+Set the weight function $\langle t \rangle^{\gamma} = (\sqrt{t^2+1})^{\gamma}$, with $\gamma= 3-\delta$.
+
+Then the weighted space $L_\gamma^\infty (I) = \{ v(x);  \langle x\rangle^{\gamma} v(x) \in L^\infty(I) \}$ for $I = (a,\infty)\subset \R$. where $a$ is some large number (precise value determined later). Let $X$ be the closed ball around $0$ of $L_\gamma^\infty$ with radius $\eps$.
+
+
+To complete the fixed point argument, we need to check
+\begin{enumerate}
+
+\item $F(v,t)$ is a contraction on $X$.
+\item $F(\cdot,t)$ maps $X$ into $X$.
+
+\end{enumerate}
+\paragraph{Contraction}
+First, to see $F(v,t)$ is a contraction on $X$, let $v_1,v_2 \in X$. want to show we can find $c<1$ so that $\| F(v_1,t) - F(v_2,t)\|_X \le c\|v_1-v_2\|_X$.
+
+Now
+\begin{align*}
+\|F(v_1,t)-F(v_2,t)\|_X =\sup_{t\ge a} \left| \frac{\langle t\rangle^{3-\delta}}{p(t)} \int_\infty^t p(s)[f(v_1(s),s)-f(v_2(s),s)]ds \right|
+\end{align*}
+
+
+Since $f(v,t)=\rmO\left(\frac{\log^2 t}{t^4}+(\frac{\log t}{t^3}+\frac{1}{t^2}) v+v^2\right)$. we have
+\[
+|D_vf(v,t)| = 2v+\frac{3}{t^2} +\frac{9}{t}\left(v+\frac{\log t}{t^2}\right)^2+\frac{6}{t}\left(\frac{\log t}{t^2}+v\right)
+\]
+
+use mean value theorem, there is some $\tilde{v}$ with $|\tilde{v}|_\infty < \eps$ such that
+\[
+|f(v_1,s)-f(v_2,s)| \le \left| \int_{\theta=0}^{\theta=1} D_vf(v_2+\theta(v_1-v_2),t)d\theta \right||v_1(s)-v_2(s)|
+\]
+use the fact that $v_1,v_2 \in X$, denote $v_\theta(s)=v_2+\theta(v_1-v_2)(s)$, we have 
+\[
+|v_\theta(s)| \le \langle s\rangle^{\delta-3}\|v_\theta(s)\|_X \le \eps \langle s\rangle^{\delta-3}
+\]
+
+then for some constant $C$
+\begin{align*}
+|f(v_1,s)-f(v_2,s)| &\le C \left((1+\frac{1}{s}+\frac{\log^2 s}{s^3}) \eps \langle s\rangle^{\delta-3} + \frac{1}{s^2}+\frac{\log s}{s^3}\right)|v_1(s)-v_2(s)|\\
+&\le C \frac{1}{s^2} \|v_1-v_s\|_X \langle s\rangle^{\delta-3}
+\end{align*}
+
+Thus 
+\[
+\int p(s)|f(v_1)-f(v_2)| \le C\|v_1-v_2\|_X \int_{s\ge t} \langle s\rangle ^{\delta-3}ds 
+\]
+
+we can choose $a$ so that $Cp(t)^{-1}\langle t \rangle^{3-\delta}\int_{s\ge t} \langle s\rangle ^{\delta-3}ds < \frac{1}{2}$ for $t\ge a$. This shows $F$ is a contraction.
+
+\paragraph{Maps $X$ into itself}
+To see $F(v(s),s) \in X$ for $v(s) \in X$, we estimate 
+\begin{align*}
+\sup_{t \ge a} \left|\frac{\langle t \rangle^{3-\delta} }{p(t)} \int_t^\infty p(s)f(v(s),s) ds \right|
+\end{align*}
+
+since $|v(s)| \le |v|_X \langle s\rangle^{\delta-3}$, the leading order of $f(v(s),s)$ comes from the $\log^2 s/s^4$ term, we compute that 
+\[
+\int_t^\infty |p(s) \frac{\log^2 s}{s^4}| ds \le C \frac{\log t}{t}
+ \]
+
+Hence $\langle t \rangle^{3-\delta}p(t)^{-1} \frac{\log t}{t} = \rmO (t^{-\delta}\log t)$, which is bounded (barely!)
+
+
+\subsubsection{Functional framework}
+More generally, we will show the operator
+\[
+f(\cdot) \mapsto p(t)^{-1}\int_{\infty}^t p(s)f(s)ds
+\] 
+is bounded from $L^p_{\gamma}(I)$ to $M^{1,p}_{\gamma-1}(I)$, where $I = (a,\infty)$. (will determine $\gamma$ later)
+
+
+where we have introduced the following function space:
+\begin{align*}
+M^{m,p}_{\gamma}(\Omega)=\{ &u(t) \in L^1_{loc}(\Omega); \hspace{0.2in} \langle t \rangle^{\gamma+ k} \partial^k_t u \in L^p(\Omega), \hspace{0.1in} k \le s, k \in \mathbb{Z}
+\}
+\end{align*}
+where $p\in (1,\infty)$.
+
+Set $u(t) = p(t)^{-1}\int_\infty^t p(s)f(s)ds$, we want to show
+\[
+\langle t \rangle^{\gamma-1}u(t) \in L^p(I)
+\]
+recall that $p(t) = \exp(\int 2u_\#(t)dt)$, $u_\#(t) = t^{-1}+\rmO(t^{-2}\log(t))$, and $p(t) = \rmO(t^2).$
+
+Consider the expression
+\[
+u(t) = p(t)^{-1}\int_\infty^t p(s)f(s)ds.
+\]
+
+Use $p(t)=\rmO(t^2)$ and $t\ge a$ we can instead estimate the $L^p$ norm of the following expression
+\[
+t^{-2}\int_{\infty}^t s^2 f(s)ds
+\]
+
+We will use an exponential scaling $t = e^\tau$, set $\tilde{\gamma} = \gamma-(1-p^{-1})$, and define $w(\tau) = e^{\tilde{\gamma}\tau}u(e^{\tau})$.
+
+We have, for $\tau \in (\log a, \infty):=I_a$
+\[
+\| w(\tau)\|_{L^p(I_a)}^p = \int_{I_a} e^{p\tilde{\gamma}\tau}|u(e^\tau)|^pd\tau = \int_{I_a} e^{p(\gamma-1)\tau}|u(e^\tau)|^p e^{\tau}d\tau = \int_I (t^{\gamma-1}|u(t)|)^p dt = \|u\|_{L^P_{\gamma-1}(I)}^p
+\]
+Set $g(\sigma) = e^{(\tilde{\gamma}+1)\sigma}f(e^\sigma)$, and $h(\cdot) = e^{(\tilde{\gamma}-2)(\cdot)}$, we note that
+\[
+\| g\|_{L^p(I_a)} = \int_{I_a} e^{(\gamma+p^{-1})p\sigma} |f(e^\sigma) |^p d\sigma = \int_{I_a} |e^{\sigma \gamma}f(e^\sigma)|^p e^\sigma d\sigma = \| f\|_{L^p_\gamma(I)}.
+\]
+
+
+On the other hand, use another scaling $s = e^\sigma$, we can write
+\begin{align*}
+\int_{I_a} |w(\tau)|^p d\tau &\le \int_{I_a} \left|e^{\tilde{\gamma}\tau }e^{-2\tau}\int_\infty^{\sigma=\tau} e^{2\sigma}f(e^\sigma)e^{\sigma}d\sigma\right|^p d\tau  \\
+&=\int_{I_a} \left| \int_\infty^\tau e^{(\tilde{\gamma}-2)(\tau-\sigma)}e^{(\tilde{\gamma}+1)\sigma}f(e^\sigma)d\sigma \right|^p d\tau\\
+& = \| h \ast g \|^p_{L^p(I_a)}
+\end{align*}
+
+Then we can apply Young's inequality and obtain
+\[
+ \|u\|_{L^P_{\gamma-1}(I)} =\| w(\tau)\|_{L^p(I_a)}\le \| h \ast g \|_{L^p(I_a)} \le \|h\|_{L^1(I_a)} \|g\|_{L^p(I_a)} \le C \|f\|_{L^p_{\gamma}(I)}
+\]
+for some constant $C$, provided $\tilde{\gamma}-2>0$. Which translates to $\gamma > 3-p^{-1}$.
+
+
+\paragraph{The case for $p=\infty$}
+
+When $p=\infty$, the whole arguments are actually easier. In particular, we still have the same conclusion, that
+\[
+f(\cdot) \mapsto p(\cdot)^{-1}\int_\infty^{\cdot} p(s)f(s)ds
+\]
+is bounded from $L^\infty_\gamma(I)$ to $M^{1,\infty}_{\gamma-1}(I)$.
+
+\subsubsection{Nonhyperbolic gluing by explicit construction of the center manifold}
+We now go back to system \eqref{Nhyp} and \eqref{Nhyp2}, we want to actually construct the center and unstable manifold using the functional framework in the previous subsection and then follow the hyperbolic gluing part.
+
+More precisely, we want to show that there exists a unique (up to time translation) $U_-(t) = (u_-(t),v_-(t))^T$ which decays to $0$ as $t \to \infty$, and $U_+(t) = (u_+(t),v_+(t))^T$ which decays to $0$ as $t\to -\infty$. We also wish to give the asymptotics at $\pm \infty$ directly for $U_{\pm}$.
+
+\paragraph{Existence for $U_-$}
+
+To set up the appropriate functional framwork, we will use an ansatz $u_-(t) = u_\#(t) + w(t)$, where $u_\#(t) = t^{-1}+bt^{-2}\log(t)$ for some prefactor $b$ chosen later.
+
+We then use variation of constants to rewrite the ODE system into the following system of integral equation
+\begin{align*}
+w(t) &= \int_\infty^t p(s)p(t)^{-1} F (w(s),v_-(s),s)ds  = \left(\frac{d}{dt}+2u_\#(t)\right)^{-1} F(w,v_-,t)\\
+v_-(t) &= \int_\infty^t e^{(t-s)}G(w(s),v_-(s),s)ds = \left(\frac{d}{dt}-1\right)^{-1} G(w,v_-,t)
+\end{align*}
+
+Where 
+\[
+F(w(s),s) = -w^2(s)+f(u_\#(s)+w(s),v_-(s))-(b s^{-3}+b^2 s^{-4}(\log(s))^2),
+\] and 
+\[
+G(v_-(s),s) = g(u_\#(s)+w(s),v_-(s)).
+\]
+By choosing $b$ appropriately, we can eliminate the term  with order $\rmO(s^{-3})$, leaving the inhomogeneity with order $s^{-4}(\log(s))^2$ only.
+
+Let us solve this for $w \in M^{1,\infty}_{\gamma-1}(I_a)$ and $v_- \in W^{1, \infty}_{2}(I_a)$, where $W^{k,p}_{\gamma}$ is the weighted Sobolev space (Definition...)
+
+Since the nonlinear function $f,g$ are quadratic in leading order and $w \in M^{1,\infty}_{\gamma-1}, v_- \in W^{1,\infty}_{2}$, we have that $F(w(s),v_-(s),s) \in L^{\infty}_{\gamma}$ 
+and $G(w(s),v_-(s),s) \in L^{\infty}_{\gamma}$ provided that $4>\gamma >3-2^{-1}$. (need $4>\gamma$ since we want $t^{-4}\log(t)^2 \in L^{\infty}_{\gamma}$, need $\gamma>3-2^{-1}$ since we want $(d/dt+2u_\#)^{-1}$ maps $L^{\infty}_{\gamma}$ to $M^{1,\infty}_{\gamma-1}$ and be bounded).
+
+On the other hand, due to exponential localization, the operator $(d/dt-1)^{-1}: L_2^{\infty} \to W^{1,\infty}_2$ is an isomorphism. 
+
+Then, by picking $\mathcal{X} = B_1 \times B_2$ where $B_1, B_2$ are some balls with small enough radius centered at $0$ in $M_{\gamma-1}^{1,2}$ and $W_\gamma^{1,2}$, respectively (may need to pick $a$ large enough).
+ Set 
+ \[
+ W= (w,v_-)^T, \mathcal{L}^{-1} = \begin{pmatrix}
+ (\frac{d}{dt}+2u_\#)^{-1} & 0\\
+0&(\frac{d}{dt}-1)^{-1}
+ \end{pmatrix}, \mathcal{F}(W,t) = (F(W,t),G(W,t))^T
+ \] we can use a standard fixed point argument solve the equation $W= \mathcal{L}^{-1} \mathcal{F}(W)$ for $W \in \mathcal{X}$.
+
+(Need to fix $v=v_\#+z$ to set up a more proper equation....) 
+
+\paragraph{Existence for $U_+$}
+The unstable manifold will have an exponential decay as $t \to -\infty$, we prove this using a similar functional analytic framework.
+
+\pagebreak
+\iffalse
+\paragraph{Explicit computation for a quadratic nonlinearity}
+
+Define the ``right shift'' operator 
+\[
+S^Tu(\cdot) = u(\cdot-T),
+\]
+with this notation the ``left shift'' is $S^{-T}$.
+
+To solve the BVP 
+\[
+U = AU + F(U) \text{ on }(-T,T)
+\]
+with $U(T)=... , U(-T)=....$
+
+we plug in the ansatz
+$U(t) = S^{-T}U_-(t)+S^TU_+(t)+R(t)$ with $R(t) = (\mu(t),\nu(t))^T$,
+
+for $t \in [-T,T]$.
+
+For now assume $F(u,v) = (au^2+buv+cv^2, du^2+euv+fv^2)^T$
+
+$U_-(\cdot) = (u_-(\cdot),v_-(\cdot))^T$, $U_+(\cdot)=(u_+(\cdot),v_+(\cdot))^T$, now $U_-$ and $U_+$ are true solutions to the equation, so the correctors would solve an equation of the form
+\begin{align*}
+\dot{\mu} + \mu &=   a[2(S^Tu_+\mu+S^{-T}u_- \mu+S^Tu_+S^{-T}u_-)+\mu^2]+\\
+&+c[2(S^{-T}v_-\nu+S^Tv_+\nu+S^Tv_+S^{-T}v_-)+\nu^2]+\\
+&+b[S^Tu_+(S^{-T}v_-+\nu)+S^{-T}u_-(S^Tv_++\nu)+\mu(S^Tv_++S^{-T}v_-+\nu)]
+\end{align*}
+and a completely similar equation for $\nu$.
+\begin{align*}
+\dot{\nu} -\nu &= d[2(S^Tu_+\mu+S^{-T}u_- \mu+S^Tu_+S^{-T}u_-)+\mu^2]+\\
+&+f[2(S^{-T}v_-\nu+S^Tv_+\nu+S^Tv_+S^{-T}v_-)+\nu^2]+\\
+&+e[S^Tu_+(S^{-T}v_-+\nu)+S^{-T}u_-(S^Tv_++\nu)+\mu(S^Tv_++S^{-T}v_-+\nu)]
+\end{align*}
+%------------------------------------------------------------------------------------------------
+%------------------------------------------------------------------------------------------------
+%------------------------------------------------------------------------------------------------
+
+Introduce the partition of unity $\chi_-$ and $\chi_+$ in $(-\infty, \infty)$, where  
+\begin{itemize}
+
+\item  support of $\chi_- \subset (-\infty,1)$ and $\chi_- = 1$ on $(-\infty,-1)$,
+\item $\chi_+=1-\chi_-$. support of $\chi_+ \subset (-1,\infty)$ and $\chi_+ = 1$ on $(1,\infty)$.
+\end{itemize}
+Define $\rho_+(t) = S^{-T}(\chi_+\mu)(t)$ and
+$\rho_-(t) = S^{T}(\chi_-\mu)(t)$. Note that supp $\rho_- \subset (-\infty, T+1)$ and supp $\rho_+ \subset (-T-1,\infty)$.
+
+[Should put a picture of $\chi_-$ and $\chi_+$ here...]
+
+
+Similarly we put $\sigma_+(t) = S^{-T}(\chi_+\nu)(t)$ and $\sigma_-(t) = S^{T}(\chi_-\nu)(t)$.
+
+We will derive equations for $\rho_+$ and $\rho_-$.
+
+
+Properties on the stable/unstable manifold $U_\pm$.
+\begin{itemize}
+\item $u_+=u_+(\cdot)$ is defined (via an appropriate shift in time) so that $u_+(\cdot)$ lives on $(-\infty,0]$, and satisfy $|u_+(t)|\le C e^{\gamma t}$ for some $C,\gamma$. Correspondingly $v_+ =  \rmO(u_+^2)$. Recall $U_+ =(u_+,v_+)^T$.
+
+As a consequence of the shift in time
+the shifted $S^Tu_+(t)=u_+(t-T)$ is for $t \in (-\infty, T)$.
+
+\item $v_-=v_-(\cdot)$ is defined (via an appropriate shift in time) so that $v_-(\cdot)$ lives on $[0,\infty)$, and satisfy $|v_-(t)|\le C e^{-\gamma t}$ for some $C,\gamma$. Correspondingly $u_- = \rmO(v_-^2)$. Recall $U_- =(u_-,v_-)^T$.
+
+As a consequence of the shift in time, the shifted $S^{-T}u_-
+=u_-(t+T)$ is  for $t \in (-T, \infty)$.
+\end{itemize}
+\pagebreak
+
+
+
+For the right hand side of the equation, we have organized the terms in the following way:
+
+\paragraph{Organizing the terms}
+For the linear terms, we get 
+\begin{align*}
+(M_{1,-}+M_{1,+})\mu &:= (S^{-T}(2au_-+bv_-)+S^T(2au_++bv_+))\mu, \\ 
+(M_{2,-}+M_{2,+})\nu &:=(S^{-T}(2cu_-+bv_-)+S^T(2cu_++bv_+))\nu. \\
+\end{align*}
+and cross terms
+\[
+C:=2(aS^{-T}u_-S^Tu_++cS^{-T}v_-S^Tv_+)+b(S^{-T}u_-S^Tv_++S^Tu_+S^{-T}v_-)
+\]
+and lastly, quadratic terms
+\[
+Q(\mu,\nu):=a\mu^2+b\mu \nu+c\nu^2
+\]
+
+
+As we split $\mu$ into $\chi_+\mu$ and $\chi_-\mu$, the leading linear part is
+
+\[
+\dot{\mu}+\mu = \frac{d}{dt}(\chi_-\mu+\chi_+\mu)+(\chi_-\mu+\chi_+\mu)
+\]
+
+To distribute the terms, we follow a simple rule: first, anything that has a "$+$'' script goes into the $\mu_+$ equation, if there is a term  that has a ``$-$'' subscript, we use the partition of unity to split it as a $\chi_-$ and $\chi_+$ part, and we put the $\chi_-$ part into the $\chi_+\mu$ equation. 
+
+\begin{itemize}
+\item Distribution of the linear terms $M_{1,2}$.
+
+In the linear terms $M_1 \mu = M_1 (\chi_++\chi_-)\mu  $, first separate $\chi_+\mu(u_{\pm}+v_{\pm})$, clearly $\chi_+\mu(u_+ + v_+)$ has no problem. To modify $\chi_+\mu(u_-+v_-)$, which has different support for the two function being multiplied together, we simply further decompose this into $\chi_-\chi_+\mu(u_-+v_-)$ and $\chi_+\chi_+\mu(u_-+v_-)$, now because $\chi_-$ shuts off at $-1$, the term $\chi_- \chi_+\mu(u_-+v_-)$ goes into the $\mu_+$ equation, notice its support is on $[-1,1]$. The other term $\chi_+\chi_+\mu(u_-+v_-)$ will go to the $\mu_-$ equation.
+
+The same thing happens to $M_2\nu = M_2(\nu_-+\nu_+)$.
+
+\item Distribution of the cross terms $C$.
+
+Consider for instance $u_-u_+ = (\chi_-+\chi_+)u_-u_+$, if we want this go into the $\mu_+$ equation, we only consider the interval $(-\infty,T)$, so we need to cut off at $-T$, so the term $\chi_- u_-u_+$ goes into $\mu_+$ equation, while $\chi_+u_-u_+$ goes into $\mu_-$ equation.
+
+Proceeding in this pattern, we see terms from $C$ that goes into the $\mu_+$ equation is
+\[
+C_+:=\chi_-(u_-u_++v_-v_++u_-v_++u_+v_-),
+\]
+whereas
+\[
+C_-:=\chi_+(u_-u_++v_-v_++u_-v_++u_+v_-)
+\]
+goes into the $\mu_-$ equation.
+
+\item Distribution of the quadratic term $Q(\mu,\nu)$
+
+Recall $Q(x,y)=a\mu^2+b\mu\nu+c\nu^2$, to have a somewhat more compact notation, define 
+\[
+Q_c = Q((\chi_-+\chi_+)\mu,(\chi_-+\chi_+)\nu)-Q(\chi_+\mu,\chi_+\nu)-Q(\chi_-\mu,\chi_-\nu) \hspace{0.2in} \text{($c$ for cross terms),}
+\]
+ then
+\begin{align*}
+Q(\mu,\nu) &=(\chi_++\chi_-)Q_c(\mu,\nu)+Q(\chi_+\mu,\chi_+\nu)+Q(\chi_-\mu,\chi_-\nu_-)
+\end{align*}
+
+
+\end{itemize}
+
+\paragraph{The resulting equations}
+
+We get four equations for $\rho_{\pm}, \sigma_{\pm}$.
+
+
+Below I decided to just write down the terms without the 
+coefficients.
+
+
+we have, for $\chi_+\mu$. 
+\begin{align*}
+\frac{d}{dt} (\chi_+\mu) + (\chi_+\mu ) &= M_{1,+}(\chi_+\mu)+M_{2,+}(\chi_+\nu)\\
+&+\chi_+[M_{1,-}(\chi_+\mu)+M_{1,+}(\chi_-\mu)
++M_{2,-}(\chi_+\nu)+M_{2,+}(\chi_-\nu)+C] \\
+&+ \chi_+Q_c(\mu,\nu)+Q(\chi_+\mu,\chi_+\nu),
+\end{align*}
+
+
+for $\chi_-\mu$
+\[
+\frac{d}{dt} (\chi_-\mu) + (\chi_-\mu ) = M_{1,-}(\chi_-\mu)+\chi_-[M_{1,+}(\chi_-\mu)+M_{1,-}(\chi_+\mu)
++C+ Q_c(\mu,\nu)]+Q(\chi_-\mu,\chi_-\nu),
+\]
+
+Finally, we apply $S^{-T}$ to the $\chi_+$ equation to turn it into an equation about $\rho_+(t), t\in (-T-1,0)$ ( $S^T$ commutes with differentiation $d/dt$), and apply $S^T$ to the $\chi_-$ equation to get an equation about $\rho_-(t), t \in (0,T+1)$.
+
+\begin{align*}
+\left(\frac{d}{dt} \rho_+ + \rho_+\right)(t) &= [(S^{-T}M_{1,+})+S^{-T}(\chi_+M_{1,-})]\rho_+ + S^{-T}(\chi_+M_{1,+})S^{-2T}\rho_-\\
+&+[(S^{-T}M_{2,+})+S^{-T}(\chi_+M_{2,-})]\sigma_+ + S^{-T}(\chi_+M_{1,+})S^{-2T}\sigma_-\\
+& + S^{-T}(\chi_+C)+S^{-T}(\chi_+Q_c) + Q(\rho_+,\sigma_+)(t)
+\end{align*}
+
+The equation for $\rho_-$ is
+
+\begin{align*}
+\left(\frac{d}{dt} \rho_- + \rho_-\right)(t) &= [(S^{T}M_{1,-})+S^{T}(\chi_-M_{1,+})]\rho_- + S^{T}(\chi_-M_{1,-})S^{2T}\rho_+\\
+&+[(S^{T}M_{2,-})+S^{T}(\chi_-M_{2,+})]\sigma_- + S^{T}(\chi_-M_{1,-})S^{2T}\sigma_+\\
+& + S^{T}(\chi_-C)+S^{T}(\chi_-Q_c) + Q(\rho_-,\sigma_-)(t)
+\end{align*}
+
+We also get two similar equations for $\sigma_-$ and $\sigma_+$, if we define 
+\begin{align*}
+(N_{1,-}+N_{1,+})\mu &:= (S^{-T}(2du_-+ev_-)+S^T(2du_++ev_+))\mu, \\ 
+(N_{2,-}+N_{2,+})\nu &:=(S^{-T}(2fu_-+ev_-)+S^T(2fu_++ev_+))\nu. \\
+\end{align*}
+and cross terms
+\[
+X:=2(dS^{-T}u_-S^Tu_++fS^{-T}v_-S^Tv_+)+e(S^{-T}u_-S^Tv_++S^Tu_+S^{-T}v_-)
+\]
+and lastly, quadratic terms
+\[
+R(\mu,\nu):=d\mu^2+e\mu \nu+f\nu^2
+\]
+then the equation for $\sigma_+$ is
+\begin{align*}
+\left(\frac{d}{dt} \sigma_+ - \sigma_+\right)(t) &= [(S^{-T}N_{1,+})+S^{-T}(\chi_+N_{1,-})]\sigma_+ + S^{-T}(\chi_+N_{1,+})S^{-2T}\sigma_-\\
+&+[(S^{-T}N_{2,+})+S^{-T}(\chi_+N_{2,-})]\rho_+ + S^{-T}(\chi_+N_{1,+})S^{-2T}\rho_-\\
+& + S^{-T}(\chi_+X)+S^{-T}(\chi_+X_c) + R(\rho_+,\sigma_+)(t)
+\end{align*}
+
+and lastly for $\sigma_-$
+The equation for $\sigma_-$ is
+
+\begin{align*}
+\left(\frac{d}{dt} \sigma_- - \sigma_-\right)(t) &= [(S^{T}N_{1,-})+S^{T}(\chi_-N_{1,+})]\sigma_- + S^{T}(\chi_-N_{1,-})S^{2T}\sigma_+\\
+&+[(S^{T}N_{2,-})+S^{T}(\chi_-N_{2,+})]\rho_- + S^{T}(\chi_-N_{1,-})S^{2T}\rho_+\\
+& + S^{T}(\chi_-X)+S^{T}(\chi_-X_c) + R(\rho_-,\sigma_-)(t)
+\end{align*}
+
+\paragraph{Functional setting}
+
+We plan to solve $\rho_+,\sigma_+ \in C^1_{\delta}((-\infty,0))$ and $\rho_-,\sigma_- \in C^1_{\delta}((0,\infty))$ for some weight $\delta$, chosen later.
+
+Before we set up the fixed point problem, we need to check the equation for $\rho_\pm, \sigma_\pm$ are actually well-defined on those intervals we proposed to solve them.
+
+
+Take, for example the equation of $\rho_-$, the RHS consists of
+\begin{itemize}
+
+\item $I:=[(S^{T}M_{1,-})+S^{T}(\chi_-M_{1,+})]\rho_- + S^{T}(\chi_-M_{1,-})S^{2T}\rho_+$
+
+
+\item $II:=[(S^{T}M_{2,-})+S^{T}(\chi_-M_{2,+})]\sigma_- + S^{T}(\chi_-M_{1,-})S^{2T}\sigma_+$
+
+
+\item $III:=S^{T}(\chi_-C)+S^{T}(\chi_-Q_c)  $
+
+\item $IV:= Q(\rho_-,\sigma_-)(t)$
+\end{itemize}
+
+
+\begin{enumerate}
+\item Linear term part 1
+
+recall that $M_{1,-} := (S^{-T}(2au_-+bv_-)$. Hence we have
+\[
+S^TM_{1,-} (t) \sim u_-(t)+v_-(t)
+\]
+which for $t \in (0,\infty)$ are well-defined (indeed, we DEFINED $u_- , v_-$ on this interval.)
+
+The following estimate holds with some constant $C$ and the same  $\gamma$ as in the description of the stable manifold.
+\[
+|S^TM_{1,-}(t)| \le Ce^{-\gamma t}, \hspace{0.5cm} t \in [0,\infty)
+\]
+In particular, $S^TM_{1,-}(t) \to 0$ as $t \to \infty$, so is a perturbation of the linear part $\frac{d}{dt}+1$.
+
+
+
+
+\item Linear term part 2
+Recall that $M_{1,+}:=S^T(2au_++bv_+))$:
+we have
+\[
+|S^T(\chi_-M_{1,+} )(t)| = \chi_-(t-T)M_{1,+}(t-T) \sim \chi_-(t-T) (u_++v_+)(t-2T)
+\]
+
+now, recall $\chi_-(\cdot)$ has support on $(-\infty,1)$. hence $\chi_-(\cdot-T)$ has support on $(-\infty,T+1)$. If we restrict to $t \in (0,\infty)$, we see that $u_+,v_+$ are being evaluated on the interval $(-2T, -T+1)$, on which they are well defined (and decay nicely!)
+
+
+In particular, we have the following estimate, using the decay of $u_+,v_+$ on $(-\infty,0)$.
+\[
+\sup_{t \in (0,\infty)}|S^T(\chi_-M_{1,+}(t))| \le Ce^{\gamma(-T)}
+\]
+note that the right hand side depends on $T$, the fixed time boundary, given any $\eps>0$, we can find $T$ large enough so that $|S^T(\chi_-M_{1,+}(t))|< \eps$, uniformly for $t \in (0, \infty)$
+
+
+
+\item Nonhomogeneous term from $\rho_+$
+
+we have
+\[
+S^T(\chi_-M_{1,-})S^{2T}\rho_+ = \chi_-(t-T)M_{1,-}(t-T)\rho_+(t-2T) \sim \chi_-(t-T)(u_-+v_-)(t)\rho_+(t-2T)
+\]
+
+xagain, for $t\in (0,\infty)$, due to the shifted cut-off $\chi_-(t-T)$, we are evaluating $u_-,v_-$ on $(0,T+1)$, and $\rho_+$ on $(-2T, -T+1)$, where they are properly defined and has nice decay.
+
+Combined with estimates for $u_-,v_-$, we have
+\[
+|S^T(\chi_-M_{1,-})S^{2T}\rho_+ (t) | \le Ce^{-\delta T}e^{-\gamma t}
+\]
+for in $t \in(0,\infty)$.
+
+The same analysis goes through for the terms in the second bullet point term $II$.
+
+
+
+\item Nonhomogeneous cross term 
+\[
+S^T(\chi_-C)(t)\sim \chi_-(t-T) [u_-(t)u_+(t-2T) + v_-(t)v_+(t-2T) + u_-(t)v_+(t-2T)+ u_+(t-2T)v_-(t)]
+\]
+again, the $u_-(t), v_-(t)$ are living on the proper interval $(0,\infty)$ where they belong. And the $u_+,v_+$ terms, after being shifted by $2T$ from the right, combined with the cut off from $\chi_-(t-T)$, are only being evaluated on the interval $(-2T,-T+1)$ when restrict to $t \in (0,\infty)$.
+
+So we have the estimate
+\[
+|S^T(\chi_-C)| \le Ce^{-\gamma t}e^{-\gamma T}
+\]
+\item Quadratic cross term
+\[
+S^T(\chi_-Q_c) = ...
+\]
+
+which is a product of terms like $\chi_-(t-T)f_-(t)g_+(t-2T)$ with $f,g = \rho, \sigma$, again, $f_-(t)$ is good for $t \in (0,\infty)$ and $\chi_-(t-T)g_+(t-2T)$ will evaluate $g_+$ on the interval $(-2T,-T+1)$.
+
+\item ``pure'' quadratic term
+\[
+Q(\rho_-,\sigma_-)(t) \sim
+ \rho_-^2(t) + \rho_-\sigma_- (t)+ \sigma_-^2(t)
+\]
+everything is well defined for $t \in (0,\infty)$. So if $\rho_-, \sigma_-$ are in the space $C_\eta^1(0,\infty)$, so is $Q(\rho_-,\sigma_-)$.
+\end{enumerate}
+
+As a consequence, we have 
+\[
+I \le , II\le , III\le 
+\]
+\fi
+
+
+\paragraph{Solving shilnikov BV the complicated way}
+
+Now we are solving the same BV with $F(U) = \rmO(|U|^2)$ as $|U| \to 0$.
+
+
+Denote by $f^T(t):=f(t-T)$ the shifted version of a function $f$, our ansatz is still
+\[
+U(t) = U_-^{-T}(t)+U_+^{T}(t)+R(t)
+\] 
+
+We get the equation
+\[
+\frac{d}{dt}R(t)-AR(t) = F((U_-^{-T}+U_+^T + R)(t)) - F(U_-^{-T}(t))-F(U_+^{T}(t)).
+\]
+
+The right hand side is decomposed by
+\[
+F((U_-^{-T}+U_+^T + R)(t)) - F(U_-^{-T}(t))-F(U_+^{T}(t))=M(t)R  + C + Q(R),
+\]
+where $M(t)$ is the linearization of $F$ at $U_-^{-T}+U_+^T$
+\[
+M(t) = [DF(U_-^{-T}(t)+U_+^T(t)) ]
+\]
+
+where $C$ denotes cross term
+\[
+C= F(U_-^{-T}+U_+^T)-F(U_-^{-T})-F(U_+^T),
+\]
+and $Q(R)$ is the ``adjusted'' quadratic nonlinearity in $R$
+\[
+ Q(R)= F(U_-^{-T}+U_+^T+R)-F(U_-^{-T}+U_+^T)-DF(U_-^{-T}+U_+^T)R =\rmO(|R|^2).
+ \]
+
+We further decompose the linear part
+\[
+M(t)  = M_c(t) + DF(U_-^{-T}(t))+DF(U_+^T(t)):=M_c(t)+M_-(t)+M_+(t)
+\]
+
+(where $M_c = DF(U_-^{-T}+U_+^T)-DF(U_-^{-T})-DF(U_+^T)$)
+
+
+Let $\chi_-$ and $\chi_+$ be the same p.o.u introduced above
+then put $R_+ = \chi_+R$ and $R_-=\chi_-R$.
+
+We will decompose $Q(R)$ as
+\[
+Q_c(R_-,R_+) := [Q(R)-Q(R_-)-Q(R_+)], \hspace{0.5cm} Q(R) = Q_c(R_-,R_+)+ Q(R_-)+Q(R_+)
+\]
+We get the equation for $R_-$ and $R_+$ respectively,
+\[
+\frac{d}{dt}R_-(t) - AR_-(t) =\{[M_-(t)  +\chi_-[M_+(t)+M_c(t)] \}R_- +\chi_-[(M_-+M_c)R_+ +C]+Q(R_-)+\chi_-Q_c(R_-,R_+), 
+\]
+and
+\[
+\frac{d}{dt}R_+(t) - AR_+(t) = \{M_+(t) +\chi_+[M_-(t)+M_c(t)] \}R_++\chi_+[(M_++M_c)R_- + C]+Q(R_+)+\chi_+Q_c(R_-,R_+)
+\]
+
+The final modification is to apply the shift operator $S^T$ to the $R_-$ equation and $S^{-T}$ to the $R_+$ equation.
+
+To slightly simplify notations, denote 
+\[
+\Rho(t) = R_-^T(t) = S^T(\chi_-R)(t) = (\chi_-R)(t-T),
+\]
+ and 
+ \[
+ \bigma(t) = R_+^{-T}(t) = S^{-T}(\chi_+R)(t) = (\chi_+R)(t+T). 
+ \]
+ 
+also set $\mathcal{M}_-(t) = M_-(t)  +\chi_-[M_+(t)+M_c(t)]$ and 
+$\mathcal{M}_+(t) =  M_+(t) +\chi_+[M_-(t)+M_c(t)]$
+
+Then the equations are
+\begin{equation}\label{plus}
+\left[\frac{d}{dt}-A-\mathcal{M}_-^T(t) \right]\bm{\rho}(t)  = (\chi_-^T[(M_-^T+M_c^T)\bigma^{2T}+C^T] + Q(\bm{\rho}(t))+\chi_-^T(t)Q_c(\bm{\rho}(t),\bm{\sigma}^{2T}(t))
+\end{equation}
+
+and 
+\begin{equation}\label{minus}
+\left[\frac{d}{dt}-A-\mathcal{M}_+^{-T}(t)\right]\bm{\sigma}(t)  = (\chi_+^{-T}[(M_+^{-T}+M_c^{-T})\Rho^{-2T}+C^{-T}]+ Q(\bm{\sigma}(t))+\chi_+^{-T}(t)Q_c(\bm{\rho}^{-2T}(t),\bm{\sigma}(t))
+\end{equation}
+
+
+To solve the boundary value problem we solve the above two equation on the halflines $[0,\infty)$ and $(-\infty,0]$ respectively.
+
+To be more specific, set the function space
+\[
+X_\rho = [C^1_{\delta}((0,\infty))]^2, X_\sigma = [C^1_{\delta}((-\infty,0))]^2
+\]
+with norm
+\[
+\|u\|_{X_\rho} =: \|u\|_{\rho} = \sup_{t \in (0,\infty)} \|e^{\delta t}[u(t)+u'(t)]\|, \hspace{0.3cm}\|u\|_{X_\sigma} =: \|u\|_{\sigma} = \sup_{t \in (-\infty,0)} \|e^{-\delta t}[u(t)+u'(t)]\|
+\]
+where $\delta$ denotes exponential weights in corresponding intervals.
+
+For the $\Rho$ equation, we need the estimate in space $X_\rho$.
+
+First the perturbation of the linear part
+\[
+\mathcal{M}^T_-(t) = M_-(t-T)+\chi_-(t-T)[M_+(t-T)+M_c(t-T)].
+\]
+
+
+By definition, $M_-(t) = DF(U_-^{-T}(t))=DF(U_-(t+T))$, so $M_-(t-T) = DF(U_-(t))$. While $M_+(t-T) = DF(U_+(t-2T))$. And $U_-$ has the bound $\|U_-\|_{\gamma,-} = \sup_{t \in (0,\infty)} |U_-(t)e^{\gamma t}|< \infty$, and $U_+$ has the bound $\|U_+\|_{\gamma,+} = \sup_{t \in (-\infty,0)} |U_+(t)e^{-\gamma t}|< \infty$.
+
+
+
+So for $M_-^T(t)$ we have
+\[
+e^{\delta t}M_-^T(t) \le C e^{\delta t}|U_-(t)| \le C|U_-|_{\gamma,-}e^{(\delta-\gamma)t}
+\]
+
+
+
+
+On the other hand
+\[
+\chi_-(t-T)M_+(t-T) =\chi_-(t-T) DF(U_+(t-2T)) \le |\chi_-(t-T)||U_+(t-2T)|,
+\]
+since support of $\chi_-(t-T)$ lies in $t \in (-\infty, T+1)$, for $t \in (0,\infty)$, we are considering the function $U_+(t-2T)$ on the window $t \in (0, T+1)$, and consequently, the function $U_+(\cdot)$ on the window $(-2T, -T+1)$.
+This gives
+
+\[
+e^{\delta t}\chi_-(t-T)M_+(t-T) \le C\sup_{t \in (-2T,-T+1)} |e^{\delta t}U_+(t)| \le C|U_+|_{\gamma,+} \sup_{t \in (-2T,-T+1)} e^{(\delta+\gamma) t} \le Ce^{-(\delta+\gamma)T}|U_+|_{\gamma,+}
+\] 
+
+Lastly, recall $M_c(t) = DF(U_-^{-T}+U_+^T)-DF(U_-^{-T})-DF(U_+^T)$, we have the pointwise estimate (the norm is the norm of $M_c$ as a matrix)
+\[
+\|M_c(t)\|  \le  C|U_-^{-T}(t) | |U_+^T(t) |
+\]
+
+Hence
+\[
+e^{\delta t}\chi_-(t-T)M_c(t) \le C|U_-|_{\gamma,-}e^{(\delta-\gamma)t} |U_+|_{\gamma,+}e^{-\gamma T}.
+\]
+
+We therefore conclude that
+\[
+\|e^{\delta t} \mathcal{M}^T(t)\| \le C(|U_-|_{\gamma,-}e^{(\delta-\gamma)t} + |U_+|_{\gamma,+}e^{-(\delta+\gamma)T}+e^{-\gamma T+(\delta-\gamma)t}|U_-|_{\gamma,-}|U_+|_{\gamma,+}) \le C(|U_-|_{\gamma,-}+|U_+|_{\gamma,+})
+\]
+
+as long as we choose $0<\delta<\gamma$, we can take supremum over all $t \in (0,\infty)$, as the right hand side is independent of $t$.
+
+In a very similar vein, we obtain the estimates for the residual term
+\begin{align*}
+\left|e^{\delta t}\chi_-^T[(M_-^T+M_c^T)\bigma^{2T}+C^T] (t)\right| &\le |U_-|_{\gamma,-}e^{(\delta-\gamma)t}\left( \sup_{t \in (-2T,-T+1)} |\bigma(t)(1+U_+(t))| +|U_+(t)|\right)\\
+& \le |U_-|_{\gamma,-} [|\bigma|_{\sigma}(1+|U_+|_{\gamma,+})+|U_+|_{\gamma,+}]
+\end{align*}
+
+and the quadratic terms
+\[
+\left| e^{\delta t}Q(\Rho(t))+\chi_-^TQ_c(\Rho,\bigma^{2T})(t) \right| \le |\Rho|_{\rho}^2e^{-2\delta t} + |\Rho|_\rho \sup_{t \in (-2T,-T+1)} |\bigma(t)| \le |\Rho|_{\rho}(1 +| \bigma|_{\sigma})
+\]
+
+In particular, this says the right hand of equation \eqref{plus} lies in $X_\rho$. And the size is controlled by 
+\[|U_-|_{\gamma,-}, |U_+|_{\gamma,+}, |\Rho|_{\rho}, |\bigma|_{\sigma},
+\]
+moreover, the linear part is a perturbation ($\mathcal{M}^T(t)$ is small in $L^{\infty}$ norm) of the operator $\dfrac{d}{dt}-A$. 
+
+The exact same thing is true for equation \eqref{minus}. We can now set up a fixed point argument by starting with $U_-, U_+, \Rho, \bigma$ small in their respective norms, and one conclude the solvability of the equations using exponential dichotomies of the operator $\dfrac{d}{dt}-A-\mathcal{M}^T(t)$ and $\dfrac{d}{dt}-A-\mathcal{M}^{-T}(t)$, which follows by robustness.
+
+\paragraph{Remark:} the solution is unique up to the choice of the ``initial'' condition $\Rho(0)$ and $\bigma(0)$, which are just the boundary condition for the corrector term $R$ at $\pm T$ (after being modified by the p.o.u) and the flying time $T$, we see that the above argument works for any $T\ge 0$. Note also that the decaying of $\Rho, \bigma$ at $\infty, -\infty$ closes the problem.
+
+
+
+
+\pagebreak
+\paragraph{Nonhyperbolic gluing}
+
+We are studying the equation
+\begin{equation}\label{Shl}
+\dot{U}(t)-AU(t) = F(U(t))
+\end{equation}
+for $t \in (-T,T)$, $U \in \R^2$.
+
+Here $A = \begin{pmatrix}
+0&0\\
+0&1
+\end{pmatrix}$ and we assume the following for the nonlinearity $F$ 
+\begin{Hypothesis} {(N)}
+Write $U=(u,v)$ and $F = (F_1,F_2)=(F_1(u,v),F_2(u,v))$, then we require
+\begin{itemize}
+\item $F$ is smooth,
+\item $F(0,0) = (0,0)$, $DF(0,0) = 0$, 
+\item  $\partial_u^2 F_1(u,v) < 0$.
+\end{itemize}
+\end{Hypothesis}
+By an appropriate scale in time or the variable $u$, we can normalize so that $\partial_u^2 F_1(u,v) = -1$.
+
+Let $P_-$ be the projection to the center-stable direction and $P_+$ the projection to unstable direction, the boundary conditions are
+\begin{equation} \label{BC}
+P_-U(-T) = u_0 ,\text{ and }P_+U(T) = v_0, \text{ where }u_0>0,  v_0 \in \R.
+\end{equation} 
+Our main result is
+\begin{theorem}Assume $A$ and $F$ are given as above, then
+fix any $T>0$, there exist $\eps >0$ small, so that for $u_0, v_0$ with $u_0>0, |(u_0,v_0)| < \eps$ there exists a unique solution $U=U(t;T,u_0,v_0)$ to equation \eqref{Shl} on $(-T,T)$ and satisfies the boundary condition \eqref{BC}.
+\end{theorem}
+
+Before begin the proof, we outline our methods below.
+
+Recall that, for \eqref{Shl}, we have established the existence of the following special solutions, which exist on the half lines $(0,\infty)$ and $(-\infty,0)$.
+
+(Notation: $p \lesssim q$ means there is a constant $C$ such that $p \le Cq$. Similarly we define $p \gtrsim q$, and $p \simeq q$ if $p \gtrsim q$ and $p \lesssim q$.)
+\begin{theorem}
+There exist unique solutions $U_-(t)$ and $U_+(t)$ of equation \eqref{Shl} with the following properties
+\begin{enumerate}
+\item $U_- = (u_-,v_-)^T$, with $u_-(t) \lesssim u_0(u_0t +1)^{-1}$ for $t \in [0,\infty)$ and $v_- = \rmO(|u_-|^2)$ as $|u_-|\to 0$. Given any $u_0 = u_-(0)$.
+
+%with, $u_-(t) = t^{-1} + bt^{-2}\log(t)+w(t)$, where $w \in M_{\gamma-1}^{1,\infty}(0,\infty)$, $3-2^{-1}<\gamma-1<3$. And $v_- = \rmO(|u_-|^2)$ as $|u_-|\to 0$.
+
+
+
+\item $U_+ = (u_+,v_+)^T$, with $v_+(t) \le Cv_0e^{t}$ for $t \in (-\infty,0]$ and $|u_+| = \rmO(|v_+|^2)$ as $|v_+| \to 0$, given $v_0 = v_+(0)$.
+\end{enumerate}\end{theorem}
+For a function $f(t)$, denote $f^T(t) := f(t-T)$, the right shift of $f$ by $T$. We will take an ansatz of the form
+\[
+U(t) = U_-^{-T}(t)+U_+^T(t)+W(t)
+\]
+where $W$ is a correction term.
+
+Substitute this ansatz into equation \eqref{Shl}, we obtain the equation for $W$, 
+\[
+\dot{W} - AW =  F(U_-^{-T}+U_+^T + W)- F(U_-^{-T}) -F(U_+^T), 
+\]
+for which we write in the following form
+\begin{equation} \label{eqCr}
+\dot{W} - AW = M(t)W  + R + Q(W),
+\end{equation}
+where
+\[
+M(t) = DF(U_-^{-T}(t)+U_+^T(t)),
+\]
+
+$R$ is ``residual''
+\[
+R(t) = F(U_-^{-T}(t)+U_+^T(t)) - F(U_-^{-T}(t)) -F(U_+^T(t)), 
+\]
+
+and $Q$ is quadratic in $W$
+\[
+Q(W) = F(U_-^{-T}+U_+^T + W)-F(U_-^{-T}+U_+^T)-M(t)W = \rmO(|W|^2).
+\]
+
+We will proceed in the following steps:
+
+\begin{enumerate}
+\item Decompose $W = W_-+W_+$, $W_\pm = \chi_\pm W$ and shift in time to get separate equations,
+
+\item Establishing the Fredholm properties of the linear part in the algebraically localized spaces,
+
+\item Estimate the nonlinear terms in these spaces as well.
+\end{enumerate} 
+
+\paragraph{Step 1}
+Introduce the partition of unity $\chi_-$ and $\chi_+$ in $(-\infty, \infty)$, where  
+\begin{itemize}
+\item  support of $\chi_- \subset (-\infty,1)$ and $\chi_- = 1$ on $(-\infty,-1)$,
+\item $\chi_+=1-\chi_-$. support of $\chi_+ \subset (-1,\infty)$ and $\chi_+ = 1$ on $(1,\infty)$.
+\end{itemize}
+
+
+Now set $W_+ = \chi_+W$ and $W_-=\chi_-W$. We first 
+We further decompose the linear part $M(t)$
+\[
+M(t)  = M_c(t) + DF(U_-^{-T}(t))+DF(U_+^T(t)):=M_c(t)+M_-(t)+M_+(t)
+\]
+(where $M_c = DF(U_-^{-T}+U_+^T)-DF(U_-^{-T})-DF(U_+^T)$), then we decompose the quadratic part $Q(W)$ as
+\[
+Q_c(W_-,W_+) := [Q(W)-Q(W_-)-Q(W_+)], \hspace{0.3cm} Q(W) = Q(W_-+W_+)= Q_c(W_-,W_+)+ Q(W_-)+Q(W_+) .
+\]
+
+
+Denote 
+\[
+\Rho(t) = W_-^T(t)  = (\chi_-W)(t-T),
+\]
+ and 
+ \[
+ \bigma(t) = W_+^{-T}(t) = (\chi_+W)(t+T). 
+ \]
+ 
+Note that supp $\Rho \subset (-\infty, T+1)$ and supp $\bigma \subset (-T-1,\infty)$.
+ We get the equations 
+\begin{equation}\label{center}
+\left[\frac{d}{dt}-A-\mathcal{M}_-^T(t) \right]\bm{\rho}(t)  = (\chi_-^T[(M_-^T+M_c^T)\bigma^{2T}+R^T] + Q(\bm{\rho}(t))+\chi_-^TQ_c(\bm{\rho}(t),\bm{\sigma}^{2T}(t)),
+\end{equation}
+
+and 
+\begin{equation}\label{hyper}
+\left[\frac{d}{dt}-A-\mathcal{M}_+^{-T}(t)\right]\bm{\sigma}(t)  = (\chi_+^{-T}[(M_+^{-T}+M_c^{-T})\Rho^{-2T}+R^{-T}]+ Q(\bm{\sigma}(t))+\chi_+^{-T}Q_c(\bm{\rho}^{-2T}(t),\bm{\sigma}(t)).
+\end{equation}
+
+Where
+\[
+\mathcal{M}_-(t) = M_-(t)  +\chi_-(t)[M_+(t)+M_c(t)]
+\]
+and 
+\[
+\mathcal{M}_+(t) =  M_+(t) +\chi_+(t)[M_-(t)+M_c(t)]
+\]
+
+Now, we will solve equation \eqref{center} on the interval $(0,\infty)$ and solve \eqref{hyper} on the interval $(-\infty,0)$ by setting up fixed point equations in appropriate function spaces.
+
+\paragraph{Step 2}
+We write the linear operator $\partial_t -A-\mathcal{M}_-^T(t)$ in the form
+\[
+\left(\partial_t - \begin{pmatrix}
+0 & 0\\
+0 &1
+\end{pmatrix} +M_-^T(t)\right)+\chi_-^T[M_++M_c] := \mathcal{L}_- + \mathcal{P}_-
+\]
+%with $|\mathcal{P}_-| < \eps$ for some $\eps>0$ small. For the operator $\mathcal{L}_- $ which maps from $\mathcal{D}(\mathcal{L}_-)\subset L^{\infty}_{\gamma-1} \times L^{\infty}_{\gamma}  $ to $L^{\infty}_{\gamma-1} \times L^{\infty}_{\gamma} $. 
+
+Introduce the following algebraically weighted space (Kondratiev spaces), which increases localization as one taking derivatives
+\begin{align*}
+M^{m,p}_{\gamma}(\Omega)=\{ &u(t) \in L^1_{loc}(\Omega); \hspace{0.2in} \langle t \rangle^{\gamma+ k} \partial^k_t u \in L^p(\Omega), \hspace{0.1in} k \le s, k \in \mathbb{Z}
+\}
+\end{align*}
+where $p\in (1,\infty]$.
+
+
+We have the following Fredholm properties:
+
+\begin{theorem}
+$\mathcal{L_-}: \mathcal{D} = M_{\gamma-1}^{1,\infty}(0,\infty) \times W_{\tilde{\gamma}}^{1,\infty}(0,\infty) \subset L_{\gamma-1}^{\infty}(0,\infty)\times L_{\tilde{\gamma}}^{\infty}(0,\infty) \to L_{\gamma}^{\infty}(0,\infty)\times L_{\tilde{\gamma}}^\infty(0,\infty)$ is Fredholm with index $1$. Here $\tilde{\gamma}$ satisfies $\tilde{\gamma} < \gamma < \tilde{\gamma}+1$.
+\end{theorem}
+
+\begin{proof}
+Recall $M_-(t)$ is the linearization at the center-stable manifold $U_-(t)$, for which we can always normalize so that the nonlinear terms starts with $[F(u,v)]_1 = f(u,v) = -u^2+h.o.t$. Then we have the following 
+\[
+[\mathcal{M}_-]_{11}(t) = -2u_-(t)+\rmO(t^{-2}) = \frac{-2u_0}{u_0 t +1} + \rmO(t^{-2})
+\]
+Where $u_0 > 0$ is the initial condition $u_-(0)$.
+
+ The resolvent equation
+$\mathcal{L}_- (u,v)^T = (f,g)^T$
+is decoupled into
+\begin{align}
+\label{e}\dot{u}+p(t)u &= f\\
+\label{ep}\dot{v}-v &=g
+\end{align}
+with $p(t) =  2/(t+u_0^{-1})+\rmO(t^{-2})$ for all $t \ge 0$. The equation is to be solved on the half line $[0,\infty)$.
+
+Using the variation of constants formula, denote $I(t) = e^{\int_0^t p(s)ds}$ the integration factor of equation \eqref{e}. We get
+\[
+u(t) = I(t)^{-1}I(\tau)u(\tau)+I(t)^{-1}\int_{\tau}^t I(s)f(s)ds
+\]
+
+from the expansion of $p(t)$, we get the following asymptotics for $I(t)$:
+\[
+I(t) = e^{\rmO(t^{-1})}(t+u_0^{-1})^{2} \text{ as }t \to \infty
+\]
+
+To get the decaying solution, we want $u(\tau) \to 0$ as $\tau \to \infty$, hence the voc formula becomes
+\[
+u(t) = -I(t)^{-1}\int_t^\infty I(s)f(s)ds
+\]
+
+
+Since $f(t) \in L^{\infty}_{\gamma}(0,\infty)$ with norm $\|f\|_\gamma = |\langle t\rangle^{\gamma} f(t) |_{\infty}$ where $\langle t \rangle = \sqrt{t^2+1}$.
+
+we have 
+\begin{align*}
+|t^{\gamma-1}u(t)| &\le t^{\gamma-1}I(t)^{-1}\int_t^{\infty} |I(s)f(s)|ds \le t^{\gamma-1}I(t)^{-1}\int_t^\infty C(s+u_0^{-1})^{2}(s+1)^{-\gamma}ds \\
+&\le C t^{\gamma-1}I(t)^{-1} t^{3-\gamma} \simeq Ct^{2}I(t)^{-1} \le C \text{ as }t\to \infty
+\end{align*}
+provided that $\gamma-2>0$, or $\gamma-1>1$. 
+
+So, if $\gamma>2$, and given $f \in L^{\infty}_{\gamma}(0,\infty)$, we can solve to get a unique solution. Moreover, inspecting the homogeneous equation $\dot{u} + p(t) u = 0$, we see the solution is given by $u(t) \simeq I(t)^{-1} \simeq t^{-2}$ as $t \to \infty$. This provides a one-dimensional kernel in $M^{1,\infty}_{\gamma-1}$ for $\gamma<3$.
+
+Range is closed: let $f_n \in Rg( \partial_t - p(t)) \subset L_{\gamma}^\infty$ and $f_n \to f$ in $L_{\gamma}^{\infty}$. This means $|\langle t\rangle^{\gamma} (f_n-f)|_{\infty} \to 0$ as $n \to \infty$. For $2<\gamma<3$, we get $u_n = (\partial_t - p(t))^{-1}f_n$, the unique decaying solution in $M_{\gamma-1}^{1,\infty} \subset L_{\gamma-1}^{\infty}$, then
+\[
+\|\langle t\rangle^{\gamma-1} (u_n-u_m)(t)\|_{\infty} \le C\| f_n - f_m\|_{\gamma,\infty} \to 0.
+\]
+So that $u_n \to u$ for some $u \in M_{\gamma-1}^{1,\infty}$ and we must have $\dot{u} - p(t)u = f$.
+
+
+The other equation \eqref{ep}, is solved also by voc, with the explicit formula
+\[
+v(t) = - \int_t^\infty e^{t-s}f(s)ds,
+\]
+for $f(s) \simeq s^{-\gamma}$, we get
+\[
+|v(t)| \le  C\int_t^\infty (s-t)^{-1}s^{-\gamma} ds\le Ct^{-\gamma}
+\]
+for any $\gamma>0$. Moreover, the kernel consist of scalar multiplication of the function $e^t$, which is not in the space $L_{\gamma}^{\infty}(0,\infty)$ for any $\gamma>0$. This shows the second component is an invertible operator from $W^{1,\infty}_{\gamma} \to L_{\gamma}^\infty$ for any $\gamma>1$. Note that we do not lose any localization on the second component.
+\end{proof}
+
+\begin{theorem}
+The operator $\mathcal{L}_-+\mathcal{P}_-:\mathcal{D} \to L_{\gamma}^{\infty}(0,\infty) \times L_{\gamma}^{\infty}(0,\infty)$ is Fredholm with index $1$. Moreover, given $f \in L_{\gamma}^{\infty}(0,\infty) \times L_{\gamma}^{\infty}(0,\infty),$ and $u_0 \times \mathbb{R}^2$, there exists a unique solution $u$ to $\mathcal{L}_- u = f$, with the estimate
+\[
+\| u \|_\mathcal{D} \le C(\|f\|_\gamma + |u_0|)
+\]
+for some constant $C$.
+\end{theorem}
+\begin{proof}
+We have seen that the diagonal operator $\frac{d}{dt} -diag(1/t, 1)$ has a pseudo inverse on the space $\mathcal{D}$, we need to check the off-diagonal multiplication operators are small perturbations on the respected space.
+\end{proof}
+
+Next, we study the linearization at the unstable manifold, we write the linear operator $\dfrac{d}{dt} -A-\mathcal{M}_+^{-T}(t)$ in the form
+\[
+\left(\dfrac{d}{dt}- \begin{pmatrix}
+0 & 0\\
+0 &1
+\end{pmatrix} \right)+ \begin{pmatrix}
+[\mathcal{M}_+]_{11} & [\mathcal{M}_+]_{12} \\
+[\mathcal{M}_+]_{21} & [\mathcal{M}_+]_{22}
+\end{pmatrix} := \mathcal{L}_+ + \mathcal{P}_+
+\]
+
+recall we had
+\[
+\mathcal{M}_+(t) =  M_+(t) +\chi_+[M_-(t)+M_c(t)], \text{ with } M_+(t) = DF(U_+^T(t)). 
+\]
+
+So that $\mathcal{M}_+^{-T}(t)$ has the asymptotics
+\[
+\mathcal{M}_+^{-T}(t)= DF(U_+(t)) + \chi_+^{-T}[M_-^{-T}+M_c^{-T}] = \rmO(e^t) 
+\]
+as $t \to -\infty$. Since $\chi_+^{-T}$ has support on $(-1-T, \infty)$.
+
+We wish to establish Fredholm property of the linear operator
+\[
+\dfrac{d}{dt} - A - \mathcal{M}_+^{-T}(t)
+\]
+on the space $\mathcal{D} = M_{\gamma-1}^{1,\infty} (-\infty,0) \times W_{\tilde{\gamma}}^{1,\infty}(-\infty,0) \to L_{\gamma}^{\infty}(-\infty,0) \times L_{\tilde{\gamma}}^{\infty}(-\infty,0)$.
+
+\begin{theorem}
+The operator $\mathcal{L}_+$ is Fredholm from $\mathcal{D}$ to... with index $1$
+\end{theorem}
+
+
+\begin{proof}
+TBD
+\end{proof}
+
+
+
+\paragraph{Step 3}
+\begin{enumerate}
+\item Residual term.
+Here we want to show the residual term is small in the right hand side is small in the space $L^{\infty}_\gamma(0,\infty)\times L^{\infty}_\gamma(0,\infty)$. If $\Rho \in M^{1,\infty}_{\gamma-1}(0,\infty) \times W^{1,\infty}_\gamma(0,\infty)$ and $\bigma \in M^{1,\infty}_{\gamma-1}(-\infty,0)\times W^{1,\infty}_\gamma(-\infty,0)$. We need to estimate the following quantity 
+\[
+\sup_{t \in [0,\infty)}\left| \langle t \rangle^\gamma \chi_-^T[(M_-^T+M_c^T)\bigma^{2T}+R^T] (t)\right| = \sup_{t \in [0,T+1)} \left|\langle t\rangle^{\gamma}[(M_-^T+M_c^T)\bigma^{2T}+R^T] \right|
+\]
+\begin{enumerate}
+\item $\langle t \rangle^\gamma [M_-^T(t)+M_c^T(t)] \bigma^{2T}(t)$ 
+
+We have $\sup_{t \in (0, T+1)} |\bigma^{2T}(t)| \le \sup_{t \in (-2T,-T+1)} |\bigma(t)| \le |\bigma| |T-1|^{1-\gamma}$
+
+(recall that the norm of $\bigma$ satisfies $\sup_{t \in (-\infty,0)}|\langle t \rangle^{\gamma-1}\bigma(t) | \le |\bigma|)$
+
+
+On the other hand
+\[
+|\langle t \rangle^{\gamma}M_-^T(t)| \lesssim |\langle t \rangle^\gamma U_-(t)| \le |u_0(u_0 t+1)^{-1} \langle t \rangle^{\gamma}| \le C \langle t \rangle^{\gamma-1}
+\]
+
+
+Hence $\sup_{t \in (0,\infty)}|\langle t \rangle^{\gamma}\chi_-^T(t)M_-^T(t)\bigma^{2T}(t) |\le C| \bigma |$
+
+For the crossed part $M_c$ recall 
+\[
+\| M_c(t)\| \le C |U_-^{-T}(t)| |U_+^T(t)|, \text{ so that }\| M_c^T(t)\| \le C |U_-(t)| |U_+^{2T}(t)|
+\]
+Therefore we know that 
+\begin{align*}
+\sup_{t\in [0,\infty)} |\langle t\rangle^\gamma \chi_-^T(t)M_c^T(t)\bigma^{2T}(t)|  &= \sup_{t\in [0,T+1)} |\langle t\rangle^\gamma  M_c^T(t)\bigma^{2T}(t)|\\  
+&\le \sup_{t\in [0,T+1)} |\langle t \rangle^{\gamma}U_-^{-T}(t) U_+^{2T}(t)\bigma^{2T}(t) |\\
+& = |\bigma||U_+|_+\langle T+1 \rangle^{\gamma-1} e^{-(T-1)}|T-1|^{1-\gamma} =  \rmO(|\bigma| |U_+|_+)
+\end{align*}
+
+\item For the ``pure'' residual part $R$, we need to estimate the quantity
+\[
+\sup_{t \in [0,T+1)} \left|\langle t \rangle^\gamma R^T(t)\right| = \sup_{t \in [0,T+1)} \left|\langle t \rangle^\gamma [F(U_-(t)+U_+^{2T}(t)) - F(U_-(t))-F(U_+^{2T}(t))] \right|
+\]
+recall, since $F$ is quadratic, the following estimate, which is similar to that of $M_c$, hold pointwise
+\[
+|F(U_-(t)+U_+^{2T}(t)) - F(U_-(t))-F(U_+^{2T}(t))| \le C|U_-(t)||U_+^{2T}(t)|
+\]
+
+consequently we have
+\[
+\sup_{t \in [0,T+1)} \left|\langle t \rangle^\gamma R^T(t)\right| \le |U_+| \langle T+1 \rangle^{\gamma-1} e^{-(T-1)} = \rmO(|U_+|).
+\]
+\end{enumerate}
+\item 
+Lastly, one estimates the quadratic terms.
+\[
+Q(\bm{\rho}(t))+\chi_-^T(t)Q_c(\bm{\rho}(t),\bm{\sigma}^{2T}(t))
+\]
+
+We want this to be small in $L_{\gamma}^\infty(0,\infty) \times L_\gamma^\infty(0,\infty)$, we have
+\[
+|Q(\Rho(t))| \le C|\Rho(t)|^2
+\]
+recall
+\[
+Q_c(R_-,R_+) := [Q(R)-Q(R_-)-Q(R_+)], \hspace{0.5cm} Q(R) = Q_c(R_-,R_+)+ Q(R_-)+Q(R_+)
+\]
+hence the following holds
+\[
+|Q_c(\Rho(t), \bigma^{2T}(t) ) | \le C|\Rho(t)| | \bigma^{2T}(t) |
+\]
+
+Now $|\Rho(t)| \le |\Rho|_{M_{\gamma-1}\times W_\gamma} \langle t\rangle^{1-\gamma}$, so $\langle t \rangle^{\gamma}Q(\Rho(t)) \le |\Rho| \langle t \rangle^{2-\gamma}$.
+
+Since $\gamma>2$, $\langle t \rangle^{2-\gamma}$ is bounded (decays at infinity) on the half line $[0,\infty)$.
+
+Finally, $\sup_{t \in [0,T+1)} \langle t\rangle^{\gamma}|\Rho(t)||\bigma^{2T}(t)| \le \langle T+1 \rangle^{2-\gamma}  |\Rho||\bigma| $
+
+\end{enumerate}
+
+\paragraph{Solving the system}
+Similarly we obtain an estimate for the $\bigma$ equations,
+We then proceed to set up an fixed point argument, utilizing the above estimates on the linear, residual, and quadratic part, and conclude a unique solution (up to the choice of initial value) exists in the space $M_{\gamma-1}^{1,\infty}(0,\infty) \times W_{\gamma}^{1,\infty}(0,\infty)$.
+
+\begin{proof}[Of theorem 2.1]
+We have done the necessary estimates in ...
+\end{proof}
+
+
+Variation of constant
+to solve $\dot{u} - u =f$, we have 
+\[
+ u(t) = e^{t-\tau}u(\tau) + \int_\tau^t e^{-s}f(s)ds
+\]
+
+to find a bounded solution on $t \in (0,\infty)$, we let $\tau \to \infty$, since we want bounded $u$, linear term drops out, we get $u(t) = \int_\infty^t e^{-s}f(s)ds$.
+
+Note we have no kernel, to see there isn't a cokernel, i.e. $\dim (\ker \frac{d}{dt}^*-1 )^\perp = 0$. Suppose $v \perp \ker \frac{d}{dt}+1$, so that $\int_0^{\infty} e^{-t} v(t)dt = 0 $ but $v$ should have a sign... impossible.
+                                         
+
+$\int Au v = \int [\dot{u}-u]v= \int  -\dot{v}u -uv=\int u A^*v$ 
+\pagebreak
+
+
+\section{Model problem for passage through the fold}
+We want to first apply the functional-analytic approach to the following problem:
+\begin{align}
+\label{model}
+\begin{split}
+\dot{u} &= \mu+u^2 +(u^4)\\
+\dot{\mu} &= \eps +(\eps u)
+\end{split}
+\end{align}
+with boundary condition 
+\begin{equation}\label{oBC}
+u(T) = \delta \text{ and }\mu(0) =-\delta,
+\end{equation}
+ where $T$ is another parameter, the ``time of flight'' for the trajectory to shoot from $\mu = -\delta$ to $u = \delta$.
+
+We first study the ``blow up '' problem, starting with rescale $ u = \eps^{1/3}u_1(\eps^{1/3}t)$ and $\mu = \eps^{2/3}\mu_1(\eps^{1/3}t)$. We get the new equations (set $\tau=\eps^{1/3}t$)
+
+\begin{align}
+\label{modelrs}
+\begin{split}
+\partial_\tau u_1 &= \mu_1+u_1^2 +(\eps^{2/3}u_1^4)\\
+\partial_\tau \mu_1 &= 1 +(\eps^{1/3} u_1)
+\end{split}
+\end{align}
+The new boundary condition is
+\begin{equation}\label{BCs}
+u_1(T) = \delta \eps^{-1/3}, \mu_1(0) = -\delta \eps^{-2/3}
+\end{equation}
+
+Then if we set $s = \tau - \delta\eps^{-2/3}$ and formally let $\eps \to 0$, equation \eqref{modelrs} has an explicit solution $u_1(\tau) = u_R(s)$ and $\mu_1(\tau) = s$. Where $u_R$ is the unique solution to the riccati equation $\partial_s u_R = s+u_R^2$ with the specific asymptotics [reference]. 
+
+\begin{equation}
+\label{ricasy}
+u_R(s)=\begin{cases}
+  (T_R-s)^{-1}+\rmO(T_R-s), \text{ as }s \to T_R \\
+ -(-s)^{1/2} -\frac{1}{4}(-s)^{-1} + \rmO(|s|^{-3/2}), \text{ as }s \to -\infty
+\end{cases}
+\end{equation}
+
+From this and the boundary condition \eqref{BCs}, we have the asymptotics for $T$:
+\begin{equation}
+T (\eps)= \delta \eps^{-1} + T_R\eps^{-1/3} - \delta^{-1} + \rmO(\eps^{2/3})
+\end{equation}
+
+
+Towards solving the boundary value problem, we start by setting up a perturbative problem, for $\eps>0$ small.
+Insert the ansatz $u_1(\tau) = u_R(s) + v(\tau)$ and $\mu_1(\tau) = s + \rho(\tau)$ into \eqref{modelrs}. We find
+\begin{align}
+\begin{split}
+\partial_\tau v &= 2u_R v + \rho + v^2 + \eps^{2/3}(u_R+v)^4 \\
+\partial_\tau \rho &=  \eps^{1/3}(u_R+v)
+\end{split}
+\end{align}
+
+We then do another rescaling to put the time interval into $(-\infty, \infty)$, we define a new time variable $\sigma \in (-\infty, \infty)$ which is related to the time $s$ via a smooth map $\psi : (-\infty, \infty) \to (-\infty, T_R)$ with the properrites:
+\begin{equation}
+s = \psi(\sigma) =\begin{cases}
+-(-\frac{3}{2} \sigma)^{2/3} , \text{ for }\sigma \le -M\\
+T_R -e^{-\sigma}, \text{ for }\sigma \ge M,
+\end{cases}
+\end{equation}
+and smooth interpolation in between.
+
+With this new time variable, set $\varphi(\sigma) = \psi'(\sigma)$ and $a(\sigma) = 2\varphi(\sigma)u_R(\psi(\sigma))$, we obtain
+\begin{align} \label{pertrs}
+\begin{split}
+\partial_\sigma v &= a v + \varphi \rho +\varphi [v^2 + \eps^{2/3}(u_R+v)^4] \\
+\partial_\sigma \rho &=  \varphi\eps^{1/3}(u_R+v)
+\end{split}
+\end{align}
+
+Using the asymptotics for $\psi$ and $u_R$, we calculate that
+\begin{equation}
+\varphi(\sigma) =\begin{cases}
+ (-\frac{3}{2}\sigma)^{-1/3}, \text{ as }\sigma \to -\infty\\
+e^{-\sigma} , \text{ as }\sigma \to \infty.
+\end{cases}
+\end{equation}
+
+\begin{equation}
+u_R(\psi(\sigma)) =\begin{cases}
+ -(-\frac{3}{2}\sigma)^{1/3}, \text{ as }\sigma \to -\infty\\
+e^{\sigma} , \text{ as }\sigma \to \infty.
+\end{cases}
+\end{equation}
+
+\begin{equation}
+a(\sigma) =\begin{cases}
+-2+ \rmO((-\sigma)^{-3/2}), \text{ as }\sigma \to -\infty\\
+2+ \rmO(e^{-2\sigma}), \text{ as }\sigma \to \infty.
+\end{cases}
+\end{equation}
+
+so the linear operator $\mathcal{L} = \frac{d}{d\sigma} - A(\sigma)$, where $A(\sigma) \to A_\pm = \diag(\pm 2, 0)$ as $\sigma \to \pm \infty$. We need to find the right function spaces.
+
+
+\subsection{function spaces}
+
+Recall we want to solve the boundary value problem for the time variable $t \in (0,T)$, using the asymptotics we calculated, we have that 
+\[
+\sigma \in \left(-\frac{2}{3}\delta^{3/2}\eps^{-1}, -\frac{1}{3}\log(\eps) + \rmO(1) \right)
+\]
+where the $\rmO(1)$ term start with $\log(\delta)$.
+
+We need yet another rescaling in order to solve equation  \eqref{pertrs} on function space independent of $\eps$.
+
+Define $\tilde{v} = \eps^{-1/3}v$ and $\tilde{\rho} = \eps^{-1/3}\rho$. They satisfy
+\begin{align} \label{pertrrs}
+\begin{split}
+\partial_\sigma \tilde{v} &= a \tilde{v}  + \varphi \tilde{\rho}  +\eps^{1/3}\varphi [\tilde{v}^2 + (u_R+\eps^{1/3}\tilde{v})^4] \\
+\partial_\sigma \tilde{\rho} &=  \varphi(u_R+\eps^{1/3}\tilde{v})
+\end{split}
+\end{align}
+
+\paragraph{Function space for $\sigma \le 0$}
+Investigating the $\rho$ equation and the term $\rho \varphi$ in the $v$ equation, we need
+\[
+X_- = \{ (v,\rho)^T \mid v \in M_{-\frac{2}{3}}^{1,\infty} (\R_-) , \rho \in M_{-1}^{1,\infty}(\R_-)\}
+\]
+
+\paragraph{Function space for $\sigma \ge 0$}
+On the positive real axis, we set
+\[
+X_+ = \{ (v,\rho)^T \mid W_{-2}.
+\sup_{0 \le \sigma \le  \infty } |\eps^{-2/3}e^{-3\sigma} v(\sigma)|  + \sup_{0 \le \sigma \le \infty} \eps^{-1/3}|\sigma^{-1} \rho(\sigma)| < \infty\}
+\]
+
+Now set $X = \{\chi_-(v,\rho) \in X_-, \chi_+(v,\rho) \in X_+\}$ where $\chi_\pm$ is a smooth partition of unity with $supp \chi_+ \subset (-1,\infty)$ and $\chi_-(x)=\chi_+(-x)$.
+
+\paragraph{Fredholm property of the linear part}
+
+The linear part is 
+\[
+\mathcal{L} (v,\rho)^T(\sigma) = \left[\frac{d}{d\sigma}  - A(\sigma) \right](v,\rho)^T(\sigma)
+\]
+here $A(\sigma)  = \begin{pmatrix}
+ a(\sigma)&\varphi(\sigma) \\
+\eps^{1/3}\varphi(\sigma)&0
+\end{pmatrix}$. Considered on $\mathcal{D}(\mathcal{L})$, into $X$. 
+
+
+We have
+\begin{theorem}
+$\mathcal{L} : \mathcal{D}(\mathcal{L}) \subset X \to X$ is Fredholm with index $1 $ and onto.
+\end{theorem}
+\begin{proof}
+Since $\varphi(\sigma) \to 0$ as $\sigma \to \pm\infty$, $\mathcal{L} = \frac{d}{d\sigma} - A(\sigma)$ is a compact perturbation of the operator $\mathcal{L}_\infty = \frac{d}{d\sigma}-A_\infty$ where $A_\infty (\sigma) = \diag(2,0)$ for $\sigma \ge 0$ and $A_\infty(\sigma)  = \diag(-2,0)$ for $\sigma < 0$. We shall count the Fredholm index of $\mathcal{L}_\infty$ instead.
+
+Since $\mathcal{L}_\infty$ is of the form
+$\begin{pmatrix}
+\frac{d}{d\sigma} - a_\infty& 0 \\
+0&\frac{d}{d\sigma}
+\end{pmatrix}$, where $a_\infty(\sigma) = 2$ for $\sigma \ge 0$ and equals $-2$ for $\sigma < 0$. Acting on the space $M_{\gamma-1}$
+
+
+For the $v-$component, the index is given by the differences between the morse index [Stability Dynamical spectral, ...], for the $\sigma\ge 0$ direction, the weight is $3$, the matrix eigenvalue is $2<3$, hence the morse index is $0$; for the $\sigma \le 0$ direction, the weight is $0$, the matrix eigenvalue is $-2<0$, so the morse index is again $0$. Thus the index for the $v-$ component operator is $0$.
+
+For the $\rho-$ component, by spliting the problem to the positive and negative half line, the Fredholm index can be computed as
+\[
+i\left(\frac{d}{d\sigma}^+\right)+i\left(\frac{d}{d\sigma}^-\right) - 1
+\]
+where $\frac{d}{d\sigma}^{\pm}$ means the operator acting on $\R^{\pm}$, respectively. Accroding to the [W,G,S] paper, their Fredholm index are both equal to $1$, hence $i=1$.
+
+Thus the total index of $\mathcal{L} =0+1= 1$, as cliamed. The kernel of $\mathcal{L}$ is at most one-dimensional, it has to be $1$, hence $\mathcal{L}$ is onto, this finishes the proof.
+\end{proof}
+
+
+
+
+
+\subsection{Contraction mapping}
+Equation \eqref{pertrs} is written as
+
+\[
+\mathcal{L}(v,\rho)^T = \varphi(N_1,N_2)^T(v,\rho,\eps)
+\]
+with $N_1 = v^2+\eps^{2/3}(u_R+v)^4); N_2 = \varphi\eps^{1/3}u_R$
+
+we know at $\eps = 0$, $(v,\rho)$ is a solution, we want to continue this solution for $\eps>0$.
+
+Since $\mathcal{L}$ is Fredholm with index $1$, we use the bordering lemma to make an operator $\tilde{\mathcal{L}}$ which is invertible.
+
+We define $\tilde{\mathcal{L}}(v,\rho)^T$ as the map $(v,\rho)^T \mapsto (\mathcal{L}(v,\rho)^T,\rho(0))$.
+
+Nonlinear parts, we make sure that 
+the term 
+$v-$components
+\[
+\varphi v^2, \varphi \eps^{2/3}(u_R+v)^4, 
+\]
+
+$\rho-$components
+\[
+\eps^{1/3}\varphi u_R
+\]
+are all compatible the the norms.
+
+For $\sigma > 0$, we check
+\[
+|\eps^{-2/3}e^{-3\sigma} \varphi v^2|  \le | \varphi v||v|_+ \le e^{-\sigma} \eps^{2/3}e^{3\sigma} |v|_+ < C|v|_+ , 
+\]
+and (using $(x+y)^4 \le C(x^4+y^4)$ for some $C$)
+\[
+|\eps^{-2/3}e^{-3\sigma} \varphi \eps^{2/3}(u_R+v)^4| \le  C |e^{-4\sigma}  (u_R^4+v^4)| \le C+ Ce^{-4\sigma}v^4 \le C + C\eps^{8/3}e^{8\sigma} |v|_+
+\]
+for $\sigma \le - (1/3)\log \eps$. 
+
+For $\sigma< 0$, we have
+\[
+|\eps^{-1/3}\sigma^{-2/3}\varphi v^2| \le |\varphi v ||v|_- \le |(-\frac{3}{2}\sigma)^{-1/3}\eps^{1/3}\sigma^{2/3}| \le C|\eps^{1/3}\sigma^{1/3}| < \infty
+\]
+and
+\begin{align*}
+|\eps^{-1/3}\sigma^{-2/3}\varphi \eps^{2/3} (u_R^4+v^4)| &\le |\eps^{1/3} \sigma ^{-2/3}(-\frac{3}{2}\sigma)^{4/3}(-\frac{3}{2}\sigma)^{-1/3}|+|\eps^{1/3}\sigma^{-2/3}\varphi v^4| \\
+&\le |\eps^{1/3}\sigma^{1/3}|+|\eps^{1/3}\sigma^{-2/3}(-\frac{3}{2}\sigma)^{-1/3} \eps^{4/3}\sigma^{8/3}|\\
+&\le C+ C|\eps^{5/3}\sigma^{5/3}| < \infty
+\end{align*}
+for $0\ge \sigma \ge -1/\eps$.
+
+The $\rho$ components are easier to check, in fact, the choice for the norm is motivated by looking at the right hand side of the $\rho$ equations first.
+
+Small LIpshcitz constant
+
+From the above estimates we see that the term $\varphi v^2 $ and $\varphi v^4$ satisfies
+
+for $\sigma > 0$,
+\[
+|v_1^2-v_2^2|_+= |\eps^{-2/3}e^{-3\sigma}\varphi (v_1^2-v_2^2)| \le  \varphi|v_1+v_2| |v_1-v_2|_+ \le C|v_1-v_2|_+
+\]
+and
+\[
+|\eps^{-2/3}e^{-3\sigma}\varphi (v_1^4-v_2^4)| \le  \varphi (\sum_{i+j=3} v_1^iv_2^j )|v_1-v_2|_+ \le C|v_1-v_2|_+
+\]
+If $v_1,v_2$ are close to $0$ in the weighted norm, $C$ can be made less than $1$, for example, say $v_1,v_2$ are such that $|v_1|_+,|v_2|_+< \eta$, then $|v_{1,2}(\sigma)| \le \eta \eps^{2/3}e^{3\sigma}$, so that $\varphi|v_1+v_2(\sigma)| \le 2\eta \eps^{2/3} e^{2\sigma} \le 2\eta <1$, for $\sigma \le -(1/3)\log \eps$, if $\eta < 1/2$.
+To start the contraction mapping, introduce the cut off function $\chi_\eps(\sigma)$ which has support in $(-\eps^{-1}, -\frac{1}{3}\log(\eps))$.
+
+Define $\mathcal{F}(v,\rho,\eps) = \varphi(N_1,N_2)^T\chi_\eps$, then our equation is
+\[
+\mathcal{L}(v,\rho)^T  = \mathcal{F}(v,\rho,\eps)
+\]
+\pagebreak
+
+\section{Reference}
+Equation
+\begin{align}
+\begin{split}
+\frac{d}{dt}u(t) &= (\mu+u^2+u^3)(t) \\
+\frac{d}{dt}\mu (t)&=  \eps 
+\end{split}
+\end{align}
+with B.C.
+\begin{equation}
+\mu(0) = -\delta, \hspace{0.2in} u(T) = \delta.
+\end{equation}
+
+where $\delta,\eps, T$ are parameters.
+\begin{enumerate}
+\item $\mathbf{Region \hspace{0.05in}1} $
+\begin{itemize}
+\item Ansatz and rescale in time
+\[
+u_-(t)= \eps^{1/3}u_R(\tau(t)-\tau_0), \hspace{0.2in}\mu(t) = \eps t -\delta = \eps^{2/3}(\tau-\tau_0).
+\] 
+With 
+\[
+\tau(t)=\eps^{1/3}t, \hspace{0.2in} \tau_0 = \eps^{-2/3}\delta.
+\]
+After define $s:= \tau-\tau_0$, $(u_R, s)^T$ solves
+\[
+\frac{d}{ds} u_R(s) = s+u_R(s)^2, \hspace{0.2in} \frac{d}{ds} s=1 
+\]
+Which implies 
+\[
+\frac{d}{dt} u_-(t) = \mu(t) + u_-(t)^2
+\]
+Yet another rescaling in time $\sigma$, defined via 
+\begin{align*}
+s = \psi(\sigma) =\begin{cases}
+-(-\frac{3}{2} \sigma)^{2/3} , \text{ for }\sigma \le -M\\
+\Omega_0 -e^{-\sigma}, \text{ for }\sigma \ge M,
+\end{cases}
+\end{align*}
+and smooth interpolation in between, here $\Omega_0$ is the blow-up time for $u_R(s)$. 
+
+Note if $\varphi:=\frac{d}{d\sigma}\psi(\sigma)$, then
+\[
+\varphi\frac{d}{ds} = \frac{d}{d\sigma}, \text{ and }\eps^{-1/3}\varphi \frac{d}{dt} = \frac{d}{d\sigma}
+\]
+\item Asymptotics for $u_R$ and $\varphi$.
+\begin{equation*}
+\varphi(\sigma) =\begin{cases}
+ (-\frac{3}{2}\sigma)^{-1/3}, \text{ as }\sigma \to -\infty\\
+e^{-\sigma} , \text{ as }\sigma \to \infty.
+\end{cases}
+\end{equation*}
+
+\begin{equation*}
+u_R(\psi(\sigma)) \to \begin{cases}
+ -(-\frac{3}{2}\sigma)^{1/3}, \text{ as }\sigma \to -\infty\\
+e^{\sigma} , \text{ as }\sigma \to \infty.
+\end{cases}
+\end{equation*}
+
+\begin{equation*}
+2u_R\varphi(\sigma) \to\begin{cases}
+-2+ \rmO((-\sigma)^{-3/2}), \text{ as }\sigma \to -\infty\\
+2+ \rmO(e^{-2\sigma}), \text{ as }\sigma \to \infty.
+\end{cases}
+\end{equation*}
+\item FP argument
+petrubation 
+\[
+u(t) = \eps^{1/3}(u_R+v)(\sigma), \hspace{0.2in} \mu(t) = \eps^{2/3}(s+\rho)(\sigma).
+\]
+Equation for $(v,\rho)$
+\[
+\frac{d}{d\sigma} v = 2(u_R\varphi) v+\varphi v^2 +\varphi\rho+\eps^{1/3}\varphi(u_R+v)^3, \hspace{ 0.2in } \rho = 0.
+\]
+\item Gluing time
+
+
+the gluing time $\sigma_*$ is set to equal to $ \log(\eps^{-1/6}\delta )$, notice in terms of the original time $t$, this is at
+\[
+s(\sigma_*) = \Omega_0-\delta^{-1}\eps^{1/6} = \tau -\tau_0 = \eps^{1/3}t - \eps^{-2/3}\delta \implies   t=t_*:= \eps^{-1/3}[\Omega_0+\eps^{-2/3}\delta -\delta^{-1} \eps^{1/6}]
+\]
+
+We note then 
+\[
+u_*:= u_-(t_*) = \eps^{1/3}[(\Omega_0-(\Omega_0-\delta^{-1}\eps^{1/6}))^{-1} + \rmO(\eps^{1/6})]  = \eps^{1/6}\delta+\rmO(\eps^{1/2})
+\]
+\item norms
+
+We will stop at  $\sigma=\sigma_*$, decide norm from the nonhomogeneous term $\eps^{1/3}\varphi u_R^3 $. We have for $0 \le \sigma \le \sigma_*$, that
+\[
+\sup_{\sigma \le \sigma_*} \eps^{1/3}\varphi u_R^3 \le \eps^{1/3}e^{2\sigma_*} = \delta = \rmO_\eps(1)
+\]
+This is the nonhomogeneous term, so we just need to use the usual sup norm.
+\end{itemize} 
+
+
+\item $\bold{Region \hspace{0.1in} 2}$ 
+\begin{itemize}
+\item Ansatz and rescale
+\[
+u_+(t) = (u_*^{-1} +t_*-t)^{-1}
+\]
+so that we have $u_+ = u_- = u_*$ at $t=t_*$. Moreover, we have
+\[
+|u_-(t)-u_+(t)| \simeq \rmO(\eps^{2/3}|t-t_*|)=\rmO(\eps^{2/3})
+\]
+for $t$ close enough to $t_*$. (show using a Gronwall argument).
+
+Recall that we stop when $u_+(t=T)=\delta$, we need to consider the interval $[t_*, T]$. This gives the asymtotics for $T$,
+\[
+T \sim \delta\eps^{-1/6} + t_* -\delta^{-1} = \eps^{-1/3}\Omega_0 +\eps^{-1}\delta -\delta^{-1}.
+\]
+
+We introduce the time $\xi$ with the scaling
+\[
+e^{-\xi} = u_+(t)^{-1}
+\]
+\item Asymptotics
+\begin{equation*}
+u_+(t) =e^\xi
+\end{equation*}
+As for $\mu(t) = \eps t -\delta$, we have
+\begin{align*}
+\mu &= \eps(t_*+\delta\eps^{-1/6}-u_+^{-1}) -\delta = \eps^{2/3}\Omega_0 +(\delta-\delta^{-1})\eps^{5/6} -\eps u_+^{-1}\\
+&=\Omega_0\eps^{2/3} +(\delta-\delta^{-1})\eps^{5/6}-\eps e^{-\xi}
+\end{align*}
+
+
+\item Gluing time
+
+
+We will glue at $\xi = \xi_*$, defined via
+\[
+e^{\xi_*} = u_+(t_*) = \eps^{1/6}\delta^{-1} +\rmO(\eps^{1/2})\implies \xi_* = \log (\eps^{1/6}\delta^{-1})+...
+\]
+
+\item FP argument with ansatz
+\[
+u(t) = u_+(t) +w(t)
+\]
+By definition, $u_+(t)$ solves 
+\[
+\frac{d}{dt} u_+(t) = u_+(t)^2,
+\]
+Convert the equation in $\xi$ time via 
+\[
+e^{-\xi}\frac{d}{dt}  = \frac{d}{d\xi},
+\]
+so we get the equation for $w$ in $\xi$ variable
+\[
+\frac{d}{d\xi} w = e^{-\xi}\mu +2(e^{-\xi}u_+) w +e^{-\xi}w^2+e^{-\xi}(u_++w)^3, \hspace{0.2in} \frac{d}{d\xi} \mu = \eps e^{-\xi}
+\]
+
+\item norms
+
+solving directly for $\mu$ we have $\mu \sim e^{-\xi}$ so the nonhomogeneous term in the $w$ equation have
+\[ 
+e^{-\xi}u_+^3 \sim e^{2\xi}
+\]
+
+also
+\[
+\mu(t)=\Omega_0\eps^{2/3} +(\delta-\delta^{-1})\eps^{5/6}-\eps e^{-\xi}
+\]
+Note $|e^{-\xi} | \le e^{-\xi_*} \le \delta \eps^{-1/6}$, so that
+\[
+\eps e^{-2\xi} \le \eps\delta^2\eps^{-1/3} \le \delta^2\eps^{2/3}  \implies |\eps e^{-\xi}\mu| =\rmO(\eps^{2/3})
+\]
+which suggests the nonhomogeneous term is dominated by $e^{-\xi}u_+^3$ and hence a $e^{-2\xi}$ weight in the norm.
+
+In fact, due to the resonance of $e^{2\xi}$ with the linear part, we need to choose a slightly weaker norm, let $\eta \in (0,1)$, and our weight will be $e^{-(2-\eta)\xi}$.
+We check the nonhomogeneous term
+
+\begin{align*}
+e^{-(2-\eta)\xi} e^{-\xi}\mu &=e^{-(3-\eta)\xi} (\Omega_0 \eps^{2/3} + (\delta-\delta^{-1})\eps^{5/6}-\eps e^{-\xi} )\\
+& \le e^{-(3-\eta)\xi} (\eps^{2/3}+\eps^{5/6}+\eps e^{-\xi}) \le  \\
+&\sim \delta^{3-\eta}\eps^{\frac{\eta+1}{6}}
+\end{align*}
+
+
+We also check breifly the norm should work with the nonlinearity
+
+quadratic
+\[
+\sup_{0\ge \xi\ge \xi_*} e^{-(2-\eta)\xi}|e^{-\xi}w^2| \le \|w\|\sup |e^{-\xi}w| \le \|w\| e^{-\xi}e^{(2-\eta)\xi} =\|w\|e^{(1-\eta)\xi}
+\]
+quadratic again
+\[
+\sup_{0\ge \xi\ge \xi_*} e^{-(2-\eta)\xi}|e^{-\xi}u_+w^2|\le \|w\| \sup |e^{-\xi}w u_+| \le \|w\|e^{(2-\eta)\xi}
+\]
+cubic
+\[
+\sup_{0\ge \xi\ge \xi_*} |e^{-(2-\eta)\xi}e^{-\xi}w^3| \le \|w\|\sup_{\xi \ge \xi_*} |e^{-\xi} w^2| \le \|w\| e^{-\xi}e^{(4-2\eta)\xi}
+\]
+
+Linear
+\[
+\sup_{0\ge \xi\ge \xi_*} e^{-(2-\eta)\xi}|e^{-\xi}u_+^2w| \le \|w\| \sup |e^{\xi}u_+^2| \le \|w\|e^{(1-\eta)\xi}
+\]
+The Lipschitz constant will be of order $e^{-\xi}w \sim e^{(1-\eta)\xi}$, which is small on the relevant interval $\xi_* \le \xi \le 0$.
+
+\item Time scale, starts at $t=0$:
+
+\begin{align*}
+t_{mid} &= \eps^{-1}\delta  \hspace{0.5in} \text{ middle point of the minus side}\\
+t_* &=  T_\infty - \eps^{-1/6}\delta^{-1} \hspace{0.5in} \text{ gluing time}\\
+T & = T_\infty - \delta^{-1} \hspace{0.5in} \text{ right boundary  }\\
+T_{\infty} &= \eps^{-1}\delta + \eps^{-1/3}\Omega_0 \hspace{0.5in}  \text{ Ricatti blow up time}
+\end{align*}
+\pagebreak
+
+\end{itemize}
+\item $\bold{Gluing} $
+Ansatz
+\[
+U(t) = \chi_-(t)u_-(t) + \chi_+(t)u_+(t) + W_-(t)+W_+(t)
+\]
+with $W_-(t) = \eps^{1/3}w_-(t)$. Also recall $\mu(t) = \eps t- \delta$.
+
+"insert picture of $\chi_-,\chi_+$."
+
+The support of $\chi_+$ is $(t_*-1,\infty)$ and  the support of $\chi_-$ is $(-\infty, t_*+1)$.
+
+\begin{itemize}
+\item 
+Plug in the anstaz
+\begin{align*}
+&\chi_-' u_- + \chi_- u_-' + \chi_+' u_+ + \chi_+ u_+' +W_-'(t)+W_+'(t) = \\
+&=\mu +(\chi_-u_-+W_-+\chi_+u_+ +W_+)^2 +(\chi_-u_-+W_-+\chi_+u_+ +W_+)^3.
+\end{align*}
+where $' = \frac{d}{dt}$.
+
+Useful identities 
+\[
+\chi_-+\chi_+ = 1, \quad \frac{d}{dt}(\chi_-+\chi_+)(t) = 0,
+\]
+and
+\[ 
+ \frac{d}{dt} u_- = \mu+ u_-^2, \quad \frac{d}{dt} u_+ = u_+^2.
+ \]
+Equation after cancellation:
+\begin{align*}
+-\chi_+'(u_- -u_+) +W_-'+W_+' &= \chi_+\mu +\chi_-\chi_+(u_+ - u_-)u_- +2\chi_- u_- W_- +W_-^2 \\
+&+\chi_-\chi_+(u_- -u_+)u_+ + 2\chi_+ u_+W_+ + W_+^2 \\
+&+ 2\chi_+ u_+ W_- + 2\chi_- u_- W_+ + 2W_-W_+\\
+&+ (\chi_-u_-+W_- + \chi_+u_+ +W_+)^3
+\end{align*}
+
+\item Distribute terms in the $-$ side 
+\begin{align*}
+W_-'  &= 2u_-W_- +2\chi_-(u_- -u_+)W_+ + (\chi_-\chi_+) u_-(u_- -u_+)+\frac{1}{2}\chi_-'(u_+ -u_-) +2\chi_-W_-W_+\\
+&+W_-^2+ (\chi_-u_- + W_-)^3\\
+&+ 3\chi_-^2\chi_+ u_-^2 u_+  + 6\chi_-\chi_+ u_+ u_-W_- + 6\chi_- u_- W_- W_+ + 3\chi_-(W_-+W_+)W_-W_+ \\&+3(\chi_+u_+)W_-^2 + 3(\chi_-u_-)^2W_+
+\end{align*}
+
+Recall $|u_+-u_-|(t)  = \rmO(\eps^{2/3})$ by the Gronwall inequality argument for $t \in supp \chi_-\chi_+$, since $W_- = \eps^{1/3}w_-$ and $\eps^{-1/3}\varphi \frac{d}{dt} = \frac{d}{d\sigma}$,
+
+% we have that the nonhomogeneous term is of $\rmO_\eps(1)$ in the $w_-$ equation, consistent with the Region $1$ norm.
+
+
+%Then we get the $w_-$ equation in the $\sigma$ variable.
+%\begin{align*}
+%\frac{d}{d\sigma} w_- &= 2\eps^{-1/3}\varphi[\chi_+u_++\chi_-u_-]w_- +\eps^{-2/3}\varphi[(\chi_-\chi_+)u_-(u_--u_+)+\frac{1}{2}\chi_-'(u_+-u_-)]\\
+%& + \eps^{2/3}\varphi w_-^3+\eps^{-2/3}\varphi\chi_-^3u_-^3+3\varphi(\chi_-u_-)w_-^2+3\eps^{-1/3}\varphi(\chi_-u_-)^2w_-\\
+%&+3\eps^{-2/3}\varphi (\chi_-u_-+W_-)^2\chi_+u_+ + 3\eps^{-1/3}\varphi [(\chi_+u_++W_+)^2-W_+^2]w_-\\
+%&+\eps^{-1/3}\varphi[2+3(W_-+W_+) ]\chi_+W_+w_-
+%\end{align*}
+
+\item Distribute terms in the $+$ side 
+\begin{align*}
+W_+'  &=  \chi_+\mu+2u_+W_+ + 2\chi_+(u_+ -u_-)W_-+ (\chi_-\chi_+) u_+(u_- -u_+)+\frac{1}{2}\chi_+'(u_- -u_+) +2\chi_+W_-W_+\\
+&+W_+^2+ (\chi_+u_+ + W_+)^3 \\
+&+ 3\chi_+^2\chi_-u_+^2u_- + 6\chi_+\chi_- u_+u_- W_+ +6 \chi_+u_+W_+W_- +3\chi_+(W_-+W_+)W_-W_+\\
+&+3(\chi_-u_-)W_+^2 + 3(\chi_+u_+)^2W_-
+\end{align*}
+
+%Change to $\xi$ time
+%\begin{align*}
+%\frac{d}{d\xi} W_+ &= e^{-\xi}\chi_+ \mu + 2e^{-\xi}[\chi_+u_++\chi_- u_-]W_+ + e^{-\xi}[ \chi_-\chi_+ u_+(u_--u_+)+\frac{1}{2}\chi_+'(u_+-u_-)] \\
+%& + e^{-\xi}(\chi_+^3u_+^3+W_+^3)+3e^{-\xi}[\chi_+u_+W_+^2+(\chi_+u_+)^2W_+ ]\\
+%&3e^{-\xi} \{ (\chi_+u_++W_+)^2\chi_-u_- + [(\chi_-u_-+W_-)^2-W_-^2]W_+ \}\\
+%&+e^{-\xi}[2 + 3(W_-+W_+)]\chi_-W_-W_+
+%\end{align*}
+
+\pagebreak
+\item Linear equation.
+
+Now the equation in $W_-$ and $W_+$ can be written in the following form
+\begin{align*}
+W_-' - 2u_- W_- &= \mathcal{R}_- ,\\
+W_+' - 2u_+ W_+ &= \mathcal{R}_+
+\end{align*}
+with $\mathcal{R}_{\pm}$ defined as in the distribution of terms.
+
+First fix
+\[
+\eta \in (1,2), \nu \in (0,1).
+\]
+
+To be able to solve the linear equation, we first introduce the following weighted spaces, for the $-$ side we have
+\[
+\mathcal{C}_v = \{u(t) \in \mathcal{C}(0,T) \mid \sup |v(t) u(t)| < \infty\}
+\]
+where the weight $v(t)$ is defined as follows:
+\[
+v(t)=
+\begin{cases}
+\eps^{-\frac{1}{3}(1-\nu)} (T_\infty-t)^\nu, \text{ for }t> \eps^{-1}\delta\\
+\eps^{1/3}+(\delta-\eps t), \text{ for }t < \eps^{-1}\delta\\
+\end{cases}
+\]
+
+We can similarly define $\mathcal{C}_V$, with the other weight $V(t)$ 
+\[
+V(t)=
+\begin{cases}
+\eps^{-\frac{1}{3}(1-\nu)} (T_\infty-t)^{\nu+1}, \text{ for }t> \eps^{-1}\delta\\
+\eps^{\frac{2}{3}}+(\delta - \eps t)^{\frac{3}{2}}, \text{ for }t < \eps^{-1}\delta\\
+\end{cases}
+\]
+and for the $+$ side we have:
+\[
+\mathcal{C}_\eta(0,T) = \{ u(t) \in \mathcal{C}(0,T) \mid \sup_{t\in (0,T)}|(T_\infty - t)^{\eta} u(t)| < \infty  \}
+\]
+
+
+
+then we can show the Fredholm properties of the linear operators as follows: 
+\begin{theorem}
+For $t \in (0,T)$, the linear operator on the $-$ side
+\[
+\frac{d}{dt} - 2u_-(t) : \mathcal{C}_v (0,T) \to \mathcal{C}_V (0,T)
+\]
+
+and the linear operator on the $+$ side
+\[
+\frac{d}{dt}  - 2u_+(t) : \mathcal{C}_\eta (0,T) \to \mathcal{C}_{\eta+1}(0,T)
+\]
+are Fredholm, and their indices are $X$, $Y$, respectively..
+\end{theorem}
+
+\begin{proof}
+For the $W_-$ equation, recall we had the following scaling $s=\psi(\sigma)$, $\varphi = \partial_\sigma \psi$. We get the equation
+\begin{align*}
+\frac{d}{d\sigma} \tilde{W}_- -a(\sigma)\tilde{W}_- = \eps^{-1/3}\varphi \tilde{\mathcal{R}}_-
+\end{align*}
+here $\tilde{W}_-(\sigma) = W_-(\eps^{-\frac{1}{3}} \psi(\sigma)+\eps^{-1}\delta)=W_-(t)$, and similarly for $\tilde{\mathcal{R}}_-$. Now recall $a(\sigma) \to \pm 2 $ as $\sigma \to \pm \infty$. In these variables, the weight satisfies
+\[
+v(t) \sim \begin{cases}
+ \eps^{-\frac{1}{3}} e^{-\nu \sigma},  \text{ for }\sigma >>0 \\
+\eps^{-\frac{2}{3}}[(-\sigma)^{\frac{2}{3}}+1]^{-1}, \text{ for }\sigma << 0.
+\end{cases}
+\]
+
+and 
+\[
+V(t) \sim \begin{cases}
+ \eps^{-\frac{2}{3}} e^{-(\nu+1)\sigma},  \text{ for }\sigma >>0 \\
+[\eps |\sigma|+\eps^{2/3}]^{-1} \text{ for }\sigma << 0.
+\end{cases}
+\]
+
+Then for $\nu \neq 2$, the linear operators $\frac{d}{d\sigma} -a(\sigma)$ is Fredholm on the weighted spaces.  Since $0 < \nu < 1$ and $w$ has algebraic decay for $\sigma<0$, we conclude that the Fredholm index is...
+
+For the $W_+$ equation, we used the rescaling $u_+(t)  = e^\xi$, and in the $\xi$ equation, the $+$ side equation becomes
+\[
+\frac{d}{d\xi}\tilde{W}_+ -2\tilde{W}_+ = e^{-\xi}\mathcal{R}_+
+\]
+the weight for $W_+$ is just $u_+(t)^{\eta}=e^{\eta \xi}$ and because of $1<\eta<2$, we see the linear opertator $\frac{d}{d\xi}-2$ is Fredholm on this weighted function space.
+\end{proof}
+
+\pagebreak
+
+\item Fixed point argument
+
+To close the argument, we need to check the residual part $\mathcal{R}_{\pm}$ are compatible with the function space for which we know the Fredholm properties of the linear part.
+%Now we can set up the fixed point equation in appropirate function space, for the $w_-$ equation we work with the function space $C^1(0,\infty)$ in the $\sigma$ variable (weight $\eps^{-1/3}$ with $C^1(-\infty,0)$?). For the $W_+$ equation, we need to use the weight $e^{-(2-\eta)}$ in $C^1$ norm in the $\xi$ variable, this implies that $W_+(t)$ will behave like $u_+^{2-\eta}(t)$ near the gluing point and $W_-$ is bounded with order $\eps^{1/3}$.
+
+/////////////Estimate for $W_-$ equation/////////////
+\begin{align*}
+W_-'  &= 2u_-W_- +2\chi_-(u_- -u_+)W_+ + (\chi_-\chi_+) u_-(u_- -u_+)+\frac{1}{2}\chi_-'(u_+ -u_-) +2\chi_-W_-W_+\\
+&+W_-^2+ (\chi_-u_- + W_-)^3\\
+&+ 3\chi_-^2\chi_+ u_-^2 u_+  + 6\chi_-\chi_+ u_+ u_-W_- + 6\chi_- u_- W_- W_+ + 3\chi_-(W_-+W_+)W_-W_+ \\&+3(\chi_+u_+)W_-^2 + 3(\chi_-u_-)^2W_+
+\end{align*}
+
+\begin{enumerate}
+\item Linear term.
+
+As seen, it is 
+\[
+\frac{d}{dt} - 2u_-,
+\]
+which is Fredholm on the function space as in the theorem.
+
+
+\item $(u_--u_+)$ terms.
+\begin{theorem} \label{DifrEsti}
+If $|t-t_*|\le C$ for some positive number $C$, we have 
+\[
+|u_-(t)-u_+(t)| \le C'\eps^{2/3}
+\] 
+where $C'$ is another constant depending on $C$.
+\end{theorem}
+
+\begin{proof}
+Let $v(t):= u_-(t)-u_+(t)$, by the differential equation of $u_-$ and $u_+$ solves, we have
+\begin{align*}
+v'(t) &= \mu+u_-^2-u_+^2 = \eps t -\delta + v(u_-+u_+)(t)\\
+&=\eps(t-t_*)+\eps t_* -\delta + v (u_-+u_+)
+\end{align*}
+For $|t-t_*|\le C$, we have $(u_-+u_+)(t) \le C\eps^{1/6}$ for some constant $C$.
+
+Hence by Grownwall we have that
+\[
+v(t) \le C' \left[\frac{1}{2}(t^2-t_*^2)-\delta(t-t_*)\right] \le C'\eps^{2/3}
+\]
+\end{proof}
+
+\begin{theorem}
+The $u_--u_+$ term
+\[
+  (\chi_-\chi_+)u_-(u_--u_+) +\frac{1}{2}\chi_-'(u_+-u_-) + 2\chi_-(u_- -u_+)W_+ := \mathcal{R}_{-,d}
+\]
+satisfies
+\[
+\| \mathcal{R}_{-,d} \|_{\mathcal{C}_{W}}= o_{\eps}(1)
+\]
+\end{theorem}
+\begin{proof}
+For $t\in \supp (\chi_-\chi_+) = \supp \chi_-'$, we have $|t-t_*| \le 1$. Note $u_-(t_*) = \rmO(\eps^{1/6})$ and $|u_-(t)-u_-(t_*)| = \rmO(\eps^{1/3})$ from mean value theorem, from previous theorem we conclude that
+\[
+| (\chi_-\chi_+)u_-(u_--u_+)|_\infty = \rmO(\eps^{\frac{5}{6}}).
+\]
+ and
+ \[
+ | \chi_-'(u_+-u_-) |_\infty= \rmO(\eps^{\frac{2}{3}}).
+ \]
+ 
+ The third term $2\chi_-(u_- -u_+)W_+$, however, only gets multiplied by $\chi_-$. We cannot just estimate this term in a compact interval around the gluing point $t_*$. Instead we will utilize the following facts:
+\begin{itemize}
+\item for $0<t<\eps^{-1}\delta$, we have
+\[
+ |u_-(t)| \le C(\sqrt{\delta-\eps t}+\eps^{1/3})
+ \]
+ \item for $\eps^{-1}\delta < t <t_*$, we have
+ \[
+ |u_-(t)|\le C|u_+(t)|
+ \]
+\end{itemize}
+The constant $C$ in the above statements are independent of $\eps, \delta$.
+
+To see how these statements proves the theorem, we estimate, for $\eps^{-1}\delta<t<t_*$ we have $I(t) = \eps^{-\frac{1-\nu}{3}} (T_\infty - t)^{1+\nu}$,
+\begin{align*}
+|I(t)  \chi_-(u_+ - u_-)W_+|_\infty &\le |I(t) \chi_-u_+ W_+|_\infty\\
+&+|I(t) \chi_-u_- W_+|_\infty.
+\end{align*}
+ 
+Since $|u_+| \le C(T_\infty -t)^{-1}$, and the estimate $|W_+| \le C(T_\infty-t)^{-\eta}$ holds, we have, for the first of the two parts
+\[
+|I(t)\chi_-u_+ W_+|_\infty \le |\eps^{-\frac{1-\nu}{3}} (T_\infty-t)^{\nu - \eta} |_\infty \le \eps^{-\frac{1-\nu}{3}} (T_\infty-t_*)^{\nu - \eta} = \delta^{2(\eta-1)}.
+\]
+
+where we used the fact that $\eps+\eta =2 $ and $1<\eta<2$. For the term $I(t)\chi_-u_-W_+$, we use the claim to replace $u_-$ by $u_+$ and hence reduce the proof to the same estimate.
+
+
+Similarly, for $0<t<\eps^{-1}\delta$, where the weight $I(t) $ equals $[\eps^{\frac{3}{2}}(\eps^{-1}\delta -t)^{\frac{3}{2}}+\eps^{\frac{2}{3}}]^{-1}$.
+
+We again have to estimate $|I(t)\chi_- u_+ W_+|_\infty$ and $|I(t)\chi_- u_- W_+|_\infty$, first we have
+\begin{align*}
+|I(t)\chi_- u_+ W_+|_\infty &\le I(t)(T_\infty - t)^{-(1+\eta)} \le I(\eps^{-1}\delta)(T_\infty - \eps^{-1}\delta)^{-(1+\eta)} \\
+&\le C\eps^{-\frac{2}{3}} \eps^{\frac{1+\eta}{3}} = \rmO(\eps^{\frac{\eta-1}{3}} )
+\end{align*}
+
+For the $u_-$ term, we use the claim to get
+\begin{align*}
+|I(t)\chi_- u_- W_+|_\infty  \le \frac{\sqrt{\delta-\eps t}+\eps^{1/3}}{ (\delta-\eps t)^{\frac{3}{2}} + \eps^{2/3}} (T_\infty - \eps^{-1}\delta)^{-\eta} \le \eps^{-1/3}\eps^{\frac{\eta}{3}} = \rmO(\eps^{\frac{\eta-1}{3}} )
+\end{align*}
+
+\end{proof}
+
+
+
+
+\item  Quadratic and cubic terms
+
+\[
+\mathcal{R}_{-,c}:= W_-^2 +(\chi_- u_- +W_-)^3 
+\]
+
+\begin{theorem}
+Qurdratic terms satisfies...
+\end{theorem}
+
+\begin{proof}
+For $t > \eps^{-1}\delta$, near the gluing point, we have
+\[ 
+\|W_-^2\|_{\mathcal{C}_V} \le \|W_-\|_{C_v} |(T_\infty-t)W_- |_{\infty} = \rmO(\eps^{\frac{1-\nu}{6}})\|W_-\|_{\mathcal{C}_v}
+\] 
+
+For $t < \eps^{-1}\delta$, let $\tau = \eps^{-1}\delta-t$, then
+\[
+\|W_-^2\|_{\mathcal{C}_V}  \le \left| [\eps \tau +\eps^{2/3}]^{-1} [\eps\tau+\eps^{\frac{1}{3}}]^2\right|_{\infty} = \rmO(\delta)
+\]
+what about norms in the middle? that is near $\eps^{-1}\delta$, seems I can only get $\rmO(1)$ bound here.
+
+For the cubic term, we use $(\chi_-u_- + W_-)^3 \le C[(\chi_-u_-)^3+W_-^3]$ for some constant $C$ to estimate each term separately.
+First we estimate (for $t>\eps^{-1}\delta$)
+\[
+\|\chi_-u_-^3 \|_{\mathcal{C}_V} \le |\eps^{\frac{1-\nu}{3}}(T_\infty - t)^{1+\nu} \eps u_R^3 |_{\infty} \le \eps^{-\frac{1-v}{3}} \eps^{-\frac{1+v}{6}} \eps^{\frac{1}{2}} = \eps^{\frac{\nu}{6}}
+\]
+
+On the interval $t<\eps^{-1}\delta$, we have
+\[
+\| \chi_-u_-^3\|_{\mathcal{C}_V} = \rmO(1)
+\]
+using the asymptotics $u_R(s) \to -(-s)^{\frac{1}{2}}$ as $s \to \infty$. At $t = 0$ the leading order terms of $V(t)$ gives $\delta^{\frac{3}{2}}$. While $u_-(t)$ gives
+\[
+u_-^3 = \eps u_R^3(s) = \eps s^{\frac{3}{2}} = \eps [\eps^{\frac{1}{3}}(\delta\eps^{-1}-t)]^{\frac{3}{2}} = \delta^{\frac{3}{2}}
+\]
+at $t=0$.
+
+Finally for the cubic term, we have
+\[
+\|W_-^3\|_{\mathcal{C}_V} \le \|W_-\|_{\mathcal{C}_v}  |(T_\infty - t)W_-^2 |_\infty = \rmO(\eps^{\frac{3-2\nu}{6}})\|W_-\|_{\mathcal{C}_v}
+\]
+for $t$ near $t_*$.
+
+And ($\tau = \eps^{-1}\delta - t$, again),
+\[
+\|W_-^3\|_{\mathcal{C}_V}  \le \left| [\eps \tau +\eps^{2/3}]^{-1} [\eps\tau+\eps^{\frac{1}{3}}]^3\right|_{\infty} = \rmO(\eps^2)
+\]
+\end{proof}
+
+\item Mixed terms
+
+Includes
+\begin{align*}
+\mathcal{R}_{-,m} :&= 3(\chi_-^2\chi_+) u_-^2 u_+  + 6(\chi_-\chi_+) u_+ u_-W_- \\ 
+&+ 6\chi_-(3^{-1}+u_- +2^{-1}(W_-+W_+))W_-W_+
+\\ 
+&+3(\chi_+u_+)W_-^2 +3(\chi_+u_+)^2W_-  
+\end{align*}
+
+\begin{theorem}
+Cross terms satisfy the estimate
+\[
+\|\mathcal{R}_{-,m} \|_{\mathcal{C}_V} =\rmO(\eps^{\frac{\nu}{6}})
+\]
+\end{theorem}
+\begin{proof}
+For the first two terms $3(\chi_-^2\chi_+)u_-^2u_+$ and $6(\chi_-\chi_+)u_+u_-W_-$, the support of them are just $(t_*-1,t_*+1)$, on this interval, by theorem $(u_--u_+)$, we know that $|u_- - u_+(t)| \le C\eps^{2/3}$ for some constant $C$. Moreover, recall that $u_-(t_*) = u_+(t_*) = \rmO(\eps^{1/6})$, so we get
+\begin{align*}
+\|3(\chi_-^2\chi_+)u_-^2u_+ \|_{\mathcal{C}_V} &\le | 3(\chi_-^2\chi_+)[u_-^3+u_-^2(u_+ -u_-)]  \eps^{\frac{\nu-1}{3}}(T_\infty -t)^{1+\nu} |_{\infty} \\
+& = \rmO( \eps^{\frac{1}{2}} \eps^{\frac{\nu-1}{3}} \eps^{-\frac{1+\nu}{6}} ) = \rmO(\eps^{\frac{\nu}{6}})
+\end{align*}
+and
+\begin{align*}
+\|6(\chi_-\chi_+)u_-u_+W_- \|_{\mathcal{C}_V} &\le | 6(\chi_-\chi_+) [u_-^2 +u_-(u_+-u_-)](T_\infty -t)|_{\infty} \| W_-\|_{\mathcal{C}_v} \\
+& = \rmO( \eps^{\frac{1}{6}} ) \|W_-\|_{\mathcal{C}_v}
+\end{align*}
+
+Next, we have the mixed $W_-W_+$ term, it is enough to just estimate
+\[
+\|\chi_-W_- W_+ \|_{\mathcal{C}_V}
+\]
+for $ t >\eps^{-1}\delta$, we have
+\[
+\|\chi_-W_- W_+ \|_{\mathcal{C}_V} \le |(T_\infty-t)W_+|_\infty \| W_- \|_{\mathcal{C}_v} = |(T_\infty -t)^{-\eta+1}| \|W_-\|_{\mathcal{C}_v} = \rmO(\eps^{\frac{\eta-1}{6} })\|W_-\|_{\mathcal{C}_v} 
+\]
+while for $t < \eps^{-1}\delta$, 
+\begin{align*}
+\|\chi_-W_- W_+ \|_{\mathcal{C}_V} &\le |\eps^{-1/2}(\eps^{-1}\delta - t)^{-1/2} W_+|_\infty \|W_-\|_{\mathcal{C}_v}\\
+& \le (T_\infty -t)^{-\eta}(\delta-\eps t)^{-1/2} \|W_-\|_{\mathcal{C}_v} \\
+& = \rmO(\eps^{\frac{\eta}{3}}) \|W_-\|_{\mathcal{C}_v}
+\end{align*}
+
+We then focus on the last two terms, first
+\begin{align*}
+\|3(\chi_+u_+)W_-^2\|_{\mathcal{C}_V} \le (T_\infty -t)^{-1} \|W_-^2\|_{\mathcal{C}_V} \le (T_\infty - t_*)^{-1} \|W_-^2\|_{\mathcal{C}_v} =\rmO(\eps^{1/6})  \|W_-^2\|_{\mathcal{C}_v}
+\end{align*}
+since we already dealt with $\|W_-^2\|_{\mathcal{C}_v}$ in theorem (quadratic and cubic terms), we are good here.
+
+Next, we estimate
+\begin{align*}
+\|3(\chi_+u_+)^2W_-\|_{\mathcal{C}_V} \le |(T_\infty - t)u_+^2|_\infty \|W_-\|_{\mathcal{C}_v} =\rmO(\eps^{1/6})\|W_-\|_{\mathcal{C}_v}
+\end{align*}
+
+for $t>\eps^{-1}\delta$. Due to the $\chi_+$ cut off, for $t<\eps^{-1}\delta$, this term becomes $0$.
+\end{proof}
+\end{enumerate}
+
+
+\pagebreak
+
+////////////estimate for $W_+$ equation////////////
+\begin{align*}
+W_+'  &=  \chi_+\mu+2[u_+ +\chi_-(u_- -u_+)]W_+ + (\chi_-\chi_+) u_+(u_- -u_+)+\frac{1}{2}\chi_+'(u_- -u_+) +2\chi_+W_-W_+\\
+&+W_+^2+ (\chi_+u_+ + W_+)^3 \\
+&+ 3\chi_+^2\chi_-u_+^2u_- + 6\chi_+\chi_- u_+u_- W_+ +6 \chi_+u_+W_+W_- +3\chi_+(W_-+W_+)W_-W_+\\
+&+3(\chi_-u_-)W_+^2 + 3(\chi_-u_-)^2W_+
+\end{align*}
+
+\begin{enumerate}
+\item Linear term, recall $u_+(t) = e^\xi$
+\begin{align*}
+\frac{d}{dt} - 2u_+
+\end{align*}
+
+\item  $\chi_+\mu$ term
+\begin{theorem}
+The nonhomogeneous term $\chi_+ \mu$ satisfies
+\end{theorem}
+
+\begin{proof}a calculation shows
+\begin{align*}
+\|\chi_+ \mu \|_{\eta+1} = |(T_\infty -t)^{1+\eta}\chi_+\mu(t) |_\infty  = \rmO( \eps^{\frac{2}{3}} \eps^{\frac{-(1+\eta)}{6}} ) = \rmO(\eps^{\frac{3-\eta}{6}} )
+\end{align*}
+where we solved directly that $\mu(t) = \eps t -\delta = \eps(T_\infty - u_+(t)^{-1})-\delta= \eps^{\frac{2}{3}}\Omega_0 - \eps u_+^{-1}$ , and that $T_\infty - t \in (\delta^{-1},\delta^{-1}\eps^{\frac{-1}{6}})$ for $t \in (t_*,T)$.
+\end{proof}
+\item $(u_- - u_+)$ term (difference term)
+
+Includes
+\[
+\mathcal{R}_{+,d} := 2\chi_-(u_- - u_+)W_+ + (\chi_-\chi_+)u_+(u_- - u_+) + \frac{1}{2}\chi_+'(u_- - u_+)
+\]
+
+\begin{theorem}
+The difference term $\mathcal{R}_{+,d}$ satisfies
+\[
+\|\mathcal{R}_{+,d} \|_{\eta+1}  = \rmO()
+\]
+\end{theorem}
+
+\begin{proof}
+The two term $(\chi_-\chi_+)u_+(u_- - u_+)$ and $\frac{1}{2}\chi_+'(u_- - u_+)$ have compact support inside $(t_*-1, t_* + 1)$. Again, recall $u_+(t_*)  = \rmO(\eps^{1/6}) $ and $|u_- - u_+| = \rmO(\eps^{2/3})$, for all $t$ with $|t-t_*| \le 1$, we have that
+\[
+|(\chi_-\chi_+)u_+(u_- - u_+) + \frac{1}{2}\chi_+'(u_- - u_+) |_\infty= \rmO(\eps^{5/6}).
+\]
+
+For the linear term $\chi_-(u_- - u_+)W_+$, we calculate
+\[
+\|\chi_-(u_+ - u_-) W_+ \|_{\eta+1} \le |(T_\infty - t)(u_+-u_-) |_\infty \|W_+\|_\eta
+\]
+again use $u_+ - u_- = o(\frac{1}{T_\infty - t} )$.
+\end{proof}
+
+\item quadratic and cubic terms
+
+Includes
+\[
+\mathcal{R}_{+,c} = W_+^2 + (\chi_+u_+ + W_+)^3
+\]
+
+\begin{theorem}
+we have
+\[
+\| \mathcal{R}_{+,c} \|_{\eta+1} = \rmO(\eps^{\eta_*}),
+\]
+with $\eta_* = \min(\eta-1, 2-\eta)$.
+\end{theorem}
+
+\begin{proof}
+First, we have
+\[
+\|W_+^2\|_{\eta+1} = |(T_\infty -t )^{1+\eta}W_+^2|_\infty \le (T_\infty - t)^{1+\eta}(T_\infty - t)^{-2\eta}\|W_+ \|^2_{\eta} \le (T_\infty - t)^{1-\eta}\|W_+ \|^2_{\eta}
+\]
+now since $t \in (0,T)$ we have $|T_\infty -t|  = \rmO(\eps^{-1})$, this gives
+\[
+\|W_+^2\|_{\eta+1} = \rmO(\eps^{\eta-1})
+\]
+since $\eta >1$, this is desired estimate.
+
+Next we have
+\[
+\|(\chi_+u_+)^3\|_{\eta+1} = | (T_\infty - t)^{1+\eta} u_+^3 |_\infty \le C(T_\infty -t)^{1+\eta}(T_\infty -t)^{-3} = \rmO(\eps^{2-\eta})
+\]
+this uses $\eta<2$, again, is desired.
+
+Finally, for the cubic term
+\[
+\|W_+^3\|_{\eta+1} \le \|W_+\|^3_{\eta} (T_\infty -t)^{1+\eta -3\eta}  = \rmO(\eps^{2\eta-1})
+\]
+\end{proof}
+\item mixed terms
+
+Includes
+\begin{align*}
+\mathcal{R}_{+,m} &:=3(\chi_+^2\chi_-)u_+^2u_- + 6(\chi_+\chi_-)u_+ u_- W_+\\
+&+6\chi_+(3^{-1} + u_+ + 2^{-1}(W_-+W_+))W_-W_+\\
+&+ 3(\chi_-u_-)W_+^2 + 3(\chi_-u_-)^2W_+
+\end{align*}
+
+ \begin{theorem}
+ We have
+ \[
+ \|\mathcal{R}_{+,m}\|_{\eta+1} = ...
+ \]
+ \end{theorem}
+ 
+ \begin{proof}
+The first two terms $3(\chi_+^2\chi_-)u_+^2u_-$ and $6(\chi_+\chi_-)u_+u_-W_+$ are localized around $(t_*-1,t_*+1)$, hence we can treat them the same way as in the $\mathcal{R}_{-,m}$ case, using theorem \ref{DifrEsti} 
+
+The middle term $6\chi_+(3^{-1}+u_++2^{-1}(W_-+W_+))W_-W_+$ is estimated as follows:
+
+We only need to consider the term $\chi_+W_-W_+$, and compute
+\[
+\|\chi_+W_-W_+ \|_{\eta+1} \le |(T_\infty -t)W_-|_\infty \|W_+\|_\eta \le [\eps^{\frac{1}{3}}(T_\infty -t)]^{1-\nu} \|W_+\|_\eta
+\]
+because of the cut off $\chi_+$, we know that $t \in (t_*-1, T)$, so $|T_\infty - t| = \rmO(\eps^{-\frac{1}{6}})$, this shows
+\[
+\|W_-W_+\|_{\eta+1} = \rmO(\eps^{\frac{1-\nu}{6}})
+\]
+
+Finally, the last two terms $3(\chi_-u_-)W_+^2$ and $3(\chi_-u_-)^2 W_+$ is treated as follows:
+
+For $t$ in the support of $\chi_-$, we have $|u_-| \le C\delta^{\frac{1}{2}}$, so
+\[
+\|(\chi_-u_-)W_+^2\|_{\eta+1} \le |u_-| \|W_+^2\|_{\eta+1},
+\]
+where $\|W_+^2\|_{\eta+1}$ is estimated before.
+
+For $3(\chi_-u_-)^2 W_+$, we have
+\[
+\|3(\chi_-u_-)^2 W_+\|_{\eta+1} = |(T_\infty - t)(\chi_-u_-)^2|_\infty \|W_+\|_\eta
+\]
+same question, we need to use $u_- - u_+ = o(u_+)$ through out...
+ \end{proof}
+\end{enumerate}
+
+\end{itemize}
+
+\end{enumerate}
+
+
+%Title: Bifurcation of spikes from the essential spectrum in 
+%nonlocally coupled system
+%Abstract:  
+%The existence and bifurcation of spatially localized solutions (spikes) in systems of equations modeling natural phenomena has been studied intensively in the area of applied mathematics, in particular pattern formation, solitary water waves and mathematical neuroscience. In the case of one unbounded spatial dimension, the method of spatial dynamics is a powerful tool to study such questions. By interpreting the steady state equation as a dynamical system in the unbounded spatial variable, one obtains compete characterization of small bounded solutions via center manifold reduction and normal form transformations. However, adaptions to higher spatial dimension are difficult, and mostly restricted to radial symmetry. Analogously, adaptions to systems with nonlocal coupling are also difficult as spatial dynamics formulations are either cumbersome or not available. 
+
+%Our results covers both non-local and non-radially symmetric situations in systems with a generic transcritical bifurcation in the nonlinearity. Relying on Fourier multiplier preconditioning, scaling and normal forms.
+
+
+\end{document}
