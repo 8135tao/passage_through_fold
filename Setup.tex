@@ -53,6 +53,8 @@
 \newcommand{\rmo}{{\scriptstyle\mathcal{O}}}
 \newcommand{\rmO}{\mathcal{O}}
 \newcommand{\eps}{\varepsilon}
+\newcommand{\lar}{ \lesssim }
+
 
 \newcommand{\Rho}{\bm{\rho}}
 \newcommand{\bigma}{\bm{\sigma}}
@@ -1728,7 +1730,7 @@ Define $\mathcal{F}(v,\rho,\eps) = \varphi(N_1,N_2)^T\chi_\eps$, then our equati
 \]
 \pagebreak
 
-\section{Reference}
+\section{Cheat Sheet for rescaling of times}
 Equation
 \begin{align}
 \begin{split}
@@ -1942,7 +1944,8 @@ T_{\infty} &= \eps^{-1}\delta + \eps^{-1/3}\Omega_0 \hspace{0.5in}  \text{ Ricat
 \pagebreak
 
 \end{itemize}
-\item $\bold{Gluing} $
+
+\section{Gluing}
 Ansatz
 \[
 U(t) = \chi_-(t)u_-(t) + \chi_+(t)u_+(t) + W_-(t)+W_+(t)
@@ -2103,16 +2106,15 @@ the weight for $W_+$ is just $u_+(t)^{\eta}=e^{\eta \xi}$ and because of $1<\eta
 
 \pagebreak
 
-\item Fixed point argument
-
+\subsection{Fixed point arguments-set up for $W_-$}
 To close the argument, we need to check the residual part $\mathcal{R}_{\pm}$ are compatible with the function space for which we know the Fredholm properties of the linear part.
-%Now we can set up the fixed point equation in appropirate function space, for the $w_-$ equation we work with the function space $C^1(0,\infty)$ in the $\sigma$ variable (weight $\eps^{-1/3}$ with $C^1(-\infty,0)$?). For the $W_+$ equation, we need to use the weight $e^{-(2-\eta)}$ in $C^1$ norm in the $\xi$ variable, this implies that $W_+(t)$ will behave like $u_+^{2-\eta}(t)$ near the gluing point and $W_-$ is bounded with order $\eps^{1/3}$.
 
-/////////////Estimate for $W_-$ equation/////////////
+The equation for the $W_-$ component is:
 \begin{align*}
-W_-'  &= 2u_-W_- +2\chi_-(u_- -u_+)W_+ + (\chi_-\chi_+) u_-(u_- -u_+)+\frac{1}{2}\chi_-'(u_+ -u_-) +2\chi_-W_-W_+\\
+W_-'  - 2u_-W_-&= 2\chi_-(u_- -u_+)W_+ + (\chi_-\chi_+) u_-(u_- -u_+)+\frac{1}{2}\chi_-'(u_+ -u_-) \\
 &+W_-^2+ (\chi_-u_- + W_-)^3\\
-&+ 3\chi_-^2\chi_+ u_-^2 u_+  + 6\chi_-\chi_+ u_+ u_-W_- + 6\chi_- u_- W_- W_+ + 3\chi_-(W_-+W_+)W_-W_+ \\&+3(\chi_+u_+)W_-^2 + 3(\chi_-u_-)^2W_+
+&+ 3\chi_-^2\chi_+ u_-^2 u_+ + 6\chi_-\chi_+ u_+ u_-W_-\\
+ &+2\chi_-W_-W_+  + 6\chi_- u_- W_- W_+ + 3\chi_-(W_-+W_+)W_-W_+ \\&+3(\chi_+u_+)W_-^2 + 3(\chi_-u_-)^2W_+
 \end{align*}
 
 \begin{enumerate}
@@ -2126,13 +2128,13 @@ which is Fredholm on the function space as in the theorem.
 
 
 \item $(u_--u_+)$ terms.
-\begin{theorem} \label{DifrEsti}
-If $|t-t_*|\le C$ for some positive number $C$, we have 
+\begin{lemma} \label{DifrEsti}
+If $|t-t_*|\le C$ for some positive number $C$, then it holds that for all such $t$,
 \[
-|u_-(t)-u_+(t)| \le C'\eps^{2/3}
+|u_-(t)-u_+(t)| = \tilde{C}\eps^{2/3},
 \] 
-where $C'$ is another constant depending on $C$.
-\end{theorem}
+where $\tilde{C}$ is another constant depending on $C$, both $C,C'$ here are independent of $\eps$.
+\end{lemma}
 
 \begin{proof}
 Let $v(t):= u_-(t)-u_+(t)$, by the differential equation of $u_-$ and $u_+$ solves, we have
@@ -2140,11 +2142,11 @@ Let $v(t):= u_-(t)-u_+(t)$, by the differential equation of $u_-$ and $u_+$ solv
 v'(t) &= \mu+u_-^2-u_+^2 = \eps t -\delta + v(u_-+u_+)(t)\\
 &=\eps(t-t_*)+\eps t_* -\delta + v (u_-+u_+)
 \end{align*}
-For $|t-t_*|\le C$, we have $(u_-+u_+)(t) \le C\eps^{1/6}$ for some constant $C$.
+For $t$ such that $|t-t_*|\le C$, since $u_-(t_*)=u_+(t_*) = \rmO(\eps^{1/6})$, we have  that $(u_-+u_+)(t) =\rmO(\eps^{1/6})$ from the asymptotic expansion of $u_-(t)$.
 
-Hence by Grownwall we have that
+Hence by Grownwall it follows that
 \[
-v(t) \le C' \left[\frac{1}{2}(t^2-t_*^2)-\delta(t-t_*)\right] \le C'\eps^{2/3}
+\left |(u_--u_+)(t)\right |=|v(t)| \le C' \left[\frac{1}{2}(t^2-t_*^2)-\delta(t-t_*)\right] \le C'\eps^{2/3}
 \]
 \end{proof}
 
@@ -2155,59 +2157,63 @@ The $u_--u_+$ term
 \]
 satisfies
 \[
-\| \mathcal{R}_{-,d} \|_{\mathcal{C}_{W}}= o_{\eps}(1)
+\| \mathcal{R}_{-,d} \| \lar \min(\eps^{p}, \delta^{2(\eta-1)} )
 \]
 \end{theorem}
 \begin{proof}
-For $t\in \supp (\chi_-\chi_+) = \supp \chi_-'$, we have $|t-t_*| \le 1$. Note $u_-(t_*) = \rmO(\eps^{1/6})$ and $|u_-(t)-u_-(t_*)| = \rmO(\eps^{1/3})$ from mean value theorem, from previous theorem we conclude that
+For $t\in \supp (\chi_-\chi_+) = \supp \chi_-'$, we have $|t-t_*| \le 1$. Note $u_-(t_*) = \rmO(\eps^{1/6})$ and by continuity it follows that $|u_-(t)| = \rmO(\eps^{1/6})$ for such $t$. And $I(t)=\eps^{\frac{\nu-1}{3}}(T_\infty-t)^{1+\nu}$, from previous theorem $|u_- - u_+| = \rmO(\eps^{1/3})$ we conclude that
 \[
-| (\chi_-\chi_+)u_-(u_--u_+)|_\infty = \rmO(\eps^{\frac{5}{6}}).
+|I(t) (\chi_-\chi_+)u_-(u_--u_+)|_\infty \lar \eps^{\frac{v-1}{3}} \eps^{-\frac{1+\nu}{6}} \eps^{\frac{1}{6}}\eps^{\frac{2}{3}} = \eps^{\frac{\nu+2}{6}}
 \]
  and
- \[
- | \chi_-'(u_+-u_-) |_\infty= \rmO(\eps^{\frac{2}{3}}).
- \]
- 
- The third term $2\chi_-(u_- -u_+)W_+$, however, only gets multiplied by $\chi_-$. We cannot just estimate this term in a compact interval around the gluing point $t_*$. Instead we will utilize the following facts:
-\begin{itemize}
-\item for $0<t<\eps^{-1}\delta$, we have
 \[
- |u_-(t)| \le C(\sqrt{\delta-\eps t}+\eps^{1/3})
+|I(t) \chi_-'(u_+-u_-) |_\infty \lar\eps^{\frac{v-1}{3}} \eps^{-\frac{1+\nu}{6}} \eps^{\frac{2}{3}} = \eps^{\frac{\nu+1}{6}}
+\]
+ The third term $2\chi_-(u_- -u_+)W_+$, however, only gets multiplied by $\chi_-$. We cannot just estimate this term in a compact interval around the gluing point $t_*$. Instead we will utilize the following two facts:
+\begin{itemize}
+\item for $0<t<\eps^{-1}\delta$, it holds
+\[
+ |u_-(t)| \lar \sqrt{\delta-\eps t}+\eps^{1/3},
  \]
- \item for $\eps^{-1}\delta < t <t_*$, we have
+ \item for $\eps^{-1}\delta < t <t_*$, it holds
  \[
- |u_-(t)|\le C|u_+(t)|
+ |u_-(t)|\lar |u_+(t)|.
  \]
 \end{itemize}
-The constant $C$ in the above statements are independent of $\eps, \delta$.
 
-To see how these statements proves the theorem, we estimate, for $\eps^{-1}\delta<t<t_*$ we have $I(t) = \eps^{-\frac{1-\nu}{3}} (T_\infty - t)^{1+\nu}$,
+For $\eps^{-1}\delta<t<t_*$ where $I(t) = \eps^{-\frac{1-\nu}{3}} (T_\infty - t)^{1+\nu}$, it follows
 \begin{align*}
 |I(t)  \chi_-(u_+ - u_-)W_+|_\infty &\le |I(t) \chi_-u_+ W_+|_\infty\\
 &+|I(t) \chi_-u_- W_+|_\infty.
 \end{align*}
  
-Since $|u_+| \le C(T_\infty -t)^{-1}$, and the estimate $|W_+| \le C(T_\infty-t)^{-\eta}$ holds, we have, for the first of the two parts
+Since $|u_+| \lar (T_\infty -t)^{-1}$, and $|W_+| \lar (T_\infty-t)^{-\eta}$, the first term satisfy
 \[
-|I(t)\chi_-u_+ W_+|_\infty \le |\eps^{-\frac{1-\nu}{3}} (T_\infty-t)^{\nu - \eta} |_\infty \le \eps^{-\frac{1-\nu}{3}} (T_\infty-t_*)^{\nu - \eta} = \delta^{2(\eta-1)}.
+|I(t)\chi_-u_+ W_+|_\infty \lar |\eps^{-\frac{1-\nu}{3}} (T_\infty-t)^{\nu - \eta} |_\infty \lar \eps^{-\frac{1-\nu}{3}} (T_\infty-t_*)^{\nu - \eta} \lar \delta^{2(\eta-1)},
 \]
 
 where we used the fact that $\eps+\eta =2 $ and $1<\eta<2$. For the term $I(t)\chi_-u_-W_+$, we use the claim to replace $u_-$ by $u_+$ and hence reduce the proof to the same estimate.
 
 
-Similarly, for $0<t<\eps^{-1}\delta$, where the weight $I(t) $ equals $[\eps^{\frac{3}{2}}(\eps^{-1}\delta -t)^{\frac{3}{2}}+\eps^{\frac{2}{3}}]^{-1}$.
+For $0<t<\eps^{-1}\delta$, where the weight $I(t) $ equals $[\delta^{-\frac{1}{4}} (\delta -\eps t)^{\frac{3}{2}}+\delta^{\frac{1}{4}}\eps^{\frac{2}{3}}]^{-1}$, it is conveneient to write the term $T_\infty -t$ as follows:
+\[
+T_\infty -t = \eps^{-1}\delta + \eps^{-\frac{1}{3}}\Omega_0 - t  = \eps^{-1}\left[(\delta -\eps t) +\eps^{\frac{2}{3}}\Omega_0\right].
+\]
 
-We again have to estimate $|I(t)\chi_- u_+ W_+|_\infty$ and $|I(t)\chi_- u_- W_+|_\infty$, first we have
+It then follows that
 \begin{align*}
-|I(t)\chi_- u_+ W_+|_\infty &\le I(t)(T_\infty - t)^{-(1+\eta)} \le I(\eps^{-1}\delta)(T_\infty - \eps^{-1}\delta)^{-(1+\eta)} \\
-&\le C\eps^{-\frac{2}{3}} \eps^{\frac{1+\eta}{3}} = \rmO(\eps^{\frac{\eta-1}{3}} )
+|I(t)\chi_- u_+ W_+|_\infty &\lar I(t)(T_\infty - t)^{-(1+\eta)} \lar I(\eps^{-1}\delta)(T_\infty - \eps^{-1}\delta)^{-(1+\eta)} \\
+&\lar \eps^{-\frac{2}{3}} \eps^{\frac{1+\eta}{3}} = \rmO(\eps^{\frac{\eta-1}{3}} ).
 \end{align*}
-
-For the $u_-$ term, we use the claim to get
+Then we apply the claim to $I(t)\chi_-u_-W_+$
 \begin{align*}
-|I(t)\chi_- u_- W_+|_\infty  \le \frac{\sqrt{\delta-\eps t}+\eps^{1/3}}{ (\delta-\eps t)^{\frac{3}{2}} + \eps^{2/3}} (T_\infty - \eps^{-1}\delta)^{-\eta} \le \eps^{-1/3}\eps^{\frac{\eta}{3}} = \rmO(\eps^{\frac{\eta-1}{3}} )
+|I(t)\chi_- u_- W_+|_\infty  &\lar \frac{\sqrt{\delta-\eps t}+\eps^{1/3}}{ \delta^{-\frac{1}{4}}(\delta-\eps t)^{\frac{3}{2}} + \delta^{\frac{1}{4}}\eps^{2/3}} (T_\infty - \eps^{-1}\delta)^{-\eta} \\
+& = \frac{\sqrt{\delta-\eps t}+\eps^{1/3}}{ \delta^{-\frac{1}{4}}(\delta-\eps t)^{\frac{3}{2}} + \delta^{\frac{1}{4}}\eps^{2/3}} \frac{\eps^{\eta}}{(\delta -\eps t +\eps^{\frac{2}{3}}\Omega_0)^\eta}\\
+&= \dfrac{(\delta \beta)^{1/2} + \eps^{1/3}} {(\delta \beta)^{3/2} + \eps^{2/3}} \dfrac{\eps^\eta}{(\delta \beta + \eps^{2/3} \Omega_0 )^{\eta} }\\
+& \lar \dfrac{1} {(\delta \beta)^{3/2} + \eps^{2/3}} \dfrac{\eps^\eta}{( (\delta \beta)^{1/2} + \eps^{1/3} )^{2\eta -1} } \\
+& \lar \eps^{\eta}\eps^{-\frac{2}{3}}\eps^{\frac{1-2\eta}{3}} = \eps^{\frac{\eta-1}{3}}
 \end{align*}
-
+where $\beta = 1-\eps \delta^{-1}t$.
 \end{proof}
 
 
@@ -2224,16 +2230,21 @@ Qurdratic terms satisfies...
 \end{theorem}
 
 \begin{proof}
-For $t > \eps^{-1}\delta$, near the gluing point, we have
-\[ 
-\|W_-^2\|_{\mathcal{C}_V} \le \|W_-\|_{C_v} |(T_\infty-t)W_- |_{\infty} = \rmO(\eps^{\frac{1-\nu}{6}})\|W_-\|_{\mathcal{C}_v}
-\] 
+First, notice that the term $W_-^2$ and $W_-^3$ are not multiplied by the cut off $\chi$, this means we don't have the restriction $t<t_*+1$ when estimating their norms.
 
-For $t < \eps^{-1}\delta$, let $\tau = \eps^{-1}\delta-t$, then
-\[
-\|W_-^2\|_{\mathcal{C}_V}  \le \left| [\eps \tau +\eps^{2/3}]^{-1} [\eps\tau+\eps^{\frac{1}{3}}]^2\right|_{\infty} = \rmO(\delta)
-\]
-what about norms in the middle? that is near $\eps^{-1}\delta$, seems I can only get $\rmO(1)$ bound here.
+If $t > \eps^{-1}\delta$, near the gluing point, we have $(T_\infty -t )^{1-\nu} \le (T_\infty - \eps^{-1}\delta)^{1-\nu} \lar \eps^{\frac{\nu-1}{3}}$, hence 
+\begin{align*}
+\|W_-^2\| = |I(t) W_-^2(t) | &\lar \delta^{\frac{1}{4}} \eps^{\frac{\nu-1}{3}}(T_\infty - t)^{1+\nu}\left( \eps^{\frac{1-\nu}{3}}(T_\infty - t)^{-\nu}\right)^2\\ & \lar \delta^{\frac{1}{4}} \eps^{\frac{1-\nu}{3}}(T_\infty-t)^{1-\nu} \lar \delta^{\frac{1}{4}}
+\end{align*} 
+
+For $t < \eps^{-1}\delta$, set again $\beta = 1-\eps \delta^{-1}t$, then
+\begin{align*}
+|I(t)\chi_-  W_-^2|_\infty &\lar \frac{ \left( \delta^{-\frac{1}{4}}(\delta-\eps t)+\delta^{\frac{1}{4}}\eps^{\frac{1}{3}} \right)^2}{\delta^{-\frac{1}{4}}(\delta-\eps t)^{\frac{3}{2}}+\delta^{\frac{1}{4}}\eps^{\frac{2}{3}} } = \delta^{-\frac{1}{4}}\frac{\left( \delta^{\frac{3}{4}}\beta+\delta^{\frac{1}{4}}\eps^{\frac{1}{3}} \right)^2 }{\delta\beta^{\frac{3}{2}}+\eps^{\frac{2}{3}}} \\
+& \lar \delta^{-\frac{1}{4}} \left(\frac{\delta^{\frac{3}{2}}\beta^2}{\delta\beta^{\frac{3}{2}}} + \frac{\delta^{\frac{1}{2}}\eps^{\frac{2}{3}}}{\eps^{\frac{2}{3}}} \right) \lar \delta^{\frac{1}{4}}
+\end{align*}
+
+
+================================================
 
 For the cubic term, we use $(\chi_-u_- + W_-)^3 \le C[(\chi_-u_-)^3+W_-^3]$ for some constant $C$ to estimate each term separately.
 First we estimate (for $t>\eps^{-1}\delta$)
@@ -2323,13 +2334,13 @@ for $t>\eps^{-1}\delta$. Due to the $\chi_+$ cut off, for $t<\eps^{-1}\delta$, t
 
 
 \pagebreak
-
+\subsection{Fixed point argument-set up for $W_+$}
 ////////////estimate for $W_+$ equation////////////
 \begin{align*}
-W_+'  &=  \chi_+\mu+2[u_+ +\chi_-(u_- -u_+)]W_+ + (\chi_-\chi_+) u_+(u_- -u_+)+\frac{1}{2}\chi_+'(u_- -u_+) +2\chi_+W_-W_+\\
+W_+'  &=  \chi_+\mu+2u_+W_+ + 2\chi_+(u_+ -u_-)W_-+ (\chi_-\chi_+) u_+(u_- -u_+)+\frac{1}{2}\chi_+'(u_- -u_+) +2\chi_+W_-W_+\\
 &+W_+^2+ (\chi_+u_+ + W_+)^3 \\
 &+ 3\chi_+^2\chi_-u_+^2u_- + 6\chi_+\chi_- u_+u_- W_+ +6 \chi_+u_+W_+W_- +3\chi_+(W_-+W_+)W_-W_+\\
-&+3(\chi_-u_-)W_+^2 + 3(\chi_-u_-)^2W_+
+&+3(\chi_-u_-)W_+^2 + 3(\chi_+u_+)^2W_-
 \end{align*}
 
 \begin{enumerate}
@@ -2364,16 +2375,7 @@ The difference term $\mathcal{R}_{+,d}$ satisfies
 \end{theorem}
 
 \begin{proof}
-The two term $(\chi_-\chi_+)u_+(u_- - u_+)$ and $\frac{1}{2}\chi_+'(u_- - u_+)$ have compact support inside $(t_*-1, t_* + 1)$. Again, recall $u_+(t_*)  = \rmO(\eps^{1/6}) $ and $|u_- - u_+| = \rmO(\eps^{2/3})$, for all $t$ with $|t-t_*| \le 1$, we have that
-\[
-|(\chi_-\chi_+)u_+(u_- - u_+) + \frac{1}{2}\chi_+'(u_- - u_+) |_\infty= \rmO(\eps^{5/6}).
-\]
 
-For the linear term $\chi_-(u_- - u_+)W_+$, we calculate
-\[
-\|\chi_-(u_+ - u_-) W_+ \|_{\eta+1} \le |(T_\infty - t)(u_+-u_-) |_\infty \|W_+\|_\eta
-\]
-again use $u_+ - u_- = o(\frac{1}{T_\infty - t} )$.
 \end{proof}
 
 \item quadratic and cubic terms
@@ -2392,26 +2394,7 @@ with $\eta_* = \min(\eta-1, 2-\eta)$.
 \end{theorem}
 
 \begin{proof}
-First, we have
-\[
-\|W_+^2\|_{\eta+1} = |(T_\infty -t )^{1+\eta}W_+^2|_\infty \le (T_\infty - t)^{1+\eta}(T_\infty - t)^{-2\eta}\|W_+ \|^2_{\eta} \le (T_\infty - t)^{1-\eta}\|W_+ \|^2_{\eta}
-\]
-now since $t \in (0,T)$ we have $|T_\infty -t|  = \rmO(\eps^{-1})$, this gives
-\[
-\|W_+^2\|_{\eta+1} = \rmO(\eps^{\eta-1})
-\]
-since $\eta >1$, this is desired estimate.
 
-Next we have
-\[
-\|(\chi_+u_+)^3\|_{\eta+1} = | (T_\infty - t)^{1+\eta} u_+^3 |_\infty \le C(T_\infty -t)^{1+\eta}(T_\infty -t)^{-3} = \rmO(\eps^{2-\eta})
-\]
-this uses $\eta<2$, again, is desired.
-
-Finally, for the cubic term
-\[
-\|W_+^3\|_{\eta+1} \le \|W_+\|^3_{\eta} (T_\infty -t)^{1+\eta -3\eta}  = \rmO(\eps^{2\eta-1})
-\]
 \end{proof}
 \item mixed terms
 
@@ -2430,32 +2413,7 @@ Includes
  \end{theorem}
  
  \begin{proof}
-The first two terms $3(\chi_+^2\chi_-)u_+^2u_-$ and $6(\chi_+\chi_-)u_+u_-W_+$ are localized around $(t_*-1,t_*+1)$, hence we can treat them the same way as in the $\mathcal{R}_{-,m}$ case, using theorem \ref{DifrEsti} 
 
-The middle term $6\chi_+(3^{-1}+u_++2^{-1}(W_-+W_+))W_-W_+$ is estimated as follows:
-
-We only need to consider the term $\chi_+W_-W_+$, and compute
-\[
-\|\chi_+W_-W_+ \|_{\eta+1} \le |(T_\infty -t)W_-|_\infty \|W_+\|_\eta \le [\eps^{\frac{1}{3}}(T_\infty -t)]^{1-\nu} \|W_+\|_\eta
-\]
-because of the cut off $\chi_+$, we know that $t \in (t_*-1, T)$, so $|T_\infty - t| = \rmO(\eps^{-\frac{1}{6}})$, this shows
-\[
-\|W_-W_+\|_{\eta+1} = \rmO(\eps^{\frac{1-\nu}{6}})
-\]
-
-Finally, the last two terms $3(\chi_-u_-)W_+^2$ and $3(\chi_-u_-)^2 W_+$ is treated as follows:
-
-For $t$ in the support of $\chi_-$, we have $|u_-| \le C\delta^{\frac{1}{2}}$, so
-\[
-\|(\chi_-u_-)W_+^2\|_{\eta+1} \le |u_-| \|W_+^2\|_{\eta+1},
-\]
-where $\|W_+^2\|_{\eta+1}$ is estimated before.
-
-For $3(\chi_-u_-)^2 W_+$, we have
-\[
-\|3(\chi_-u_-)^2 W_+\|_{\eta+1} = |(T_\infty - t)(\chi_-u_-)^2|_\infty \|W_+\|_\eta
-\]
-same question, we need to use $u_- - u_+ = o(u_+)$ through out...
  \end{proof}
 \end{enumerate}
 
