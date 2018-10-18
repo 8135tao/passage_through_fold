@@ -1988,19 +1988,6 @@ W_-'  &= 2u_-W_- +2\chi_-(u_- -u_+)W_+ + (\chi_-\chi_+) u_-(u_- -u_+)+\frac{1}{2
 &+ 3\chi_-^2\chi_+ u_-^2 u_+  + 6\chi_-\chi_+ u_+ u_-W_- + 6\chi_- u_- W_- W_+ + 3\chi_-(W_-+W_+)W_-W_+ \\&+3(\chi_+u_+)W_-^2 + 3(\chi_-u_-)^2W_+
 \end{align*}
 
-Recall $|u_+-u_-|(t)  = \rmO(\eps^{2/3})$ by the Gronwall inequality argument for $t \in supp \chi_-\chi_+$, since $W_- = \eps^{1/3}w_-$ and $\eps^{-1/3}\varphi \frac{d}{dt} = \frac{d}{d\sigma}$,
-
-% we have that the nonhomogeneous term is of $\rmO_\eps(1)$ in the $w_-$ equation, consistent with the Region $1$ norm.
-
-
-%Then we get the $w_-$ equation in the $\sigma$ variable.
-%\begin{align*}
-%\frac{d}{d\sigma} w_- &= 2\eps^{-1/3}\varphi[\chi_+u_++\chi_-u_-]w_- +\eps^{-2/3}\varphi[(\chi_-\chi_+)u_-(u_--u_+)+\frac{1}{2}\chi_-'(u_+-u_-)]\\
-%& + \eps^{2/3}\varphi w_-^3+\eps^{-2/3}\varphi\chi_-^3u_-^3+3\varphi(\chi_-u_-)w_-^2+3\eps^{-1/3}\varphi(\chi_-u_-)^2w_-\\
-%&+3\eps^{-2/3}\varphi (\chi_-u_-+W_-)^2\chi_+u_+ + 3\eps^{-1/3}\varphi [(\chi_+u_++W_+)^2-W_+^2]w_-\\
-%&+\eps^{-1/3}\varphi[2+3(W_-+W_+) ]\chi_+W_+w_-
-%\end{align*}
-
 \item Distribute terms in the $+$ side 
 \begin{align*}
 W_+'  &=  \chi_+\mu+2u_+W_+ + 2\chi_+(u_+ -u_-)W_-+ (\chi_-\chi_+) u_+(u_- -u_+)+\frac{1}{2}\chi_+'(u_- -u_+) +2\chi_+W_-W_+\\
@@ -2009,13 +1996,6 @@ W_+'  &=  \chi_+\mu+2u_+W_+ + 2\chi_+(u_+ -u_-)W_-+ (\chi_-\chi_+) u_+(u_- -u_+)
 &+3(\chi_-u_-)W_+^2 + 3(\chi_+u_+)^2W_-
 \end{align*}
 
-%Change to $\xi$ time
-%\begin{align*}
-%\frac{d}{d\xi} W_+ &= e^{-\xi}\chi_+ \mu + 2e^{-\xi}[\chi_+u_++\chi_- u_-]W_+ + e^{-\xi}[ \chi_-\chi_+ u_+(u_--u_+)+\frac{1}{2}\chi_+'(u_+-u_-)] \\
-%& + e^{-\xi}(\chi_+^3u_+^3+W_+^3)+3e^{-\xi}[\chi_+u_+W_+^2+(\chi_+u_+)^2W_+ ]\\
-%&3e^{-\xi} \{ (\chi_+u_++W_+)^2\chi_-u_- + [(\chi_-u_-+W_-)^2-W_-^2]W_+ \}\\
-%&+e^{-\xi}[2 + 3(W_-+W_+)]\chi_-W_-W_+
-%\end{align*}
 
 \pagebreak
 \item Linear equation.
@@ -2029,7 +2009,7 @@ with $\mathcal{R}_{\pm}$ defined as in the distribution of terms.
 
 First fix
 \[
-\eta \in (1,2), \nu \in (0,1).
+\eta \in (1,2), \nu = 2-\eta\in (0,1).
 \]
 
 To be able to solve the linear equation, we first introduce the following weighted spaces, for the $-$ side we have
@@ -2071,7 +2051,7 @@ and the linear operator on the $+$ side
 \[
 \frac{d}{dt}  - 2u_+(t) : \mathcal{C}_\eta (0,T) \to \mathcal{C}_{\eta+1}(0,T)
 \]
-are Fredholm, and their indices are $X$, $Y$, respectively..
+are Fredholm, and their indices are $-1$, $Y$, respectively..
 \end{theorem}
 
 \begin{proof}
@@ -2114,7 +2094,7 @@ The equation for the $W_-$ component is:
 W_-'  - 2u_-W_-&= 2\chi_-(u_- -u_+)W_+ + (\chi_-\chi_+) u_-(u_- -u_+)+\frac{1}{2}\chi_-'(u_+ -u_-) \\
 &+W_-^2+ (\chi_-u_- + W_-)^3\\
 &+ 3\chi_-^2\chi_+ u_-^2 u_+ + 6\chi_-\chi_+ u_+ u_-W_-\\
- &+2\chi_-W_-W_+  + 6\chi_- u_- W_- W_+ + 3\chi_-(W_-+W_+)W_-W_+ \\&+3(\chi_+u_+)W_-^2 + 3(\chi_-u_-)^2W_+
+ &+2\chi_-W_-W_+  + 6\chi_- u_- W_- W_+ + 3\chi_-(W_-+W_+)W_-W_+ \\&+3(\chi_+u_+)W_-^2 + 3(\chi_-u_-)^2W_+.
 \end{align*}
 
 \begin{enumerate}
@@ -2131,7 +2111,7 @@ which is Fredholm on the function space as in the theorem.
 \begin{lemma} \label{DifrEsti}
 If $|t-t_*|\le C$ for some positive number $C$, then it holds that for all such $t$,
 \[
-|u_-(t)-u_+(t)| = \tilde{C}\eps^{2/3},
+|u_-(t)-u_+(t)| \le \tilde{C}\eps^{2/3},
 \] 
 where $\tilde{C}$ is another constant depending on $C$, both $C,C'$ here are independent of $\eps$.
 \end{lemma}
@@ -2140,46 +2120,51 @@ where $\tilde{C}$ is another constant depending on $C$, both $C,C'$ here are ind
 Let $v(t):= u_-(t)-u_+(t)$, by the differential equation of $u_-$ and $u_+$ solves, we have
 \begin{align*}
 v'(t) &= \mu+u_-^2-u_+^2 = \eps t -\delta + v(u_-+u_+)(t)\\
-&=\eps(t-t_*)+\eps t_* -\delta + v (u_-+u_+)
+&=\eps(t-t_*)+\eps t_* -\delta + v (u_-+u_+).
 \end{align*}
 For $t$ such that $|t-t_*|\le C$, since $u_-(t_*)=u_+(t_*) = \rmO(\eps^{1/6})$, we have  that $(u_-+u_+)(t) =\rmO(\eps^{1/6})$ from the asymptotic expansion of $u_-(t)$.
 
 Hence by Grownwall it follows that
 \[
-\left |(u_--u_+)(t)\right |=|v(t)| \le C' \left[\frac{1}{2}(t^2-t_*^2)-\delta(t-t_*)\right] \le C'\eps^{2/3}
+\left |(u_--u_+)(t)\right |=|v(t)| \le C' \left[\frac{1}{2}(t^2-t_*^2)-\delta(t-t_*)\right] \le C'\eps^{2/3}.
 \]
 \end{proof}
 
-\begin{theorem}
-The $u_--u_+$ term
+The following facts about $u_-$ and $u_+$ are also needed.
+\begin{lemma}\label{u_-est}
+Take $u_-$ and $u_+$ defined in the beginning of this section, we have
+\begin{enumerate}
+\item If $0<t<\eps^{-1}\delta$, then
 \[
-  (\chi_-\chi_+)u_-(u_--u_+) +\frac{1}{2}\chi_-'(u_+-u_-) + 2\chi_-(u_- -u_+)W_+ := \mathcal{R}_{-,d}
+ |u_-(t)| \lar \sqrt{\delta-\eps t}+\eps^{1/3},
+ \]
+ \item If $\eps^{-1}\delta < t <t_*$, then
+ \[
+ |u_-(t)|\lar |u_+(t)|.
+ \]
+\end{enumerate}
+\end{lemma}
+
+We then define the $u_--u_+$ term
+\[
+\mathcal{R}_{-,d} :=  (\chi_-\chi_+)u_-(u_--u_+) +\frac{1}{2}\chi_-'(u_+-u_-) + 2\chi_-(u_- -u_+)W_+ .
 \]
-satisfies
+
+\begin{theorem}
 \[
-\| \mathcal{R}_{-,d} \| \lar \min(\eps^{p}, \delta^{2(\eta-1)} )
+\| \mathcal{R}_{-,d} \| \lar \max(\eps^{\frac{\eta-1}{3}}, \delta^{2(\eta-1)-\frac{1}{4}} ).
 \]
 \end{theorem}
 \begin{proof}
 For $t\in \supp (\chi_-\chi_+) = \supp \chi_-'$, we have $|t-t_*| \le 1$. Note $u_-(t_*) = \rmO(\eps^{1/6})$ and by continuity it follows that $|u_-(t)| = \rmO(\eps^{1/6})$ for such $t$. And $I(t)=\delta^{\frac{1}{4}}\eps^{\frac{\nu-1}{3}}(T_\infty-t)^{1+\nu}$, from previous theorem $|u_- - u_+| = \rmO(\eps^{1/3})$ we conclude that
 \[
-|I(t) (\chi_-\chi_+)u_-(u_--u_+)|_\infty \lar \eps^{\frac{v-1}{3}} \eps^{-\frac{1+\nu}{6}} \eps^{\frac{1}{6}}\eps^{\frac{2}{3}} = \eps^{\frac{\nu+2}{6}}
+|I(t) (\chi_-\chi_+)u_-(u_--u_+)|_\infty \lar \eps^{\frac{v-1}{3}} \eps^{-\frac{1+\nu}{6}} \eps^{\frac{1}{6}}\eps^{\frac{2}{3}} = \eps^{\frac{\nu+2}{6}},
 \]
  and
 \[
-|I(t) \chi_-'(u_+-u_-) |_\infty \lar\eps^{\frac{v-1}{3}} \eps^{-\frac{1+\nu}{6}} \eps^{\frac{2}{3}} = \eps^{\frac{\nu+1}{6}}
+|I(t) \chi_-'(u_+-u_-) |_\infty \lar\eps^{\frac{v-1}{3}} \eps^{-\frac{1+\nu}{6}} \eps^{\frac{2}{3}} = \eps^{\frac{\nu+1}{6}}.
 \]
- The third term $2\chi_-(u_- -u_+)W_+$, however, only gets multiplied by $\chi_-$. We cannot just estimate this term in a compact interval around the gluing point $t_*$. Instead we will utilize the following two facts:
-\begin{itemize}
-\item for $0<t<\eps^{-1}\delta$, it holds
-\[
- |u_-(t)| \lar \sqrt{\delta-\eps t}+\eps^{1/3},
- \]
- \item for $\eps^{-1}\delta < t <t_*$, it holds
- \[
- |u_-(t)|\lar |u_+(t)|.
- \]
-\end{itemize}
+ The third term $2\chi_-(u_- -u_+)W_+$, however, only gets multiplied by $\chi_-$. We cannot just estimate this term in a compact interval around the gluing point $t_*$. 
 
 For $\eps^{-1}\delta<t<t_*$ where $I(t) = \delta^{-\frac{1}{4}}\eps^{-\frac{1-\nu}{3}} (T_\infty - t)^{1+\nu}$, it follows
 \begin{align*}
@@ -2191,8 +2176,7 @@ Since $|u_+| \lar (T_\infty -t)^{-1}$, and $|W_+| \lar (T_\infty-t)^{-\eta}$, th
 \[
 |I(t)\chi_-u_+ W_+|_\infty \lar |\delta^{-\frac{1}{4}}\eps^{-\frac{1-\nu}{3}} (T_\infty-t)^{\nu - \eta} |_\infty \lar \delta^{-\frac{1}{4}}\eps^{-\frac{1-\nu}{3}} (T_\infty-t_*)^{\nu - \eta} \lar \delta^{2(\eta-1)-\frac{1}{4}},
 \]
-
-where we used the fact that $\nu+\eta =2 $ and $1<\eta<2$. For the term $I(t)\chi_-u_-W_+$, we use the claim to replace $u_-$ by $u_+$ and hence reduce the proof to the same estimate.
+where we used the fact that $\nu+\eta =2 $ and $1<\eta<2$. For the term $I(t)\chi_-u_-W_+$, we use lemma \ref{u_-est} to replace $u_-$ by $u_+$ and hence reduce the proof to the same estimate.
 
 
 For $0<t<\eps^{-1}\delta$, where the weight $I(t) $ equals $[\delta^{-\frac{1}{4}} (\delta -\eps t)^{\frac{3}{2}}+\delta^{\frac{1}{4}}\eps^{\frac{2}{3}}]^{-1}$, it is convenient to write the term $T_\infty -t$ as follows:
@@ -2205,13 +2189,13 @@ It then follows that
 |I(t)\chi_- u_+ W_+|_\infty &\lar I(t)(T_\infty - t)^{-(1+\eta)} \lar I(\eps^{-1}\delta)(T_\infty - \eps^{-1}\delta)^{-(1+\eta)} \\
 &\lar \eps^{-\frac{2}{3}} \eps^{\frac{1+\eta}{3}} = \rmO(\eps^{\frac{\eta-1}{3}} ).
 \end{align*}
-Then we apply the claim to $I(t)\chi_-u_-W_+$
+Then we apply lemma \ref{u_-est} to $I(t)\chi_-u_-W_+$
 \begin{align*}
 |I(t)\chi_- u_- W_+|_\infty  &\lar \frac{\sqrt{\delta-\eps t}+\eps^{1/3}}{ \delta^{-\frac{1}{4}}(\delta-\eps t)^{\frac{3}{2}} + \delta^{\frac{1}{4}}\eps^{2/3}} (T_\infty - \eps^{-1}\delta)^{-\eta} \\
 & = \frac{\sqrt{\delta-\eps t}+\eps^{1/3}}{ \delta^{-\frac{1}{4}}(\delta-\eps t)^{\frac{3}{2}} + \delta^{\frac{1}{4}}\eps^{2/3}} \frac{\eps^{\eta}}{(\delta -\eps t +\eps^{\frac{2}{3}}\Omega_0)^\eta}\\
 &= \dfrac{(\delta \beta)^{1/2} + \eps^{1/3}} {(\delta \beta)^{3/2} + \eps^{2/3}} \dfrac{\eps^\eta}{(\delta \beta + \eps^{2/3} \Omega_0 )^{\eta} }\\
 & \lar \dfrac{1} {(\delta \beta)^{3/2} + \eps^{2/3}} \dfrac{\eps^\eta}{( (\delta \beta)^{1/2} + \eps^{1/3} )^{2\eta -1} } \\
-& \lar \eps^{\eta}\eps^{-\frac{2}{3}}\eps^{\frac{1-2\eta}{3}} = \eps^{\frac{\eta-1}{3}}
+& \lar \eps^{\eta}\eps^{-\frac{2}{3}}\eps^{\frac{1-2\eta}{3}} = \eps^{\frac{\eta-1}{3}},
 \end{align*}
 where $\beta = 1-\eps \delta^{-1}t$.
 \end{proof}
@@ -2219,14 +2203,13 @@ where $\beta = 1-\eps \delta^{-1}t$.
 
 
 
-\item  Quadratic and cubic terms
-
+\item  We define the qurdratic and cubic terms
 \[
-\mathcal{R}_{-,c}:= W_-^2 +(\chi_- u_- +W_-)^3 
+\mathcal{R}_{-,c}:= W_-^2 +(\chi_- u_- +W_-)^3.
 \]
 
-\begin{theorem}
-$\|\mathcal{R}_{-,c}\| \lar \min\{ \delta^{\frac{1}{4}},\eps^{\frac{\nu}{6}}\}$
+\begin{theorem} \label{R_-,c est}
+$\|\mathcal{R}_{-,c}\| \lar \max\{ \delta^{\frac{1}{4}},\eps^{\frac{\nu}{6}}, \eps^{\frac{1-\nu}{3}}\}$.
 \end{theorem}
 
 \begin{proof}
@@ -2234,13 +2217,13 @@ First, notice that the term $W_-^2$ and $W_-^3$ are not multiplied by the cut of
 
 If $t > \eps^{-1}\delta$, we have $(T_\infty -t )^{1-\nu} \le (T_\infty - \eps^{-1}\delta)^{1-\nu} \lar \eps^{\frac{\nu-1}{3}}$, hence 
 \begin{align*}
-\|W_-^2\| = |I(t) W_-^2(t) | &\lar \delta^{\frac{1}{4}} \eps^{\frac{\nu-1}{3}}(T_\infty - t)^{1+\nu}\left( \eps^{\frac{1-\nu}{3}}(T_\infty - t)^{-\nu}\right)^2\\ & \lar \delta^{\frac{1}{4}} \eps^{\frac{1-\nu}{3}}(T_\infty-t)^{1-\nu} \lar \delta^{\frac{1}{4}}
+\|W_-^2\| = |I(t) W_-^2(t) | &\lar \delta^{\frac{1}{4}} \eps^{\frac{\nu-1}{3}}(T_\infty - t)^{1+\nu}\left( \eps^{\frac{1-\nu}{3}}(T_\infty - t)^{-\nu}\right)^2\\ & \lar \delta^{\frac{1}{4}} \eps^{\frac{1-\nu}{3}}(T_\infty-t)^{1-\nu} \lar \delta^{\frac{1}{4}}.
 \end{align*} 
 
 For $t < \eps^{-1}\delta$, set again $\beta = 1-\eps \delta^{-1}t$, then
 \begin{align*}
 |I(t)\chi_-  W_-^2|_\infty &\lar \frac{ \left( \delta^{-\frac{1}{4}}(\delta-\eps t)+\delta^{\frac{1}{4}}\eps^{\frac{1}{3}} \right)^2}{\delta^{-\frac{1}{4}}(\delta-\eps t)^{\frac{3}{2}}+\delta^{\frac{1}{4}}\eps^{\frac{2}{3}} } = \delta^{-\frac{1}{4}}\frac{\left( \delta^{\frac{3}{4}}\beta+\delta^{\frac{1}{4}}\eps^{\frac{1}{3}} \right)^2 }{\delta\beta^{\frac{3}{2}}+\eps^{\frac{2}{3}}} \\
-& \lar \delta^{-\frac{1}{4}} \left(\frac{\delta^{\frac{3}{2}}\beta^2}{\delta\beta^{\frac{3}{2}}} + \frac{\delta^{\frac{1}{2}}\eps^{\frac{2}{3}}}{\eps^{\frac{2}{3}}} \right) \lar \delta^{\frac{1}{4}}
+& \lar \delta^{-\frac{1}{4}} \left(\frac{\delta^{\frac{3}{2}}\beta^2}{\delta\beta^{\frac{3}{2}}} + \frac{\delta^{\frac{1}{2}}\eps^{\frac{2}{3}}}{\eps^{\frac{2}{3}}} \right) \lar \delta^{\frac{1}{4}}.
 \end{align*}
 
 
@@ -2251,12 +2234,12 @@ For $\chi_-u_-^3$, only $0 \le t \le t_*+1$ is relevant. On $\eps^{-1}\delta<t<t
 
 \begin{align*}
 \|\chi_-u_-^3\| &\lar | I(t)u_-^3| \lar |\eps^{\frac{\nu-1}{3}}(T_\infty-t)^{1+\nu}(T_\infty-t)^{-3} | \lar \eps^{\frac{\nu-1}{3}} (T_\infty-t)^{\nu-2} \\
-& \lar \eps^{\frac{\nu-1}{3}}  (T_\infty - t)^{\nu-2} \lar \eps^{\frac{\nu-1}{3}} (T_\infty-t_*)^{\nu-2} \lar \eps^{\frac{\nu}{6}}
+& \lar \eps^{\frac{\nu-1}{3}}  (T_\infty - t)^{\nu-2} \lar \eps^{\frac{\nu-1}{3}} (T_\infty-t_*)^{\nu-2} \lar \eps^{\frac{\nu}{6}}.
 \end{align*}
-whereas for $0<t<\eps^{-1}\delta$, $I(t) =  [\delta^{-\frac{1}{4}} (\delta -\eps t)^{\frac{3}{2}}+\delta^{\frac{1}{4}}\eps^{\frac{2}{3}}]^{-1}$, hence
+whereas for $0<t<\eps^{-1}\delta$, $I(t) =  [\delta^{-\frac{1}{4}} (\delta -\eps t)^{\frac{3}{2}}+\delta^{\frac{1}{4}}\eps^{\frac{2}{3}}]^{-1},$ hence
 \begin{align*}
 \| \chi_-u_-^3\| &\lar |I(t)u_-^3| \lar \frac{[(\delta-\eps t)^{\frac{1}{2}}+\eps^{1/3} ]^{3}}{ \delta^{-\frac{1}{4}}(\delta-\eps t)^{\frac{3}{2}} + \delta^{\frac{1}{4}}\eps^{2/3}} \lar \frac{ (\delta-\eps t)^{\frac{3}{2}}+ \eps}{\delta^{-\frac{1}{4}}(\delta-\eps t)^{\frac{3}{2}} + \delta^{\frac{1}{4}}\eps^{2/3}}\\
-&\lar \frac{(\delta\beta)^{\frac{3}{2}}}{\delta^{-\frac{1}{4}}(\delta\beta)^{\frac{3}{2}} } + \frac{\eps}{\delta^{\frac{1}{4}} \eps^{\frac{2}{3}}}  = \delta^{\frac{1}{4}} + \delta^{-\frac{1}{4}}\eps^{\frac{1}{3}} \lar \delta^{\frac{1}{4}}
+&\lar \frac{(\delta\beta)^{\frac{3}{2}}}{\delta^{-\frac{1}{4}}(\delta\beta)^{\frac{3}{2}} } + \frac{\eps}{\delta^{\frac{1}{4}} \eps^{\frac{2}{3}}}  = \delta^{\frac{1}{4}} + \delta^{-\frac{1}{4}}\eps^{\frac{1}{3}} \lar \delta^{\frac{1}{4}}.
 \end{align*}
 if we fix $\delta$ small first and let $\eps \to 0$.
 
@@ -2272,25 +2255,21 @@ And for $0<t<\eps^{-1}\delta$, $I(t) = [\delta^{-\frac{1}{4}}(\delta-\eps t)^{\f
 \begin{align*}
 \|W_-(t)^3\| &\lar |I(t)W_-(t)^3| \lar \frac{(\delta^{\frac{3}{4}}\beta + \delta^{\frac{1}{4}}\eps^{\frac{1}{3}} )^3}{\delta^{\frac{5}{4}}\beta^{\frac{3}{2}} +\delta^{\frac{1}{4}}\eps^{\frac{2}{3}} } \\
 & \lar \frac{ \delta^{\frac{9}{4}}\beta^3  }{\delta^{\frac{5}{4}}\beta^{\frac{3}{2}}} + \frac{\delta^{\frac{3}{4}}\eps}{\delta^{\frac{1}{4}} \eps^{\frac{2}{3}}}  = \delta \beta^{\frac{3}{2}} + \eps^{\frac{1}{3}}\delta\\
-& = \rmO(\delta)
+& = \rmO(\delta).
 \end{align*}
-================================================
 \end{proof}
 
-\item Mixed terms
-
-Includes
+\item We define the mixed residual terms
 \begin{align*}
 \mathcal{R}_{-,m} :&= 3(\chi_-^2\chi_+) u_-^2 u_+  + 6(\chi_-\chi_+) u_+ u_-W_- \\ 
 &+ 6\chi_-(3^{-1}+u_- +2^{-1}(W_-+W_+))W_-W_+
 \\ 
-&+3(\chi_+u_+)W_-^2 +3(\chi_+u_+)^2W_-  
+&+3(\chi_+u_+)W_-^2 + 3(\chi_-u_-)^2W_+ .
 \end{align*}
 
 \begin{theorem}
-Cross terms satisfy the estimate
 \[
-\|\mathcal{R}_{-,m} \|_{\mathcal{C}_V} \lar 
+\|\mathcal{R}_{-,m} \|_{\mathcal{C}_V} \lar \max\{\eps^{\frac{\eta-1}{6}}, \eps^{\frac{\nu}{6}}, \delta^{\frac{1}{4}} \}.
 \]
 \end{theorem}
 \begin{proof}
@@ -2316,21 +2295,61 @@ for $t_*+1> t >\eps^{-1}\delta$, we have
 
 while for $t < \eps^{-1}\delta$, 
 \begin{align*}
-\|\chi_-W_- W_+ \| \lar \frac{\left( \delta^{-\frac{1}{4}}(\delta-\eps t)+\delta^{\frac{1}{4}}\eps^{\frac{1}{3}} \right) }{\left(\delta^{-\frac{1}{4}}(\delta-\eps t)^{\frac{3}{2}} +\delta^{\frac{1}{4}} \eps^{\frac{2}{3}} \right)} \frac{\eps^{\eta}}{[(\delta-\eps t)+\eps^{\frac{2}{3}}\Omega_0]^{\eta}}
+\|\chi_-W_- W_+ \| & \lar \frac{\left( \delta^{-\frac{1}{4}}(\delta-\eps t)+\delta^{\frac{1}{4}}\eps^{\frac{1}{3}} \right) }{\left(\delta^{-\frac{1}{4}}(\delta-\eps t)^{\frac{3}{2}} +\delta^{\frac{1}{4}} \eps^{\frac{2}{3}} \right)} \frac{\eps^{\eta}}{[(\delta-\eps t)+\eps^{\frac{2}{3}}\Omega_0]^{\eta}} \\
+& \lar \frac{\delta^{\frac{1}{2}}\beta+\eps^{\frac{1}{3}}}{\delta\beta^{\frac{3}{2}}+\eps^{\frac{2}{3}}}\frac{\eps^\eta}{(\delta \beta + \eps^{\frac{2}{3}}\Omega_0)^\eta}   \\
+& \lar \dfrac{(\delta \beta)^{1/2} + \eps^{1/3}} {(\delta \beta)^{3/2} + \eps^{2/3}}\frac{\eps^\eta}{(\delta \beta + \eps^{\frac{2}{3}}\Omega_0)^\eta}\\
+&\lar \eps^{\frac{\eta-1}{3}} 
 \end{align*}
+as in the estimate of the term $\chi_-u_-W_+$.
 
-We then focus on the last two terms, first
+Note, by lemma \ref{u_-est}, for $0\le t \le t_*+1$, it is true that 
+\[
+|u_-(t)| \lar \begin{cases}
+ |u_+(t)| \lar (T_\infty-t_*)^{-1}\lar \eps^{\frac{1}{6}}\lar 1, \text{ for }\eps^{-1}\delta < t < t_*+1,\\
+ (\delta-\eps t)^{\frac{1}{2}}+\eps^{\frac{1}{3}}\lar 1, \text{ for }\eps^{-1}\delta > t > 0.
+\end{cases}.
+\]
+
+For the same range of $t$,
+\[
+|W_-(t)| \lar\begin{cases}
+ \delta^{\frac{1}{4}}\eps^{\frac{1-\nu}{3}}(T_\infty-t)^{-\nu} \lar \delta^{\frac{1}{4}}\eps^{\frac{2-\nu}{6}} \lar 1, \text{ for }\eps^{-1}\delta < t < t_*+1,\\
+ \delta^{-\frac{1}{4}}(\delta-\eps t)+\delta^{\frac{1}{4}}\eps^{\frac{1}{3}} \lar 1, \text{ for }\eps^{-1}\delta > t > 0.
+\end{cases}
+\]
+and 
+\[
+|W_+(t)| \lar (T_\infty-t)^{-\eta} \lar (T_\infty-t_*)^{-\eta} \lar \eps^{\frac{\eta}{6}} \lar 1
+\]
+
+All these facts, together with the previous estimates on $W_-W_+$, implies  
+\[
+\|\chi_-(3^{-1}+u_- +2^{-1}(W_-+W_+))W_-W_+\| \lar \|\chi_-W_-W_+\| \lar \eps^{\frac{\eta-1}{3}}
+\]
+
+Finally for the last two terms, $3(\chi_+u_+)W_-^2$ and $ 3(\chi_-u_-)^2W_+$.
+
+For $0\le t \le T,$ since $|u_+(t)| \lar (T_\infty-t)^{-1} \le (T_\infty-T)^{-1} \lar \delta \le 1$, this implies
+\[
+\|\chi_+u_+W_-^2\| \lar \|W_-^2\| \lar \delta^{\frac{1}{4}},
+\]
+as in theorem \ref{R_-,c est}.
+
+
+Now for $(\chi_-u_-)^2W_+$, notice that
 \begin{align*}
-\|3(\chi_+u_+)W_-^2\|_{\mathcal{C}_V} \le (T_\infty -t)^{-1} \|W_-^2\|_{\mathcal{C}_V} \le (T_\infty - t_*)^{-1} \|W_-^2\|_{\mathcal{C}_v} =\rmO(\eps^{1/6})  \|W_-^2\|_{\mathcal{C}_v}
+\|(\chi_+u_+)W_-^2\| &\lar |I(t)u_-^2W_+| \lar |I(t)u_+^2W_+| \lar \\
+&\le \eps^{\frac{\nu-1}{3}}(T_\infty-t)^{1+\nu}(T_\infty-t)^{-2}(T_\infty-t)^{-\eta} \\
+&\lar \eps^{\frac{\nu-1}{3}}(T_\infty-t)^{-1+\nu-\eta} \lar \eps^{\frac{\nu-1}{3}}(T_\infty-t)^{2\nu-3} \\
+& \le \eps^{\frac{\nu-1}{3}}\eps^{\frac{3-2\nu}{6}} = \eps^{\frac{1}{6}}
 \end{align*}
-since we already dealt with $\|W_-^2\|_{\mathcal{C}_v}$ in theorem (quadratic and cubic terms), we are good here.
-
-Next, we estimate
+for $\eps^{-1}\delta < t<t_*+1$. While
 \begin{align*}
-\|3(\chi_+u_+)^2W_-\|_{\mathcal{C}_V} \le |(T_\infty - t)u_+^2|_\infty \|W_-\|_{\mathcal{C}_v} =\rmO(\eps^{1/6})\|W_-\|_{\mathcal{C}_v}
+\|(\chi_+u_+)W_-^2\| & \lar \frac{(\delta-\eps t)+\eps^{\frac{2}{3}}}{\delta^{-\frac{1}{4}}(\delta-\eps t)^{\frac{3}{2}} +\delta^{\frac{1}{4}}\eps^{\frac{2}{3}}} \frac{\eps^\eta}{\left[(\delta-\eps t)+\eps^{\frac{2}{3}}\Omega_0 \right]^{\eta}}\\
+& \lar \delta^{-\frac{1}{4}}\frac{\delta \beta+\eps^{\frac{2}{3}}}{\delta \beta^{\frac{3}{2}}+\eps^{\frac{2}{3}}} \frac{\eps^{\eta}}{\left[\delta\beta+\eps^{\frac{2}{3}}\Omega_0\right]^\eta}\\
+&\lar \delta^{-\frac{1}{4}} (\beta^{\frac{1}{2}}+1) \eps^{\frac{\eta}{3}} \lar \eps^{\frac{\eta}{3}}
 \end{align*}
-
-for $t>\eps^{-1}\delta$. Due to the $\chi_+$ cut off, for $t<\eps^{-1}\delta$, this term becomes $0$.
+for $0<t<\eps^{-1}\delta$.
 \end{proof}
 \end{enumerate}
 
