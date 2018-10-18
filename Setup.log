@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  17 OCT 2018 21:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  18 OCT 2018 17:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -634,36 +634,36 @@ d on input line 1831.
 [26] [27] [28] [29] [30] [31]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 2089.
+(hyperref)                removing `math shift' on input line 2091.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 2089.
+(hyperref)                removing `subscript' on input line 2091.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 2089.
+(hyperref)                removing `math shift' on input line 2091.
 
 [32] [33] [34] [35] [36]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 2358.
+(hyperref)                removing `math shift' on input line 2360.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 2358.
+(hyperref)                removing `subscript' on input line 2360.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 2358.
+(hyperref)                removing `math shift' on input line 2360.
 
 [37]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2454.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2456.
  [38]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2454.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2456.
  (./Setup.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2454.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2454.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2456.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2456.
 
 Package rerunfilecheck Info: File `Setup.out' has not changed.
 (rerunfilecheck)             Checksum: EA3E0EC3108F8EEF343A5596BBCEAEF6;1260.
@@ -671,7 +671,7 @@ Package rerunfilecheck Info: File `Setup.out' has not changed.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2454.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2456.
  ) 
 Here is how much of TeX's memory you used:
  9580 strings out of 493089
@@ -699,7 +699,7 @@ live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texli
 ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texliv
 e/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Setup.pdf (38 pages, 343647 bytes).
+Output written on Setup.pdf (38 pages, 343678 bytes).
 PDF statistics:
  442 PDF objects out of 1000 (max. 8388607)
  380 compressed objects within 4 object streams
