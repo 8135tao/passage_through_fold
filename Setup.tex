@@ -17,6 +17,7 @@
 \usepackage{authblk}
 \usepackage{textcomp}
 \usepackage[small]{caption}
+\SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}
 
 
 \usepackage[hypertexnames=false,colorlinks=true,linkcolor=blue,citecolor=blue]{hyperref}
@@ -30,7 +31,7 @@
 \setlength{\parskip}{1.0ex plus0.2ex minus0.2ex}
 \renewcommand{\baselinestretch}{1.1}
 \graphicspath{{eps/}{pdf/}}
-%\setcaptionmargin{0.25in}
+\setcaptionmargin{0.25in}
 \def\captionfont{\itshape\small}
 \def\captionlabelfont{\upshape\small}
 
@@ -96,33 +97,19 @@
 
 \renewcommand\labelitemi{$\bullet$}
 
-
 \title{Passage through a fold without a phase space}
 \author{author}
 \date{2016}
 \begin{document}
 
-\iffalse
 \section{Introduction}
 
-Nonlocal models describe a wealth of phenomena, neural field
-
-
--(SP?) PDE dynamics under slowly varying parameters..(even in ODE!)
-
-
-\begin{itemize}
-
-\item Setup 
-\item goal
-\end{itemize}
-\fi
+Introduce something
 
 
 \section{Hyperbolic Gluing}
-Consider the $2$-d system
 \[
-\dot{u} = Au + f(u), \hspace{0.2in} u=(u^1(t),u^2(t))^T,
+\dot{u} = Au + f(u),  u=(u^1(t),u^2(t))^T,
 \] 
 
 Where $A$ is a constant coefficient hyperbolic matrix, with exactly $1$ stable/unstable direction. And the dot is $d/dt$. $f$ denotes higher order terms so $f(0)=0$ and $Df(0)=0$.
@@ -1744,8 +1731,7 @@ with B.C.
 \end{equation}
 
 where $\delta,\eps, T$ are parameters.
-\begin{enumerate}
-\item $\mathbf{Region \hspace{0.05in}1} $
+\subsection{Region I}
 \begin{itemize}
 \item Ansatz and rescale in time
 \[
@@ -1828,7 +1814,7 @@ This is the nonhomogeneous term, so we just need to use the usual sup norm.
 \end{itemize} 
 
 
-\item $\bold{Region \hspace{0.1in} 2}$ 
+\subsection{Region II}
 \begin{itemize}
 \item Ansatz and rescale
 \[
@@ -1990,7 +1976,7 @@ W_-'  &= 2u_-W_- +2\chi_-(u_- -u_+)W_+ + (\chi_-\chi_+) u_-(u_- -u_+)+\frac{1}{2
 
 \item Distribute terms in the $+$ side 
 \begin{align*}
-W_+'  &=  \chi_+\mu+2u_+W_+ + 2\chi_+(u_+ -u_-)W_-+ (\chi_-\chi_+) u_+(u_- -u_+)+\frac{1}{2}\chi_+'(u_- -u_+) +2\chi_+W_-W_+\\
+W_+'  &= 2u_+W_+ + \chi_+\mu + 2\chi_+(u_+ -u_-)W_-+ (\chi_-\chi_+) u_+(u_- -u_+)+\frac{1}{2}\chi_+'(u_- -u_+) +2\chi_+W_-W_+\\
 &+W_+^2+ (\chi_+u_+ + W_+)^3 \\
 &+ 3\chi_+^2\chi_-u_+^2u_- + 6\chi_+\chi_- u_+u_- W_+ +6 \chi_+u_+W_+W_- +3\chi_+(W_-+W_+)W_-W_+\\
 &+3(\chi_-u_-)W_+^2 + 3(\chi_+u_+)^2W_-
@@ -2088,7 +2074,7 @@ To find the Fredholm index of this operator.
 
 \pagebreak
 
-\subsection{Fixed point arguments-set up for $W_-$}
+\subsection{Fixed point arguments-set up for \texorpdfstring{$W_-$}{Wminus}}
 To close the argument, we need to check the residual part $\mathcal{R}_{\pm}$ are compatible with the function space for which we know the Fredholm properties of the linear part.
 
 The equation for the $W_-$ component is:
@@ -2119,16 +2105,24 @@ where $\tilde{C}$ is another constant depending on $C$, both $C,C'$ here are ind
 \end{lemma}
 
 \begin{proof}
-Let $v(t):= u_-(t)-u_+(t)$, by the differential equation of $u_-$ and $u_+$ solves, we have
+First notice $u_-(t_*) = u_+(t_*) = \delta \eps^{\frac{1}{6}}+\rmO(\eps^{\frac{1}{2}})$, then for $t$ with $|t-t_*| \le C$, it is true that $|u_-(t)+u_+(t)| \le C\eps^\frac{1}{6}$ from the formulas defining $u_+$ and $u_-$.
+
+Next, set $v(t):= u_-(t)-u_+(t)$, then $v(t_*) = 0$ and $v$ satisfies
 \begin{align*}
-v'(t) &= \mu+u_-^2-u_+^2 = \eps t -\delta + v(u_-+u_+)(t)\\
-&=\eps(t-t_*)+\eps t_* -\delta + v (u_-+u_+).
+v'(t) &= \mu+u_-^2-u_+^2 \\
+&= \eps t -\delta + (u_- + u_+) v(t)\\
+&\le \eps^{\frac{2}{3}}\Omega_0 +  (u_-+u_+) v(t)\\
+&\le \eps^{\frac{2}{3}}\Omega_0 +  C\eps^{\frac{1}{6}} v(t),
 \end{align*}
-For $t$ such that $|t-t_*|\le C$, since $u_-(t_*)=u_+(t_*) = \rmO(\eps^{1/6})$, we have  that $(u_-+u_+)(t) =\rmO(\eps^{1/6})$ from the asymptotic expansion of $u_-(t)$.
+integrate the differential inequality from $t_*$ to $t$ gives
+
+\[
+v(t) \le \eps^{\frac{2}{3}}(t-t_*)+\int_{t_*}^t C\eps^{\frac{1}{6}}v(s)ds \le C\eps^{\frac{2}{3}}+\int_{t_*}^t C\eps^{\frac{1}{6}}v(s)ds
+\]
 
 Hence by Grownwall it follows that
 \[
-\left |(u_--u_+)(t)\right |=|v(t)| \le C' \left[\frac{1}{2}(t^2-t_*^2)-\delta(t-t_*)\right] \le C'\eps^{2/3}.
+|v(t)| \le C\eps^{\frac{2}{3}}\exp\left(\int_{t_*}^t C\eps^{\frac{1}{6}}ds \right) \le \tilde{C}\eps^{\frac{2}{3}}
 \]
 \end{proof}
 
@@ -2357,10 +2351,10 @@ for $0<t<\eps^{-1}\delta$.
 
 
 \pagebreak
-\subsection{Fixed point argument-set up for $W_+$}
+\subsection{Fixed point argument-set up for \texorpdfstring{$W_+$}{Wplus}}
 ////////////estimate for $W_+$ equation////////////
 \begin{align*}
-W_+'  &=  \chi_+\mu+2u_+W_+ + 2\chi_+(u_+ -u_-)W_-+ (\chi_-\chi_+) u_+(u_- -u_+)+\frac{1}{2}\chi_+'(u_- -u_+) +2\chi_+W_-W_+\\
+W_+'  &= 2u_+W_+ + \chi_+\mu+ 2\chi_+(u_+ -u_-)W_-+ (\chi_-\chi_+) u_+(u_- -u_+)+\frac{1}{2}\chi_+'(u_- -u_+) +2\chi_+W_-W_+\\
 &+W_+^2+ (\chi_+u_+ + W_+)^3 \\
 &+ 3\chi_+^2\chi_-u_+^2u_- + 6\chi_+\chi_- u_+u_- W_+ +6 \chi_+u_+W_+W_- +3\chi_+(W_-+W_+)W_-W_+\\
 &+3(\chi_-u_-)W_+^2 + 3(\chi_+u_+)^2W_-
@@ -2374,20 +2368,29 @@ W_+'  &=  \chi_+\mu+2u_+W_+ + 2\chi_+(u_+ -u_-)W_-+ (\chi_-\chi_+) u_+(u_- -u_+)
 
 \item  $\chi_+\mu$ term
 \begin{theorem}
-The nonhomogeneous term $\chi_+ \mu$ satisfies
+\[
+\|\chi_- \mu \| \lar \eps ^{\frac{3-\eta}{6}}
+\]
 \end{theorem}
 
-\begin{proof}a calculation shows
-\begin{align*}
-\|\chi_+ \mu \|_{\eta+1} = |(T_\infty -t)^{1+\eta}\chi_+\mu(t) |_\infty  = \rmO( \eps^{\frac{2}{3}} \eps^{\frac{-(1+\eta)}{6}} ) = \rmO(\eps^{\frac{3-\eta}{6}} )
-\end{align*}
-where we solved directly that $\mu(t) = \eps t -\delta = \eps(T_\infty - u_+(t)^{-1})-\delta= \eps^{\frac{2}{3}}\Omega_0 - \eps u_+^{-1}$ , and that $T_\infty - t \in (\delta^{-1},\delta^{-1}\eps^{\frac{-1}{6}})$ for $t \in (t_*,T)$.
+\begin{proof}Note $\mu$ is explicitly given by $\mu(t) = \eps t -\delta$, which implies
+\[
+\mu(t)\le   \eps T -\delta \le \eps T_\infty - \delta = \eps^{\frac{2}{3}}\Omega_0,
+ \]
+ and for $t \in (t_*-1,T)$, it is true that
+ \[
+ (T_\infty-t)^{1+\eta} \lar (T_\infty - t_*)^{1+\eta} \lar \eps^{-\frac{1+\eta}{6}}.
+ \]
+Combing these two facts yields
+\[
+\|\chi_+ \mu \| \lar |(T_\infty -t)^{1+\eta}\chi_+\mu(t) | \lar \left(\eps^{\frac{2}{3}}\Omega_0 \right)\left( \eps^{-\frac{1+\eta}{6}}\right) \lar \eps^{\frac{3-\eta}{6}}
+\]
 \end{proof}
 \item $(u_- - u_+)$ term (difference term)
 
 Includes
 \[
-\mathcal{R}_{+,d} := 2\chi_-(u_- - u_+)W_+ + (\chi_-\chi_+)u_+(u_- - u_+) + \frac{1}{2}\chi_+'(u_- - u_+)
+\mathcal{R}_{+,d} := 2\chi_+(u_+ - u_-)W_- + (\chi_-\chi_+)u_+(u_- - u_+) + \frac{1}{2}\chi_+'(u_- - u_+)
 \]
 
 \begin{theorem}
@@ -2397,10 +2400,22 @@ The difference term $\mathcal{R}_{+,d}$ satisfies
 \]
 \end{theorem}
 
+\begin{lemma}
+For $t_* -1 \le t \le T$, the following holds
+\[
+|u_+(t)-u_-(t)| \lar \eps^{\frac{1}{2}}
+\]
+\end{lemma}
 \begin{proof}
-
+Unlike lemma \ref{DifrEsti}, we are allowing $t$ to reach time $T$, where the condition $|t-t_*|\le C$ is not satisfied. But, the same argument goes through, again let $v = u_- -u_+$, notice that for $t \in (t_*-1,T)$, $|u_-(t)|+|u_+(t)| \lar \delta$, and $|t-t_*| \le T-t_* \lar \eps^{-\frac{1}{6}}$, then it follows that
+\[
+v(t)\le  C\eps^{\frac{2}{3}}\eps^{-\frac{1}{6}} + \int_{t_*}^t C\delta v(s)ds \implies |v(t)| \lar \eps^{\frac{1}{2}}.
+\]
 \end{proof}
 
+\begin{proof}[proof of theorem]Use lemma
+
+\end{proof}
 \item quadratic and cubic terms
 
 Includes
@@ -2441,8 +2456,6 @@ Includes
 \end{enumerate}
 
 \end{itemize}
-
-\end{enumerate}
 
 
 %Title: Bifurcation of spikes from the essential spectrum in 
