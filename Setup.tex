@@ -2263,7 +2263,7 @@ And for $0<t<\eps^{-1}\delta$, $I(t) = [\delta^{-\frac{1}{4}}(\delta-\eps t)^{\f
 &+3(\chi_+u_+)W_-^2 + 3(\chi_-u_-)^2W_+ .
 \end{align*}
 
-\begin{theorem}
+\begin{theorem}\label{R-mix}
 \[
 \|\mathcal{R}_{-,m} \|_{\mathcal{C}_V} \lar \max\{\eps^{\frac{\eta-1}{6}}, \eps^{\frac{\nu}{6}}, \delta^{\frac{1}{4}} \}.
 \]
@@ -2400,7 +2400,7 @@ The difference term $\mathcal{R}_{+,d}$ satisfies
 \]
 \end{theorem}
 
-\begin{lemma}
+\begin{lemma} \label{DifrEsti2}
 For $t_* -1 \le t \le T$, the following holds
 \[
 |u_+(t)-u_-(t)| \lar \eps^{\frac{1}{2}}
@@ -2413,8 +2413,26 @@ v(t)\le  C\eps^{\frac{2}{3}}\eps^{-\frac{1}{6}} + \int_{t_*}^t C\delta v(s)ds \i
 \]
 \end{proof}
 
-\begin{proof}[proof of theorem]Use lemma
+\begin{proof}[proof of theorem]
+For $W_-(t)$ with $t>t_*-1$, the estimate
+\[ 
+|W_-(t)| \lar \delta^{\frac{1}{4}}\eps^{\frac{1-\nu}{3}}(T_\infty-t)^{-\nu}
+\]
+holds.
 
+Then, use lemma \ref{DifrEsti2}
+\begin{align*}
+\|2\chi_+(u_+ - u_-)W_- \| &\lar  |(T_\infty-t)^{1+\eta}\chi_+(u_- - u_+)W_-| \lar \\
+& \lar \eps^{\frac{1}{2}}(T_\infty-t)^{1+\eta}\delta^{\frac{1}{4}}\eps^{\frac{1-\nu}{3}}(T_\infty-t)^{-\nu} \\
+&\lar \eps^{\frac{1}{2}+\frac{1-\nu}{3}}(T_\infty-t_*)^{1+\eta}\delta^{\frac{1}{4}}(T_\infty-T)^{-\nu}\\
+&\lar \eps^{\frac{1}{2}+\frac{1-\nu}{3}-\frac{1+\eta}{6}} \delta^{\nu+\frac{1}{4}}\\
+&\lar \eps^{\frac{2-\nu}{6}} = \eps^{\frac{\eta}{6}},
+\end{align*}
+and for the other two terms, we actually have $|u_- - u_+|\lar \eps^{\frac{2}{3}}$, thanks to the term $\chi_-\chi_+$ and $\chi_+'$.
+\begin{align*}
+\|(\chi_-\chi_+)u_+(u_- -u_+)\|  &\lar (T_\infty-t_*)^\eta\eps^{\frac{2}{3}} \lar \eps^{\frac{4-\eta}{6}} \\
+\|(\chi_+')(u_- -u_+)\|  &\lar (T_\infty-t_*)^{1+\eta}\eps^{\frac{2}{3}} \lar \eps^{\frac{3-\eta}{6}}
+\end{align*}
 \end{proof}
 \item quadratic and cubic terms
 
@@ -2428,11 +2446,28 @@ we have
 \[
 \| \mathcal{R}_{+,c} \|_{\eta+1} = \rmO(\eps^{\eta_*}),
 \]
-with $\eta_* = \min(\eta-1, 2-\eta)$.
 \end{theorem}
 
 \begin{proof}
+The definition of the function space gives
+\[
+|W_+(t)| \lar (T_\infty - t)^{-\eta}
+\]
+\begin{align*}
+\|W_+^2 \| &\lar |(T_\infty - t)^{1+\eta}W_+(t)^2| \lar (T_\infty- t)^{1+\eta -2\eta} \\
+& \lar (T_\infty - T)^{1-\eta} \lar \delta^{\eta-1}
+\end{align*}
 
+Similarly for $W_-^3$ term
+\begin{align*}
+\|W_+^3\| &\lar |(T_\infty-t)^{1+\eta} (T_\infty-t)^{-3\eta}| = (T_\infty-t)^{1-2\eta} \lar (T_\infty-T)^{1-2\eta} \lar \delta^{2\eta-1}\\
+\end{align*}
+note here $t$ lies in the full range $(0,T)$, since there are no cutoff function multiplied to these terms.
+
+For the term $(\chi_+u_+)^3$, we have
+\begin{align*}
+\|\chi_+^3u_+^3\| \lar (T_\infty - t)^{1+\eta}u_+^3 \lar (T_\infty - t)^{1+\eta -3} \lar (T_\infty -T)^{\eta-2} \lar \delta^{2-\eta}
+\end{align*}
 \end{proof}
 \item mixed terms
 
@@ -2440,19 +2475,50 @@ Includes
 \begin{align*}
 \mathcal{R}_{+,m} &:=3(\chi_+^2\chi_-)u_+^2u_- + 6(\chi_+\chi_-)u_+ u_- W_+\\
 &+6\chi_+(3^{-1} + u_+ + 2^{-1}(W_-+W_+))W_-W_+\\
-&+ 3(\chi_-u_-)W_+^2 + 3(\chi_-u_-)^2W_+
+&+3(\chi_-u_-)W_+^2 + 3(\chi_+u_+)^2W_-
 \end{align*}
 
- \begin{theorem}
- We have
+ \begin{theorem}\label{R+mix}
  \[
- \|\mathcal{R}_{+,m}\|_{\eta+1} = ...
+ \|\mathcal{R}_{+,m}\| = ...
  \]
  \end{theorem}
  
- \begin{proof}
+\begin{proof}
+Following the order of proof as in theorem \ref{R-mix}, first
+\begin{align*}
+\|(\chi_+^2\chi_-)u_+^2u_-\| &\lar (T_\infty-t)^{1+\eta} \left( u_+^3+u_+^2(u_--u_+)\right)\\
+&\lar \|u_+^3\|+\eps^{\frac{2}{3}}\|u_+^2\| \lar \delta^{2-\eta} + \eps^{\frac{2}{3}-\frac{\eta-1}{6}}
+\end{align*}
+by lemma \ref{DifrEsti}.
 
- \end{proof}
+Second, 
+\begin{align*}
+\|(\chi_+\chi_-)u_+u_-W_+\| &\lar (T_\infty-t)^{1+\eta}\left(u_+^2+u_+(u_+-u_-)\right)W_+\\
+&\lar (T_\infty - t)\left( u_+^2+u_+(u_+-u_-)\right) \\
+& \lar (T_\infty-t)^{-1} + \eps^{\frac{2}{3}} \lar (T_\infty-t_*)^{-1} + \eps^{\frac{2}{3}}\\
+&\lar  \eps^{\frac{1}{6}} .
+\end{align*}
+
+Next are the $W_-W_+$ terms.
+\begin{align*}
+\|\chi_+W_+W_-\| &\lar (T_\infty - t)^{1+\eta}(T_\infty - t)^{-\eta} \delta^{\frac{1}{4}} \eps^{\frac{1-\nu}{3}} (T_\infty -t)^{-\nu} \\
+& \lar (T_\infty - t)^{1-\nu} \eps^{\frac{1-\nu}{3}} \delta^{\frac{1}{4}} \lar (T_\infty -t_*)^{1-\nu}\eps^{\frac{1-\nu}{3}}\delta^{\frac{1}{4}}\\
+& \lar \eps^{\frac{1-\nu}{6}},
+\end{align*}
+
+\begin{align*}
+\|\chi_+(W_-+W_+)W_-W_+\| &\lar (T_\infty - t)^{1+\eta}(T_\infty-t)^{-\nu} \eps^{\frac{2(1-\nu)}{3}}(T_\infty-t)^{-\nu}(T_\infty-t)^{-\eta}+ \\&+(T_\infty-t)^{1+\eta}(T_\infty-t)^{-\eta} \eps^{\frac{1-\nu}{3}}(T_\infty-t)^{-\nu}(T_\infty - t)^{-\eta} \\
+&\lar (T_\infty-t)^{1-\nu}(T_\infty-t)^{-\nu}\eps^{\frac{2(1-\nu)}{3}} + (T_\infty-t)^{1-\eta}(T_\infty-t)^{-\nu}\eps^{\frac{1-\nu}{3}}\\
+&\lar \eps^{\frac{v-1}{6}}\delta^{\nu}\eps^{\frac{2(1-\nu)}{3}} + \delta\eps^{\frac{1-\nu}{3}} \lar \eps^{\frac{1-\nu}{2}}+\eps^{\frac{1-\nu}{3}},
+\end{align*}
+
+\begin{align*}
+\|u_+W_-W_+\| &\lar (T_\infty - t)^{1+\eta} (T_\infty-t)^{-1}\delta\eps^{\frac{1-\nu}{3}}(T_\infty-t)^{-\nu}(T_\infty-t)^{-\eta} \\
+&\lar \delta\eps^{-\frac{1-\nu}{3}}(T_\infty-t)^{-\nu} \lar \delta^{\nu+\frac{1}{4}}\eps^{\frac{1-\nu}{3}} .
+\end{align*}
+
+\end{proof}
 \end{enumerate}
 
 \end{itemize}
