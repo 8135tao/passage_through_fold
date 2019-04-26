@@ -1,0 +1,1015 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{stmaryrd}
+\usepackage{fullpage}
+\usepackage{ifthen}
+\usepackage{subfigure}
+\usepackage{epic}
+\usepackage{authblk}
+\usepackage{textcomp}
+\usepackage[small]{caption}
+\SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}
+
+
+\usepackage[hypertexnames=false,colorlinks=true,linkcolor=blue,citecolor=blue]{hyperref}
+\usepackage[numbers,comma,square,sort&compress]{natbib}
+\usepackage[letterpaper,text={7in,9in},centering]{geometry}
+
+\usepackage{bm}
+\usepackage{color}
+\usepackage{titlesec}
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{1.0ex plus0.2ex minus0.2ex}
+\renewcommand{\baselinestretch}{1.1}
+\graphicspath{{eps/}{pdf/}}
+\setcaptionmargin{0.25in}
+\def\captionfont{\itshape\small}
+\def\captionlabelfont{\upshape\small}
+
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+\newcommand{\bqq}{\begin{equation}}
+\newcommand{\eqq}{\end{equation}}
+\newcommand{\bqs}{\begin{equation*}}
+\newcommand{\eqs}{\end{equation*}}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}} 
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\rme}{\mathrm{e}}
+\newcommand{\rmi}{\mathrm{i}}
+\newcommand{\rmd}{\mathrm{d}}
+\newcommand{\rmo}{{\scriptstyle\mathcal{O}}}
+\newcommand{\rmO}{\mathcal{O}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\lar}{ \lesssim }
+
+
+\newcommand{\Rho}{\bm{\rho}}
+\newcommand{\bigma}{\bm{\sigma}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\supp}{\operatorname{supp}}
+
+\numberwithin{equation}{section}
+
+\newenvironment{Hypothesis}[1]%
+  {\begin{trivlist}\item[]{\bf Hypothesis #1 }\em}{\end{trivlist}}
+
+\renewcommand{\arraystretch}{1.25}
+
+
+% Define Theorem Styles ----------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{main}[theorem]{Main Result}
+\newtheorem{rmk}[theorem]{rmk}
+
+
+\newcommand{\etal}{\textit{et al.}\ }
+
+\newcommand{\greg}[1]{%
+  {\color{blue}\textbf{Greg:} #1}%
+ }
+ 
+\newcommand{\arnd}[1]{%
+  {\color{red}\textbf{Arnd:} #1}%
+ }
+
+\newenvironment{Proof}[1][.]%
+ {\begin{trivlist}\item[]\textbf{Proof#1 }}%
+ {\hspace*{\fill}$\rule{0.3\baselineskip}{0.35\baselineskip}$\end{trivlist}}
+
+\renewcommand\labelitemi{$\bullet$}
+
+\title{Passage through a fold without a phase space}
+\author{author}
+\date{2016}
+\begin{document}
+
+\section{Introduction}
+
+Introduce something
+
+
+\section{Model problem for passage through the fold}
+The following problem will be studied using the gluing method instead of blow up.
+\begin{align}
+\label{model}
+\begin{split}
+\dot{u} &= \mu+u^2 +u^3\\
+\dot{\mu} &= \eps
+\end{split}
+\end{align}
+with boundary condition 
+\begin{equation}\label{oBC}
+u(T) = \delta \text{ and }\mu(0) =-\delta,
+\end{equation}
+ where $T$ is another parameter, the ``time of flight'' for the trajectory to shoot from $\mu = -\delta$ to $u = \delta$.
+
+We first study the ``blow up '' problem, starting with rescale $ u = \eps^{1/3}u_1(\eps^{1/3}t)$ and $\mu = \eps^{2/3}\mu_1(\eps^{1/3}t)$. We get the new equations (set $\tau=\eps^{1/3}t$)
+
+\begin{align}
+\label{modelrs}
+\begin{split}
+\partial_\tau u_1 &= \mu_1+u_1^2 +(\eps^{2/3}u_1^4)\\
+\partial_\tau \mu_1 &= 1 +(\eps^{1/3} u_1)
+\end{split}
+\end{align}
+The new boundary condition is
+\begin{equation}\label{BCs}
+u_1(T) = \delta \eps^{-1/3}, \mu_1(0) = -\delta \eps^{-2/3}
+\end{equation}
+
+Then if we set $s = \tau - \delta\eps^{-2/3}$ and formally let $\eps \to 0$, equation \eqref{modelrs} has an explicit solution $u_1(\tau) = u_R(s)$ and $\mu_1(\tau) = s$. Where $u_R$ is the unique solution to the riccati equation $\partial_s u_R = s+u_R^2$ with the specific asymptotics [reference]. 
+
+\begin{equation}
+\label{ricasy}
+u_R(s)=\begin{cases}
+  (T_R-s)^{-1}+\rmO(T_R-s), \text{ as }s \to T_R \\
+ -(-s)^{1/2} -\frac{1}{4}(-s)^{-1} + \rmO(|s|^{-3/2}), \text{ as }s \to -\infty
+\end{cases}
+\end{equation}
+
+From this and the boundary condition \eqref{BCs}, we have the asymptotics for $T$:
+\begin{equation}
+T (\eps)= \delta \eps^{-1} + T_R\eps^{-1/3} - \delta^{-1} + \rmO(\eps^{2/3})
+\end{equation}
+
+
+Boundary condition $u_+(t=T)=\delta$, we derive the asymtotics for $T$,
+\[
+T = T(\eps) \sim \delta\eps^{-1/6} + t_* -\delta^{-1} = \eps^{-1/3}\Omega_0 +\eps^{-1}\delta -\delta^{-1}.
+\]
+
+
+Using the asymptotics for $\psi$ and $u_R$, we calculate that
+\begin{equation}
+\varphi(\sigma) =\begin{cases}
+ (-\frac{3}{2}\sigma)^{-1/3}, \text{ as }\sigma \to -\infty\\
+e^{-\sigma} , \text{ as }\sigma \to \infty.
+\end{cases}
+\end{equation}
+
+\begin{equation}
+u_R(\psi(\sigma)) =\begin{cases}
+ -(-\frac{3}{2}\sigma)^{1/3}, \text{ as }\sigma \to -\infty\\
+e^{\sigma} , \text{ as }\sigma \to \infty.
+\end{cases}
+\end{equation}
+
+\begin{equation}
+a(\sigma) =\begin{cases}
+-2+ \rmO((-\sigma)^{-3/2}), \text{ as }\sigma \to -\infty\\
+2+ \rmO(e^{-2\sigma}), \text{ as }\sigma \to \infty.
+\end{cases}
+\end{equation}
+
+so the linear operator $\mathcal{L} = \frac{d}{d\sigma} - A(\sigma)$, where $A(\sigma) \to A_\pm = \diag(\pm 2, 0)$ as $\sigma \to \pm \infty$. We need to find the right function spaces.
+
+
+
+\pagebreak
+
+\section{summary for set up}
+Equation
+\begin{align}
+\begin{split}
+\frac{d}{dt}u(t) &= (\mu+u^2+u^3)(t) \\
+\frac{d}{dt}\mu (t)&=  \eps 
+\end{split}
+\end{align}
+with B.C.
+\begin{equation}
+\mu(0) = -\delta, \hspace{0.2in} u(T) = \delta.
+\end{equation}
+
+where $\delta,\eps, T$ are parameters.
+
+\subsection{The Riccati solution}
+This is taken from [Krupa, Szmolyan].
+
+Consider the riccati equation
+\begin{equation}\label{ric}
+\frac{d}{dt}u(t) = t+u(t)^2
+\end{equation}
+
+\eqref{ric} is known to have a unique solution (here we denote by $u_R$) with the following asymptotics:
+\[
+u_R(t) = (\Omega_0-t)^{-1} + \rmO(|\Omega_0-t|)
+\] as $t \to \Omega_0^-$ and
+\[
+u_R(t) = -\sqrt{-t} + \rmO( |t|^{-1})
+\] as $t \to -\infty$.
+
+Here the constant $\Omega_0$ is the smallest positive zero of a certain combination of Bessel functions of the first kind. 
+
+\subsection{The \texorpdfstring{$t$}{t} to \texorpdfstring{$\sigma$}{sigma} time rescaling}
+
+step 1: Define $\psi$ as
+\[
+\psi = \eps^{1/3}(t - \eps^{-1}\delta)
+\]
+
+step 2:
+Take $M>0$ large, define $\sigma$ as
+\begin{align*}
+\psi = \psi(\sigma) =\begin{cases}
+-(-\frac{3}{2} \sigma)^{2/3} , \text{ for }\sigma \le -M\\
+\Omega_0 -e^{-\sigma}, \text{ for }\sigma \ge M,
+\end{cases}
+\end{align*}
+and smooth interpolation in between so that $\psi(0) = 0$, here $\Omega_0$ is the blow-up time for $u_R(s)$, the unique solution to the ricatti equation that satisfy the asymptotics.
+
+We also define $\varphi(\sigma) := \frac{d}{d\sigma}\psi(\sigma)$.
+
+For convenience let the map $t \mapsto \sigma$ be denoted as $\rho$.
+
+\iffalse
+%\item Asymptotics for $u_R$ and $\varphi$.
+\begin{equation*}
+\varphi(\sigma) =\begin{cases}
+ (-\frac{3}{2}\sigma)^{-1/3}, \text{ as }\sigma \to -\infty\\
+e^{-\sigma} , \text{ as }\sigma \to \infty.
+\end{cases}
+\end{equation*}
+
+\begin{equation*}
+u_R(\psi(\sigma)) \to \begin{cases}
+ -(-\frac{3}{2}\sigma)^{1/3}, \text{ as }\sigma \to -\infty\\
+e^{\sigma} , \text{ as }\sigma \to \infty.
+\end{cases}
+\end{equation*}
+
+\begin{equation*}
+2u_R\varphi(\sigma) \to\begin{cases}
+-2+ \rmO((-\sigma)^{-3/2}), \text{ as }\sigma \to -\infty\\
+2+ \rmO(e^{-2\sigma}), \text{ as }\sigma \to \infty.
+\end{cases}
+\end{equation*}
+%
+\fi
+\subsection{Region I}
+In $\sigma$ variable, we divide the real line into two segments. In different regions we will have different ansatz.
+
+Region I is defined by $\{ \sigma : \sigma<0 \}$. Which corresponds to the original time $t$ as $\{ t : t< \eps^{-1}\delta\}$.
+\subsubsection{Important times}
+\begin{itemize}
+\item $t= 0$
+\item $t = t^*$, the (left) gluing time which corresponds to when $\sigma = \eps^{-1/4}=:\sigma^*$.
+
+\end{itemize}
+
+\subsubsection{ansatz in region I}
+The ansatz in region I takes the form
+\[
+u_I(t) = \chi_s(\rho(t))u_s(t) + \chi_l(\rho(t))u_l(t) + W_s(t)+W_l(t)
+\]
+
+Where 
+\begin{itemize}
+\item $u_s(t)$ denotes the ``singular'' branch that forms the slow manifold (critical manifold?) of the original system. It is defined via the relation
+\[
+u_s(t) = h(\mu(t))
+\]
+for some smooth function $h$ which solves
+\begin{equation}\label{singular}
+0 = \mu(t) + h(\mu(t))^2 + h(\mu(t))^3.
+\end{equation}
+
+It has the following asymptotics:
+\begin{equation}\label{singularAsy}
+u_s(t) = -\sqrt{\delta-\eps t} + \rmO(|\delta-\eps t|).
+\end{equation}
+
+The equivalent in $\sigma$ variable is
+\begin{equation}\label{singularAsySig}
+u_s(\sigma) = -\left(\frac{3}{2}\eps \sigma\right)^{1/3} + \rmO(|\eps \sigma|^{2/3} )
+\end{equation}
+
+\item $u_l(t)$ is defined by rescaling $u_R$ and restrict it for $t<\eps^{-1}\delta$. Specifically:
+\begin{equation}\label{uldef}
+u_l(t) = \eps^{1/3} u_R( \eps^{1/3}(t-\eps^{-1}\delta))
+\end{equation}
+It solves the equation
+\begin{equation}\label{uleq}
+\frac{d}{dt}u_l (t) = \mu(t) + u_l^2(t)
+\end{equation}
+
+
+\item The cutoff functions $\chi_s$ and $\chi_l$ are functions of $\sigma$ directly, and they satisfy (for $\sigma \le 0$)
+\begin{equation}\label{cutoffIs}
+\chi_s(\sigma) =\begin{cases}
+1,  \hspace{0.1in} \sigma \le \sigma^* -1\\
+0 , \hspace{0.1in} \sigma \ge \sigma^* +1.
+\end{cases}
+\end{equation}
+and
+\begin{equation}\label{cutoffIl}
+\chi_l(\sigma) =\begin{cases}
+0,  \hspace{0.1in} \sigma \le \sigma^* -1\\
+1 , \hspace{0.1in} \sigma \ge \sigma^* +1.
+\end{cases}
+\end{equation}
+
+\item norms
+
+From notes:
+\[
+W_{\ell} \approx \eps^{2/3-\alpha}\langle \sigma \rangle^{2/3}
+\]
+and
+\[
+W_s \approx \eps^{1-\alpha}\langle \eps \sigma\rangle^{-2/3}
+\]
+\end{itemize} 
+\subsubsection{equation for ansatz in region I}
+
+\subsection{Region II}
+
+Region II is defined by $\{ \sigma : \sigma > 0 \}$. Which corresponds to the original time $t$ as $\{ t : t > \eps^{-1}\delta\}$.
+\subsubsection{Important times}
+\begin{itemize}
+\item $T_\infty= \eps^{-1}\delta + \eps^{-1/3}\Omega_0$, is the blow up time to the riccati solution, which corresponds to $\sigma = \infty$.
+
+\item $T = T_\infty - \delta^{-1}$, is the right boundary point
+
+\item $t_*  = T_\infty - \eps^{-1/6}\delta^{-1}$, is the (right) gluing time.
+\end{itemize}
+\subsubsection{ansatz in region II}
+The ansatz in region II takes the form
+\[
+u_{II}(t) = \chi_r(t)u_r(t) + \chi_b(t)u_b(t) + W_r(t)+W_b(t)
+\]
+
+Where 
+
+\begin{itemize}
+\item $u_r$ has the same formula as $u_l$, except it is restricted on $t>\eps^{-1}\delta$.
+\begin{equation}\label{urdef}
+u_r(t) = \eps^{1/3}u_R(\eps^{1/3}(t-\eps^{-1}\delta)),
+\end{equation}
+
+it satisfies
+\begin{equation}\label{ureq}
+\frac{d}{dt}u_r(t) = \mu(t) + u_r^2(t).
+\end{equation}
+
+\item $u_b$ is a ``blow up'' layer that is defined as follows:
+\begin{equation}\label{ubdef}
+u_b(t) = (u_r(t_*)^{-1}+t_* - t)^{-1},
+\end{equation}
+
+it satisfies
+\begin{equation}\label{ubeq}
+\frac{d}{dt} u_b = u_b^2.
+\end{equation}
+
+\item The cutoff $\chi_b$ and $\chi_r$ are functions of $t$ and it is true that $1=\chi_b+\chi_r$, and they satisfy
+
+\begin{equation}\label{cutoffIIr}
+\chi_r(t) =\begin{cases}
+1,  \hspace{0.1in} t \le t_* -1\\
+0 , \hspace{0.1in} t \ge t_* +1.
+\end{cases}
+\end{equation}
+and
+\begin{equation}\label{cutoffIIb}
+\chi_b(t) =\begin{cases}
+0,  \hspace{0.1in} t \le t_* -1\\
+1 , \hspace{0.1in} t \ge t_* +1.
+\end{cases}
+\end{equation}
+
+\pagebreak
+\item We introduce the time $\xi$ with the scaling
+\[
+e^{-\xi} = u_b(t)^{-1}
+\] Asymptotics \begin{equation*}
+u_b(t) =e^\xi
+\end{equation*}
+As for $\mu(t) = \eps t -\delta$, we have
+\begin{align*}
+\mu &= \eps(t_*+\delta\eps^{-1/6}-u_+^{-1}) -\delta = \eps^{2/3}\Omega_0 +(\delta-\delta^{-1})\eps^{5/6} -\eps u_+^{-1}\\
+&=\Omega_0\eps^{2/3} +(\delta-\delta^{-1})\eps^{5/6}-\eps e^{-\xi}
+\end{align*}
+
+
+\item Gluing time
+
+
+the gluing time $\sigma_*$ is set to equal to $ \log(\eps^{-1/6}\delta )$, notice in terms of the original time $t$, this is at
+\[
+s(\sigma_*) = \Omega_0-\delta^{-1}\eps^{1/6} = \tau -\tau_0 = \eps^{1/3}t - \eps^{-2/3}\delta \implies   t=t_*:= \eps^{-1/3}[\Omega_0+\eps^{-2/3}\delta -\delta^{-1} \eps^{1/6}]
+\]
+
+We note then 
+\[
+u_*:= u_-(t_*) = \eps^{1/3}[(\Omega_0-(\Omega_0-\delta^{-1}\eps^{1/6}))^{-1} + \rmO(\eps^{1/6})]  = \eps^{1/6}\delta+\rmO(\eps^{1/2})
+\]
+
+\item since $u_b(t)$ solves 
+\[
+\frac{d}{dt} u_b(t) = u_b(t)^2,
+\]
+Convert the equation in $\xi$ time via 
+\[
+e^{-\xi}\frac{d}{dt}  = \frac{d}{d\xi},
+\]
+\item norms
+see subsection on linear equation.
+
+\subsubsection{Distribute equations for ansatz in region II}
+
+Substituting $u_{II}$ into \eqref{model} gives
+
+\begin{align*}
+\chi_r'u_r+ u_r'\chi_r +\chi_b'u_b+ u_b'\chi_b + W_r'+W_b' &=\mu+ (\chi_ru_r+W_r+\chi_bu_b+W_b)^2\\
+&+  (\chi_ru_r+W_r+\chi_bu_b+W_b)^3
+\end{align*}
+
+to get the appropriate distribution of terms, we first simplify:
+
+use $\chi_r+\chi_b = 1$, we have
+\[
+\chi_r'u_r+\chi_b'u_b = \chi_r'(u_r-u_b)
+\]
+by \eqref{ureq} and \eqref{ubeq}, we have
+\[
+u_r'\chi_r = \chi_r( \mu + u_r^2),\hspace{0.1in}
+u_b'\chi_b = \chi_b u_b^2 
+\]
+
+we expand the quardratic terms first, this gives
+\[
+(\chi_ru_r+W_r)^2+(\chi_bu_b+W_b)^2+2(\chi_ru_r+W_r)(\chi_bu_b+W_b)
+\]
+
+We move $\chi_r'(u_r-u_b)$, $\chi_ru_r'$ and $\chi_bu_b'$ to the right handside, without the cubic terms, the right hand side becomes
+
+\begin{align*}
+&\chi_r'(u_r - u_b) + (\chi_r^2-\chi_r)u_r^2 + (\chi_b^2-\chi_b)u_b^2 + 2\chi_r\chi_bu_ru_b \\
+&+ 2\chi_ru_rW_r + 2\chi_bu_bW_b + 2\chi_ru_rW_b+ 2\chi_bu_bW_r \\
+&+ W_r^2 + W_b^2+ 2W_rW_b.
+\end{align*}
+
+Since $\chi_r^2 - \chi_r = \chi_r(\chi_r - 1)=-\chi_r\chi_b$, $\chi_b^2-\chi_b = \chi_b(\chi_b-1) = -\chi_b\chi_r$, we have
+\[
+(\chi_r^2-\chi_r)u_r^2 + (\chi_b^2-\chi_b)u_b^2 + 2\chi_r\chi_bu_ru_b = -\chi_b\chi_r(u_r-u_b)^2.
+\]
+
+For $2\chi_r u_rW_r+2\chi_b u_bW_b+2\chi_ru_rW_b + 2\chi_bu_bW_r$, it can be simplified as
+\[
+2(\chi_ru_r+\chi_bu_b)W_r = 2(u_r + \chi_b(u_b-u_r))W_r, \hspace{0.1in}2(\chi_ru_r+\chi_bu_b)W_b = 2(u_b + \chi_r(u_r-u_b))W_b.
+\]
+
+Lastly, we note
+\[
+2W_rW_b = 2\chi_rW_rW_b + 2\chi_bW_rW_b
+\]
+
+Hence, up to quadratic terms, the original equation becomes
+\begin{align*}
+W_r' + W_b' &= \chi_b\mu + \chi_r'(u_r-u_b) - \chi_b\chi_r(u_r-u_b)^2 +\\
+& + 2u_rW_r + 2\chi_b(u_b-u_r)W_r +\\
+& + 2u_bW_b + 2\chi_r(u_r-u_b)W_b +\\
+& + W_r^2 + W_b^2 + 2\chi_rW_bW_r + 2\chi_bW_bW_r
+\end{align*}
+
+To simplify the cubic term so that it become natural to distribute the terms, first we have
+\begin{align*}
+&(\chi_ru_r+W_r+\chi_bu_b+W_b)^3\\ &=(\chi_ru_r+\chi_bu_b)^3 + (W_r+W_b)^3+ \\&+ 3(\chi_ru_r+\chi_bu_b)(W_r+W_b)^2+3(\chi_ru_r+\chi_bu_b)^2(W_r+W_b)
+\end{align*}
+
+For $(W_r+W_b)^3$ and $3(\chi_ru_r+\chi_bu_b)(W_r+W_b)^2$, we already distributed the quadratic term $(W_r+W_b)^2$ as $W_r^2+W_b^2+2\chi_rW_bW_r+2\chi_bW_bW_r$. The linear term $3(\chi_ru_r+\chi_bu_b)^2(W_r+W_b)$ can be ditrubuted as follows:
+\begin{align*}
+3(\chi_ru_r+\chi_bu_b)^2(W_r+W_b) &= 3[(\chi_ru_r)^2+2(\chi_r\chi_b)(u_ru_b)] W_r +\\&+ 3(\chi_ru_r)^2W_b + \\
+&+3[(\chi_bu_b)^2+2(\chi_r\chi_b)(u_ru_b)] W_b  +\\
+&+ 3(\chi_bu_b)^2W_r 
+\end{align*}
+
+The pure residual term $(\chi_ru_r + \chi_bu_b)^3$ equals
+\begin{align*}
+(\chi_r u_r)^3+(\chi_b u_b)^3 + 3(\chi_r^2\chi_b)u_r^2u_b +  3(\chi_b^2\chi_r)u_b^2u_r
+\end{align*}
+As we shall see, the distribution of the mixed terms is flexible. Hence we have
+\subsubsection{Equation for \texorpdfstring{$W_r$}{Wr}}
+\begin{align}\label{eqn_wr}
+\begin{split}
+W_r' - 2u_rW_r &= \frac{\chi_r'}{2}(u_r-u_b)-\frac{\chi_b\chi_r}{2}(u_r-u_b)^2 \\
+&+3[(\chi_ru_r)^2+2(\chi_r\chi_b)(u_ru_b)] W_r \\&+[3(\chi_ru_r)^2+\chi_r(u_r-u_b)]W_b 
+\\&+(\chi_ru_r)^3+3(\chi_r^2\chi_b)u_r^2u_b
+\\&+ [1+(W_r+W_b)+3(\chi_ru_r+\chi_bu_b)](W_r^2 + 2\chi_rW_bW_r)
+\end{split}
+\end{align}
+\subsubsection{Equation for \texorpdfstring{$W_b$}{Wb}}
+\begin{align}\label{eqn_wb}
+\begin{split}
+W_b' - 2u_bW_b &= \chi_b\mu+ \frac{\chi_r'}{2}(u_r-u_b)-\frac{\chi_b\chi_r}{2}(u_r-u_b)^2 
+\\&+3[(\chi_bu_b)^2+2(\chi_r\chi_b)(u_ru_b)] W_b \\&+[3(\chi_bu_b)^2+\chi_b(u_b-u_r)]W_r 
+\\&+(\chi_bu_b)^3+3(\chi_b^2\chi_r)u_b^2u_r
+\\&+ [1+(W_r+W_b)+3(\chi_ru_r+\chi_bu_b)](W_b^2 + 2\chi_bW_bW_r)
+\end{split}
+\end{align}
+
+\subsubsection{Linear Equation and Norms}
+Denote the right hand side of \eqref{eqn_wr} as $R_r$, use the time-scaling map between $t$ and $\sigma$, the entire equation becomes
+\begin{equation}\label{rescl_wr}
+\left(\frac{d}{d\sigma} - 2\varphi u_R\right) \tilde{W}_r =\eps^{-1/3}\varphi \tilde{R}_r
+\end{equation}
+
+Here $\tilde{W}_r(\sigma) = W_r( \rho^{-1}(\sigma))=W_r(t)$, and $\tilde{R}_r$ is similarly defined. We will abuse notation and drop the title below.
+
+Similarly, to rescale equation \eqref{eqn_wb}, recall the time variable $\xi$ is defined by $u_b(t) = e^\xi$, hence we obtain
+\begin{equation}\label{rescl_wb}
+\left(\frac{d}{d\xi} - 2\right) \tilde{W}_b =e^{-\xi} \tilde{R}_b
+\end{equation}
+
+
+By the asmpyotic properties of $\varphi$ and $u_R$, it is true that
+\[
+2\varphi(\sigma)u_R(\sigma) \to  2 \text{ as }\sigma \to \infty.
+\]
+
+Our goal now is to solve \eqref{rescl_wr} on the interval $\sigma \in (0, \rho(T))$ and solve \eqref{rescl_wb} on $\xi \in (\ln(u_b(\eps^{-1}\delta)), \ln(u_b(T)) )$ using a fixed point argument. 
+
+To do so, we introduce the function spaces below:
+
+\begin{align*}
+\mathcal{C}_{Wr} &= \left\{ u(\sigma) : \sup_{\sigma\ge 0} \left|\eps^{(\alpha-2)/3} e^{(\alpha-2)\sigma}u(\sigma)\right| < \infty \right\} \\
+%--------------------------------------
+&= \left\{ u(t) :\sup_{t \ge \eps^{-1}\delta} \left| (T_\infty(\eps)-t)^{2-\alpha}u(t)\right|<\infty
+\right\} \\
+%--------------------------------------
+\mathcal{C}_{Wb} &= \left\{ u(\xi) : \sup_{e^\xi\ge u_b(\eps^{-1}\delta)} \left| e^{(\alpha-2)\xi}u(\xi)\right| < \infty \right\} \\
+%--------------------------------------
+ &= \left\{ u(t) : \sup_{t\ge \eps^{-1}\delta} \left| (T_\infty(\eps)-t)^{2-\alpha}u(t)\right| < \infty \right\}
+\end{align*}
+
+\begin{theorem}
+For $W_r \in \mathcal{C}_{Wr}, W_b \in \mathcal{C}_{Wb}$, it is true that $\eps^{-1/3}\varphi R_r \in \mathcal{C}_{Wr}$ and $e^{-\xi}R_b \in \mathcal{C}_{Wb}$. Specifically
+\begin{align}
+\|\eps^{-1/3}\varphi R_r \| = \rmO(\eps^{5													\alpha/6})\\
+\|e^{-\xi}R_b \| = \rmO(\eps^{?})
+\end{align}
+\end{theorem}
+\begin{proof}
+We collect the estimates needed to prove this theorem:
+
+For $\eps^{-1}\delta \le t \le t_*$:
+\begin{align*}
+|u_r| \lar |u_b| &\lar (T_\infty - t)^{-1} \\
+W_b &\lar (T_\infty-t_*)^{\alpha-2}
+\end{align*}
+For $t_*-1\le t \le T$:
+\begin{align*}
+W_r &\lar (T_\infty-T)^{\alpha-2}\\
+|u_b(t)-u_r(t)| &\lar \eps^{1/3}
+\end{align*}
+For $|t-t_*|\le 1$:
+\begin{align*}
+|u_b(t)-u_r(t)| &\lar \eps^{2/3}
+\end{align*}
+To be consistent, we convert these norms back to the $t$ variable and establish the corresponding estimate.
+\end{proof}
+\iffalse
+%solving directly for $\mu$ we have $\mu \sim e^{-\xi}$ so the nonhomogeneous term in the $w$ equation have
+\[ 
+e^{-\xi}u_+^3 \sim e^{2\xi}
+\]
+
+%also
+\[
+\mu(t)=\Omega_0\eps^{2/3} +(\delta-\delta^{-1})\eps^{5/6}-\eps e^{-\xi}
+\]
+%Note $|e^{-\xi} | \le e^{-\xi_*} \le \delta \eps^{-1/6}$, so that
+\[
+\eps e^{-2\xi} \le \eps\delta^2\eps^{-1/3} \le \delta^2\eps^{2/3}  \implies |\eps e^{-\xi}\mu| =\rmO(\eps^{2/3})
+\]
+%which suggests the nonhomogeneous term is dominated by $e^{-\xi}u_+^3$ and hence a $e^{-2\xi}$ weight in the norm.
+
+%In fact, due to the resonance of $e^{2\xi}$ with the linear part, we need to choose a slightly weaker norm, let $\eta \in (0,1)$, and our weight will be $e^{-(2-\eta)\xi}$.
+
+%We check the nonhomogeneous term\begin{align*}
+e^{-(2-\eta)\xi} e^{-\xi}\mu &=e^{-(3-\eta)\xi} (\Omega_0 \eps^{2/3} + (\delta-\delta^{-1})\eps^{5/6}-\eps e^{-\xi} )\\
+& \le e^{-(3-\eta)\xi} (\eps^{2/3}+\eps^{5/6}+\eps e^{-\xi}) \le  \\
+&\sim \delta^{3-\eta}\eps^{\frac{\eta+1}{6}}
+\end{align*}
+
+
+%We also check breifly the norm should work with the nonlinearity
+
+%quadratic
+\[
+\sup_{0\ge \xi\ge \xi_*} e^{-(2-\eta)\xi}|e^{-\xi}w^2| \le \|w\|\sup |e^{-\xi}w| \le \|w\| e^{-\xi}e^{(2-\eta)\xi} =\|w\|e^{(1-\eta)\xi}
+\]
+%quadratic again
+\[
+\sup_{0\ge \xi\ge \xi_*} e^{-(2-\eta)\xi}|e^{-\xi}u_+w^2|\le \|w\| \sup |e^{-\xi}w u_+| \le \|w\|e^{(2-\eta)\xi}
+\]
+%cubic
+\[
+\sup_{0\ge \xi\ge \xi_*} |e^{-(2-\eta)\xi}e^{-\xi}w^3| \le \|w\|\sup_{\xi \ge \xi_*} |e^{-\xi} w^2| \le \|w\| e^{-\xi}e^{(4-2\eta)\xi}
+\]
+
+%Linear
+\[
+\sup_{0\ge \xi\ge \xi_*} e^{-(2-\eta)\xi}|e^{-\xi}u_+^2w| \le \|w\| \sup |e^{\xi}u_+^2| \le \|w\|e^{(1-\eta)\xi}
+\]
+
+%The Lipschitz constant will be of order $e^{-\xi}w \sim e^{(1-\eta)\xi}$, which is small on the relevant interval $\xi_* \le \xi \le 0$. 
+\fi
+
+\end{itemize}
+\pagebreak
+
+
+\section{Gluing}
+Ansatz
+\[
+U(t) = \chi_-(t)u_-(t) + \chi_+(t)u_+(t) + W_-(t)+W_+(t;\beta),
+\]
+where $W_+(t;\beta) = W_+(t) + \beta w_{+}^k$, $w_+^k = \chi_{\{t<\eps^{-1}\delta\}}u_+^2$. Also recall $\mu(t) = \eps t- \delta$.
+
+"insert picture of $\chi_-,\chi_+$."
+
+The support of $\chi_+$ is $(t_*-1,\infty)$ and  the support of $\chi_-$ is $(-\infty, t_*+1)$.
+
+\begin{itemize}
+\item 
+Plug in the anstaz
+\begin{align*}
+&\chi_-' u_- + \chi_- u_-' + \chi_+' u_+ + \chi_+ u_+' +W_-'(t)+W_+'(t) = \\
+&=\mu +(\chi_-u_-+W_-+\chi_+u_+ +W_+)^2 +(\chi_-u_-+W_-+\chi_+u_+ +W_+)^3.
+\end{align*}
+where $' = \frac{d}{dt}$.
+
+Useful identities 
+\[
+\chi_-+\chi_+ = 1, \quad \frac{d}{dt}(\chi_-+\chi_+)(t) = 0,
+\]
+and
+\[ 
+ \frac{d}{dt} u_- = \mu+ u_-^2, \quad \frac{d}{dt} u_+ = u_+^2.
+ \]
+Equation after cancellation:
+\begin{align*}
+-\chi_+'(u_- -u_+) +W_-'+W_+' &= \chi_+\mu +\chi_-\chi_+(u_+ - u_-)u_- +2\chi_- u_- W_- +W_-^2 \\
+&+\chi_-\chi_+(u_- -u_+)u_+ + 2\chi_+ u_+W_+ + W_+^2 \\
+&+ 2\chi_+ u_+ W_- + 2\chi_- u_- W_+ + 2W_-W_+\\
+&+ (\chi_-u_-+W_- + \chi_+u_+ +W_+)^3
+\end{align*}
+
+\item Distribute terms in the $-$ side 
+\begin{align*}
+W_-' -2u_-W_- &=  2\chi_-(u_- -u_+)W_+ + (\chi_-\chi_+) u_-(u_- -u_+)+\frac{1}{2}\chi_-'(u_+ -u_-) +2\chi_-W_-W_+\\
+&+W_-^2+ (\chi_-u_- + W_-)^3\\
+&+ 3\chi_-^2\chi_+ u_-^2 u_+  + 6\chi_-\chi_+ u_+ u_-W_- + 6\chi_- u_- W_- W_+ + 3\chi_-(W_-+W_+)W_-W_+ \\&+3(\chi_+u_+)W_-^2 + 3(\chi_-u_-)^2W_+
+\end{align*}
+
+\item Distribute terms in the $+$ side 
+\begin{align*}
+W_+'-2u_+W_+  &=  \chi_+\mu + 2\chi_+(u_+ -u_-)W_-+ (\chi_-\chi_+) u_+(u_- -u_+)+\frac{1}{2}\chi_+'(u_- -u_+) +2\chi_+W_-W_+\\
+&+W_+^2+ (\chi_+u_+ + W_+)^3 \\
+&+ 3\chi_+^2\chi_-u_+^2u_- + 6\chi_+\chi_- u_+u_- W_+ +6 \chi_+u_+W_+W_- +3\chi_+(W_-+W_+)W_-W_+\\
+&+3(\chi_-u_-)W_+^2 + 3(\chi_+u_+)^2W_-
+\end{align*}
+\end{itemize}
+
+
+\pagebreak
+\subsection{Linear equation.} 
+
+Now the equation in $W_-$ and $W_+$ can be written in the following form
+\begin{align*}
+W_-' - 2u_- W_- &= \mathcal{R}_- ,\\
+W_+' - 2u_+ W_+ &= \mathcal{R}_+
+\end{align*}
+with $\mathcal{R}_{\pm}$ defined as in the distribution of terms.
+
+First fix
+\[
+\eta \in (1,2), \nu = 2-\eta\in (0,1).
+\]
+
+To be able to solve the linear equation, we first introduce the following weighted spaces, for the $-$ side we have
+\[
+\mathcal{C}_v = \{u(t) \in \mathcal{C}(0,T) \mid \sup |v(t) u(t)| < \infty\}
+\]
+where the weight $v(t)$ is defined as follows:
+\[
+v(t)=
+\begin{cases}
+\delta^{-\frac{1}{4}}\eps^{\frac{1}{3}(\nu-1)} (T_\infty-t)^\nu, \text{ for }t> \eps^{-1}\delta\\
+[\delta^{\frac{1}{4}}\eps^{1/3}+\delta^{-\frac{1}{4}}(\delta-\eps t)]^{-1}, \text{ for }t < \eps^{-1}\delta\\
+\end{cases}
+\]
+
+We can similarly define $\mathcal{C}_V$, with the other weight $V(t)$ defined as
+\[
+V(t)=
+\begin{cases}
+\delta^{-\frac{1}{4}}\eps^{\frac{1}{3}(\nu-1)} (T_\infty-t)^{\nu+1}, \text{ for }t> \eps^{-1}\delta\\
+[\delta^{\frac{1}{4}}\eps^{\frac{2}{3}}+\delta^{-\frac{1}{4}}(\delta - \eps t)^{\frac{3}{2}}]^{-1}, \text{ for }t < \eps^{-1}\delta\\
+\end{cases}
+\]
+and for the $+$ side we have:
+\[
+\mathcal{C}_\eta(0,T) = \{ u(t) \in \mathcal{C}(0,T) \mid \sup_{t\in (0,T)}|(T_\infty - t)^{\eta} u(t)| < \infty  \}
+\]
+
+\begin{enumerate}
+
+\item Time scale for $W_-$
+
+The scaling of time is as follows:
+\[
+s = \eps^{\frac{1}{3}}(t-\eps^{-1}\delta),
+\]
+
+\[
+s=\psi(\sigma) =\begin{cases}
+-(-\frac{3}{2} \sigma)^{2/3} , \text{ for }\sigma \le -M\\
+\Omega_0 -e^{-\sigma}, \text{ for }\sigma \ge M,
+\end{cases}
+\]
+At $t = -\infty$, we have
+\begin{align*}
+s_{-\infty} = -\infty\\
+\sigma_{-\infty} = -\infty
+\end{align*}
+
+At $t = 0$, we have
+\begin{align*}
+s_0 &:= \eps^{\frac{1}{3}}(0-\eps^{-1}\delta) = -\eps^{-\frac{2}{3}}\delta \\
+\sigma_0 &:= -\frac{2}{3} \delta^{\frac{3}{2}} \eps^{-1}
+\end{align*}
+
+At $t = t_*$, we have 
+\begin{align*}
+s_* &: = \eps^{\frac{1}{3}}(t_* - \eps^{-1}\delta) = \Omega_0 - \delta^{-1}\eps^{\frac{1}{6}} \\
+\sigma_* &:= -\log(\delta^{-1}\eps^{\frac{1}{6}})  
+\end{align*}
+At $t = T$, we have
+
+\begin{align*}
+s_T &: = \eps^{\frac{1}{3}}(T-\eps^{-1}\delta) = \Omega_0 - \delta^{-1}\eps^{\frac{1}{3}} \\
+\sigma_T &:= -\log(\delta^{-1}\eps^{\frac{1}{3}})
+\end{align*}
+
+At $t = T_\infty$, we have
+\begin{align*}
+s_\infty = \Omega_0\\
+\sigma_\infty = \infty
+\end{align*}
+
+Hence, as $\eps \to 0$, we see that $\sigma_0 \to -\infty$ and $\sigma_T \to \infty$.
+
+Therefore, rescale 
+\[
+\frac{d}{dt}W_- -2u_-W_-=\mathcal{R}_- \text{ for }t \in (0,T)
+\] into
+\[
+\frac{d}{d\sigma} W_- -a(\sigma)W_- = \eps^{-\frac{1}{3}}\varphi \mathcal{R}_- \text{ for }\sigma \in \left( -\frac{2}{3}\delta^{\frac{3}{2}}\eps^{-1}  , -\log(\delta^{-1}\eps^{\frac{1}{3}}) \right)
+\]
+
+Recall $a(\sigma) \to \pm 2$ as $\sigma \to \pm \infty$.
+\item Time scale for $W_+$.
+
+It is scaled as thus
+\[
+\xi = \log(u_+(t))
+\]
+At $t = -\infty$, note $u_+ \to 0$ as $t \to -\infty$, then
+\[
+\xi_{-\infty} := \log(0) = -\infty
+\]
+
+At $t= 0 $, we have
+\[
+\xi_0 := \log(u_+(0)) \sim - \log T_\infty=-\log\left(\eps^{-1}\delta+\eps^{-\frac{1}{3}}\Omega_0\right) = -\log\left(\eps^{-1}(\delta+\eps^{\frac{2}{3}}\Omega_0)\right) \sim \log(\eps)
+\]
+
+At $t = T$, we have
+\[
+\xi_T : = \log(u_+(T)) \sim \log \left(\delta + \rmO(\eps^{\frac{1}{2}} ) \right) \sim \log \delta
+\]
+
+At $t = T_\infty$, we have 
+\[
+\xi_\infty := \log(u_+(T_\infty)) \sim -\log\left(\rmO(\eps^{\frac{1}{2}})\right)
+\]
+\end{enumerate}
+Therefore, rescale 
+\[
+\frac{d}{dt}W_+ -2u_-W_+=\mathcal{R}_+ \text{ for }t \in (0,T)
+\] 
+into
+\[
+\frac{d}{d\xi} W_+ - 2W_+ = e^{-\xi} \mathcal{R}_+ \text{ for }\xi \in \left( \log(\eps) , \log(\delta) \right)
+\]
+
+then we can show the Fredholm properties of the linear operators as follows: 
+\begin{theorem}
+For $t \in (0,T)$, the linear operator on the $-$ side
+\[
+\frac{d}{dt} - 2u_-(t) : \mathcal{C}_v (0,T) \to \mathcal{C}_V (0,T)
+\]
+
+and the linear operator on the $+$ side
+\[
+\frac{d}{dt}  - 2u_+(t) : \mathcal{C}_\eta (0,T) \to \mathcal{C}_{\eta+1}(0,T)
+\]
+are Fredholm, and their indices are $-1$, $1$, respectively..
+\end{theorem}
+
+\begin{proof}
+For the $W_-$ equation, recall we had the  scalings $s = \eps^{\frac{1}{3}}(t-\eps^{-1}\delta) $, $\psi(\sigma) =s $, $\varphi = \partial_\sigma \psi$. Hence the equation in the $\sigma$-variable takes the form
+\begin{align*}
+\frac{d}{d\sigma} \tilde{W}_- -a(\sigma)\tilde{W}_- = \eps^{-1/3}\varphi \tilde{\mathcal{R}}_-.
+\end{align*}
+Where $\tilde{W}_-(\sigma) = W_-(\eps^{-\frac{1}{3}} \psi(\sigma)+\eps^{-1}\delta)=W_-(t)$, and similarly for $\tilde{\mathcal{R}}_-$. Now recall $a(\sigma) \to \pm 2 $ as $\sigma \to \pm \infty$. In these variables, the weight satisfies 
+\[
+v(\sigma) \sim \begin{cases}
+ \eps^{-\frac{1}{3}} e^{-\nu \sigma},  \text{ for }\sigma >0 \\
+\eps^{-\frac{2}{3}}[(-\sigma)^{\frac{2}{3}}+1]^{-1}, \text{ for }\sigma < 0.
+\end{cases}
+\]
+
+and 
+\[
+V(\sigma) \sim \begin{cases}
+ \eps^{-\frac{2}{3}} e^{-(\nu+1)\sigma},  \text{ for }\sigma >0 \\
+[\eps |\sigma|+\eps^{\frac{2}{3}}]^{-1} \text{ for }\sigma < 0.
+\end{cases}
+\]
+
+Then for $\nu \neq 2$, the linear operators $\frac{d}{d\sigma} -a(\sigma)$ is Fredholm on the weighted spaces.  Since $0 < \nu < 1$ and $w$ has algebraic decay for $\sigma<0$, we conclude that the Fredholm index is...
+
+For the $W_+$ equation, we used the rescaling $u_+(t)  = e^\xi$, and in the $\xi$ equation, the $+$ side equation becomes
+\[
+\frac{d}{d\xi}\tilde{W}_+ -2\tilde{W}_+ = e^{-\xi}\mathcal{R}_+
+\]
+the weight for $W_+$ is just $u_+(t)^{\eta}=e^{\eta \xi}$ and because of $1<\eta<2$, we see the linear opertator $\frac{d}{d\xi}-2$ is Fredholm on this weighted function space.
+
+To find the Fredholm index of this operator.
+\end{proof}
+\pagebreak
+
+\subsection{Fixed point arguments-set up for \texorpdfstring{$W_{r}$}{Wright}}
+
+We use the ansatz $U = W_r + u_r$ for $t \in  (\eps^{-1}\delta, T)$. Then $W_r$ satisfies
+\begin{equation}\label{Wreqn}
+\left(\frac{d}{dt} - 2u_r \right)W_r = W_r^2+(u_r+W_r)^3 := R_r,
+\end{equation}
+
+When we change variable from $t$ to $\sigma$, we obtain, for $\sigma \in (0,\sigma_T)$,
+\[
+\left(\frac{d}{d\sigma} -a(\sigma) \right)\tilde{W}_r(\sigma)  = \eps^{-1/3}\varphi \tilde{R}_r(\sigma).
+\]
+
+Where $a(\sigma) = 2u_R(\psi(\sigma))\varphi(\sigma)$ satisfy
+\[
+|a(\sigma)-2| \le Ce^{-2\sigma},
+\]
+for some constant $C$, as $\sigma \to \infty$.
+
+\textbf{Invertibility of the linear operator} 
+The operator $\frac{d}{d\sigma}-a(\sigma) : C_{Wr} \to C_{Wr}$ will be invertible if we can find bounded solution to the equation
+\[
+\left(\frac{d}{d\sigma}-a(\sigma) \right) u = f.
+\]
+
+Variation of constants gives the formula
+\begin{equation}\label{solution}
+u(\sigma) = \exp\left(\int_\tau^\sigma a(\rho)d\rho\right)u(\tau) + \int_\tau^\sigma \exp\left(\int_s^\sigma a(\rho)d\rho\right)f(s)ds
+\end{equation}
+
+
+If we are looking for bounded solution $u$ on 
+$C_{Wr}(0,\infty)$. Which implies $u(\tau) \le 
+\eps^{(2-\alpha)/3}\exp\left((2-\alpha)\tau
+\right)$, so letting $\tau \to \infty$ gives the formula
+\[
+u(\sigma) = \int_\infty^\sigma \exp\left(\int_s^\sigma a(\rho)d\rho \right)f(s)ds.
+\]
+Using the convergence $|a(\sigma)-2|\le e^{-2\sigma}$ we discover that
+\[
+\|u\|_{Wr} \le C \|f\|_{Wr}
+\]
+for some constant $C$. Moreover the homogeneous solution DOES NOT belong to the space $C_{Wr}(0,\infty)$, we get Fredholm $-1$!
+
+However, we are solving on the finite interval $\sigma \in (0,\sigma_T)$, to get bounded inverse on this space, we use the solution formula, putting $\tau = \sigma_T$ in \eqref{solution}:
+\[
+u(\sigma) = \exp\left(\int_{\sigma_T}^\sigma a(\rho)d\rho\right)u(\sigma_T) + \int_{\sigma_T}^\sigma \exp\left(\int_s^\sigma a(\rho)d\rho\right)f(s)ds
+\]
+
+
+We see that 
+\begin{align*}
+\| e^{\int_{\sigma_T}^\sigma a(\rho
+)d\rho }u(\sigma_T)\| &\lar \left|\eps^{\frac{\alpha-2}{3}}e^{(\alpha-2)\sigma}e^{\int (a-2)} e^{2(\sigma-\sigma_T)}u(\sigma_T)\right| \\
+&\lar |u(\sigma_T)|
+\end{align*}
+
+and
+\begin{align*}
+\left\|\int_{\sigma_T}^\sigma e^{\int_s^\sigma a(\rho)d\rho}f(s)ds\right\| &\lar \left|\eps^{\frac{\alpha-2}{3}}e^{(\alpha-2)\sigma}\left(\int_{\sigma_T}^\sigma e^{\int_s^\sigma a(\rho)d\rho}f(s)ds\right)\right|_\infty \\
+& \le \left| e^{\alpha\sigma}\int_{\sigma_T}^\sigma e^{\int_s^\sigma (a(\rho)-2)d\rho} e^{-\alpha s}ds \right|_\infty \|f\|\\
+& \lar \left|\frac{1}{\alpha} \left(e^{\alpha(\sigma-\sigma_T)}-1 \right) \right|_\infty \|f\|\lar \|f\|.
+\end{align*}
+For some constant $C$ independent of $\eps$, not including the homogeneous part.
+
+The parameter $u(\sigma_T)$ is choosen so that $|u(\sigma_T)|\le \delta$.
+
+We define the operator
+\[
+\mathcal{L} u = \frac{d}{d\sigma}u-a(\sigma)u.
+\]
+
+\textbf{Nonlinear estimates}
+Recall that 
+\[
+R_r(W_r) = W_r^2 + (u_r+W_r)^3
+\]
+
+
+It is easier to estimate the nonlinear terms in the original $t-$variables, we estimate
+\[
+\|R_r(W_r)(t)\|=\|\eps^{-1/3}\varphi R_r(\sigma)\|_{C_{Wr}}= \sup_{\eps^{-1}\delta \le t \le T}|(T_\infty -t)^{3-\alpha}(W_r^2+(u_r+W_r)^3) |
+\]
+for $W_r \in C_{Wr}$. But the latter implies that $|W_r|_\infty \le (T_\infty-t)^{\alpha-2}\|W_r\|$, also we have that $|u_r| \lar (T_\infty- t)^{-1}$
+\begin{align*}
+\|R_r(W_r)\|  &\lar  \left| (T_\infty-t)^{3-\alpha}(W_r^2+u_r^3+W_r^3)\right|_\infty \\
+&\lar (T_\infty-T)^{-\alpha}+(T_\infty-T)^{-(1-\alpha)}\|W_r\|^2 +(T_\infty-T)^{2\alpha-3}\|W_r\|^3\\
+& \lar \delta^\alpha+\delta^{1-\alpha}\|W_r\|^2 + \delta^{3-2\alpha}\|W_r\|^3
+\end{align*}
+This implies that $R_r$ maps a ball of radius $\delta^{\alpha/2}$ in $C_{Wr}$ into itself, provided that $\delta$ is small enough. Indeed, we see if $\|W_r\| \le \delta^{\alpha/2}$, then
+\[
+\|R_r(W_r)\| \lar \delta^{\alpha} + \delta^{1-\alpha}\delta^{\alpha} + \delta^{3-\alpha/2} \lar \delta^{\alpha} \le \delta^{\alpha/2}.
+\]
+
+Denote $h(W_1,W_2) = (W_1+W_2+(u_r+W_1)^2+(u_r+W_2)^2+(u_r+W_1)(u_r+W_2))$, then
+\begin{align*}
+\|R_r(W_1)-R_r(W_2)\| &= \sup|(T_\infty - t)^{3-\alpha} (W_1-W_2)h(W_1,W_2)|\\
+& \lar |(T_\infty-t)h(W_1,W_2)|_\infty\|W_1-W_2\| ,
+\end{align*}
+
+since $|W_{1,2}| \lar (T_\infty-t)^{\alpha-2}$ and $|u_r| \le (T_\infty-t)^{-1}$, we have $|h(W_1,W_2)| \le |W_1+W_2|+O((T_\infty-t)^{-2})$, hence 
+\[
+|(T_\infty-t)h(W_1,W_2)|_\infty \lar (T_\infty-t)^{\alpha-1} \le \delta^{1-\alpha}
+\]
+Which shows $R_r(W)$ is Lipshitz in $W$ with small ($\delta^{1-\alpha}$) Lipschitz constants.
+
+Equation \eqref{Wreqn} is re-written in the form 
+\[
+W_r(\sigma) = \exp\left(\int_{\sigma_T}^\sigma a(\rho)d\rho\right)W_T+\int_{\sigma_T}^\sigma \exp\left(\int_s^\sigma a(\rho)d\rho\right)\eps^{-1/3}\varphi R_r(W_r(s),\eps)ds := \mathcal{T}(W_r, W_T,\eps),
+\]
+Previous estimates show that
+$\|\mathcal{T}(0,0,\eps) \| \le C\|u_r^3\| \le C\delta^{1-\alpha}$, and $\mathcal{T}(W_r,W_T,\eps) $ is Lipschitz in $W_r, W_T$ with order $\delta^{1-\alpha}$, and for $\|W_r\| \lar \delta^{\alpha/2}$, $\|\mathcal{T}(W_r,W_T,\eps)\| \lar \delta^{\alpha/2}$. Provided that $W_T$ is chosen small enough ($\rmO(\delta)$), as indicated by the following estimate.
+
+\[
+\left\|\exp\left(\int^{\sigma}_{\sigma_T} a \right)W_T\right\| =\sup_{\sigma \le \sigma_T} |\eps^{(\alpha-2)/3} e^{(\alpha-2)\sigma}e^{2(\sigma-\sigma_T)}e^{\int_{\sigma_T}^{\sigma}(a-2)} W_T| \lar |\eps^{\alpha/3} e^{\alpha\sigma}W_T| \le |W_T|
+\]
+\pagebreak
+\subsection{Estimates for \texorpdfstring{$W_r(0)$}{Wzero} }
+Using the fixed point formula, we can write down equation for $W_r(0)$:
+\[
+W_r(0) = \exp\left(\int_{\sigma_T}^0 a(\rho)d\rho \right) W_T + \int_{\sigma_T}^0 \exp\left(\int_{s}^0 a(\rho)d\rho \right)\eps^{-1/3}\varphi R_r(W_r(s),\eps)ds
+\]
+
+then using the fact that 
+\begin{align*}
+|\eps^{-1/3}\varphi R_r(W_r(s))| &\le \eps^{(2-\alpha)/3}e^{(2-\alpha)s} \| \eps^{-1/3}\varphi R_r(W_r(s))\| \\
+&\lar \eps^{(2-\alpha)/3}e^{(2-\alpha)s}\left( \delta^{1-\alpha}\|W_r^2\|+\delta^{\alpha} \right)
+\end{align*}
+we estimate
+\begin{align*}
+\left|e^{2\sigma_T}\left( W_r(0) - \exp\left(\int_{\sigma_T}^0 a(\rho)d\rho \right) W_T \right)\right| &\le \int_0^{\sigma_T} e^{\int_s^0(a-2)}e^{-2(s-\sigma_T)} |\eps^{-1/3}\varphi R_r(W_r(s,\eps))|ds \\
+& \lar \int_0^{\sigma_T} e^{-2(s-\sigma_T)}\eps^{(2-\alpha)/3}e^{(2-\alpha)s}(\delta^{\alpha}+\delta^{1-\alpha}\|W_r^2\|)ds \\
+&\lar  \eps^{(2-\alpha)/3}\int_0^{\sigma_T} e^{-\alpha s}(\delta^{\alpha}+\delta^{1-\alpha}\|W_r^2\|)ds\\
+&\lar \eps^{-\alpha/3}
+\end{align*}
+
+
+
+\subsection{Fixed point argument-set up for \texorpdfstring{$W_{l}$}{Wplus}}
+
+
+
+\end{document}
