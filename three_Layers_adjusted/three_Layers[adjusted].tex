@@ -1,0 +1,808 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{stmaryrd}
+\usepackage{fullpage}
+\usepackage{ifthen}
+\usepackage{subfigure}
+\usepackage{epic}
+\usepackage{authblk}
+\usepackage{textcomp}
+\usepackage[small]{caption}
+\SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}
+
+\usepackage{enumitem}
+
+\usepackage[hypertexnames=false,colorlinks=true,linkcolor=blue,citecolor=blue]{hyperref}
+\usepackage[numbers,comma,square,sort&compress]{natbib}
+\usepackage[letterpaper,text={7in,9in},centering]{geometry}
+
+\usepackage{bm}
+\usepackage{color}
+\usepackage{titlesec}
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{1.0ex plus0.2ex minus0.2ex}
+\renewcommand{\baselinestretch}{1.1}
+\graphicspath{{eps/}{pdf/}}
+\setcaptionmargin{0.25in}
+\def\captionfont{\itshape\small}
+\def\captionlabelfont{\upshape\small}
+
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+\newcommand{\bqq}{\begin{equation}}
+\newcommand{\eqq}{\end{equation}}
+\newcommand{\bqs}{\begin{equation*}}
+\newcommand{\eqs}{\end{equation*}}
+
+\newcommand{\Ral}{\mathcal{R}}
+
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}} 
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\rme}{\mathrm{e}}
+\newcommand{\rmi}{\mathrm{i}}
+\newcommand{\rmd}{\mathrm{d}}
+\newcommand{\rmo}{{\scriptstyle\mathcal{O}}}
+\newcommand{\rmO}{\mathcal{O}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\lar}{ \lesssim }
+
+
+\newcommand{\Rho}{\bm{\rho}}
+\newcommand{\bigma}{\bm{\sigma}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\supp}{\operatorname{supp}}
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+
+\numberwithin{equation}{section}
+
+\newenvironment{Hypothesis}[1]%
+  {\begin{trivlist}\item[]{\bf Hypothesis #1 }\em}{\end{trivlist}}
+
+\renewcommand{\arraystretch}{1.25}
+
+
+% Define Theorem Styles ----------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{main}[theorem]{Main Result}
+\newtheorem{rmk}[theorem]{rmk}
+
+
+\newcommand{\etal}{\textit{et al.}\ }
+
+\newcommand{\greg}[1]{%
+  {\color{blue}\textbf{Greg:} #1}%
+ }
+ 
+\newcommand{\arnd}[1]{%
+  {\color{red}\textbf{Arnd:} #1}%
+ }
+
+\newenvironment{Proof}[1][.]%
+ {\begin{trivlist}\item[]\textbf{Proof#1 }}%
+ {\hspace*{\fill}$\rule{0.3\baselineskip}{0.35\baselineskip}$\end{trivlist}}
+
+\renewcommand\labelitemi{$\bullet$}
+
+\title{Passage through a fold without a phase space}
+\author{author}
+\date{2016}
+\begin{document}
+
+\section{Introduction}
+
+Notation: sometimes we use $A \lar B$ to indicate that there is a constant $C$ such that $A \le C \cdot B$, if this constant $C$ does not depend on certain parameters that $A$ or $B$ might depends on, we will be specific and write directly $A \le C\cdot B$.
+
+
+\section{Set up}
+
+
+Equation
+\begin{align}\label{ori_eqn}
+\begin{split}
+\frac{d}{d\tau}u &= \mu+u^2+ f(u,\mu,\eps),\\
+\frac{d}{d\tau}\mu &=  \eps g(u,\mu,\eps),
+\end{split}
+\end{align}
+where $f(u,\mu,\eps) = \rmO(\eps, u\mu,\mu^2,u^3)$ and $g(u,\mu,\eps) = 1+\rmO(u,\mu,\eps)$. 
+
+Boundary condition
+\begin{equation}
+\mu(0) = -\delta, \hspace{0.2in} u(T) = \delta,
+\end{equation}
+
+where $\delta,\eps$ are parameters,  and $T$ is dependent on $\eps$ and $\delta$ which will be solved as part of the equation.
+
+\subsection{Euler multiplier}
+Since for $u,\mu,\eps$ small, $g(u,\mu,\eps) = 1 + \rmO(u,\mu,\eps)$, we can define a new time $t = t(\tau)$ by $\frac{dt}{d\tau} = g$, and rewrite \eqref{ori_eqn}  as
+\begin{align}\label{euler_ori_eqn}
+\begin{split}
+\frac{d}{dt}u &= \mu+u^2+ \tilde{f}(u,\mu,\eps),\\
+\frac{d}{dt}\mu &=  \eps ,
+\end{split}
+\end{align}
+where now $\tilde{f}(u,\mu,\eps) = \rmO(\eps,  u\mu, \mu^2,\eps u, \eps \mu, \eps u^2, u^3)$. Moreover, by shifting $\tau$ apporpirtely, we retain the boundary condition
+\[
+\mu(t=0) = -\delta, \hspace{0.2in} u(\tilde{T}=t(T)) = \delta.
+\]
+Therefore, we will use \eqref{euler_ori_eqn} for analysis in the rest of the paper.
+
+\subsection{The Riccati equation}
+Consider the Riccati equation
+\begin{equation}\label{ric}
+\frac{d}{ds}u(s) = s+u(s)^2
+\end{equation}
+
+We denote any solution to \eqref{ric} as $u_R$, it is known to have a unique solution (denoted by $\bar{u}_R$) with the following asymptotics:
+
+\begin{equation} \label{ricasy}
+\bar{u}_R(s)=\begin{cases}
+  (\Omega_0-s)^{-1}+\rmO(\Omega_0-s), \text{ as }s \to \Omega_0, \\
+ -(-s)^{1/2} -\frac{1}{4}(-s)^{-1} + \rmO(|s|^{-3/2}), \text{ as }s \to -\infty.
+\end{cases}
+\end{equation}
+
+Here the constant $\Omega_0 \approx 2.3381$ is the smallest positive zero of 
+\[
+J_{-1/3}(2z^{3/2}/3)+J_{1/3}(2z^{3/2}/3),
+\]
+where $J_{\pm 1/3}$ are Bessel functions of the first kind. (See [Krupa, Szmolyan])
+
+
+More generally, we consider family of solutions  $u_R(s; u_0)$ of the Riccati equation  \eqref{ric} such that $u_R(0; u_0) = u_0$. That is, we take the initial condition $u_0$ as a parameter to the Riccati equation. For the special Riccati solution $\bar{u}_R$, we denote $\bar{u}_R(0) $ as $\bar{u}_0$. We will use a family of such solutions to build our ansatz, whose properties are summerized in the following proposition:
+
+\begin{proposition}\label{para_ric}
+There exist blow up time $\Omega_\infty = \Omega_\infty(u_0)$ that depends smoothly on $u_0$ for $|u_0 - \bar{u}_0|<\eta$, $\eta$ small, with $\Omega_\infty(\bar{u}_0) = \Omega_0$, and the corresponding solution $u_R(s; u_0)$ is of the form
+\begin{equation}\label{ric_exp}
+u_R(s;u_0) = \frac{1}{\Omega_\infty-s} +  (\Omega_\infty-s) r(\Omega_\infty-s;u_0),
+\end{equation}
+where the function $r$ is smooth in both variables and satisfies
+\begin{equation}\label{ric_reminder}
+r( \Omega_\infty-s; u_0) = -\frac{\Omega_\infty}{3} + \rmO(\Omega_\infty-s),
+\end{equation}
+as $s \to \Omega_\infty$.
+\end{proposition}
+\begin{proof}To get the dependence from $u_0$ to $\Omega_\infty$, we first add the equation $\frac{d}{ds}s=1$ to equation \eqref{ric} to get a autonomous $2-$dimensional system in the $(s,u)$ plane. Consider a small neighbourhood $I$ containing $\bar{u}_0$ on the vertical $u$-axis, then $u_R(s; u_0)$ is the trajectory that starts at $u_0 \in I$. The map $P_1 : I \to \mathbb{R}$ defined by $P_1(p) = u(2; p)$ is smooth in $p$, as the blow up time for $\bar{u}_R(s;\bar{u}_0)$ is $\Omega_0 >2$. Moreover, the image $P_1(I)$ is a finite interval on the vertical line $s=2$ containing $\bar{u}_R(2;u_0)$ bounded away from $0$, since the trajectory $u_R(s;\bar{u}_0)$ crosses the horizontal axis around $s=1$ and the vector field goes upwards in the first quardrant of the $(s,u)$-plane.
+
+Denote $\tilde{u}_0:= P_1(u_0)$ for brevity (technically, the interval $P_1(I)$ is a small section of the line $s=2$, with a little abuse of notation, we identify $\tilde{u}_0$ with the second coordinate of the point $P_1(u_0)$). Again in the Riccati equation \eqref{ric}, we make a change of variable by setting $z(s) = 1/u(s)$, the equation $z$ satisfies is:
+\[
+\frac{d}{ds}z(s) = -z^2s -1.
+\]
+Let $J = \{ 1/\tilde{u}_0 \mid  \tilde{u}_0 \in P_1(I)\}$ and $z(s; 1/\tilde{u}_0)$ is the trajectory which starts at $1/\tilde{u}_0$. We claim that $z(s; 1/\bar{u}_0)$ reaches $0$ at a finite time $\Omega_\infty = \Omega_\infty(1/\bar{u}_0)$. To see this, first notice there is no equilibrium for the two dimensional system $\frac{d}{ds}s=1, \frac{d}{ds}z=-z^2s-1$. Then, on the boundary $s=2$, the vector field takes the form $(1,-2z^2-1)$, which makes any trajectory starting at a point on $J$ moving down towards the right. Moreover, the vector field $(1,-sz^2-1)$ always pointing down in the first qurdrant of the $(s,z)$ plane, so trajectories cannot go upwards. Lastly, the vector field crosses the horizontal axis non-tangentially, it identically equals $(1,-1)$ throughout the line $z=0$, hence, any trajectory which starts at a point on $J$ will cross $z=0$ in finite time at a unique point $\Omega_\infty = \Omega_\infty(1/\tilde{u}_0)$. The dependence of $\Omega_\infty$ on $1/\tilde{u}_0$ is smooth by the smooth dependence on initial conditions.
+
+ We now define another map $P_2 : J \to \mathbb{R}$ by $P_2(1/\tilde{u}_0) = \Omega_\infty(1/\tilde{u}_0)$, we get a smooth map $P: I \to \mathbb{R}$ by the composition
+ \[
+ P =P_2 \circ f \circ P_1,
+ \] 
+ where $f(z) = 1/z$ is the inversion map. Since each of the map in the composition is smooth, $P: u_0 \mapsto \Omega_\infty = \Omega_\infty(u_0)$ is smooth as well.
+
+To get the asymptotic expansion, we set $\xi = \Omega_\infty-s$, then $\tilde{z}(\xi)=z(\Omega_\infty-\xi)$ solves
+\[
+\frac{d}{d\xi} \tilde{z} = \tilde{z}^2(\Omega_\infty-\xi)+1,
+\]
+and $\tilde{z}(0) = 0$.
+
+Hence we can assume the expansion for $\tilde{z}$ near $\xi=0$ is of the form
+\[
+\tilde{z} = \xi + z_2\xi^2+z_3\xi^3 + \rmO(\xi^4),
+\]
+for some constant $z_2,z_3$. Differentiating this expansion, use the equation $\tilde{z}$ solves and comparing coefficients, we find that $z_2 = 0, z_3 = \Omega_\infty/3$.  Changing back from $\tilde{z}(\xi)$ to $z=z(s)$ with $s = \Omega_\infty-\xi$ and recall $z(s) = 1/u(s)$, we find that $u_R(s;u_0)$ has expansion \eqref{ric_exp} with remainder $r$ satisfies \eqref{ric_reminder}.
+
+
+\end{proof}
+\subsection{The \texorpdfstring{$t$}{t} to \texorpdfstring{$\sigma$}{sigma} time rescaling}\label{t_sigma}
+
+The solution to \eqref{ori_eqn} will be based on the solution of the Riccati equation \eqref{ric}. Due to the parameter $\eps$, we need to rescale time $t$ to obtain appropriate equations as $\eps \to 0$.
+
+We will rescale time $t$ to time $\sigma$ using the following steps.
+\begin{itemize}
+
+\item Step 1: Define $\psi$ as
+\[
+\psi = \eps^{1/3}(t - \eps^{-1}\delta)
+\]
+
+\item Step 2:
+Fix $M>0$ large, define $\sigma$ as
+\begin{align*}
+\psi = \psi(\sigma; u_0) =\begin{cases}
+-(-\frac{3}{2} \sigma)^{2/3} , \text{ for }\sigma \le -M\\
+\Omega_\infty(u_0) -e^{-\sigma}, \text{ for }\sigma \ge M,
+\end{cases}
+\end{align*}
+here $\Omega_\infty$ is the blow-up time for $u_R$ found in proposition \ref{para_ric}.
+
+\item Step 3: For $\sigma \in (-M, M)$, we define $\psi(\sigma)$ as the straight line connecting the two points $(M, \Omega_\infty-e^{-M})$ and $(-M, -(\frac{3}{2}M)^{2/3})$. As a result, if we define $\sigma_m=\sigma_m(u_0)$ as the value of $\sigma$ such that $\psi(\sigma_m; u_0) = 0$, then we have 
+\[
+\frac{|\sigma_m - M|}{M} = \left| \frac{(\frac{3M}{2})^{2/3}-(\Omega_\infty-e^{-M})}{(\frac{3M}{2})^{2/3}-(\Omega_\infty+e^{-M})} -1 \right|\le CM^{-2/3},
+\] 
+for some constant $C$ independent of $u_0$.
+
+Therefore we can write
+\begin{equation}\label{sigm_asy}
+\sigma_m = M + M_r, \hspace{0.2in} |M_r| \le CM^{1/3}
+\end{equation}
+\end{itemize}
+
+We also denote $\varphi(\sigma) := \frac{d}{d\sigma}\psi(\sigma)$.
+
+%For convenience let the map $t \mapsto \sigma$ be denoted as $\rho$.
+
+\iffalse
+%\item Asymptotics for $u_R$ and $\varphi$.
+\begin{equation*}
+\varphi(\sigma) =\begin{cases}
+ (-\frac{3}{2}\sigma)^{-1/3}, \text{ as }\sigma \to -\infty\\
+e^{-\sigma} , \text{ as }\sigma \to \infty.
+\end{cases}
+\end{equation*}
+
+\begin{equation*}
+u_R(\psi(\sigma)) \to \begin{cases}
+ -(-\frac{3}{2}\sigma)^{1/3}, \text{ as }\sigma \to -\infty\\
+e^{\sigma} , \text{ as }\sigma \to \infty.
+\end{cases}
+\end{equation*}
+
+\begin{equation*}
+2u_R\varphi(\sigma) \to\begin{cases}
+-2+ \rmO((-\sigma)^{-3/2}), \text{ as }\sigma \to -\infty\\
+2+ \rmO(e^{-2\sigma}), \text{ as }\sigma \to \infty.
+\end{cases}
+\end{equation*}
+%
+\fi
+
+
+\pagebreak
+
+
+
+\pagebreak
+\subsection{Region A}
+
+Region I corresponds to the $t$-time interval $\{ t : t > \eps^{-1}\delta\}$.
+
+\subsubsection{Ansatz in region A}
+The ansatz in region A takes the form
+\[
+u_{A}(t) = u_* + w_r.
+\]
+The function $u_* = u_*(t; u_0)$ is defined as:
+\begin{equation}\label{urdef}
+u_*(t; u_0) := \eps^{1/3}u_R(\eps^{1/3}(t-\eps^{-1}\delta); u_0),
+\end{equation}
+
+where $u_R=u_R(s; u_0)$ is the family of solutions to the Riccati equation which were shown to exist in proposition \ref{para_ric}, it solves the initial value problem
+\begin{equation}\label{ureq}
+\frac{d}{dt}u_*(t; u_0) = \mu(t) + u_*^2(t; u_0), \hspace{0.2in} u_*(\eps^{-1}\delta; u_0) = \eps^{\frac{1}{3}} u_0
+\end{equation}
+with $\eps$ and $u_0$ as parameters.  The function $w_r$ is a correction term whose properties are summerized in the following theorem.
+\begin{theorem}\label{thm_r}
+For all $\delta, \alpha$ small enough, there exists $\eta,\eps_1,C$, such that for all $0<\eps <\eps_1$, and all $|u_0 - \bar{u}_0|<\eta$, there exist a time $T=T(\eps;u_0)$ and a solution to \eqref{ori_eqn} of the form
+\[
+u(t;u_0) = u_*(t; u_0) + w_r(t; u_0)
+\]
+exists on the time interval $t \in (\eps^{-1}\delta, T)$, such that $w_r$ and $T$ satisfies
+\begin{enumerate}[label=\textnormal{(\arabic*)}]
+\item \label{thm_r_1}$T=T(\eps;u_0) = \eps^{-1}\delta+\eps^{-1/3}\Omega_\infty(u_0)-\delta^{-1}+T_r$ with $|T_r|\le C\eps^{2/3}\delta^{-3}$,
+\item \label{thm_r_2} $w_r(T; u_0) = 0$ and $u_*(T,u_0)=\delta$,
+\item \label{thm_r_3} $|w_r(\eps^{-1}\delta; u_0)| \le C\eps^{\frac{2-\alpha}{3}}$,
+
+\item \label{thm_r_4} $\sup_{t} |(T_\infty-t)^{2-\alpha} w_r(t; u_0)| \le C,$
+
+\item \label{thm_r_5} The function $w_r(\eps^{-1}\delta; \cdot)$ is smooth, with Lipschitz constant  $|\text{Lip }w_r(\eps^{-1}\delta; \cdot) |\le C\eps^{\frac{\alpha}{3}} . $
+
+\end{enumerate}
+
+\end{theorem}
+
+We will prove this theorem in the following sections.
+\subsubsection{The exit time \texorpdfstring{$T(u_0)$}{T(u_0)}}\label{exit_time}
+The exit time $T$ is defined by the boundary condition 
+\[
+\delta = u_*(T; u_0) = \eps^{1/3}u_R(\eps^{1/3}(T-\eps^{-1}\delta); u_0),
+\]
+since the expansion for $u_R$ is given in \eqref{ric_exp} , if we define $s_T = \eps^{1/3}(T-\eps^{-1}\delta)$, then $s_T$ satisfies
+\[
+\frac{1}{\Omega_\infty-s_T} + (\Omega_\infty-s_T)r(\Omega_\infty-s_T) = \eps^{-1/3}\delta,
+\]
+from which we get the leading order expansion $\Omega_\infty-s_T = \rmO(\eps^{1/3}\delta^{-1})$. A fixed point argument gives
+\[
+\Omega_\infty - s_T = \eps^{1/3}\delta^{-1} + \rmO(\eps \delta^{-3}),
+\]
+hence the expansion for $T=T(\eps; u_0)$ is
+\begin{equation}\label{T_exp}
+T = T(\eps;u_0) = \eps^{-1}\delta + \eps^{-1/3}\Omega_\infty(u_0) - \delta^{-1} + T_r,
+\end{equation}
+with 
+$|T_r|\le C\eps^{2/3}\delta^{-3}$, for some constant $C$ independent of $u_0$, as $\eps \to 0$.
+
+For conveneience, we define \[
+T_\infty = T_\infty(\eps; u_0)= \eps^{-1}\delta + \eps^{-1/3}\Omega_\infty(u_0),
+\]
+so that $T = T_\infty - \delta^{-1} + T_r$.
+
+\subsubsection{Equation for \texorpdfstring{$w_r$}{wr} and rescaling}\label{equation_wr}
+We now plug in the anstaz $u = u_* + w_r$ into equation \eqref{ori_eqn}, and derive the equation for $w_r$
+\begin{align}\label{eqn_wr}
+\begin{split}
+w_r' - 2u_*w_r &= w_r^2 + (u_*+w_r)^3 \\
+&= 3u_*^2w_r+(1+3u_*)w_r^2 +w_r^3 +u_*^3 := R_r(w_r)=R_r(w_r; \eps,u_0),
+\end{split}
+\end{align}
+
+moreover, we enforce the boundary condition $u(T; u_0) = \delta$, hence this gives the boundary condition for $w_r$ at $t=T$:
+\begin{equation}\label{Bc_w_r}
+w_r(T;u_0) = 0,
+\end{equation}
+
+
+therefore, equation \eqref{eqn_wr} is posed on the interval $t \in (\eps^{-1}\delta, T)$, with boundary condition \eqref{Bc_w_r}.
+
+Next, we rescale the equation \eqref{eqn_wr} into $\sigma$-time variable by using the $t$ to $\sigma$-time rescaling in section \ref{t_sigma}, and obtain
+\begin{equation}\label{rescl_wr}
+\left(\frac{d}{d\sigma} - a(\sigma; \eps, u_0)\right) W_r =\eps^{-1/3}\varphi \mathcal{R}_r(W_r; \eps,u_0),
+\end{equation}
+where
+\begin{itemize}
+\item The term $a(\sigma;\eps, u_0)$ is defined as and has asymptotics
+\[
+a(\sigma; \eps, u_0) := 2\varphi(\sigma)u_R(\psi(\sigma); u_0) =  2+\rmO(e^{-2\sigma}) \text{ as }\sigma \to \infty,
+\]
+we remark that this convergence as $\sigma \to \infty$ is uniform in $u_0$ due to the definition of our time-rescaling.
+
+\item The function $W_r(\sigma)$ is the rescaled version of $w_r(t)$ in the $\sigma$-variable, $w_r(t) = w_r(\eps^{-1/3}\psi(\sigma)+\eps^{-1}\delta) = W_r(\sigma)$. $U_*$ is similarly the rescaled version of $u_*$,  $U_*(\sigma;u_0)= u_*(t;u_0) = \eps^{1/3}u_R(\psi(\sigma;u_0);u_0)$.
+
+\item The function $\Ral_r$ is a rescaled version of $R_r$ such that $\mathcal{R}_r(W_r;\eps,u_0) = 3U_*^2W_r + (1+3U_*)W_r^2 + U_*^3,$ 
+\end{itemize}
+ 
+
+To get the corresponding boundary condition of \ref{Bc_w_r}, we need to know the corresponding $\sigma$-time for the $t$-time interval $t\in (\eps^{-1}\delta, T)$.
+
+At $t = \eps^{-1}\delta$, the corresponding $\sigma$ time is at $\sigma=\sigma_m$, from its definition in section \ref{t_sigma}.
+
+At $t=T$, we have $\eps^{1/3}(T-\eps^{-1}\delta) = \Omega_\infty -\eps^{1/3}\delta^{-1}+\eps^{1/3}T_r=\psi(\sigma_T) = \Omega_\infty-e^{-\sigma_T}$ from \eqref{T_exp}, hence, for $\eps$ small enough, we get that the corresponding $\sigma$-time to $t=T$ is 
+\[
+\sigma_T=\sigma_T(u_0)= -\log(\eps^{1/3}(\delta^{-1}-T_r)) = -\log(\eps^{1/3}\delta^{-1}) - \log(1-\delta T_r),
+\]
+
+which implies that 
+\[
+|\sigma_T -(-\log(\eps^{1/3}\delta^{-1}))| \le |\log(1-\delta T_r)| \le  C|\delta T_r|\le C\eps^{2/3}\delta^{-2}
+ \] 
+for some constant $C$ independent of $u_0$.
+
+We now define $\sigma_{\inf}$ and $\sigma_{\sup}$ as follows:
+\[
+\sigma_{\inf} = \inf_{|u_0-\bar{u}_0|<\eta}\sigma_m(u_0), \hspace{0.3in} \sigma_{\sup} = \sup_{|u_0-\bar{u}_0|<\eta}\sigma_T(u_0)
+\]
+and pose the equation \eqref{rescl_wr} on the time interval $\sigma \in (\sigma_{\inf}, \sigma_{\sup})$. From above we can see that 
+\[
+cM \le \sigma_{\inf} , \hspace{0.2in} \sigma_{\sup} \le -C\log(\eps^{1/3}\delta^{-1})\] for some constant $c,C$ with $c<1, C>1$, independent of $u_0,\eps$. The point is that we have eliminated the $u_0$ dependence on the time interval $(\sigma_{\inf}, \sigma_{\sup})$.
+
+
+
+\subsubsection{Linear equation and norms}
+
+
+
+
+Our goal now is to solve \eqref{rescl_wr} on the interval $\sigma \in (\sigma_{\inf}, \sigma_{\sup})$ using a fixed point argument. To do so, we introduce the function space below:
+
+\begin{align*}
+\mathcal{C}_{r} &= \left\{ w(\sigma) : \sup_{\sigma_{\sup}\ge \sigma\ge \sigma_{\inf}} \left|\eps^{(\alpha-2)/3} e^{(\alpha-2)\sigma}w(\sigma)\right| < \infty \right\}. \\
+%--------------------------------------
+\end{align*}
+
+We establish the invertibility of the linear operator $A_r$ which acts on $w \in C_{r}$ as 
+\[
+A_r w = \left( \frac{d}{d\sigma}w-a(\sigma;\eps, u_0) w,  w(\sigma_T)\right)
+\]
+in the following
+\begin{proposition}\label{inv_A_r}
+$A_r=A_r(u_0,\eps) : \mathcal{D}\subset C_{r} \to C_{r}\times \mathbb{R}$ and is invertible, with its inverse smoothly depends and uniformly bounded in $u_0, \eps$. 
+\end{proposition}
+\begin{proof}
+Fix $\eta$ small, then there is $\eps_0>0$ such that for $\eps<\eps_0$, we can choose $\sigma_* \in (\sigma_{\inf}, \sigma_{\sup})$ so that $|a(\sigma; \eps, u_0)-2| \le \eta$ for $\sigma \ge \sigma_*$. As a result there is a constant $C$, independent of $\eps$ and $u_0$, such that $|\sigma_*-\sigma_{\inf}|\le C$. In fact, we can choose $\sigma_* \le \sigma_T$ since $|\sigma_T-\sigma_{\sup}| \le |\sigma_T - (-\log(\eps^{1/3}\delta^{-1})|\le C\eps^{2/3}\delta^{-2}$.
+
+For $\sigma_{\sup} \ge \sigma \ge \sigma_*$, the linear operator $A_r$ is a small perturbation of the invertible linear operator $w \to \left(\frac{dw}{d\sigma}-2w, w(\sigma_T) \right)$. Indeed, for $f \in C_{r}$, the equation $\frac{d}{d\sigma}w-2w = f$
+has the solution
+\[
+w(\sigma) = e^{2(\sigma-\sigma_T)}w(\sigma_T)+\int_{\sigma_T}^\sigma e^{2(\sigma-s)}f(s)ds,
+\]
+moreover, it holds that $\|w\|_{C_{r}} \le C(\delta^{\alpha-2}|w(\sigma_T)| + 2\alpha^{-1}\|f\|_{C_{r}})$ for some constant $C$ independent of $u_0,\eps$, which shows the inverse is independent of $\eps$ and $u_0$. If the prescribed value at $w(\sigma_T)$ is of order $\delta^{2-\alpha}$.
+
+For $\sigma < \sigma_*$, we can directly write down the solution of $(d/d\sigma - a)w = f$ as
+\[
+w(\sigma) = \exp\left(\int^{\sigma}_{\sigma_*} a(\tau)d\tau\right) w(\sigma_*) + \int_{\sigma_*}^{\sigma} \exp\left(-\int_{\sigma}^{s}a(\tau)d\tau\right)f(s)ds 
+\]
+ Again, the inverse is bounded uniformly in $\eps, u_0$ because of the bound $|\sigma_*-\sigma_{\inf}|\le C$. To see this, note $w(\sigma_*)$ can be evaluated using the solution on the intveral $(\sigma_*,\sigma_{\sup})$, which satisfies $w(\sigma_*) \lar \eps^{\frac{2-\alpha}{3}}e^{(2-\alpha)\sigma_*}$, so 
+\[
+\left\|\exp\left(\int^{\sigma}_{\sigma_*} a(\tau)d\tau\right) w(\sigma_*)\right\|_{C_{r}} \le e^{(2-\alpha)(\sigma_*-\sigma)}\exp\left(\int^{\sigma}_{\sigma_*} a(\tau)d\tau\right) \lar e^{(2-\alpha)C},
+\]
+and
+\[
+\left\| \int_{\sigma_*}^{\sigma} \exp\left(-\int_{\sigma}^{s}a(\tau)d\tau\right)f(s)ds\right\|_{C_{r}} \le \int_{\sigma_*}^{\sigma} \exp\left(-\int_{\sigma}^{s}a(\tau)d\tau\right)e^{(2-\alpha)(s-\sigma)} \|f\|_{C_{r}}ds \lar e^{(2-\alpha)C}\|f\|_{C_{r}}
+\]
+Combining the case $\sigma< \sigma_*$ and $\sigma \ge \sigma_*$ together, we conclude that $A_r$ is uniformly invertible in $\eps$ and $u_0$ on the space $C_{r}$.
+\end{proof}
+
+
+\subsubsection{Nonlinear estimates}
+
+In this section we estimate the nonlinear term $R_r$.
+
+\begin{proposition}\label{nl_est}
+If $W_r \in \mathcal{C}_{r}$, then $\eps^{-1/3}\varphi \mathcal{R}_r(W_r) \in \mathcal{C}_{r}$, and
+\begin{align}
+\|\eps^{-1/3}\varphi \mathcal{R}_r \| = \rmO(\delta^{\alpha})
+\end{align}
+\end{proposition}
+\begin{proof}
+Recall that $\mathcal{R}_r(W_r) = 3U_*^2W_r+(1+3U_*)W_r^2 +W_r^3 +U_*^3 $.
+
+Proposition \ref{ric_exp} shows
+\begin{align*}
+U_*(\sigma;u_0) =  \eps^{\frac{1}{3}}(e^\sigma+e^{-\sigma} r(e^{-\sigma}; u_0)   ) \text{ as }\sigma \to \infty,
+\end{align*}
+therefore $|u_*(\sigma)| \lar \eps^{\frac{1}{3}}e^\sigma$ for all $\sigma \ge \sigma_{\inf}$.
+
+As $W_r \in C_{r}$, we have 
+\[
+|W_r(\sigma)| \lar \eps^{\frac{2-\alpha}{3}} e^{(2-\alpha)\sigma}.
+\]
+
+Using these facts, we have
+\[
+\|\eps^{-\frac{1}{3}}\varphi U_*^3\|_{C_{r}} \lar \eps^{\frac{\alpha}{3}} e^{\alpha\sigma} \lar \eps^{\frac{\alpha}{3}} e^{\alpha\sigma_{\sup}} \lar \delta^\alpha,
+\]
+
+\[
+\|\eps^{-\frac{1}{3}}\varphi W_r^2\|_{C_{r}}=\sup |\eps^{-\frac{1}{3}} \varphi W_r| \lar \eps^{\frac{1-\alpha}{3}} e^{(1-\alpha)\sigma} \lar \eps^{\frac{1-\alpha}{3}} e^{(1-\alpha)\sigma_{\sup}} \lar \delta^{1-\alpha},
+\]
+
+\[
+\|\eps^{-\frac{1}{3}}\varphi W_r^3\|_{C_{r}}=\sup |\eps^{-\frac{1}{3}} \varphi W_r^2| \lar \eps^{\frac{3-2\alpha}{3}} e^{(3-2\alpha)\sigma} \lar \eps^{\frac{3-2\alpha}{3}} e^{(3-2\alpha)\sigma_{\sup}} \lar \delta^{3-2\alpha},
+\]
+
+\[
+\|\eps^{-\frac{1}{3}}\varphi U_*^2W_r\|_{C_{r}} =\sup |\eps^{-\frac{1}{3}} \varphi u_r^2| \lar \eps^{\frac{1}{3}} e^{\sigma} \lar \eps^{\frac{1}{3}} e^{\sigma_{\sup}} \lar \delta.
+\]
+
+\end{proof}
+
+\subsubsection{Fixed point argument and the proof of Theorem \ref{thm_r}}
+In this section we prove theorem \ref{thm_r} by setting up an appropriate fixed point argument.
+\begin{proof}[Proof of theorem \ref{thm_r}]
+Items \ref{thm_r_1} and \ref{thm_r_2} in the assertion of the theorem has been demonstrated in section \ref{exit_time} and \ref{equation_wr}. Items \ref{thm_r_3} and \ref{thm_r_4} is a direct consequence of $W_r \in C_r$ and the definition for the norm of $C_r$, to prove this, we first rewrite equation \eqref{rescl_wr} and the boundary condition $W_r(\sigma_T)=W_T$ as 
+\[
+F_r(W_r, W_T; \eps, u_0) = 0
+\]
+where $F_r : C_{r}\times \mathbb{R} \to C_{r}\times \mathbb{R}$ is defined as
+\begin{align*}
+F_r(W_r,W_T;\eps,u_0) &= A_rW_r - \left(\eps^{-1/3}\varphi \Ral_r(W_r), W_T \right)\\
+&=\left( \frac{d}{d\sigma}W_r-aW_r - \eps^{-1/3}\varphi \Ral_r(W_r), W_r(\sigma_T)-W_T \right).
+\end{align*} 
+Now we are ready to use a fixed point argument to solve the equation 
+\[
+A_r W_r = (\eps^{-1/3}\varphi \mathcal{R}_r(W_r), W_T).
+\]
+
+
+Let $X = C_{r} \times (-\delta_1,
+\delta_1)$, where $\delta_1 = \rmO(\delta^{2-\alpha})$ is small, we introduce the solution map $\mathcal{S}: X \to C_{r}\times \mathbb{R}$ as follows:
+\[
+\mathcal{S}(W_r,W_T; \eps, u_0) = (W_r-A_r^{-1}F_r(W_r,W_T;\eps, u_0), W_T)
+\]
+
+From the propositions above, we conclude 
+\begin{itemize}
+\item $\|\mathcal{S}(0,0;\eps,u_0) \|= \|\left( -A_r^{-1}F_r(0,0;\eps,u_0),0\right)\| \le \|A_r^{-1}\|\|F_r(0,0;\eps,u_0)\| \lar |\|\eps^{-1/3}\varphi \Ral_r(0)\| \lar \delta^\alpha$, uniformly in $\eps$ and $u_0$.
+
+\item $\mathcal{S}$ is a smooth map in $W_r,W_T$ as well as the parameters $\eps, u_0$.
+
+\item The linearization of $\mathcal{S}$ at $(0,0)$, $D_{(W_r,W_T)} \mathcal{S}(0,0)$, is equal to $A_{r}^{-1}\eps^{-1/3}\varphi(3u_r^2)$, whose norm satisfies
+\[
+\|A_{r}^{-1}\eps^{-1/3}\varphi(3u_r^2)\| \lar \sup|\eps^{-1/3}\varphi(3u_r^2)| = \rmO(\delta)
+\]
+Moreover, for $\|W_r\|$ small enough and $|W_T|\le \delta_1$, we have $D_{(W_r,W_T)}\mathcal{S}(W_r,W_T;\eps,u_0) =  A_r^{-1}(3u_r^2)+\rmO(\|W_r\|_{C_{r}})$, which is uniformly small in $\eps$ and $u_0$.
+
+\end{itemize}
+
+Therefore, for $(W_r,W_T)$ in a small ball of $X$, we can apply an iteration scheme and utilize the Banach fix point theorem to the existence of a fixed point, hence a solution to equation \eqref{rescl_wr} exists. Moreover, this solution depends smoothly on the parameter $\eps, u_0$. By picking $W_T = 0$, we have shown that a unique fixed point $W_r \in C_r$ exists and solves equation \eqref{rescl_wr}.
+
+
+Finally, to prove item \ref{thm_r_5} we need to estimate the Lipschitz constant for the map $u_0 \mapsto w_r(\eps^{-1}\delta; u_0)=W_r(\sigma_m;u_0)$, It suffices to estimate the following two quantities
+\[
+C_1 = \text{Lip}_{W_r} \mathcal{S}, \text{ and }C_2 = \text{Lip}_{u_0} \mathcal{S},
+\]
+because $W_r$ is the fixed point of the map $\mathcal{S}$, which implies
+\[
+\text{Lip}_{u_0} W_r(\sigma;u_0) \le  C_2/(1-C_1).
+\]
+
+From the definition of $\mathcal{S}$, we see that
+\[
+C_1 \le \text{Lip}_{W_r} |\eps^{-1/3}\varphi R_r(W_r)|\le \text{Lip}_{W_r} |\eps^{-1/3}\varphi W_r^2| \le\sup_{W_r \in C_r} |\eps^{-1/3}\varphi W_r | = \rmO(\delta^{1-\alpha})
+\]
+where the last line follows from proposition \ref{nl_est}.
+
+
+To estimate $C_2$. We notice that 
+\[
+C_2 \le \text{ Lip }_{u_0} |\eps^{-1/3}\varphi U_*^3(\sigma;u_0) |.
+\]
+However,
+\[
+\|\eps^{-1/3}\varphi [U_*^3(\sigma;u_0)-U_*^3(\sigma;\tilde{u}_0)] \|_{C_r} \le \|\eps^{-1/3}\varphi U_*^2 \|_{C_r} \sup|U_*(\sigma;u_0)-U_*(\sigma;\tilde{u}_0)|
+\] 
+
+proposition \ref{ric_exp} shows
+$U_*= \eps^{1/3}(e^\sigma + e^{-\sigma} r(e^{-\sigma}; u_0))$ for $\sigma$ large, hence 
+\[
+\partial_{u_0} U_*(\sigma;u_0) \le C\eps^{1/3}
+\]
+for some constant independent of $u_0$, on the other hand
+\[
+\|\eps^{-1/3}\varphi U_*^2 \|_{C_r}  = \rmO(\eps^{(\alpha-1)/3}),
+\]
+so we conclude that
+\[
+\|\eps^{-1/3}\varphi [U_*^3(\sigma;u_0)-U_*^3(\sigma;\tilde{u}_0)] \|_{C_r} \le C\eps^{\alpha/3}|u_0 - \tilde{u}_0|,
+\]
+or $C_2 = \rmO(\eps^{\alpha/3})$. Using the remarks above, this shows $\text{Lip}_{u_0} W_r(\sigma; u_0) = \rmO(\eps^{\alpha/3})$. Rescale back from $\sigma$ to $t$-time, we have completed the proof of theorem \ref{thm_r}.
+\end{proof}
+\pagebreak 
+
+
+\subsection{Region B}
+
+Region B is defined as $ t^*< t< \eps^{-1}\delta$.
+
+\subsubsection{Ansatz in region B}
+ The ansatz takes the form $u = \bar{u}_*  +w_\ell$.
+
+
+Where $\bar{u}_*$ is the function
+\begin{equation}\label{uldef}
+\bar{u}_*(t) = u_*(t;\bar{u}_0) = \eps^{1/3} u_R( \eps^{1/3}(t-\eps^{-1}\delta); \bar{u}_0)=\eps^{1/3}\bar{u}_R(\eps^{1/3}(t-\eps^{-1}\delta)).
+\end{equation}
+
+$\bar{u}_*$ solves the equation
+\begin{equation}\label{uleq}
+\frac{d}{dt}\bar{u}_* (t) = \mu(t) + \bar{u}_*^2(t),
+\end{equation}
+that is, $\bar{u}_*$ is merely a rescaled version of the special solution to the Riccati equation. 
+
+Similarly to the situation in region $A$, $w_\ell$ is a correction term whose properties are summerized in the following
+\begin{theorem}\label{thm_l}
+For all $\delta, \alpha$ small enough, there exists $\eps_2,C$, such that for all $0<\eps <\eps_2$, and a solution to \eqref{euler_ori_eqn} of the form
+\[
+u_B(t ) = \bar{u}_*(t) + w_\ell(t),
+\]
+exists on the time interval $t \in (t^*, \eps^{-1}\delta)$, such that $w_\ell$ satisfies
+%\begin{enumerate}[label=\textnormal{(\arabic*)}]
+%\item 
+\begin{equation}\label{thm_l_1}
+w_\ell(t) \le C\eps^{(2-\alpha)/3} | \eps^{1/3}(t-\eps^{-1}\delta)+1|.
+\end{equation}
+ 
+%\item \label{thm_l_2} $w_\ell(t) \le $ 
+%\end{enumerate}
+\end{theorem}
+
+We prove this theorem in the rest of this section.
+\subsubsection{Equation of \texorpdfstring{$W_{\ell}$}{Well} and rescaling}
+
+As before, we plug in the ansatz into \eqref{euler_ori_eqn} to derive the equation satisfied by $w_\ell$.
+\begin{align}\label{Eqn_wl}
+\begin{split}
+w_{\ell}' -2\bar{u}_* w_\ell &= w_\ell^2 + (\bar{u}_*+w_\ell)^3
+ \\
+ &=  (3\bar{u}_*^2)w_\ell + (1+3\bar{u}_*)w_\ell^2 + w_\ell^3+\bar{u}_*^3:=R_\ell(w_\ell).
+\end{split}
+\end{align}
+
+We want to solve this equation on $t\in (t^*, \eps^{-1}\delta)$. 
+Following previous steps, we next rescale the equation to the $\sigma$-time variable using the time rescaling map $\psi = \psi(\sigma; \bar{u}_0)$ and we obtain
+\begin{equation}\label{rescl_wl}
+\frac{d}{d\sigma} W_\ell - b(\sigma)W_\ell = \eps^{-1/3}\varphi \Ral_\ell(W_\ell)
+\end{equation}
+
+Where 
+
+\begin{itemize}
+\item The equation is posed on $\sigma \in (\sigma^*, \sigma_m(\bar{u}_0))$ where $\sigma^* \approx -\eps^{-1/4}$ and $\sigma_m(\bar{u}_0) := \bar{\sigma}_m$ follows the notation used in section \ref{t_sigma}.
+
+\item The term $b(\sigma)$ is defined and has asymptotics:
+\[
+b(\sigma) := 2u_R(\psi(\sigma))\varphi(\sigma) = -2 + \rmO(|\sigma|^{-1})
+\]
+as $\sigma \to -\infty$. Agian, the convergence is uniform in $\eps$.
+
+\item The function $W_\ell(\sigma)$ is the rescaled version of $w_\ell(t)$ in the $\sigma$-variable, $w_\ell(t) = w_\ell(\eps^{-1/3}\psi(\sigma)+\eps^{-1}\delta) = W_\ell(\sigma)$. $\bar{U}_*$ is similarly the rescaled version of $\bar{u}_*$,  $\bar{U}_*(\sigma)= \bar{u}_*(t) = \eps^{1/3}\bar{u}_R(\psi(\sigma ) )$.
+
+\item The function $\Ral_\ell$ is a rescaled version of $R_\ell$ such that $\Ral_\ell(W_r;\eps,u_0) = 3U_*^2W_r + (1+3U_*)W_r^2 + U_*^3,$ 
+\end{itemize}
+
+
+
+\subsubsection{Linear equation and norms}
+
+Similarly, the proof of theorem \ref{thm_l} consists of solving \eqref{rescl_wl} via a fixed point argument on the following function space:
+\[
+C_{\ell} = \left\{ w(\sigma) : \sup_{\sigma^*<\sigma<\bar{\sigma}_m} |\eps^{\frac{\alpha-2}{3}}\langle\sigma \rangle^{-\frac{2}{3}} w(\sigma)|<\infty \right\}.
+\]
+
+%The homogeneous solution $u$, which solves the equation $u_\sigma = b(\sigma) u$ on the whole real line will not belong to this space. This  means we can prescribe a boundary condition at $\sigma = \sigma^*$
+
+To begin with, let us define the operator $A_\ell$ by 
+\[
+A_\ell w = \left(\frac{d}{d\sigma}w - b(\sigma)w, w(\sigma^*)\right),
+\] 
+for $w \in \mathcal{D}(A_\ell) \subset C_{\ell}.$
+
+\begin{proposition}
+$A_\ell : \mathcal{D}(A_\ell) \subset C_{W_\ell} \to C_{W_\ell} \times \mathbb{R}$, and $A_\ell$ is bounded invertible with its inverse uniformly bounded in $\eps$.
+\end{proposition}
+
+%Variation of constants gives the formula
+%\begin{equation}\label{solution1}
+%W_\ell(\sigma) = \exp\left(\int_\tau^\sigma b(\rho)d\rho\right)W_\ell(\tau) + \int_\tau^\sigma \exp\left(\int_s^\sigma b(\rho)d\rho\right)\eps^{-\frac{1}{3}}\varphi R_\ell(W_\ell)	 ds.
+%\end{equation}
+
+\begin{proof}
+Similar to the proof of proposition \ref{inv_A_r}, we may find $\sigma^{**} \in (\sigma^*, \bar{\sigma}_m)$ so that $|b(\sigma)-(-2)|<\eta$ for any small $\eta$ given provided $\sigma < \sigma^{**}$. Moreover, this $\sigma^{**}$ can be chosen to be independent of $\eps$ as $\sigma^* = \rmO(\eps^{-1/4})$ and $\bar{\sigma}_m = \rmO(1)$.
+
+Then, for $\sigma \in (\sigma^*, \sigma^{**})$, $A_\ell$ is a perturbation of the invertible operator 
+\[
+w \mapsto \left(\frac{d}{d\sigma}w+2w, w(\sigma^*)\right),
+\]
+ which can be seen as follows: for $f \in C_{\ell}$, consider the initial value problem
+ \[
+ \frac{d}{d\sigma}w + 2w = f, \hspace{0.2in} w(\sigma^*) = w^*,
+ \]
+ which has solution 
+ \[
+ w(\sigma) = e^{2(\sigma^*-\sigma)}w^* + \int_{\sigma^*}^\sigma e^{2(\tau-\sigma)} f(\tau) d\tau.
+ \]
+ 
+ Notice that
+ \[
+ \|e^{2(\sigma^*-\sigma)} w^*\|_{C_\ell}  \le |\langle \sigma^{**}\rangle|^{-2/3} |w^* \eps^{(\alpha-2)/3}| \le |w^*\eps^{(\alpha-2)/3}|
+ \]
+ and
+ \[
+\left\| \int_{\sigma^*}^{\sigma} e^{2(\tau-\sigma)} f(\tau)d\tau \right\|_{C_\ell} \le 
+ \]
+\end{proof}
+
+
+\subsubsection{Nonlinear estimates}
+
+For $\sigma \in (\sigma^* , 0)$, we will estimate the nonlinear term $\eps^{-1/3}\varphi(\sigma)\left[ (3u_\ell^2)W_\ell + (1+3u_\ell)W_\ell^2 + W_\ell^3+u_\ell^3\right]$ in the $C_{W_\ell}$ norm. As a result, we have
+
+\begin{proposition}
+$ \eps^{-\frac{1}{3}}\varphi R_\ell(W_\ell(\sigma))  \in C_{W_\ell}$ and $\| \eps^{-\frac{1}{3}}\varphi R_\ell \|_{C_{W_\ell}} = \rmO(\eps^{?})$.
+\end{proposition}
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\subsection{Region C}
+This region is the interval (in t-time) $0<t<t^*$. Recall $t^*$ is the (left) gluing time which corresponds to when $\sigma = \eps^{-1/4}=:\sigma^*$.
+
+\subsubsection{Ansatz in region C}
+The ansatz takes the form 
+\[
+u = u_s  +W_s.
+\]
+
+Where  $u_s(t)$ denotes the ``singular'' branch that forms the slow manifold (critical manifold?) of the original system. It is defined via the relation (approximately)
+\[
+u_s(t) = h(\mu(t))
+\]
+for some smooth function $h$ which solves
+\begin{equation}\label{singular}
+0 = \mu(t) + h(\mu(t))^2 + h(\mu(t))^3.
+\end{equation}
+
+It has the following asymptotics:
+\begin{equation}\label{singularAsy}
+u_s(t) = -\sqrt{\delta-\eps t} + \rmO(|\delta-\eps t|).
+\end{equation}
+
+The equivalent in $\sigma$ variable is
+\begin{equation}\label{singularAsySig}
+u_s(\sigma) = -\left(\frac{3}{2}\eps \sigma\right)^{1/3} + \rmO(|\eps \sigma|^{2/3} )
+\end{equation}
+
+
+
+\subsubsection{Equation of \texorpdfstring{$W_{s}$}{Ws} and rescaling }
+The ansatz for $t \in (0, t^*)$ is of the form $u= u_s + W_s$, hence we obtain the equation for $W_s$.
+\begin{align}\label{Eqn_ws}
+\begin{split}
+W_{s}' -2u_sW_s &=   (3u_s^2)W_s + (1+3u_s)W_s^2 + W_s^3 - u_s'
+\end{split}
+\end{align}
+
+We want to solve this equation on $t\in (0, t^*)$.
+\subsubsection{Linear equation and norms}
+Under the same rescaling, the $W_s$ equation in $\sigma$ time is
+\begin{equation}
+\frac{d}{d\sigma} W_s - c(\sigma)W_s = \eps^{-1/3}\varphi R_s(W_s),
+\end{equation}
+for $\sigma \in (-(2/3)\delta^{3/2}\eps^{-1}, \sigma^*)$.
+
+Where $c(\sigma)$ is defined and has the asymptotics:
+\[
+c(\sigma) = 2\eps^{-\frac{1}{3}}u_s(\psi(\sigma))\varphi(\sigma) = -2 + \rmO(\eps^{1/3}|\sigma|^{1/3}),
+\]
+as $\sigma \to -\infty$.
+
+The function space on which we will solve the $W_s$ equation via a fixed point argument is:
+\[
+C_{W_s} = \left\{ w(\sigma) \mid \sup |\eps^{\frac{\alpha}{3} -1 }\langle \eps\sigma \rangle^{\frac{2}{3}} w(\sigma)|<\infty \right\}
+\]
+
+
+%Variation of constants gives the formula
+%\begin{equation}\label{solution2}
+%W_s(\sigma) = \exp\left(\int_\tau^\sigma c(\rho)d\rho\right)W_s(\tau) + \int_\tau^\sigma \exp\left(\int_s^\sigma c(\rho)d\rho\right)\eps^{-\frac{1}{3}}\varphi R_s(W_s)	 ds
+%\end{equation}
+Similarly, we define the linear operator $A_s$ on $w \in C_{W_s}$ by \[
+A_s w = \left(\frac{d}{d\sigma}w - cw, w(\sigma_0)\right)
+\]
+
+\begin{proposition}
+$A_s : C_{W_s} \to C_{W_s} \times \mathbb{R}$, and $A_s$ is bounded invertible with its inverse uniformly bounded in $\eps$.
+\end{proposition}
+\begin{proof}
+small perturbation from the case $c \equiv 0$.
+\end{proof}
+
+
+\subsubsection{Nonlinear estimates}
+
+For $\sigma \in (\sigma_0, \sigma^*)$, we estimate the nonlinear term $\eps^{-1/3}\varphi(\sigma)\left[ (3u_\ell^2)W_\ell + (1+3u_\ell)W_\ell^2 + W_\ell^3+u_\ell^3\right]$ in the $C_{W_s}$ norm. Similar to the theorem for $W_\ell$, we have
+\begin{proposition}
+$ \eps^{-\frac{1}{3}}\varphi R_s(W_s(\sigma))  \in C_{W_s}$ and $\| \eps^{-\frac{1}{3}}\varphi R_s \|_{C_{W_s}} = \rmO(\eps^{?})$.
+\end{proposition}
+
+\begin{proof}
+\end{proof}
+\section{Gluing}
+
+To be completed.
+
+
+
+%\subsubsection{Matching at \texorpdfstring{$\sigma^*$}{sigma^*} }
+
+\end{document}

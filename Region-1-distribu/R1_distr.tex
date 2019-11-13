@@ -175,7 +175,7 @@ e^{\sigma} , \text{ as }\sigma \to \infty.
 
 \begin{equation}
 a(\sigma) =\begin{cases}
--2+ \rmO((-\sigma)^{-3/2}), \text{ as }\sigma \to -\infty\\
+-2+ \rmO((-\sigma)^{-3/2}), \text{ as }\sigma \to -\infty,\\
 2+ \rmO(e^{-2\sigma}), \text{ as }\sigma \to \infty.
 \end{cases}
 \end{equation}
@@ -238,7 +238,7 @@ and smooth interpolation in between so that $\psi(0) = 0$, here $\Omega_0$ is th
 \eps^{-1/3}\varphi \frac{d}{dt} = \frac{d}{d\sigma}
 \]
 
-We also define $\varphi(\sigma) := \frac{d}{d\sigma}\psi(\sigma)$.
+We also define $\varphi(\sigma) := \frac{d}{d\sigma}\psi(\sigma) = e^{-\sigma} $ for $\sigma\ge M$ and is equal to $(-\frac{2}{3}\sigma)^{-1/3}$.
 
 For convenience let the map $t \mapsto \sigma$ be denoted as $\rho$.
 
@@ -409,4 +409,133 @@ So that in our proposed norm
 The problem is the range of $\sigma$, here there is no cutoff term that multiplies $W_\ell^2$, so $|\sigma| \le \eps^{-1}$ by the definition of region I at the begining. Which makes the above term to be $\eps^{-\alpha/3}$ large.
 
 For other terms, $u_\ell^3$ is fine, and the residual term $(u_s - u_\ell)\chi_s'$, $\chi_s\chi_\ell(u_s - u_\ell)^2$ behave good with the purposed norm, so I think the main issue is from the $W_\ell^2$ term.
+\section{Ansatz without the cutoff functions}
+We will use ansatz without cut off functions.
+\begin{itemize}
+\item For $t \in (t^*, \eps^{-1}\delta)$ (corresponds to $ \sigma^*\le \sigma \le 0$), the ansatz takes the form $u = u_\ell  +W_\ell$.
+
+\item For $t \in (0, t^* )$ (corresponds to $ -\frac{2}{3}\delta^{3/2}\eps^{-1}\le \sigma \le \sigma^*$), the ansatz takes the form $u = u_s  +W_s$.
+\end{itemize}
+
+\subsection{Equation of \texorpdfstring{$W_{\ell}$}{Well} }
+\begin{align}
+\begin{split}
+W_{\ell}' -2u_\ell W_\ell &= W_\ell^2 + (u_\ell+W_\ell)^3
+ \\
+ &=  (3u_\ell^2)W_\ell + (1+3u_\ell)W_\ell^2 + W_\ell^3+u_\ell^3
+\end{split}
+\end{align}
+
+We want to solve this equation on $t\in (t^*, \eps^{-1}\delta)$.
+
+\subsubsection{Linear equation of \texorpdfstring{$W_{\ell}$}{Wl}}
+Rescale to $\sigma$ variable:
+\begin{equation}
+\frac{d}{d\sigma} W_\ell - b(\sigma)W_\ell = \eps^{-1/3}\varphi R_\ell(W_\ell)
+\end{equation}
+
+Asymptotics for $b(\sigma)$:
+\[
+b(\sigma) = 2\eps^{-1/3}u_\ell(\psi(\sigma))\varphi(\sigma) = 2u_R(\psi(\sigma))\varphi(\sigma) = -2 + \rmO(|\sigma|^{-1})
+\]
+as $\sigma \to -\infty$.
+
+Function space:
+\[
+C_{W_\ell} = \left\{ u(\sigma) \mid \sup |\eps^{\frac{\alpha-2}{3}}\langle\sigma \rangle^{-\frac{2}{3}} u(\sigma)|<\infty \right\}
+\]
+
+%The homogeneous solution $u$, which solves the equation $u_\sigma = b(\sigma) u$ on the whole real line will not belong to this space. This  means we can prescribe a boundary condition at $\sigma = \sigma^*$
+
+
+Variation of constants gives the formula
+\begin{equation}\label{solution1}
+W_\ell(\sigma) = \exp\left(\int_\tau^\sigma b(\rho)d\rho\right)W_\ell(\tau) + \int_\tau^\sigma \exp\left(\int_s^\sigma b(\rho)d\rho\right)\eps^{-\frac{1}{3}}\varphi R_\ell(W_\ell)	 ds.
+\end{equation}
+
+For $\sigma \in (\sigma^* , 0)$, we will estimate the term $\eps^{-1/3}\varphi(\sigma)\left[ (3u_\ell^2)W_\ell + (1+3u_\ell)W_\ell^2 + W_\ell^3+u_\ell^3\right]$ under the integral given by the formula.
+
+\begin{theorem}
+$\sup_{\sigma^* \le \sigma \le 0} \eps^{-1/3}\varphi R_\ell(W_\ell(\sigma)) = \rmO(\eps^{?})$.
+\end{theorem}
+
+\begin{proof}
+We start with the term $u_\ell^3$, we wish to show that
+\[
+\eps^{\frac{\alpha-2}{3}} \langle \sigma \rangle^{-\frac{2}{3}}\int_{\sigma^*}^\sigma \exp\left(\int_s^\sigma b(\rho)d\rho\right)\eps^{-\frac{1}{3}}\varphi(s) u_\ell^3(s) ds.
+\]
+is uniformly bounded in $\eps$.
+
+Recall the asymptotics $u_\ell(s) \lar (\eps s)^{1/3} + \rmO(\eps^{1/3}|\sigma|^{-2/3})$, $\varphi(s) \le s^{-1/3}$ and the asymptotics of $b(\sigma)$ above, we find out that it is sufficient to estimate instead
+\[
+\eps^{\frac{\alpha-2}{3}} \langle \sigma \rangle^{-\frac{2}{3}} \int_{\sigma^*}^{\sigma}\eps^{2/3}e^{-2(\sigma-s)} s^{2/3}ds.
+\]
+This integral is given by the following incomplete gamma functions, and is bounded by
+\[
+\eps^{\frac{\alpha}{3}} \left[1-e^{-2(\sigma-\sigma^*)} (\sigma^*/\sigma)^{2/3}+ \langle \sigma\rangle^{-2/3}e^{-2\sigma}\left(\Gamma(\frac{2}{3},-2\sigma) -\Gamma (\frac{2}{3},-2\sigma^*) \right)\right] = \rmO(\eps^{\alpha/3}).
+\]
+
+Next, we estimate the term
+\[
+\eps^{-1/3}\varphi(\sigma) W_\ell^3.
+\]
+We need to show that
+\[
+\eps^{\frac{\alpha-2}{3}}\langle \sigma \rangle^{-\frac{2}{3}}\int_{\sigma^*}^{\sigma} \exp\left( \int_s^\sigma b(\rho)d\rho\right) \eps^{-\frac{1}{3}}\varphi(s)W_{\ell}^3(s)ds
+\]
+is uniformly bounded in $\eps$ given that $W_\ell \in C_{W_\ell}$.
+
+Equivalently, it is sufficient to estimate
+\[
+\eps^{\frac{\alpha-2}{3}} \langle \sigma \rangle^{-\frac{2}{3}} \int_{\sigma^*}^\sigma e^{-2(\sigma-s)} \eps^{-\frac{1}{3}}\varphi (s)[\eps^{\frac{2-\alpha}{3}} \langle s \rangle^{\frac{2}{3}}]^3 ds,
+\]
+which turns out (?) to be bounded by
+\[
+\eps^{1-\frac{2\alpha}{3}} |\sigma| \le \eps^{1-\frac{2\alpha}{3}} |\sigma^*| = \rmO( \eps^{\frac{9-8\alpha}{12}} )
+\]
+
+Similarly, we have for the quadratic term
+\[
+\eps^{-1/3}\varphi(\sigma) W_\ell^2 = \rmO(\eps^{\frac{3-4\alpha}{12}} ), \hspace{0.2in} \eps^{-1/3}\varphi(\sigma)u_{\ell}W_{\ell}^2 =  \rmO(\eps^{\frac{2-\alpha}{3}}).
+\]
+
+And for the linear term
+\[
+\eps^{-1/3}\varphi(\sigma) u_\ell^2W_\ell = \rmO(\eps^{\frac{1}{4}}).
+\]
+\end{proof}
+
+
+\subsection{Equation of \texorpdfstring{$W_{s}$}{Ws} }
+\begin{align}
+\begin{split}
+W_{s}' -2u_sW_s &=   (3u_s^2)W_s + (1+3u_s)W_s^2 + W_s^3 - u_s'
+\end{split}
+\end{align}
+
+We want to solve this equation on $t\in (0, t^*)$.
+\subsubsection{Linear equation of \texorpdfstring{$W_{s}$}{Ws}}
+\begin{equation}
+\frac{d}{d\sigma} W_s - c(\sigma)W_s = \eps^{-1/3}\varphi R_s(W_s)
+\end{equation}
+
+Asymptotics for $c(\sigma)$:
+\[
+c(\sigma) = 2\eps^{-\frac{1}{3}}u_s(\psi(\sigma))\varphi(\sigma) = -2 + \rmO(\eps^{1/3}|\sigma|^{1/3})
+\]
+as $\sigma \to -\infty$.
+
+Function space:
+\[
+C_{W_s} = \left\{ u(\sigma) \mid \sup |\eps^{\frac{\alpha}{3} -1 }\langle \eps\sigma \rangle^{\frac{2}{3}} u(\sigma)|<\infty \right\}
+\]
+
+
+
+Variation of constants gives the formula
+\begin{equation}\label{solution2}
+W_s(\sigma) = \exp\left(\int_\tau^\sigma c(\rho)d\rho\right)W_s(\tau) + \int_\tau^\sigma \exp\left(\int_s^\sigma c(\rho)d\rho\right)\eps^{-\frac{1}{3}}\varphi R_s(W_s)	 ds
+\end{equation}
+
+
 \end{document}
