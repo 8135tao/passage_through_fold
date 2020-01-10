@@ -1,23 +1,25 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.2}{Set up}{}% 2
-\BOOKMARK [2][-]{subsection.5}{Euler multiplier}{section.2}% 3
-\BOOKMARK [2][-]{subsection.7}{The Riccati equation}{section.2}% 4
-\BOOKMARK [2][-]{subsection.13}{The t to sigma time rescaling}{section.2}% 5
-\BOOKMARK [2][-]{subsection.15}{Region A}{section.2}% 6
-\BOOKMARK [3][-]{subsubsection.16}{Ansatz in region A}{subsection.15}% 7
-\BOOKMARK [3][-]{subsubsection.25}{The exit time T\(u0\)}{subsection.15}% 8
-\BOOKMARK [3][-]{subsubsection.27}{Equation for wr and rescaling}{subsection.15}% 9
-\BOOKMARK [3][-]{subsubsection.31}{Linear equation and norms}{subsection.15}% 10
-\BOOKMARK [3][-]{subsubsection.33}{Nonlinear estimates}{subsection.15}% 11
-\BOOKMARK [3][-]{subsubsection.36}{Fixed point argument and the proof of Theorem 2.2}{subsection.15}% 12
-\BOOKMARK [2][-]{subsection.37}{Region B}{section.2}% 13
-\BOOKMARK [3][-]{subsubsection.38}{Ansatz in region B}{subsection.37}% 14
-\BOOKMARK [3][-]{subsubsection.43}{Equation of Well and rescaling}{subsection.37}% 15
-\BOOKMARK [3][-]{subsubsection.46}{Linear equation and norms}{subsection.37}% 16
-\BOOKMARK [3][-]{subsubsection.48}{Nonlinear estimates}{subsection.37}% 17
-\BOOKMARK [2][-]{subsection.50}{Region C}{section.2}% 18
-\BOOKMARK [3][-]{subsubsection.51}{Ansatz in region C}{subsection.50}% 19
-\BOOKMARK [3][-]{subsubsection.55}{Equation of Ws and rescaling }{subsection.50}% 20
-\BOOKMARK [3][-]{subsubsection.57}{Linear equation and norms}{subsection.50}% 21
-\BOOKMARK [3][-]{subsubsection.60}{Nonlinear estimates}{subsection.50}% 22
-\BOOKMARK [1][-]{section.62}{Gluing}{}% 23
+\BOOKMARK [1][-]{section.4}{Main Result}{}% 2
+\BOOKMARK [2][-]{subsection.7}{Euler multiplier}{section.4}% 3
+\BOOKMARK [2][-]{subsection.9}{The Riccati equation}{section.4}% 4
+\BOOKMARK [2][-]{subsection.15}{The t to sigma time rescaling}{section.4}% 5
+\BOOKMARK [1][-]{section.17}{Region A}{}% 6
+\BOOKMARK [2][-]{subsection.18}{Ansatz in region A}{section.17}% 7
+\BOOKMARK [2][-]{subsection.27}{The exit time T\(u0\)}{section.17}% 8
+\BOOKMARK [2][-]{subsection.29}{Equation for wr and rescaling}{section.17}% 9
+\BOOKMARK [2][-]{subsection.35}{Linear equation and norms}{section.17}% 10
+\BOOKMARK [2][-]{subsection.38}{Nonlinear estimates}{section.17}% 11
+\BOOKMARK [2][-]{subsection.41}{Fixed point argument and the proof of Theorem 3.1}{section.17}% 12
+\BOOKMARK [1][-]{section.42}{Region B}{}% 13
+\BOOKMARK [2][-]{subsection.43}{Ansatz in region B}{section.42}% 14
+\BOOKMARK [2][-]{subsection.48}{Equation of Well and rescaling}{section.42}% 15
+\BOOKMARK [2][-]{subsection.52}{Linear equation and norms}{section.42}% 16
+\BOOKMARK [2][-]{subsection.54}{Nonlinear estimates}{section.42}% 17
+\BOOKMARK [2][-]{subsection.56}{Fixed point argument and the proof of Theorem 4.1}{section.42}% 18
+\BOOKMARK [1][-]{section.57}{Region C}{}% 19
+\BOOKMARK [2][-]{subsection.58}{Ansatz in region C}{section.57}% 20
+\BOOKMARK [2][-]{subsection.63}{Equation of Ws and rescaling }{section.57}% 21
+\BOOKMARK [2][-]{subsection.69}{Linear equation and norms}{section.57}% 22
+\BOOKMARK [2][-]{subsection.71}{Nonlinear estimates}{section.57}% 23
+\BOOKMARK [2][-]{subsection.73}{Fixed point argument and the proof of Theorem 5.1}{section.57}% 24
+\BOOKMARK [1][-]{section.74}{Gluing}{}% 25
