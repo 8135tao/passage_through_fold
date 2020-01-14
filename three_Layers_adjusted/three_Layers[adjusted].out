@@ -1,30 +1,30 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.10}{Main Result}{}% 2
-\BOOKMARK [2][-]{subsection.11}{Euler multiplier}{section.10}% 3
-\BOOKMARK [2][-]{subsection.14}{Ansatz and dividing the time of passage}{section.10}% 4
-\BOOKMARK [3][-]{subsubsection.15}{The Riccati equation}{subsection.14}% 5
-\BOOKMARK [3][-]{subsubsection.18}{Critical manifold}{subsection.14}% 6
-\BOOKMARK [3][-]{subsubsection.22}{Division of regions and the rescale of time}{subsection.14}% 7
-\BOOKMARK [2][-]{subsection.35}{Main result - summary}{section.10}% 8
-\BOOKMARK [1][-]{section.37}{Region A}{}% 9
-\BOOKMARK [2][-]{subsection.38}{Ansatz in region A}{section.37}% 10
-\BOOKMARK [2][-]{subsection.45}{The exit time T\(u0\)}{section.37}% 11
-\BOOKMARK [2][-]{subsection.47}{Equation for wr and rescaling}{section.37}% 12
-\BOOKMARK [2][-]{subsection.53}{Linear equation and norms}{section.37}% 13
-\BOOKMARK [2][-]{subsection.56}{Nonlinear estimates}{section.37}% 14
-\BOOKMARK [2][-]{subsection.59}{Fixed point argument and the proof of Theorem 3.1}{section.37}% 15
-\BOOKMARK [1][-]{section.60}{Region B}{}% 16
-\BOOKMARK [2][-]{subsection.61}{Ansatz in region B}{section.60}% 17
-\BOOKMARK [2][-]{subsection.64}{Equation of Well and rescaling}{section.60}% 18
-\BOOKMARK [2][-]{subsection.68}{Linear equation and norms}{section.60}% 19
-\BOOKMARK [2][-]{subsection.70}{Nonlinear estimates}{section.60}% 20
-\BOOKMARK [2][-]{subsection.72}{Fixed point argument and the proof of Theorem 4.1}{section.60}% 21
-\BOOKMARK [1][-]{section.73}{Region C}{}% 22
-\BOOKMARK [2][-]{subsection.74}{Ansatz in region C}{section.73}% 23
-\BOOKMARK [2][-]{subsection.77}{Equation of Ws and rescaling }{section.73}% 24
-\BOOKMARK [2][-]{subsection.82}{Linear equation and norms}{section.73}% 25
-\BOOKMARK [2][-]{subsection.84}{Nonlinear estimates}{section.73}% 26
-\BOOKMARK [2][-]{subsection.86}{Fixed point argument and the proof of Theorem 5.1}{section.73}% 27
-\BOOKMARK [1][-]{section.87}{Gluing}{}% 28
-\BOOKMARK [2][-]{subsection.91}{A family of the solution to the Riccati equation }{section.87}% 29
-\BOOKMARK [2][-]{subsection.95}{Uniform invertibility of boundary value problems }{section.87}% 30
+\BOOKMARK [1][-]{section.11}{Main Result}{}% 2
+\BOOKMARK [2][-]{subsection.12}{Euler multiplier}{section.11}% 3
+\BOOKMARK [2][-]{subsection.15}{Ansatz and dividing the time of passage}{section.11}% 4
+\BOOKMARK [3][-]{subsubsection.16}{The Riccati equation}{subsection.15}% 5
+\BOOKMARK [3][-]{subsubsection.19}{Critical manifold}{subsection.15}% 6
+\BOOKMARK [3][-]{subsubsection.23}{Division of regions and the rescale of time}{subsection.15}% 7
+\BOOKMARK [2][-]{subsection.36}{Main result - summary}{section.11}% 8
+\BOOKMARK [1][-]{section.38}{Region A}{}% 9
+\BOOKMARK [2][-]{subsection.39}{Ansatz in region A}{section.38}% 10
+\BOOKMARK [2][-]{subsection.46}{The exit time T\(u0\)}{section.38}% 11
+\BOOKMARK [2][-]{subsection.48}{Equation for wr and rescaling}{section.38}% 12
+\BOOKMARK [2][-]{subsection.54}{Linear equation and norms}{section.38}% 13
+\BOOKMARK [2][-]{subsection.57}{Nonlinear estimates}{section.38}% 14
+\BOOKMARK [2][-]{subsection.60}{Fixed point argument and the proof of Theorem 3.1}{section.38}% 15
+\BOOKMARK [1][-]{section.61}{Region B}{}% 16
+\BOOKMARK [2][-]{subsection.62}{Ansatz in region B}{section.61}% 17
+\BOOKMARK [2][-]{subsection.65}{Equation of Well and rescaling}{section.61}% 18
+\BOOKMARK [2][-]{subsection.69}{Linear equation and norms}{section.61}% 19
+\BOOKMARK [2][-]{subsection.71}{Nonlinear estimates}{section.61}% 20
+\BOOKMARK [2][-]{subsection.73}{Fixed point argument and the proof of Theorem 4.1}{section.61}% 21
+\BOOKMARK [1][-]{section.74}{Region C}{}% 22
+\BOOKMARK [2][-]{subsection.75}{Ansatz in region C}{section.74}% 23
+\BOOKMARK [2][-]{subsection.78}{Equation of Ws and rescaling }{section.74}% 24
+\BOOKMARK [2][-]{subsection.83}{Linear equation and norms}{section.74}% 25
+\BOOKMARK [2][-]{subsection.85}{Nonlinear estimates}{section.74}% 26
+\BOOKMARK [2][-]{subsection.87}{Fixed point argument and the proof of Theorem 5.1}{section.74}% 27
+\BOOKMARK [1][-]{section.88}{Gluing}{}% 28
+\BOOKMARK [2][-]{subsection.92}{A family of the solution to the Riccati equation }{section.88}% 29
+\BOOKMARK [2][-]{subsection.96}{Uniform invertibility of boundary value problems }{section.88}% 30
