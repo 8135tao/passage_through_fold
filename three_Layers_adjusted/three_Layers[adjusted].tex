@@ -110,66 +110,134 @@
 \author{author}
 \date{2016}
 \begin{document}
+\begin{center}
+
+{\fontsize{17}{17}\fontfamily{cmr}\fontseries{b}\selectfont{Alternatives to the blow-up method in singular perturbation problems}}\\[0.2in]
+Arnd Scheel and Tianyu Tao\\
+\textit{\footnotesize 
+University of Minnesota, School of Mathematics,   206 Church St. S.E., Minneapolis, MN 55455, USA}
+\date{\small \today} 
+\vspace*{0.2in}
+\end{center}
+
+\begin{abstract}
+\noindent 
+We show how an functional-analytic based method could serve as an alternative to the method of blow-up used to deal with fold-points in singular-perturbation problems. 
+\end{abstract}
 
 \section{Introduction}
 We consider singularly perturbed ordinary differential equaitons (ODEs) of the form
 
 \begin{align}\label{intro_slow}
 \begin{split}
-\eps \dot{x} &=  f(x,y,\eps),\\
-\dot{y } &=   g(x,y,\eps),   
+\eps \dot{x} &=  f(x,y;\eps),\\
+\dot{y } &=   g(x,y;\eps),   
 \end{split}\hspace{0.2in} x\in \mathbb{R}^n, \hspace{0.2in} y \in \mathbb{R}^m, \hspace{0.2in} 0<\eps \ll 1,
 \end{align}
+where $f$ and $g$ are $C^k$ functions for $k>=3$.
 
-The standard way of studying \eqref{intro_slow} is using methods from geometric singular perturbation theory. An breif overview of this theory invloves treating system \eqref{intro_slow}, which is refered to as the slow-system, together with its counterpart, the fast-system:
+The standard way of studying \eqref{intro_slow} is using methods from geometric singular perturbation theory. An breif overview of this theory invloves treating system \eqref{intro_slow}, which is refered to as the \textit{slow-system}, together with its  equivalent counterpart, the \textit{fast-system}:
 \begin{align}\label{intro_fast}
 \begin{split}
-x' &=  f(x,y,\eps),\\
-y' &=  \eps g(x,y,\eps),   
-\end{split},
+x' &=  f(x,y;\eps),\\
+y' &=  \eps g(x,y;\eps),   
+\end{split}
 \end{align}
 
-where if $\tau$ denotes the (slow) time varibale in system \eqref{intro_slow}, then $t = \tau/\eps$ is the (fast) time varible used in system \eqref{intro_fast}.
+where if $\tau$ denotes the (slow) time varibale in system \eqref{intro_slow}, then $t = \tau/\eps$ is the (fast) time varible used in system \eqref{intro_fast}. The dynamics can then be studied by setting $\eps = 0$ in both systems to obtain the so-called \textit{reduced problem}
+\begin{align}\label{intro_reduced}
+\begin{split}
+0 &=  f(x,y,0),\\
+\dot{y} &=   g(x,y,0),   
+\end{split}
+\end{align}
+
+and the \textit{layer problem}
+\begin{align}\label{intro_layer}
+\begin{split}
+x' &=  f(x,y,0),\\
+y' &=  0. 
+\end{split}
+\end{align}
+The basic premise of the theory, which was first laid out by Fenichel, is that the dynamics of reduced problem \eqref{intro_reduced} happens on the \textit{critical manifold}
+\[
+S:=  \{ (x,y) \mid f(x,y;0) = 0 \},
+\]
+one then switches to a \textit{normally hyperbolic submanifold} of equlibra $S_0 \subset S$ of the layer problem \eqref{intro_layer}, which will persist to $S_\eps$ for $0<\eps \ll 1$. Then, the dynamics of \eqref{intro_slow} is an $\eps$-perturbation of the reduced problem \eqref{intro_reduced}. Moreover, there exist a stable and an unstable invariant foliation with base $S_\eps$ with the dynamics along each foliation being a small perturbation of the suitable restriction of the dynamics of \eqref{intro_layer}.
+
+The above approach relies heavily on the notion of normal hyperbolicity, which may not be always satisfied in the problems to be studied. The most common case is the so-called \textit{fold point}, where the critical manifold $S$ loses its normal hyperbolicity near bifurcation points due to a zero eigenvalue in the Jacobian $\frac{\partial f }{\partial x}$.
+
+To overcome these difficuties, Krupa and Szmolyan proposed the method of \textit{blow-up} to extend the reach of geometric singluar perurbation theory. Roughly speaking, it is a set of coordinate transfomations which desingularizes the vector field near the fold point so that infomation can be gained by using standard tools in dynamical system.
+
+
+Their example was the following planar system 
+\begin{align}\label{ori_eqn}
+\begin{split}
+u' &= \mu+u^2+ f(u,\mu; \eps),\\
+\mu' &=  \eps g(u,\mu; \eps),
+\end{split}
+\end{align}
+where $f(u,\mu;\eps) = \rmO(\eps, u\mu,\mu^2,u^3)$ and $g(u,\mu;\eps) = 1+\rmO(u,\mu,\eps)$. 
+
+For $u,\mu$ sufficiently small, the critical manifold $S_0 = \{ (\mu, u) \mid \mu + u^2 +f (u,\mu ;0) = 0\}$ resembles the parabola $\mu = - u^2$. Away from the fold point $(0,0)$, there exist the attracing manifold $M_a$ with a section $S_a$ sketched in figure (????), from Fenichel's theory, $S_a$ perturbes to $S_{a,\eps}$ until it reaches the fold point, thus a natural question is to track how the slow manifold $S_{a,\eps}$ passes through the fold point.
+
+Krupa and Szmoylyan starts by setting two sections $\Delta^{in} = \{(-\delta, u) \mid u\in J,\text{ $J$ is some small interval }\}$ and $\Delta^{out} = \{( \mu ,\sqrt{\delta})\mid \mu \in \mathbb{R})\}$ with $\delta>0$ small but fixed, which are also shown in figure (????). To track the passage through the fold amounts to study the transition map 
+\[
+\pi: \Delta^{in} \to \Delta^{out},
+\]
+
+Krupa and Szmoylyan then proceeds by defining the blow up transformation
+\[
+\mu = \bar{r}^2 \bar{\mu}, \quad u =\bar{r} \bar{u}  \quad, \eps = \bar{r}^3 \bar{\eps},
+\]
+which ``blows up'' the vector field of the extended $(\mu, u, \eps)$ system near $(0,0,0)$ into a vector field on the ball $B = S^2 \times [0,\eps_0^{1/3}] \ni (\bar{\mu}, \bar{u}, \bar{\eps}, \bar{r})$ for some $\eps_0>0$ small, and further directional blow-ups to obtain charts $K_1,K_2,K_3$ which was used to derscribe the flows in regions near different parts of the manifold $B$. After a careful and thorough analysis, they were able to prove the following results:
+\begin{theorem}\label{ks_main}
+For $\eps$ sufficiently small, the following statements are true:
+\begin{enumerate}
+\item The manifold $S_{a,\eps} $ passes through  $\Delta^{out}$ at a point $(h(\eps), \sqrt{\delta})$ where $h(\eps) = \rmO(\eps^{2/3})$.
+\item The transition map $\pi$ is a contraction with rate $\rmO(e^{-c/\eps} )$, where $c$ is a positive constant.
+\end{enumerate}
+\end{theorem}
+
+
+In this paper, we focus on the same problem \eqref{ori_eqn} with an aim to recreate the result of Theorem \ref{ks_main} via a different, functional analytically-based approach. Instead of proceeding with the geometrically-flavoured blow-up approach, we directly prove a tractory exists with the properties claimed in Theorem \ref{ks_main} by dividing the time of passage into apporpriate parts and setting up close ansatz in each region, closing the arguments with carefully reformulating the existence question as a fixed-point argument.
+
+\paragraph{Outline}
+The reminder of the paper is organized as follows. In Section \ref{sec_main} we give a precise statement of our result, as well as an overview of our set ups. In Sections \ref{sec_A}, \ref{sec_B} and \ref{sec_C} we construct the ansatz mentioned earlier and in Section \ref{sec_glue} we show how to piece together all the parts to arrive at our main results.
 
 
 \paragraph{Notation}
 We use $A \lar B$ to indicate that there is a constant $C$ such that $A \le C \cdot B$, independent of the properties of $A$ and $B$.
 
-\paragraph{Outline}
-The reminder of the paper is organized as follows.
-
-\section{Main Result}
 
 
-Equation
-\begin{align}\label{ori_eqn}
-\begin{split}
-\frac{d}{d\tau}u &= \mu+u^2+ f(u,\mu,\eps),\\
-\frac{d}{d\tau}\mu &=  \eps g(u,\mu,\eps),
-\end{split}
-\end{align}
-where $f(u,\mu,\eps) = \rmO(\eps, u\mu,\mu^2,u^3)$ and $g(u,\mu,\eps) = 1+\rmO(u,\mu,\eps)$. 
+\section{Main Result}\label{sec_main}
+We first make a change of variable to transform equation \eqref{ori_eqn} into a more covenient form in section \ref{euler_m}. Then we introduces the different ansatzs used in section \ref{ansatz_divide} and explain how we divide up the passage time into 3 different regions $A$, $B$, and $C$. Finally we give a statement of our main result in Section \ref{main_sum}. 
 
-Boundary condition
-\begin{equation}\label{ori_bc}
-\mu(0) = -\delta, \hspace{0.2in} u(T) = \delta,
-\end{equation}
-
-where $\delta,\eps$ are parameters,  and $T$ is dependent on $\eps$ and $\delta$ which will be solved as part of the equation.
-
-\subsection{Euler multiplier}
-Since for $u,\mu,\eps$ small, $g(u,\mu,\eps) = 1 + \rmO(u,\mu,\eps)$, we can define a new time $t = t(\tau)$ by $\frac{dt}{d\tau} = g$, and rewrite \eqref{ori_eqn}  as
+\subsection{Euler multiplier}\label{euler_m}
+Let $\tau$ denote the independent time variable in \eqref{ori_eqn}, since for $u,\mu,\eps$ small, $g(u,\mu,\eps) = 1 + \rmO(u,\mu,\eps)>0$, we can define a new time $t = t(\tau)$ by $\frac{dt}{d\tau} = g$, consequently, equation \eqref{ori_eqn}  is transformed into
 \begin{align}\label{euler_ori_eqn}
 \begin{split}
-\frac{d}{dt}u &= \mu+u^2+ \tilde{f}(u,\mu,\eps),\\
+\frac{d}{dt}u &= \mu+u^2+ \tilde{f}(u,\mu;\eps),\\
 \frac{d}{dt}\mu &=  \eps ,
 \end{split}
 \end{align}
-where now $\tilde{f}(u,\mu,\eps) = \rmO(\eps,  u\mu, \mu^2,\eps u, \eps \mu, \eps u^2, u^3)$. Moreover, by shifting $\tau$ apporpirtely, we retain the boundary condition
+where now $\tilde{f}(u,\mu,\eps) = \rmO(\eps,  u\mu, \mu^2,\eps u, \eps \mu, \eps u^2, u^3)$.  The critical manifold 
 \[
-\mu(t=0) = -\delta, \hspace{0.2in} u(\tilde{T}=t(T)) = \delta.
+\tilde{S}_0 = \{ (\mu, u) \mid \mu + u^2 + \tilde{f}(u,\mu;\eps) = 0\},
 \]
-Therefore, we will use \eqref{euler_ori_eqn} for analysis in the rest of the paper, also we drop the tilde to use $f(u,\mu,\eps)$ to denote the new rescaled nonlinearity.
+still has $(0,0)$ as the fold point, and our goal is to track how a trajectory of the flow of \eqref{euler_ori_eqn} pass through $(0,0)$. Following the set up of the sections $\Delta^{in}$ and $\Delta^{out}$ in Krupa-Szmolyan, we propose the following boundary conditions
+
+\begin{equation}\label{ori_bc}
+\mu(0) = -\delta, \hspace{0.2in} u(T) = \delta,
+\end{equation}
+where $T$ is also an unknow variable which marks the ``time of exit'' as the trajctory hits the section $\Delta^{out}$.
+
+That is, we think the tracking of the passage of the fold as a shooting problem, if we can prove the existence of a solution $(\mu, u)$ to system \eqref{euler_ori_eqn} with the bondary condition \eqref{ori_bc}, and give the expansion for the components $\mu$, then we will prove the results in \eqref{ori_eqn}. Our contribution in this paper is that the method we used to prove the existence of such a solution is completely different than the blow-up approach.
+
+In the rest of the paper, we shall drop the tilde to use $f(u,\mu,\eps)$ as the nonlinearity and $S_0$ to denote the critical manifold.
+ 
+\subsection{Ansatz and dividing the time of passage}\label{ansatz_divide}
 
 
 \iffalse
@@ -184,7 +252,9 @@ For demonstration purposes, we focus on the following equation first
 with boundary condition \ref{ori_bc}.
 \fi
 
-\subsection{The Riccati equation}
+To start, we want to get a rough idea of how long it takes from $t=0$ to $t=T$, as well as what forms of ansatz one should use. The primary motivation is the when equation \eqref{ori_eqn} reduces to the simple case with $f(u,\mu;\eps) = 0$, also known as the Riccati equation.
+
+\subsubsection{The Riccati equation}
 Consider the Riccati equation
 \begin{equation}\label{ric}
 \frac{d}{ds}u(s) = s+u(s)^2,
@@ -192,7 +262,7 @@ Consider the Riccati equation
 
 We denote any solution to \eqref{ric} as $u_R$, it is known to have a unique solution (denoted by $\bar{u}_R$) with the following asymptotics:
 
-\begin{equation} \label{ricasy}
+\begin{equation} \label{ric_asy}
 \bar{u}_R(s)=\begin{cases}
   (\Omega_0-s)^{-1}+\rmO(\Omega_0-s), \text{ as }s \to \Omega_0, \\
  -(-s)^{1/2} -\frac{1}{4}(-s)^{-1} + \rmO(|s|^{-3/2}), \text{ as }s \to -\infty.
@@ -206,54 +276,97 @@ J_{-1/3}(2z^{3/2}/3)+J_{1/3}(2z^{3/2}/3),
 where $J_{\pm 1/3}$ are Bessel functions of the first kind. (See [Krupa, Szmolyan])
 
 
-More generally, we consider family of solutions  $u_R(s; u_0)$ of the Riccati equation  \eqref{ric} such that $u_R(0; u_0) = u_0$. That is, we take the initial condition $u_0$ as a parameter to the Riccati equation. For the special Riccati solution $\bar{u}_R$, we denote $\bar{u}_R(0) $ as $\bar{u}_0$. We will use a family of such solutions to build our ansatz, whose properties are summerized in the following proposition:
+More generally, we consider family of solutions  $u_R(s; u_0)$ of the Riccati equation  \eqref{ric} such that $u_R(0; u_0) = u_0$. That is, we take the initial condition $u_0$ as a parameter to the Riccati equation. For the special Riccati solution $\bar{u}_R$, we denote $\bar{u}_R(0) $ as $\bar{u}_0$. In fact, using simple phase plane analysis, we can extend the asymptotic results about the special Riccati solution $\bar{u}_R$, \eqref{ric_asy} to the $u_0$-parameter dependent family $u_R(s; u_0)$, the precise statement can be found in the appendix.
 
-\begin{proposition}\label{para_ric}
-There exist blow up time $\Omega_\infty = \Omega_\infty(u_0)$ that depends smoothly on $u_0$ for $|u_0 - \bar{u}_0|<\eta$, $\eta$ small, with $\Omega_\infty(\bar{u}_0) = \Omega_0$, and the corresponding solution $u_R(s; u_0)$ is of the form
-\begin{equation}\label{ric_exp}
-u_R(s;u_0) = \frac{1}{\Omega_\infty-s} +  (\Omega_\infty-s) r(\Omega_\infty-s;u_0),
+\subsubsection{Critical manifold}\label{c_mfld}
+Another piece of the ansatz comes from part of  he critical manifold, we expect this because away from the fold, the critical manifold has an attacting branch $S_a$ which implies tracjectory has to stay close to it. 
+
+Recall the critical manifold for system \eqref{crit_mfld} is the set of points $(\mu, u) \in \mathbb{R}^2$ which satisfies
+\begin{equation} \label{crit_mfld}
+\mu + u^2 + f(u,\mu; 0) =  0.
 \end{equation}
-where the function $r$ is smooth in both variables and satisfies
-\begin{equation}\label{ric_reminder}
-r( \Omega_\infty-s; u_0) = -\frac{\Omega_\infty}{3} + \rmO(\Omega_\infty-s),
+
+By the implicit function theorem, whenever $\partial_u( u^2+f(u,\mu;0) ) \neq 0$, we can write $u=u(\mu),$ for $\mu$ small. For those $(\mu, u)$ such that $\partial_u( u^2+f(u,\mu;0) )<0$ (which corresponds to the attracting branch $S_a$), we define $u_s(t):= u(\mu(t))$ so that
+\begin{equation}\label{singular}
+0 = \mu(t) + u_s^2(t)+f(u_s(t),\mu; 0),
 \end{equation}
-as $s \to \Omega_\infty$.
-\end{proposition}
-\begin{proof}To get the dependence from $u_0$ to $\Omega_\infty$, we first add the equation $\frac{d}{ds}s=1$ to equation \eqref{ric} to get a autonomous $2-$dimensional system in the $(s,u)$ plane. Consider a small neighbourhood $I$ containing $\bar{u}_0$ on the vertical $u$-axis, then $u_R(s; u_0)$ is the trajectory that starts at $u_0 \in I$. The map $P_1 : I \to \mathbb{R}$ defined by $P_1(p) = u(2; p)$ is smooth in $p$, as the blow up time for $\bar{u}_R(s;\bar{u}_0)$ is $\Omega_0 >2$. Moreover, the image $P_1(I)$ is a finite interval on the vertical line $s=2$ containing $\bar{u}_R(2;u_0)$ bounded away from $0$, since the trajectory $u_R(s;\bar{u}_0)$ crosses the horizontal axis around $s=1$ and the vector field goes upwards in the first quardrant of the $(s,u)$-plane.
+for $t$ small.  
 
-Denote $\tilde{u}_0:= P_1(u_0)$ for brevity (technically, the interval $P_1(I)$ is a small section of the line $s=2$, with a little abuse of notation, we identify $\tilde{u}_0$ with the second coordinate of the point $P_1(u_0)$). Again in the Riccati equation \eqref{ric}, we make a change of variable by setting $z(s) = 1/u(s)$, the equation $z$ satisfies is:
+Due to the simple form of \eqref{euler_ori_eqn} and \eqref{ori_bc}, we have that $\mu(t)= \eps t-\delta$, the it can be calculated that $u_s(\mu)$ has the following asymptotics
+\begin{align}\label{singularAsy}
+\begin{split}
+u(\mu) &= -\sqrt{\mu} + \rmO(\mu)\\
+u_s(t) &= -\sqrt{\delta-\eps t} + \rmO(|\delta-\eps t|).
+\end{split}
+\end{align}
+
+
+\subsubsection{Division of regions and the rescale of time}\label{t_sigma}
+
+Having introduced the primary ansatz, the next step is to ``glue'' them together. Since these anstaz have quite different asymptotics on different time, it motivates us to divide the total time of of passage, from $t=0$ to $t=T$, and to choose the particular form of the ansatz, as follows:
+
+Going backwards in time, we start with the exit time $t=T$ when the trajectory hits the section $\Delta^{out}$, we shall see that $T$ roughly has following asmpytotics
+\begin{equation}
+T = \eps^{-1}\delta + \rmO(\eps^{-1/3}),
+\end{equation}
+this $T$ also marks the rightmost boundary of the region $A$, where our ansatz takes the form
 \[
-\frac{d}{ds}z(s) = -z^2s -1.
+u_A = u_*(t)  + w_r(t),
 \]
-Let $J = \{ 1/\tilde{u}_0 \mid  \tilde{u}_0 \in P_1(I)\}$ and $z(s; 1/\tilde{u}_0)$ is the trajectory which starts at $1/\tilde{u}_0$. We claim that $z(s; 1/\bar{u}_0)$ reaches $0$ at a finite time $\Omega_\infty = \Omega_\infty(1/\bar{u}_0)$. To see this, first notice there is no equilibrium for the two dimensional system $\frac{d}{ds}s=1, \frac{d}{ds}z=-z^2s-1$. Then, on the boundary $s=2$, the vector field takes the form $(1,-2z^2-1)$, which makes any trajectory starting at a point on $J$ moving down towards the right. Moreover, the vector field $(1,-sz^2-1)$ always pointing down in the first qurdrant of the $(s,z)$ plane, so trajectories cannot go upwards. Lastly, the vector field crosses the horizontal axis non-tangentially, it identically equals $(1,-1)$ throughout the line $z=0$, hence, any trajectory which starts at a point on $J$ will cross $z=0$ in finite time at a unique point $\Omega_\infty = \Omega_\infty(1/\tilde{u}_0)$. The dependence of $\Omega_\infty$ on $1/\tilde{u}_0$ is smooth by the smooth dependence on initial conditions.
+here the function $u_* = u_*(t; u_0)$ is defined as:
+\begin{equation}\label{urdef}
+u_*(t; u_0) := \eps^{1/3}u_R(\eps^{1/3}(t-\eps^{-1}\delta); u_0),
+\end{equation}
 
- We now define another map $P_2 : J \to \mathbb{R}$ by $P_2(1/\tilde{u}_0) = \Omega_\infty(1/\tilde{u}_0)$, we get a smooth map $P: I \to \mathbb{R}$ by the composition
- \[
- P =P_2 \circ f \circ P_1,
- \] 
- where $f(z) = 1/z$ is the inversion map. Since each of the map in the composition is smooth, $P: u_0 \mapsto \Omega_\infty = \Omega_\infty(u_0)$ is smooth as well.
+where $u_R=u_R(s; u_0)$ is the family of solutions to the Riccati equation which were shown to exist in proposition \ref{para_ric}, it solves the initial value problem
+\begin{equation}\label{ureq}
+\frac{d}{dt}u_*(t; u_0) = \mu(t) + u_*^2(t; u_0), \hspace{0.2in} u_*(\eps^{-1}\delta; u_0) = \eps^{\frac{1}{3}} u_0,
+\end{equation}
+with $\eps$ and $u_0$ as parameters.  The function $w_r$ is a correction term whose properties will be given in later sections. 
 
-To get the asymptotic expansion, we set $\xi = \Omega_\infty-s$, then $\tilde{z}(\xi)=z(\Omega_\infty-\xi)$ solves
+In region $A$, we think the main part of the ansatz, $u_*(t)$, which is merely a rescaled version of the Ricatti solution $u_R(s; u_0)$, follows the first half of the asymptotics in Proposition \ref{para_ric}, when $u_*(t)$ start to be controlled by the other part of the asymptotics, we will need to adaptively change our anstaz or function space in order to ``glue'' the solutions, an intuitive, but rather arbitrary place to switch regions is at $t = \eps^{-1} \delta$. This marks the start of region $B$, where our choice of ansatz is as follows:
+ The ansatz takes the form 
+ \[ 
+ u_B(t) = \bar{u}_*(t)  +w_\ell(t).
+\]
+
+Where $\bar{u}_*$ is the function
+\begin{equation}\label{uldef}
+\bar{u}_*(t) = u_*(t;\bar{u}_0) = \eps^{1/3} u_R( \eps^{1/3}(t-\eps^{-1}\delta); \bar{u}_0)=\eps^{1/3}\bar{u}_R(\eps^{1/3}(t-\eps^{-1}\delta)),
+\end{equation}
+and $\bar{u}_*$ solves the equation
+\begin{equation}\label{uleq}
+\frac{d}{dt}\bar{u}_* (t) = \mu(t) + \bar{u}_*^2(t),
+\end{equation}
+so similarly $\bar{u}_*$ is a rescaled version of the special solution to the Riccati equation. Also similar to the situation in region $A$, $w_\ell$ is a correction term whose properties will be described later.
+
+It might seem that there are little differences between the ansatz $u_A$ and $u_B$, however, as it will be demonstrated in the proof, the main  motivation for such a choice is to ensure the fixed point argument goes through with the choice of function spaces motivated by the different asymptotics of the ansatz.
+
+The next piece of the anstaz will be used to connect the piece $u_B$, which roughly follows the special Ricatti solution $\bar{u}_R$, to the attracting branch $S_a$ of the critical manifold $S_0$, a natural ``gluing point'' is at where the error between $\bar{u}_R$ and $u_s(t)$, is small. Calculation shows that this is at a point $t=t^*$ where we roughly have
+\begin{equation}
+(\delta - \eps t^*) \approx -\eps^{1/2},
+\end{equation} 
+
+hence we choose $t^*$ as a natural transition point from region $B$ to the last region, region $C$, where it covers the rest of the passage time until at $t=0$. The corresponding ansatz will take the form
 \[
-\frac{d}{d\xi} \tilde{z} = \tilde{z}^2(\Omega_\infty-\xi)+1,
+u_C(t) = u_s(t) + w_s(t),
 \]
-and $\tilde{z}(0) = 0$.
+the $w_s(t)$ is yet another correction term whose properties will be discussed later. 
 
-Hence we can assume the expansion for $\tilde{z}$ near $\xi=0$ is of the form
-\[
-\tilde{z} = \xi + z_2\xi^2+z_3\xi^3 + \rmO(\xi^4),
-\]
-for some constant $z_2,z_3$. Differentiating this expansion, use the equation $\tilde{z}$ solves and comparing coefficients, we find that $z_2 = 0, z_3 = \Omega_\infty/3$.  Changing back from $\tilde{z}(\xi)$ to $z=z(s)$ with $s = \Omega_\infty-\xi$ and recall $z(s) = 1/u(s)$, we find that $u_R(s;u_0)$ has expansion \eqref{ric_exp} with remainder $r$ satisfies \eqref{ric_reminder}.
+In summary, region $A$, $B$ and $C$ are divided as follows:
+\begin{align}\label{region_division_t}
+\begin{split}
+\text{Region A:} & \quad (\eps^{-1}\delta, T), \quad \text{ansatz in region A:} \quad u_A(t) = u_*(t)+w_r(t), \\
+\text{Region B:} & \quad (t^*, \eps^{-1}\delta), \quad \text{ansatz in region B:} \quad u_B(t) = \bar{u}_*(t)+w_\ell(t),  \\
+\text{Region C:} & \quad (0, t^*), \quad \text{ansatz in region C:} \quad u_A(t) = u_*(t)+w_s(t), .
+\end{split}
+\end{align}
+
+Now we can breifly describe the strategy of our proof, we plug in the ansatz into Equation \eqref{euler_ori_eqn} to derive the equation for the ansatz $w_r, w_\ell $ and $w_s$, choose approprate function space with norms and set up the equations for ansatz as fixed point argument on these function spaces. A main technical part of our proof consists of appropriately rescale the time $t \in (0,T)$ so that we gain hyperbolicity in the sense that the linearized operator at the anstaz become Fredholm in the new time scale. This is the key observation in our approach, comparable to the blow-up approach which also gains hyperbolicity via a carefully chosen change of variable. Having solved the correction term $w_r, w_\ell$ and $w_s$, we can then collect information about their asymptotic expansion to confirm the corresponding solution has the properties we need.
 
 
-\end{proof}
-\subsection{The \texorpdfstring{$t$}{t} to \texorpdfstring{$\sigma$}{sigma} time rescaling}\label{t_sigma}
-
-The solution to \eqref{ori_eqn} will be based on the solution of the Riccati equation \eqref{ric}. We need to rescale time $t$ to obtain appropriate equations as $\eps \to 0$.
-
-We will rescale time $t$ to time $\sigma$ using the following steps.
-\begin{itemize}
-
+Therefore, we need to describe how we transform time $t$ into time $\sigma$ which gains hyperbolicity. We do this using the following steps.
+\begin{enumerate}
 \item Step 1: Define $\psi$ as
 \[
 \psi = \eps^{1/3}(t - \eps^{-1}\delta),
@@ -279,11 +392,26 @@ Therefore we can write
 \begin{equation}\label{sigm_asy}
 \sigma_m = M + M_r, \hspace{0.2in} |M_r| \le CM^{1/3}
 \end{equation}
-\end{itemize}
+\end{enumerate}
 
-We also denote $\varphi(\sigma) := \frac{d}{d\sigma}\psi(\sigma)$.
 
-%For convenience let the map $t \mapsto \sigma$ be denoted as $\rho$.
+We also denote $\varphi(\sigma) := \frac{d}{d\sigma}\psi(\sigma)$, which save us some space when writing the factor for the change of variable between $\sigma $ and $t$. 
+
+Therefore, the original exit time $t=T$ will be transformed into $\sigma=\sigma_T$ under this change of variable, and similarly the boundary between region $A$ and region $B$ is  transformed from $t=\eps^{-1}\delta$ to $\sigma = \sigma_m$ and the boundary between region $B$ and region $C$ is  transformed from $t=t^*$ to $\sigma = \sigma^*$, and $t=0$ into $\sigma = \sigma_0$. Later sections will show that the $\sigma_0, \sigma^*, \sigma_m, \sigma_T$ satisfies:
+\[
+\sigma _0 \approx -\delta^{3/2}\eps^{-1}, \quad \sigma ^* \approx -\eps^{-1/4}, \quad \sigma_m = \rmO_\eps(1), \quad
+\sigma_T \approx -\log(\eps^{1/3}\delta^{-1}) 
+\]
+In summary, the regions in time $\sigma$ are as follows:
+\begin{align}\label{region_division_sig}
+\begin{split}
+\text{Region A:} & \quad (\sigma_m ,\sigma_T ),  \\
+\text{Region B:} & \quad (\sigma^*, \sigma_m),  \\
+\text{Region C:} & \quad (\sigma_0, \sigma^*),
+\end{split}
+\end{align}
+and the following picture summrizes the relationship between the two time scales $t$ and $\sigma$, as well as the corresponding regions divided.
+
 
 \iffalse
 %\item Asymptotics for $u_R$ and $\varphi$.
@@ -309,32 +437,35 @@ e^{\sigma} , \text{ as }\sigma \to \infty.
 \end{equation*}
 %
 \fi
+\subsection{Main result - summary} \label{main_sum}
 
+\begin{theorem}[Gluing of the solutions]
+For each $\delta>0$ and $\eta>0$ small, there exist $\eps_0$ and $u_0$ such that for all $0<\eps<\eps_0$ and $|u_0 - \bar{u}_0|<\eta$, a solution of equation \ref{euler_ori_eqn} exists with $\mu(t) = \eps t - \delta$ and 
+\begin{align*}
+u(t; u_0)  =\begin{cases}
+u_A(t;u_0) , \text{ for }t \in (\eps^{-1}\delta, T),\\
+u_B(t), \text{ for } t \in (t^*,\eps^{-1}\delta), \\
+u_C(t), \text{ for } t \in (0, t^*),
+\end{cases}
+\end{align*}
+where $u_A(t; u_0)$, $u_B(t)$ and $u_C(t)$ are the solutions that were shown to exist in Theorem \ref{thm_r}, \ref{thm_l} and \ref{thm_s}.
+
+Moreover, $u$ satisfies 
+\[
+u(T;u_0) = \delta, \hspace{0.2in} u(0;u_0)  = -\sqrt{\delta} +\delta + \rmO( \eps^{1-\alpha/3}\delta^{-1}).
+\]
+\end{theorem}
 
 \pagebreak
 
 
 
-\pagebreak
-\section{Region A}
+\section{Region A}\label{sec_A}
 
 Region A corresponds to the $t$-time interval $\{ t : t > \eps^{-1}\delta\}$.
 
 \subsection{Ansatz in region A}
-The ansatz in region A takes the form
-\[
-u_{A}(t) = u_*(t) + w_r(t).
-\]
-The function $u_* = u_*(t; u_0)$ is defined as:
-\begin{equation}\label{urdef}
-u_*(t; u_0) := \eps^{1/3}u_R(\eps^{1/3}(t-\eps^{-1}\delta); u_0),
-\end{equation}
 
-where $u_R=u_R(s; u_0)$ is the family of solutions to the Riccati equation which were shown to exist in proposition \ref{para_ric}, it solves the initial value problem
-\begin{equation}\label{ureq}
-\frac{d}{dt}u_*(t; u_0) = \mu(t) + u_*^2(t; u_0), \hspace{0.2in} u_*(\eps^{-1}\delta; u_0) = \eps^{\frac{1}{3}} u_0,
-\end{equation}
-with $\eps$ and $u_0$ as parameters.  The function $w_r$ is a correction term whose properties are summerized in the following theorem.
 \begin{theorem}\label{thm_r}
 For all $\delta, \alpha$ small enough, there exists $\eta,\eps_1,C$, such that for all $0<\eps <\eps_1$, and all $|u_0 - \bar{u}_0|<\eta$, there exist a time $T=T(\eps;u_0)$ and a solution to \eqref{ori_eqn} of the form
 \[
@@ -703,28 +834,12 @@ combine the two estimates we conclude that
 which comples the proof of Theore \ref{thm_r}.
 \end{proof}
 
-\section{Region B}
+\section{Region B}\label{sec_B}
 
 Region B corresponds to the $t$-time interval $ t^*< t< \eps^{-1}\delta$.
 
 \subsection{Ansatz in region B}
- The ansatz takes the form 
- \[ 
- u(t) = \bar{u}_*(t)  +w_\ell(t).
-\]
 
-Where $\bar{u}_*$ is the function
-\begin{equation}\label{uldef}
-\bar{u}_*(t) = u_*(t;\bar{u}_0) = \eps^{1/3} u_R( \eps^{1/3}(t-\eps^{-1}\delta); \bar{u}_0)=\eps^{1/3}\bar{u}_R(\eps^{1/3}(t-\eps^{-1}\delta)).
-\end{equation}
-
-$\bar{u}_*$ solves the equation
-\begin{equation}\label{uleq}
-\frac{d}{dt}\bar{u}_* (t) = \mu(t) + \bar{u}_*^2(t),
-\end{equation}
-that is, $\bar{u}_*$ is merely a rescaled version of the special solution to the Riccati equation. 
-
-Similarly to the situation in region $A$, $w_\ell$ is a correction term whose properties are summerized in the following
 \begin{theorem}\label{thm_l}
 For all $\delta, \alpha$ small enough, there exists $\eps_2,C$, such that for all $0<\eps <\eps_2$, and a solution to \eqref{euler_ori_eqn} of the form
 \[
@@ -886,7 +1001,7 @@ If $W_\ell \in \mathcal{C}_{\ell}$, then $ \eps^{-1/3}\varphi \Ral_\ell(W_\ell(\
 \end{proposition}
 
 \begin{proof}
-From the asymptotics \eqref{ricasy}, we have that
+From the asymptotics \eqref{ric_asy}, we have that
 \[
 \bar{U}_*(\sigma) = \eps^{1/3} \bar{u}_R(\psi(\sigma)) \lar |\eps \sigma|^{1/3}\le \eps^{1/4}, \hspace{0.2in} \varphi(\sigma) \lar \langle\sigma\rangle^{-1/3} ,
 \]
@@ -961,20 +1076,11 @@ Therefore, for $(W_\ell, w^*)$ in a small ball of $X$, we apply Banach's fixed p
 \end{proof}
 
 
-\section{Region C}
+\section{Region C}\label{sec_C}
 This region corresponds to the $t$-time interval $0<t<t^*$. Recall $t^*$ is the (left) gluing time which corresponds to when $\sigma = \eps^{-1/4}=:\sigma^*$.
 
 \subsection{Ansatz in region C}
-Recall the critical manifold for system \eqref{crit_mfld} is the set of points $(u,\mu) \in \mathbb{R}^2$ which satisfies
-\begin{equation} \label{crit_mfld}
-\mu + u^2 + f(u,\mu; 0) =  0.
-\end{equation}
 
-By the implicit function theorem, whenever $\partial_u( u^2+f(u,\mu;0) ) \neq 0$, we can write $u=u(\mu),$ for $\mu$ small, let $u_s(t):= u(\mu(t))$ so that
-\begin{equation}\label{singular}
-0 = \mu(t) + u_s^2(t)+f(u_s(t),\mu; 0),
-\end{equation}
- for $t \in (0,t^*)$.
 %\begin{equation} \label{crit_mfld}
 %\mu + u^2 + \tilde{f}(u,\mu,0) =  0
 %\end{equation}
@@ -1027,11 +1133,6 @@ Where
 
 \item 
 Like $W_r$ and $W_\ell$ in region $A$ and region $B$, the function $W_s(\sigma)$ is the rescaled version of $w_s(t)$ in the $\sigma$-variable, $w_s(t) = w_s(\eps^{-1/3}\psi(\sigma)+\eps^{-1}\delta) = W_s(\sigma)$. 
-
-It can be calculated that $u_s(t)$ has the following asymptotics
-\begin{equation}\label{singularAsy}
-u_s(t) = -\sqrt{\delta-\eps t} + \rmO(|\delta-\eps t|).
-\end{equation}
 
 Rescaling to $\sigma$ variable leads to the asymptotics of the rescaled version of $u_s(t)$:
 \begin{equation}\label{sing_exp}
@@ -1236,7 +1337,7 @@ Therefore, for $(W_s, w_0)$ in a small ball of $X$, we apply Banach's fixed poin
 \end{proof}
 
 
-\section{Gluing}
+\section{Gluing}\label{sec_glue}
 So far we have showed solutions of the form $u_A,u_B,$ and $u_C$ exists on region $A$, $B$ and $C$, respectively. 
 
 To show a solution to \eqref{ori_eqn} and \eqref{ori_bc} exists on the whole interval $t\in (0, T)$. We first show that the solution $u_A$, $u_B$ and $u_C$ match at the boundary points of region $A$, $B$, and $C$.
@@ -1300,27 +1401,56 @@ uniformly in $u_0$ and
 \text{Lip}_{u_0} \phi(\eps; u_0) = \rmO(\eps^{2/3}).
 \]
 Hence we divide the right hand side of \eqref{match_ab_exp} by $\eps^{1/3}$, and apply the implicit function theorem around the point $(u_0=\bar{u}_0, \eps=0)$ to conclude that for $u_0$ such that $|u_0- \bar{u}_0| = \rmO(\eps^{(1-\alpha)/3})$ the matching condition \eqref{match_ab} is satisfied. In conclusion, we have shown
-\begin{theorem}[Gluing of the solutions]
-For each $\delta>0$ and $\eta>0$ small, there exist $\eps_0$ and $u_0$ such that for all $0<\eps<\eps_0$ and $|u_0 - \bar{u}_0|<\eta$, a solution of equation \ref{euler_ori_eqn} exists with $\mu(t) = \eps t - \delta$ and 
-\begin{align*}
-u(t; u_0)  =\begin{cases}
-u_A(t;u_0) , \text{ for }t \in (\eps^{-1}\delta, T),\\
-u_B(t), \text{ for } t \in (t^*,\eps^{-1}\delta), \\
-u_C(t), \text{ for } t \in (0, t^*),
-\end{cases}
-\end{align*}
-where $u_A(t; u_0)$, $u_B(t)$ and $u_C(t)$ are the solutions that were shown to exist in Theorem \ref{thm_r}, \ref{thm_l} and \ref{thm_s}.
 
-Moreover, $u$ satisfies 
-\[
-u(T;u_0) = \delta, \hspace{0.2in} u(0;u_0)  = -\sqrt{\delta} +\delta + \rmO( \eps^{1-\alpha/3}\delta^{-1}).
-\]
-\end{theorem}
 
 \pagebreak
 \section*{Appendix}
-In this Appendix we show the main perturbation lemma used to prove the invertibility of the linearized operators at the ansatzs.
+\renewcommand{\thesubsection}{\Alph{subsection}}
+We first show how to extend the asymptotics \eqref{ric_asy} to a more general family of solutions.
+\subsection{A family of the solution to the Riccati equation }
+\begin{proposition}\label{para_ric}
+There exist blow up time $\Omega_\infty = \Omega_\infty(u_0)$ that depends smoothly on $u_0$ for $|u_0 - \bar{u}_0|<\eta$, $\eta$ small, with $\Omega_\infty(\bar{u}_0) = \Omega_0$, and the corresponding solution $u_R(s; u_0)$ to the Riccati equation \eqref{ric} of the form
+\begin{equation}\label{ric_exp}
+u_R(s;u_0) = \frac{1}{\Omega_\infty-s} +  (\Omega_\infty-s) r(\Omega_\infty-s;u_0),
+\end{equation}
+where the function $r$ is smooth in both variables and satisfies
+\begin{equation}\label{ric_reminder}
+r( \Omega_\infty-s; u_0) = -\frac{\Omega_\infty}{3} + \rmO(\Omega_\infty-s),
+\end{equation}
+as $s \to \Omega_\infty$.
+\end{proposition}
 
+\begin{proof}To get the dependence from $u_0$ to $\Omega_\infty$, we first add the equation $\frac{d}{ds}s=1$ to equation \eqref{ric} to get a autonomous $2-$dimensional system in the $(s,u)$ plane. Consider a small neighbourhood $I$ containing $\bar{u}_0$ on the vertical $u$-axis, then $u_R(s; u_0)$ is the trajectory that starts at $u_0 \in I$. The map $P_1 : I \to \mathbb{R}$ defined by $P_1(p) = u(2; p)$ is smooth in $p$, as the blow up time for $\bar{u}_R(s;\bar{u}_0)$ is $\Omega_0 >2$. Moreover, the image $P_1(I)$ is a finite interval on the vertical line $s=2$ containing $\bar{u}_R(2;u_0)$ bounded away from $0$, since the trajectory $u_R(s;\bar{u}_0)$ crosses the horizontal axis around $s=1$ and the vector field goes upwards in the first quardrant of the $(s,u)$-plane.
+
+Denote $\tilde{u}_0:= P_1(u_0)$ for brevity (technically, the interval $P_1(I)$ is a small section of the line $s=2$, with a little abuse of notation, we identify $\tilde{u}_0$ with the second coordinate of the point $P_1(u_0)$). Again in the Riccati equation \eqref{ric}, we make a change of variable by setting $z(s) = 1/u(s)$, the equation $z$ satisfies is:
+\[
+\frac{d}{ds}z(s) = -z^2s -1.
+\]
+Let $J = \{ 1/\tilde{u}_0 \mid  \tilde{u}_0 \in P_1(I)\}$ and $z(s; 1/\tilde{u}_0)$ is the trajectory which starts at $1/\tilde{u}_0$. We claim that $z(s; 1/\bar{u}_0)$ reaches $0$ at a finite time $\Omega_\infty = \Omega_\infty(1/\bar{u}_0)$. To see this, first notice there is no equilibrium for the two dimensional system $\frac{d}{ds}s=1, \frac{d}{ds}z=-z^2s-1$. Then, on the boundary $s=2$, the vector field takes the form $(1,-2z^2-1)$, which makes any trajectory starting at a point on $J$ moving down towards the right. Moreover, the vector field $(1,-sz^2-1)$ always pointing down in the first qurdrant of the $(s,z)$ plane, so trajectories cannot go upwards. Lastly, the vector field crosses the horizontal axis non-tangentially, it identically equals $(1,-1)$ throughout the line $z=0$, hence, any trajectory which starts at a point on $J$ will cross $z=0$ in finite time at a unique point $\Omega_\infty = \Omega_\infty(1/\tilde{u}_0)$. The dependence of $\Omega_\infty$ on $1/\tilde{u}_0$ is smooth by the smooth dependence on initial conditions.
+
+ We now define another map $P_2 : J \to \mathbb{R}$ by $P_2(1/\tilde{u}_0) = \Omega_\infty(1/\tilde{u}_0)$, we get a smooth map $P: I \to \mathbb{R}$ by the composition
+ \[
+ P =P_2 \circ f \circ P_1,
+ \] 
+ where $f(z) = 1/z$ is the inversion map. Since each of the map in the composition is smooth, $P: u_0 \mapsto \Omega_\infty = \Omega_\infty(u_0)$ is smooth as well.
+
+To get the asymptotic expansion, we set $\xi = \Omega_\infty-s$, then $\tilde{z}(\xi)=z(\Omega_\infty-\xi)$ solves
+\[
+\frac{d}{d\xi} \tilde{z} = \tilde{z}^2(\Omega_\infty-\xi)+1,
+\]
+and $\tilde{z}(0) = 0$.
+
+Hence we can assume the expansion for $\tilde{z}$ near $\xi=0$ is of the form
+\[
+\tilde{z} = \xi + z_2\xi^2+z_3\xi^3 + \rmO(\xi^4),
+\]
+for some constant $z_2,z_3$. Differentiating this expansion, use the equation $\tilde{z}$ solves and comparing coefficients, we find that $z_2 = 0, z_3 = \Omega_\infty/3$.  Changing back from $\tilde{z}(\xi)$ to $z=z(s)$ with $s = \Omega_\infty-\xi$ and recall $z(s) = 1/u(s)$, we find that $u_R(s;u_0)$ has expansion \eqref{ric_exp} with remainder $r$ satisfies \eqref{ric_reminder}.
+
+
+\end{proof}
+
+Next we show the main perturbation lemma used to prove the invertibility of the linearized operators at the ansatzs.
+\subsection{Uniform invertibility of boundary value problems }
 \begin{lemma}\label{pert_inv}
 Consider the following boundary value problems 
 \begin{subequations}
