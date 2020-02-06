@@ -527,11 +527,10 @@ Moreover, we have
 \begin{enumerate}[label=\textnormal{(\arabic*)}]
 \item \label{thm:r_1}$T=T(\eps;u_0) = \eps^{-1}\delta+\eps^{-1/3}\Omega_\infty(u_0)-\delta^{-1}+T_r$ with $T_r = \rmO( \eps^{2/3}\delta^{-3} )$ where the constant $\Omega_\infty(u_0)$ is the same mentioned in Proposition \ref{para_ric},
 \item \label{thm:r_2} $w_r(T; u_0) = 0$ and $u_*(T,u_0)=\delta$,
-\item \label{thm:r_3} $w_r$ is continuous with $|w_r(\eps^{-1}\delta; u_0)| \le C\eps^{(2-\alpha)/3}$.
 
-\item \label{thm:r_4} $ |w_r(t; u_0)| \le C|T_\infty-t|^{\alpha-2}$ for $t \in (\eps^{-1}\delta, T)$.
+\item \label{thm:r_3} $w_r$ is continuous with $|w_r(t; u_0)| \le C|\eps^{-1}\delta+\eps^{-1/3}\Omega_\infty(u_0)-t|^{\alpha-2}$ for $t \in (\eps^{-1}\delta, T)$,
 
-\item \label{thm:r_5} The function 
+\item \label{thm:r_4} the function 
 $\mathcal{F}: (\bar{u}_0-\eta, \bar{u}_0+\eta) \to \mathbb{R}$ with $\mathcal{F}(u_0)=  w_r(\eps^{-1}\delta; u_0)$ is smooth, with Lipschitz constant satisfy 
 \[
 |\text{Lip }\mathcal{F} |\le C\eps^{2/3} . 
@@ -779,7 +778,7 @@ since we assumed $\alpha \ll 1$, it follows that $\|\eps^{-1/3}\varphi \Ral_r(W_
 \subsection{Fixed point argument and the proof of Theorem \ref{thm:r}}
 In this section we prove theorem \ref{thm:r} by setting up an appropriate fixed point argument.
 \begin{proof}[Proof of theorem \ref{thm:r}]
-Items \ref{thm:r_1} and \ref{thm:r_2} in the assertion of the theorem has been demonstrated in section \ref{exit_time} and \ref{equation_wr}. Items \ref{thm:r_3} and \ref{thm:r_4} is a direct consequence of the fact that $W_r \in \mathcal{C}_r$, to prove this, we first rewrite equation \eqref{rescl_wr} and the boundary condition $W_r(\sigma_T)=w_T$ as 
+Items \ref{thm:r_1} and \ref{thm:r_2} in the assertion of the theorem has been demonstrated in section \ref{exit_time} and \ref{equation_wr}. Items \ref{thm:r_3} is a direct consequence of the fact that $W_r \in \mathcal{C}_r$, to prove this, we first rewrite equation \eqref{rescl_wr} and the boundary condition $W_r(\sigma_T)=w_T$ as 
 \[
 F_r(W_r, w_T; \eps, u_0) = 0,
 \]
@@ -817,7 +816,7 @@ Moreover, for $\|W_r\|$ small enough and $|w_T|\le \delta_1$, we have $D_{(W_r,w
 Therefore, for $(W_r,w_T)$ in a small ball of $X$, we can apply an iteration scheme and utilize the Banach fix point theorem to the existence of a fixed point, hence a solution to equation \eqref{rescl_wr} exists. Moreover, this solution depends smoothly on the parameter $\eps, u_0$. By picking $w_T = 0$, we have shown that a unique fixed point $W_r \in \mathcal{C}_r$ exists and solves equation \eqref{rescl_wr}.
 
 
-Finally, to prove item \ref{thm:r_5} we need to estimate the Lipschitz constant for the map 
+Finally, to prove item \ref{thm:r_4} we need to estimate the Lipschitz constant for the map 
 \[
 \Psi : u_0 \mapsto w_r(\eps^{-1}\delta; u_0)=W_r(\sigma_m;u_0),
 \]
@@ -1423,7 +1422,7 @@ therefore
 \[
 u_B(\eps^{-1}\delta) = \eps^{1/3} \bar{u}_0+\rmO(\eps^{(2-\alpha)/3}).
 \]
-On the other hand, Theorem \ref{thm:r} proves a solution to \eqref{euler_m} of the form $u_A(t;u_0) = u_*(t; u_0) + w_r(t; u_0)$ exists for $ t \in (\eps^{-1}\delta, T)$ with $u_A(T;u_0) = \delta$. Moreover, at $t=\eps^{-1}\delta$ the value $u_A(\eps^{-1}\delta; u_0)$ has the following expansion in $\eps$:
+On the other hand, Theorem \ref{thm:r} proves a solution to \eqref{euler_m} of the form $u_A(t;u_0) = u_*(t; u_0) + w_r(t; u_0)$ exists for $ t \in (\eps^{-1}\delta, T)$ with $u_A(T;u_0) = \delta$, provided that $u_0$ is close to $\bar{u}_0$. Moreover, at $t=\eps^{-1}\delta$ the value $u_A(\eps^{-1}\delta; u_0)$ has the following expansion in $\eps$:
 \begin{align*}
 u_*(\eps^{-1}\delta; u_0) &= \eps^{1/3}u_R(0;u_0) =  \eps^{1/3}u_0,\\
 w_r(\eps^{-1}\delta ; u_0) &= \rmO(\eps^{(2-\alpha)/3}),\\
