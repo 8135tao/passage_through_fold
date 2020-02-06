@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: three_Layers[adjusted].aux
+The style file: abbrv.bst
+Database file #1: bib/pass_fold_ref.bib
+Warning--there's a number but no volume in batespleth
+You've used 35 entries,
+            2118 wiz_defined-function locations,
+            739 strings with 9185 characters,
+and the built_in function-call counts, 11319 in all, are:
+= -- 1139
+> -- 452
+< -- 13
++ -- 181
+- -- 144
+* -- 837
+:= -- 1879
+add.period$ -- 112
+call.type$ -- 35
+change.case$ -- 171
+chr.to.int$ -- 0
+cite$ -- 36
+duplicate$ -- 438
+empty$ -- 928
+format.name$ -- 144
+if$ -- 2347
+int.to.chr$ -- 0
+int.to.str$ -- 35
+missing$ -- 44
+newline$ -- 181
+num.names$ -- 70
+pop$ -- 161
+preamble$ -- 1
+purify$ -- 142
+quote$ -- 0
+skip$ -- 272
+stack$ -- 0
+substring$ -- 786
+swap$ -- 78
+text.length$ -- 13
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 122
+warning$ -- 1
+while$ -- 120
+width$ -- 37
+write$ -- 400
+(There was 1 warning)

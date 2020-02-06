@@ -1,0 +1,185 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[titletoc]{appendix}
+
+\usepackage{enumerate}
+\usepackage{stmaryrd}
+\usepackage{fullpage}
+\usepackage{ifthen}
+\usepackage{subfigure}
+\usepackage{epic}
+\usepackage{authblk}
+\usepackage{textcomp}
+\usepackage[small]{caption}
+\SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}
+
+\usepackage{enumitem}
+
+\usepackage[hypertexnames=false,colorlinks=true,linkcolor=blue,citecolor=blue]{hyperref}
+\usepackage[numbers,comma,square,sort&compress]{natbib}
+\usepackage[letterpaper,text={7in,9in},centering]{geometry}
+
+\usepackage{bm}
+\usepackage{color}
+\usepackage{titlesec}
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{1.0ex plus0.2ex minus0.2ex}
+\renewcommand{\baselinestretch}{1.1}
+\graphicspath{{eps/}{pdf/}}
+\setcaptionmargin{0.25in}
+\def\captionfont{\itshape\small}
+\def\captionlabelfont{\upshape\small}
+
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+\newcommand{\bqq}{\begin{equation}}
+\newcommand{\eqq}{\end{equation}}
+\newcommand{\bqs}{\begin{equation*}}
+\newcommand{\eqs}{\end{equation*}}
+
+\newcommand{\Ral}{\mathcal{R}}
+
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}} 
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\rme}{\mathrm{e}}
+\newcommand{\rmi}{\mathrm{i}}
+\newcommand{\rmd}{\mathrm{d}}
+\newcommand{\rmo}{{\scriptstyle\mathcal{O}}}
+\newcommand{\rmO}{\mathcal{O}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\lar}{ \lesssim }
+
+
+\newcommand{\Rho}{\bm{\rho}}
+\newcommand{\bigma}{\bm{\sigma}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\supp}{\operatorname{supp}}
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+
+\numberwithin{equation}{section}
+
+\newenvironment{Hypothesis}[1]%
+  {\begin{trivlist}\item[]{\bf Hypothesis #1 }\em}{\end{trivlist}}
+
+\renewcommand{\arraystretch}{1.25}
+
+
+% Define Theorem Styles ----------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{main}[theorem]{Main Result}
+\newtheorem{rmk}[theorem]{rmk}
+
+
+\newcommand{\etal}{\textit{et al.}\ }
+
+\newcommand{\greg}[1]{%
+  {\color{blue}\textbf{Greg:} #1}%
+ }
+ 
+\newcommand{\arnd}[1]{%
+  {\color{red}\textbf{Arnd:} #1}%
+ }
+
+\newenvironment{Proof}[1][.]%
+ {\begin{trivlist}\item[]\textbf{Proof#1 }}%
+ {\hspace*{\fill}$\rule{0.3\baselineskip}{0.35\baselineskip}$\end{trivlist}}
+
+\renewcommand\labelitemi{$\bullet$}
+
+\title{Passage through a fold without a phase space}
+\author{author}
+\date{2016}
+\begin{document}
+Here is what I was doing with the exist time:
+
+
+
+The Ansatz chosen was 
+\[
+u_*(t; u_0)  = \eps^{1/3}u_R(\eps^{1/3}(t-\eps^{-1}\delta); u_0)
+\]
+
+where $u_R(\cdot ; u_0)$ was the solution to the Ricatti equation with initial condition $u_R(0; u_0) = u_0$.
+
+Which has the following asymptotics:
+\[
+u_R( s ; u_0) = (\Omega_\infty(u_0) - s)^{-1} + (\Omega_\infty(u_0) - s) r(\Omega_\infty(u_0) - s; u_0) 
+\]
+with 
+\[
+r(\Omega_\infty(u_0) - s; u_0) = -\frac{\Omega_\infty}{3} + \rmO( |\Omega_\infty(u_0) - s |) 
+\]
+
+Then we take a solution of the form
+$u_A(t) = u_*(t) + w_r(t)$, plug it into the equation
+\[
+\frac{d}{dt} u(t) = \mu + u^2 + f(u, \mu; \eps)
+\]
+to get the solution satisfied by $w_r$, which is
+\begin{equation}
+\frac{d}{dt} w_r -2u_* w_r = w_r^2 + f(u_*+w_r, \mu; \eps)
+\end{equation}
+
+
+After the rescaling this becomes
+\begin{equation}\label{W_r}
+\left( \frac{d}{d\sigma} - a(\sigma) \right) W_r = \eps^{-1/3} \varphi \left(W_r^2 + f(u_*+W_r, \mu; \eps)\right)
+\end{equation}
+for $\sigma \in (\sigma_m, \sigma_T)$.
+
+where we have
+$|a(\sigma) - 2 | \le Ce^{-2\sigma}$ as $\sigma \to \infty$.
+
+We have proposed the function space
+\[
+C_r = \{ w(\sigma) : \sup|\eps^{(\alpha-2)/3} e^{(\alpha-2)\sigma} w|<\infty \}
+\]
+
+And concluded that we need boundary condition at $\sigma_T$ to complete the fixed point argument to solve equation \eqref{W_r}.
+
+
+
+Since we at the start required to have
+$u(T) = \delta$ as the definition for the exit time $T$. The simple choice we took was to use $T$ such that
+\[
+u_*(T) = 0
+\]
+and hence
+\[
+w_r(T) = 0 \text{ or }W_r(\sigma_T) = 0
+\]
+as the needed boundary condition. The fixed point argument can be completed, as shown in section ``Region A'' of the entire writeup. 
+
+
+But from $u_*(T) = \delta$ we can compute the asymptotics of $T$ to be
+\[
+T = \eps^{-1}\delta + \eps^{-1/3}\Omega_\infty - \delta^{-1} + \rmO(\eps^{2/3}),
+\]
+so that in the end we have
+\[
+\mu(T) = \eps T- \delta = \eps^{2/3}\Omega_\infty -\eps\delta^{-1}+\rmO(\eps^{5/3})
+\]
+which I think is right, as this agrees with Lemma 2.10 in Krupa Szmolyan.
+
+The problems is this expansion did not use any information about our correction $w_r$ at $t=T$ (it is $0$ by our assumption), so we cannot to expect to get the $\eps\log(\eps)$ just by using the asymptotics of the Riccati solution.
+\end{document}
