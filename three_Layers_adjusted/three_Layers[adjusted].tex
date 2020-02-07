@@ -204,7 +204,7 @@ Krupa and Szmolyan starts by setting two sections $\Delta_{in} = \{(-\delta, u) 
 \pi: \Delta_{in} \to \Delta_{out},
 \]
 
-Krupa and Szmolyan then proceeds by defining the blow up transformation
+Krupa and Szmolyan then proceed by defining the blow up transformation
 \[
 u =\bar{r} \bar{u},  \quad \mu = \bar{r}^2 \bar{\mu}, \quad  \eps = \bar{r}^3 \bar{\eps},
 \]
@@ -218,7 +218,7 @@ For $\eps$ sufficiently small, the following statements are true:
 \end{theorem}
 
 
-In this paper, we focus on the same problem \eqref{ori_eqn} with an aim to recreate the result of Theorem \ref{ks_main} via a different, functional analytically-based approach. Instead of proceeding with the geometrically-flavored blow-up approach, we directly prove a trajectory exists with the properties claimed in Theorem \ref{ks_main} by dividing the time of passage into appropriate parts and setting up corresponding ansatz in each region, closing the arguments with carefully reformulating the existence question as a fixed-point argument.
+In this paper, we focus on the same problem \eqref{ori_eqn} with an aim to recreate the result of Theorem \ref{ks_main} via a different, functional-analytical approach. Instead of proceeding with the geometrically-flavored blow-up approach, we directly prove a trajectory exists with the properties claimed in Theorem \ref{ks_main} by dividing the time of passage into appropriate parts and setting up corresponding ansatz in each region, closing the arguments with carefully reformulating the existence question as a fixed-point argument.
 
 \paragraph{Outline}
 The reminder of the paper is organized as follows. In Section \ref{sec_main} we give a precise statement of our result, as well as an overview of our set ups. In Sections \ref{sec_A}, \ref{sec_B} and \ref{sec_C} we construct the ansatz mentioned earlier and in Section \ref{sec_glue} we show how to piece together all the parts to arrive at our main results.
@@ -314,7 +314,7 @@ u_-(\mu) &= -\sqrt{-\mu} + \rmO(|\mu|)\\
 u_s(t) &= -\sqrt{\delta-\eps t} + \rmO(|\delta-\eps t|).
 \end{split}
 \end{align}
-Similarly, we also define the upper repelling branch $u_+(\mu)$ by implicit function theorem, where we know $u_+$ satisfies
+Similarly, we also define the upper repelling branch $u_+(\mu)$, where we know $u_+$ satisfies
 \begin{equation}
 u_+(\mu) = \sqrt{-\mu} + \rmO(|\mu|) 
 \end{equation}
@@ -323,8 +323,8 @@ u_+(\mu) = \sqrt{-\mu} + \rmO(|\mu|)
 
 We now state our main result. Recall $\mathcal{U}$ is a neighborhood small enough so that \eqref{fold_nonlinearity} holds for $(\mu, u , \eps) \in \mathcal{U}$.
 
-\begin{theorem}\label{thm:main}
-Fix $\delta>0$ and $\alpha$ with $0<\alpha <3/4$, there exist $\eps_0>0,$ a constant $C=C(\delta,\alpha),$ such that for all $0<\eps<\eps_0$ and $u_i$ with $|u_i -u_-(-\delta) | \le C\eps^{1-\alpha/3}$, a solution of the rescaled system 
+\begin{theorem}\label{thm:main}Let $\Omega_0$ be the constant defined in \eqref{ric_asy}.
+Fix $\delta>0$ and $\alpha$ with $0<\alpha <3/4$. There exist $\eps_0>0,$ a constant $C=C(\delta,\alpha),$ such that for all $0<\eps<\eps_0$ and $u_i$ with $|u_i -u_-(-\delta) | \le C\eps^{1-\alpha/3}$, a solution of the rescaled system 
 \begin{equation}\label{main_eqn}
 \begin{split}
 \frac{d}{dt}u &= \mu+u^2+ f(u,\mu;\eps), \\
@@ -339,35 +339,43 @@ u(0) &= u_i, \\
 \end{split}
 \end{equation}
 
-exists on $t \in (0,T)$, where
-\begin{equation}
-T = \eps^{-1}\delta + \rmO(\eps^{-1/3}),
+exists for $t \in (0,T)$, where the end time $T$ has the following expansion in $\eps$:
+\begin{equation}\label{T_exp_+}
+T = T(\eps ; u_i) = \eps^{-1}\delta + \eps^{-1/3}\Omega_0 + \Omega_1(\eps) + \mathcal{H}(\eps; u_i),
+\end{equation}
+with terms $\Omega_1(\eps)$ and $\mathcal{R}(\eps;u_i)$ satisfies 
+\begin{equation}\label{Omega_1_exp}
+\Omega_1(\eps) = \rmO(\eps^{-\alpha/3}),
+\end{equation}
+and
+\begin{equation}\label{T_remainder_exp}
+\mathcal{H}(\eps;u_i) = o(\eps^{-\alpha/3}), \hspace{0.2in} \text{Lip}_{u_i}\mathcal{H}(\eps;u_i) = \rmO(1),
 \end{equation}
 
-and 
-\begin{equation}
- u(T) = \delta.
+in particular, $\mu(t) = \eps t -\delta$ has the following expansion in $\eps$ at $t=T$:
+\begin{equation}\label{exit_loc_exp}
+\mu(T) = \eps^{2/3}\Omega_0 + \eps\Omega_1(\eps) + \eps\mathcal{H}(\eps; u_i) = \eps^{2/3}\Omega_0 + \rmO(\eps^{1-\alpha/3})
 \end{equation}
-In particular, we have 
-\begin{equation}
-\mu(T) = \eps T -\delta = \rmO(\eps^{2/3})
+
+Moreover, $T$ is the desired ``exit time'' in the sense that 
+\begin{equation}\label{exit_time_cond}
+ u(T) = \delta.
 \end{equation}
 \end{theorem}
 
 To fully recover Theorem \ref{ks_main}, we have  the following corollary, which is proven using the standard Fenichel theory.
 \begin{corollary}\label{cor:main}
-For $\alpha,\delta>0$, there is a compact interval $K \subset (-\infty, u_+(-\delta))$, independent of $\eps$ so that for all $u_i \in K$ with $(u_i,\mu,\eps) \in \mathcal{U}$, the same conclusion of Theorem \ref{thm:main} holds. Moreover, $\mu(T)$ has the following more precise expansion in $\eps$,
-\begin{equation}\label{T_exp_+}
-\mu(T)  = \Omega_0\eps^{2/3} + \rmO(\eps^{1-\alpha/3}),
-\end{equation}
-where $\Omega_0$ is the constant in \eqref{ric_asy}.
+For $\alpha,\delta>0$, there is a compact interval $K \subset (-\infty, u_+(-\delta))$, independent of $\eps$ so that for all $u_i \in K$ with $(u_i,\mu,\eps) \in \mathcal{U}$, the same conclusion of Theorem \ref{thm:main} holds. In fact, there exist a constant $c$ independent of $\eps$, such that the Lipschitz constant of $\mathcal{H}(\eps;u_i)$ in the expansion \eqref{T_exp_+} satisfies
+\[
+\text{Lip}_{u_i} \mathcal{H}(\eps;u_i) = \rmO(e^{-c/\eps}),
+\]
+for all $u_i \in K$.
 \end{corollary}
 
  The proof of Theorem \ref{thm:main} and \ref{cor:main} will take up the rest of the paper,  we first prepare ourselves with the setup of the problem in the following sections.
 
-\subsection{Division of regions and the rescale of time}\label{t_sigma}
-
-Having introduced the form of the ansatz, the next step is to ``glue'' them together. Since these ansatz have quite different asymptotic expansions at different times, it motivates us to divide the total time of of passage, from $t=0$ to $t=T$, and to choose the particular form of the ansatz, as follows:
+\subsection{Division of regions and the rescaling of time}\label{t_sigma}
+Now that we can introduce the ansatz. We divide the time from $t=0$ to $t=T$ into three ``Regions'' where we take a different ansatz on each region. 
 
 Going backwards in time, we start with the exit time $t=T$ when the trajectory hits the section $\Delta_{out}$. Also, we use $T$ to mark the rightmost boundary of the region $A$, where our proposed solution takes the form
 \[
@@ -377,7 +385,7 @@ here the function $u_* = u_*(t; u_0)$ is defined as:
 \begin{equation}\label{urdef}
 u_*(t; u_0) := \eps^{1/3}u_R(\eps^{1/3}(t-\eps^{-1}\delta); u_0),
 \end{equation}
-where $u_R=u_R(s; u_0)$ is the family of solutions to the Riccati equation which were shown to exist in proposition \ref{para_ric}, it solves the initial value problem
+where $u_R=u_R(s; u_0)$ is the family of solutions to the Riccati equation which were shown to exist in Proposition \ref{para_ric}, it solves the initial value problem
 \begin{equation}\label{ureq}
 \frac{d}{dt}u_*(t; u_0) = \mu(t) + u_*^2(t; u_0), \hspace{0.2in} u_*(\eps^{-1}\delta; u_0) = \eps^{\frac{1}{3}} u_0,
 \end{equation}
@@ -414,7 +422,7 @@ In summary, region $A$, $B$ and $C$ are divided as follows:
 \begin{split}
 \text{Region A:} & \quad (\eps^{-1}\delta, T), \quad \text{solution in region A:} \quad u_A(t) = u_*(t)+w_r(t), \\
 \text{Region B:} & \quad (t^*, \eps^{-1}\delta), \quad \text{solution in region B:} \quad u_B(t) = \bar{u}_*(t)+w_\ell(t),  \\
-\text{Region C:} & \quad (0, t^*), \quad \text{solution in region C:} \quad u_A(t) = u_*(t)+w_s(t), .
+\text{Region C:} & \quad (0, t^*), \quad \text{solution in region C:} \quad u_A(t) = u_*(t)+w_s(t).
 \end{split}
 \end{align}
 
@@ -437,7 +445,7 @@ Fix $M>0$ large, define $\sigma$ as
 \end{cases}
 \end{equation}
 
-here $\Omega_\infty$ is the blow-up time for $u_R$ found in proposition \ref{para_ric}.
+here $\Omega_\infty$ is the blow-up time for $u_R$ found in Proposition \ref{para_ric}.
 
 Also, we denote $\varphi(\sigma) := \frac{d}{d\sigma}\psi(\sigma)$, which has the following asymptotic expansions: 
 \begin{equation} \label{phi_def}
