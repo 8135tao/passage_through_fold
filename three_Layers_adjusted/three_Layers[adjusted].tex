@@ -218,7 +218,7 @@ For $\eps$ sufficiently small, the following statements are true:
 \end{theorem}
 
 
-In this paper, we focus on the same problem \eqref{ori_eqn} with an aim to recreate the result of Theorem \ref{ks_main} via a different, functional-analytical approach. Instead of proceeding with the geometrically-flavored blow-up approach, we directly prove a trajectory exists with the properties claimed in Theorem \ref{ks_main} by dividing the time of passage into appropriate parts and setting up corresponding ansatz in each region, closing the arguments with carefully reformulating the existence question as a fixed-point argument.
+In this paper, we focus on the same problem \eqref{ori_eqn} with an aim to recreate the result of Theorem \ref{ks_main} via a different, functional-analytical approach. Instead of proceeding with the geometrically-flavored blow-up approach, we directly prove a trajectory exists with the properties claimed in Theorem \ref{ks_main} by dividing the time of passage into appropriate parts and setting up a corresponding ansatz in each region, closing the arguments with carefully reformulating the existence question as a fixed-point argument.
 
 \paragraph{Outline}
 The reminder of the paper is organized as follows. In Section \ref{sec_main} we give a precise statement of our result, as well as an overview of our set ups. In Sections \ref{sec_A}, \ref{sec_B} and \ref{sec_C} we construct the ansatz mentioned earlier and in Section \ref{sec_glue} we show how to piece together all the parts to arrive at our main results.
@@ -230,7 +230,7 @@ We use $A \lar B$ to indicate that there is a constant $C$ such that $A \le C \c
 
 
 \section{Main Result}\label{sec_main}
-We first make a change of variable to transform equation \eqref{ori_eqn} into a more convenient form in section \ref{euler_m}. Then we introduces the different ansatz used in section \ref{Ric_def} and \ref{c_mfld}. We then give a statement of our main result in Section \ref{main_sum} and in Section \ref{t_sigma} we explain how we divide up the passage time into 3 different regions $A$, $B$, and $C$ to prepare for the proof of this theorem.
+We first make a change of variable to transform equation \eqref{ori_eqn} into a more convenient form in Section \ref{euler_m}. Then we introduces the different ansatz used in Section \ref{Ric_def} and \ref{c_mfld}. We then give a statement of our main result in Section \ref{main_sum} and in Section \ref{t_sigma} we explain how we divide up the passage time into 3 different regions $A$, $B$, and $C$ to prepare for the proof of this theorem.
 
 \subsection{Euler multiplier}\label{euler_m}
 Let $\tau$ denote the independent time variable in \eqref{ori_eqn}, since for $u,\mu,\eps$ small, $g(u,\mu,\eps) = 1 + \rmO(u,\mu,\eps)>0$, we can define a new time $t = t(\tau)$ by $\frac{dt}{d\tau} = g$, consequently, equation \eqref{ori_eqn}  is transformed into
@@ -240,7 +240,12 @@ Let $\tau$ denote the independent time variable in \eqref{ori_eqn}, since for $u
 \frac{d}{dt}\mu &=  \eps ,
 \end{split}
 \end{align}
-where now $\tilde{f}(u,\mu,\eps) = \rmO(\eps,  u\mu, \mu^2,\eps u, \eps \mu, \eps u^2, u^3)$.  The critical manifold 
+where now $\tilde{f}$ satisfies the asymptotics
+\begin{equation}\label{nonlinear_asy_new}
+\tilde{f}(u,\mu,\eps) = \rmO(\eps,  u\mu, \mu^2,\eps u, \eps \mu, \eps u^2, u^3).
+\end{equation}  
+
+The critical manifold 
 \[
 \tilde{S}_0 = \{ (\mu, u) \mid \mu + u^2 + \tilde{f}(u,\mu;0) = 0\},
 \]
@@ -258,12 +263,12 @@ In the rest of the paper, we shall drop the tilde to use $f(u,\mu,\eps)$ as the 
 
 
 \subsection{The Riccati equation}\label{Ric_def}
-First, we want to get an idea of what kinds of ansatz one should use. We start with the simple case when \eqref{ori_eqn} has $f(u,\mu;\eps) = 0$ where the equation reduces to the Riccati equation,
+First, we want to get an idea of what kinds of ansatz one should use. Consider \eqref{euler_ori_eqn} with $f(u,\mu;\eps) = 0$, which can then be scaled such that $\eps = 1, \mu = s$, and 
 \begin{equation}\label{ric}
 \frac{d}{ds}u(s) = s+u(s)^2,
 \end{equation}
 
-we denote any solution to \eqref{ric} as $u_R$, it is known to have a unique solution (denoted by $\bar{u}_R$) with the following asymptotic expansions:
+which is the Ricatti equation in its simplest form. We denote any solution to \eqref{ric} as $u_R$, it is known to have a unique solution (denoted by $\bar{u}_R$) with the following asymptotic expansions:
 
 \begin{equation} \label{ric_asy}
 \bar{u}_R(s)=\begin{cases}
@@ -282,7 +287,7 @@ where $J_{\pm 1/3}$ are Bessel functions of the first kind. (See [Krupa, Szmolya
 More generally, we consider family of solutions  $u_R(s; u_0)$ of the Riccati equation  \eqref{ric} such that $u_R(0; u_0) = u_0$. That is, we take the initial condition $u_0$ as a parameter to the Riccati equation. For the special Riccati solution $\bar{u}_R$, we denote $\bar{u}_R(0) $ as $\bar{u}_0$. In fact, using simple phase plane analysis, we can extend the asymptotic results about the special Riccati solution $\bar{u}_R$, \eqref{ric_asy} to the $u_0$-parameter dependent family $u_R(s; u_0)$, as the following proposition states.
 
 \begin{proposition}\label{para_ric}
-There exist blow up time $\Omega_\infty = \Omega_\infty(u_0)$ that depends smoothly on $u_0$ for $|u_0 - \bar{u}_0|<\eta$, $\eta$ small, with $\Omega_\infty(\bar{u}_0) = \Omega_0$, and the corresponding solution $u_R(s; u_0)$ to the Riccati equation \eqref{ric} of the form
+There exist $\eta>0$ small, so that for all initial condition $u_0$ with $|u_0- \bar{u}_0|<\eta$, there exist a number $\Omega_\infty=\Omega_\infty(u_0)$ which depends on $u_0$ smoothly, and a solution $u_R(s;u_0)$ of \eqref{ric} on $[0, \Omega_\infty(u_0))$ with the following asymptotic expansion as $s\to \Omega_\infty(u_0)$:
 \begin{equation}\label{ric_exp}
 u_R(s;u_0) = \frac{1}{\Omega_\infty-s} +  (\Omega_\infty-s) r(\Omega_\infty-s;u_0),
 \end{equation}
@@ -296,28 +301,39 @@ we postpone the proof of this proposition to the appendix.
 \subsection{Critical manifold}\label{c_mfld}
 Another piece of the ansatz comes from part of  the critical manifold, we expect this because away from the fold, the critical manifold has an attracting branch $S_a$ which implies trajectory has to stay close to it. 
 
-Recall the critical manifold for system \eqref{crit_mfld} is the set of points $(\mu, u) \in \mathbb{R}^2$ which satisfies
+Recall the critical manifold for system \eqref{crit_mfld} is the set of points $(\mu, u) $ in a small neighborhood of the origin which satisfies
 \begin{equation} \label{crit_mfld}
 \mu + u^2 + f(u,\mu; 0) =  0.
 \end{equation}
 
-By the implicit function theorem, whenever $\partial_u( u^2+f(u,\mu;0) ) \neq 0$, we may write $u=u_-(\mu),$ for some function $u_s$ with $\mu$ small. For those $(\mu, u)$ such that $\partial_u( u^2+f(u,\mu;0) )<0$ (which corresponds to the attracting branch $S_a$), we define $u_s(t):= u_-(\mu(t))$ so that
+From \eqref{nonlinear_asy_new} we see that $\mu = -u^2+\rmO(u^3)$, by rescaling $\mu = -\mu_1^2$ with $\mu_1$ positive and $u=\mu_1 u_1$ we obtain
+\[
+u_1^2 = 1 + \rmO(\mu_1),
+\]
+and hence two branches of solutions
+\[
+u_1 = \pm \sqrt{1}+\rmO(\mu_1) \implies u = \pm \sqrt{-\mu}+\rmO(\mu).
+\]
+
+We therefore define
+\begin{align}
+\begin{split}
+u_-(\mu) &= -\sqrt{-\mu} + \rmO(|\mu|),\\
+u_+(\mu) &= +\sqrt{-\mu} + \rmO(|\mu|).
+\end{split}
+\end{align}
+
+
+In particular, we set $u_s(t)=u_-(\mu(t))$, so that
 \begin{equation}\label{singular}
 0 = \mu(t) + u_s^2(t)+f(u_s(t),\mu; 0),
 \end{equation}
-for $t$ small.  
 
-Due to the simple form of \eqref{euler_ori_eqn} and \eqref{ori_bc}, we have that $\mu(t)= \eps t-\delta$, then it can be calculated that $u_s(\mu)$ has the following asymptotic expansions
-\begin{align}\label{singularAsy}
-\begin{split}
-u_-(\mu) &= -\sqrt{-\mu} + \rmO(|\mu|)\\
-u_s(t) &= -\sqrt{\delta-\eps t} + \rmO(|\delta-\eps t|).
-\end{split}
-\end{align}
-Similarly, we also define the upper repelling branch $u_+(\mu)$, where we know $u_+$ satisfies
-\begin{equation}
-u_+(\mu) = \sqrt{-\mu} + \rmO(|\mu|) 
+Due to the simple form of \eqref{euler_ori_eqn} and \eqref{ori_bc}, we have that $\mu(t)= \eps t-\delta$, hence $u_s(\mu)$ satisfies
+\begin{equation}\label{singularAsy}
+u_s(t) = -\sqrt{\delta-\eps t} + \rmO(|\delta-\eps t|).
 \end{equation}
+
 
 \subsection{Main result - summary} \label{main_sum}
 
@@ -339,36 +355,32 @@ u(0) &= u_i, \\
 \end{split}
 \end{equation}
 
-exists for $t \in (0,T)$, where the end time $T$ has the following expansion in $\eps$:
-\begin{equation}\label{T_exp_+}
-T = T(\eps ; u_i) = \eps^{-1}\delta + \eps^{-1/3}\Omega_0 + \Omega_1(\eps) + \mathcal{H}(\eps; u_i),
-\end{equation}
-with terms $\Omega_1(\eps)$ and $\mathcal{R}(\eps;u_i)$ satisfies 
-\begin{equation}\label{Omega_1_exp}
-\Omega_1(\eps) = \rmO(\eps^{-\alpha/3}),
-\end{equation}
-and
-\begin{equation}\label{T_remainder_exp}
-\mathcal{H}(\eps;u_i) = o(\eps^{-\alpha/3}), \hspace{0.2in} \text{Lip}_{u_i}\mathcal{H}(\eps;u_i) = \rmO(1),
-\end{equation}
-
-in particular, $\mu(t) = \eps t -\delta$ has the following expansion in $\eps$ at $t=T$:
-\begin{equation}\label{exit_loc_exp}
-\mu(T) = \eps^{2/3}\Omega_0 + \eps\Omega_1(\eps) + \eps\mathcal{H}(\eps; u_i) = \eps^{2/3}\Omega_0 + \rmO(\eps^{1-\alpha/3})
-\end{equation}
-
-Moreover, $T$ is the desired ``exit time'' in the sense that 
+exists for $t \in (0,T)$, where the end point $T$ is the desired ``exit time'' in the sense that 
 \begin{equation}\label{exit_time_cond}
  u(T) = \delta.
 \end{equation}
+
+Moreover, $T$ has the following expansion in $\eps$:
+\begin{equation}\label{T_exp_+}
+T = T(\eps ; u_i) = \eps^{-1}\delta + \eps^{-1/3}\Omega_0 +  \mathcal{H}(\eps; u_i),
+\end{equation}
+with the term $\mathcal{H}(\eps;u_i)$ satisfies 
+\begin{equation}\label{T_remainder_exp}
+\mathcal{H}(\eps;u_i) = \rmO(\eps^{-\alpha/3}), \hspace{0.2in} \text{Lip}_{u_i}\mathcal{H}(\eps;u_i) = >???<.
+\end{equation}
+In particular, since $\mu(t) = \eps t -\delta$, we have the following expansion of the exit location $\mu(T)$ on the section $\Delta_{out}$ in $\eps$:
+\begin{equation}\label{exit_loc_exp}
+\mu(T) = \eps^{2/3}\Omega_0  + \eps\mathcal{H}(\eps; u_i) = \eps^{2/3}\Omega_0 + \rmO(\eps^{1-\alpha/3})
+\end{equation}
+
 \end{theorem}
 
 To fully recover Theorem \ref{ks_main}, we have  the following corollary, which is proven using the standard Fenichel theory.
 \begin{corollary}\label{cor:main}
 For $\alpha,\delta>0$, there is a compact interval $K \subset (-\infty, u_+(-\delta))$, independent of $\eps$ so that for all $u_i \in K$ with $(u_i,\mu,\eps) \in \mathcal{U}$, the same conclusion of Theorem \ref{thm:main} holds. In fact, there exist a constant $c$ independent of $\eps$, such that the Lipschitz constant of $\mathcal{H}(\eps;u_i)$ in the expansion \eqref{T_exp_+} satisfies
-\[
+\begin{equation}\label{T_remainder_exp_+}
 \text{Lip}_{u_i} \mathcal{H}(\eps;u_i) = \rmO(e^{-c/\eps}),
-\]
+\end{equation}
 for all $u_i \in K$.
 \end{corollary}
 
@@ -377,7 +389,7 @@ for all $u_i \in K$.
 \subsection{Division of regions and the rescaling of time}\label{t_sigma}
 Now that we can introduce the ansatz. We divide the time from $t=0$ to $t=T$ into three ``Regions'' where we take a different ansatz on each region. 
 
-Going backwards in time, we start with the exit time $t=T$ when the trajectory hits the section $\Delta_{out}$. Also, we use $T$ to mark the rightmost boundary of the region $A$, where our proposed solution takes the form
+We first start with the exit time $t=T$ when the trajectory hits the section $\Delta_{out}$. Also, we use $T$ to mark the rightmost boundary of the region $A$, where our proposed solution takes the form
 \[
 u_A(t; u_0) = u_*(t;u_0)  + w_r(t;u_0),
 \]
@@ -1331,12 +1343,12 @@ f_2 = \rmO( W_s\mu + U_sW_s^2+U_s^2W_s+W_s^3).
 \]
 For $f_1$ we simply estimate
 \[
-\| \eps^{-1/3}f_1\|_{C_s} \lar \sup_{\sigma \in (\sigma_0, \sigma^{*})} \eps^{-1/3}\varphi (\eps) \eps^{\alpha/3-1}|\eps\sigma|^{2/3} \lar \eps^{\alpha/3}|\eps\sigma_0|^{1/3} = \rmO(\eps^{\alpha/3})
+\| \eps^{-1/3}f_1\|_{C_s} \lar \sup_{\sigma \in (\sigma_0, \sigma^{*})} \eps^{-1/3}\varphi (\eps) \eps^{\alpha/3-1}|\eps\sigma|^{2/3} \lar \eps^{\alpha/3}|\eps\sigma_0|^{1/3} = \rmO(\eps^{\alpha/3}).
 \]
 
 For $f_2$ we have
 \[
-\|\eps^{-1/3}\varphi W_s\mu\|_{C_s} \lar \sup_{\sigma \in (\sigma_0, \sigma^{*})} \eps^{-1/3}|\sigma|^{-1/3}|\mu| \lar |\eps \sigma_0|^{1/3} = \rmO(\delta^{1/2})
+\|\eps^{-1/3}\varphi W_s\mu\|_{C_s} \lar \sup_{\sigma \in (\sigma_0, \sigma^{*})} \eps^{-1/3}|\sigma|^{-1/3}|\mu| \lar |\eps \sigma_0|^{1/3} = \rmO(\delta^{1/2}),
 \]
 \[
 \|\eps^{-1/3}\varphi U_s^2W_s(\sigma) \|_{C_s}  \lar \sup_{\sigma \in (\sigma_0, \sigma^{*})}\eps^{-1/3}|\sigma|^{-1/3} |\eps \sigma|^{2/3} \lar |\eps \sigma_0|^{1/3}= \rmO(\delta^{1/2}),
@@ -1412,7 +1424,7 @@ Notice at $t^*$, $\bar{u}_*(t^*)$ has the following expansion in $\eps$:
 \begin{align*}
 \bar{u}_*(t^*) &= \eps^{1/3}\bar{u}_R(\eps^{1/3}(t^*-\eps^{-1}\delta)) = -\eps^{1/4}+ \rmO(\eps^{1/2}).
 \end{align*}
-Hence, if we set $w^* = u_s(t^*)-\bar{u}_*(t^*)+w_s(t^*)$, then $w^* = \rmO(\eps^{1/2-\alpha/3})$, we can apply then Theorem \ref{thm:l} with the initial condition $u(t^*)=  \bar{u}_*(t^*) + w^*$ to get a solution of \eqref{euler_m} of the form
+Hence, if we set $w^* = u_s(t^*)-\bar{u}_*(t^*)+w_s(t^*)$, then $w^* = \rmO(\eps^{1/2-\alpha/3})$, we can apply Theorem \ref{thm:l} with the initial condition $u(t^*)=  \bar{u}_*(t^*) + w^*$ to get a solution of \eqref{euler_m} of the form
 \[
 u_B(t) = \bar{u}_*(t) + w_\ell(t; w^*),
 \]
@@ -1433,11 +1445,11 @@ u_B(\eps^{-1}\delta) = \eps^{1/3} \bar{u}_0+\rmO(\eps^{(2-\alpha)/3}).
 On the other hand, Theorem \ref{thm:r} proves a solution to \eqref{euler_m} of the form $u_A(t;u_0) = u_*(t; u_0) + w_r(t; u_0)$ exists for $ t \in (\eps^{-1}\delta, T)$ with $u_A(T;u_0) = \delta$, provided that $u_0$ is close to $\bar{u}_0$. Moreover, at $t=\eps^{-1}\delta$ the value $u_A(\eps^{-1}\delta; u_0)$ has the following expansion in $\eps$:
 \begin{align*}
 u_*(\eps^{-1}\delta; u_0) &= \eps^{1/3}u_R(0;u_0) =  \eps^{1/3}u_0,\\
-w_r(\eps^{-1}\delta ; u_0) &= \rmO(\eps^{(2-\alpha)/3}),\\
+w_r(\eps^{-1}\delta ; u_0) &= \rmO(\eps^{(2-\alpha)/3}),
 \end{align*}
 therefore
 \[
-u_A(\eps^{-1}\delta; u_0 ) = \eps^{1/3}u_0 + \rmO(\eps^{(2-\alpha)/3}).
+u_A(\eps^{-1}\delta; u_0 ) = u_*(\eps^{-1}\delta; u_0)+ w_r(\eps^{-1}\delta ; u_0)=\eps^{1/3}u_0 + \rmO(\eps^{(2-\alpha)/3}).
 \]
 Therefore, the matching condition at $\eps^{-1}\delta$ is
 \begin{equation}\label{match_ab}
@@ -1458,10 +1470,10 @@ uniformly in $u_0$ and
 \]
 Hence we divide the right hand side of \eqref{match_ab_exp} by $\eps^{1/3}$, and apply the implicit function theorem around the point $(u_0=\bar{u}_0, \eps=0)$ to conclude that there exist a branch $u_0 = u_0(\eps)$ with $u_0(\eps)  = \bar{u}_0 + \rmO(\eps^{(1-\alpha)/3})$, the matching condition \eqref{match_ab} is satisfied. 
 
-Therefore, we have proved the following theorem, which actually contains more information than Theorem \ref{thm:main}.
+Therefore, we have proved the following theorem, which implies Theorem \ref{thm:main}.
 \begin{theorem}\label{thm:glue}
 Let $u_-(\mu)$ be the attracting branch of the critical manfold defined in \eqref{singular} and $\bar{u}_0$ be the value of the function $\bar{u}_R(s)$ defined in \eqref{ric_asy} evaluated at $s=0$.
-Fix $\alpha>0$ and $\delta>0$ small enough, there exist $\eps_0>0,$ and a constant $C=C(\delta,\alpha)$, such that for all $0<\eps<\eps_0$ and $u_i$ with $|u_i - u_-(-\delta)| \le C\eps^{1-\alpha/3}$, there exist a constant $u_0= u_0(\eps) = \bar{u}_0 + \rmO(\eps^{(1-\alpha)/3})$, and a solution of the rescaled system 
+Fix $\alpha>0$ and $\delta>0$ small enough, there exist $\eps_0>0,$ and a constant $C=C(\delta,\alpha)$, such that for all $0<\eps<\eps_0$ and $u_i$ with $|u_i - u_-(-\delta)| \le C\eps^{1-\alpha/3}$, there exist a branch of initial conditions $u_0= u_0(\eps) = \bar{u}_0 + \rmO(\eps^{(1-\alpha)/3})$, and a solution of the rescaled system 
 \eqref{main_eqn} with the initial condition
 \eqref{main_ic} of the following form
 \begin{equation}
@@ -1475,24 +1487,66 @@ and
 \begin{equation}
 \mu(t) = \eps t -\delta,
 \end{equation}
-exists for $t \in (0,T)$, where all of the correction functions $w_r, w_\ell$ and $w_s$ satisfy the properties stated in Theorems \ref{thm:r}, \ref{thm:l} and \ref{thm:s}, respectively.
+exists on $t \in (0,T)$, where all of the correction functions $w_r, w_\ell$ and $w_s$ satisfy the properties stated in Theorems \ref{thm:r}, \ref{thm:l} and \ref{thm:s}, respectively.
 \end{theorem}
 \begin{proof}[\textbf{Proof of theorem \ref{thm:main} and \ref{cor:main}}]
-Theorem \ref{thm:main} follows from Theorem \ref{thm:glue} directly, For Corollary \ref{cor:main}, We first show the expansion \eqref{T_exp_+}. 
+Theorem \ref{thm:main} follows from Theorem \ref{thm:glue} almost directly, we just need to show the expansion \eqref{T_exp_+} and \eqref{T_remainder_exp}. 
 
 Recall that $\Omega_\infty(u_0)$ depends smoothly on $u_0$ by Proposition \ref{para_ric}, hence there is a constant $C$ such that
 \[
-|\Omega_\infty(u_0) - \Omega_\infty(\bar{u}_0)| \le C|u_0 - \bar{u_0}|
+|\Omega_\infty(u_0) - \Omega_\infty(\bar{u}_0)| \le C|u_0 - \bar{u}_0|,
 \]
-for $u_0$ close to $\bar{u_0}$. Now we substitute the branch $u_0(\eps)$ with $u_0(\eps)  =\bar{u}_0 + \rmO(\eps^{(1-\alpha)/3})$ and use the expansion \eqref{T_exp}, we have
+for $u_0$ close to $\bar{u}_0$. Now we substitute the branch $u_0(\eps)$ with $u_0(\eps)  =\bar{u}_0 + \rmO(\eps^{(1-\alpha)/3})$ and use the expansion \eqref{T_exp}, we have
 \begin{align*}
 T &= \eps^{-1}\delta + \eps^{-1/3}\Omega_\infty(u_0(\eps)) + \delta^{-1} + \rmO(\eps^{2/3})\\
-&= \eps^{-1}\delta + \eps^{-1/3}(\Omega_\infty(\bar{u}_0) + \rmO(\eps^{(1-\alpha)/3})+\delta^{-1} + \rmO(\eps^{2/3}) \\
-&= \eps^{-1}\delta + \eps^{-1/3}\Omega_0 + \rmO(\eps^{-\alpha/3}),
+&= \eps^{-1}\delta + \eps^{-1/3}(\Omega_\infty(\bar{u}_0) + \rmO(\eps^{(1-\alpha)/3}))+\delta^{-1} + \rmO(\eps^{2/3}) \\
+&= \eps^{-1}\delta + \eps^{-1/3}\Omega_0 + \mathcal{H}(\eps),
 \end{align*}
-as claimed.
+with $\mathcal{H}(\eps) = \rmO(\eps^{-\alpha/3})$.
 
-To show the remaining claims, recall $(\mu,u,\eps) \in \mathcal{U}$ where $\mathcal{U}$ is a small neighborhood of the origin $(0,0,0)$. Take a compact interval $K$ such that $(\mu, u, \eps) \subset \mathcal{U}$ for all $u \in K$, consider a trajectory $(\mu, u)$ with initial condition $\mu(0) = -2\delta$ and $u(0) \in K$. By standard Fenichel theory, at $\eps = 0$, there exist stable foliations with base the lower branch $u_-(\mu)$ of  the critical manifold $S_0=\{ (\mu, u) : \mu+u^2 + f(\mu, u,0) =0 \}$ for $\mu \in [-2\delta, -\delta]$. Further, for $0<\eps \ll 1$, the foliation persists and the part of the critical manifold $u_-(\mu)$ perturbs to a nearby slow manifold $u_-^{\eps}(\mu)$. Moreover, there exist asymptotic rate $\gamma = \gamma(\delta)>0$ and a constant $C=C(\delta)$, independent of $\eps$ such that the solution $u(t)$ starts at $\mu(0)=-2\delta$ and $u(0) \in K$ converges exponentially close to the slow manifold:
+To show the dependence of $\mathcal{H}$ on the initial condition $u_i$ in $\eqref{T_remainder_exp}$ takes a little more work, to begin, we consider the following maps:
+\begin{align*}
+\begin{split}
+u_i &\mapsto u_C(t;u_i),\\
+u_C(t;u_i) &\mapsto u_C(t^*; u_i), \\
+u_C(t^*; u_i):= u^* &\mapsto u_B(t; u^*), \\
+u_B(t;u^*) &\mapsto u_B(\eps^{-1}\delta ; u^*),
+\end{split}
+\end{align*}
+which are all smooth either because they are evaluation maps or by the smooth dependence of solutions on the initial conditions.
+
+Let $\mathcal{K}$ be the map $u_i\mapsto u_B(\eps^{-1}\delta;u^*)$. It can be seen from Theorem \ref{thm:l}, Theorem \ref{thm:s} and Theorem \ref{thm:r} that
+\begin{align*}
+\begin{split}
+\|u_C - \tilde{u}_C\|_{\mathcal{C}_s} &\le C\eps^{\alpha/3-1}|u_i -\tilde{u}_i| ,\\
+|u_C(t^*) - \tilde{u}_C(t^*)| &\le C\eps^{1/2-\alpha/3}\|u_C - \tilde{u}_C\|_{\mathcal{C}_s}, \\
+% middle step for above inequality C\eps^{1-\alpha/3}\langle \eps \sigma^*\rangle^{-2/3}\|u_C - \tilde{u}_C\|_{\mathcal{C}_s}\le
+\|u_B - \tilde{u}_B\|_{\mathcal{C}_\ell} &\le \eps^{\alpha/3-1/2}|u_C(t^*) - \tilde{u}_C(t^*)|, \\
+|u_B(\eps^{-1}\delta)-\tilde{u}_B(\eps^{-1}\delta)| &\le C\eps^{(2-\alpha)/3}\|u_B - \tilde{u}_B\|_{\mathcal{C}_\ell},
+\end{split}
+\end{align*}
+
+which implies
+\begin{equation}
+\text{Lip}_{u_i} \mathcal{K} \le C\eps^{-1/3}
+\end{equation}
+
+Next, recall that the branch $u_0 = u_0(\eps)$ was solved by the condition \eqref{match_ab_exp} which shows the map $u_B(\eps^{-1}\delta) \mapsto u_0$ has Lipschitz constant $\le C\eps^{-1/3}$, which shows the map
+\begin{equation}
+u_i \mapsto u_0 \mapsto \Omega_\infty(u_0)=\Omega_\infty(u_0;u_i)
+\end{equation}
+has Lipschitz constant $\le C\eps^{-2/3}$.
+
+Recall now that $\mu(T) = \eps T -\delta = \eps^{2/3}\Omega_\infty(u_0) + \rmO(1)$. Therefore we conclude the map
+\begin{equation}
+u_i \mapsto \mu(T)
+\end{equation}
+has Lipschitz constant of order $\rmO(1)$.
+
+But remember the fact that all $u_i$ was chosen such that $|u_i-u_-(-\delta)|\le C\eps^{1-\alpha/3}$.
+
+
+Now we prove Corollary \ref{cor:main}, recall $(\mu,u,\eps) \in \mathcal{U}$ where $\mathcal{U}$ is a small neighborhood of the origin $(0,0,0)$. Take a compact interval $K$ such that $(\mu, u, \eps) \subset \mathcal{U}$ for all $u \in K$, consider a trajectory $(\mu, u)$ with initial condition $\mu(0) = -2\delta$ and $u(0) \in K$. By standard Fenichel theory, at $\eps = 0$, there exist stable foliations with base the lower branch $u_-(\mu)$ of  the critical manifold $S_0=\{ (\mu, u) : \mu+u^2 + f(\mu, u,0) =0 \}$ for $\mu \in [-2\delta, -\delta]$. Further, for $0<\eps \ll 1$, the foliation persists and the part of the critical manifold $u_-(\mu)$ perturbs to a nearby slow manifold $u_-^{\eps}(\mu)$. Moreover, there exist asymptotic rate $\gamma = \gamma(\delta)>0$ and a constant $C=C(\delta)$, independent of $\eps$ such that the solution $u(t)$ starts at $\mu(0)=-2\delta$ and $u(0) \in K$ converges exponentially close to the slow manifold:
 \begin{equation}\label{conv_slow}
 |u(t) - u_-^{\eps}(\mu(t))| \le Ce^{-\gamma t}.
 \end{equation}
@@ -1500,12 +1554,12 @@ Let $T_*$ be the time of flight for a solution which starts at $\mu = -2\delta$ 
 \[
 |u(T_*) - u_-(-\delta) |  = \rmO(\eps),
 \]
-which satisfies the assumption of Theorem \ref{thm:glue} if we restart the equation with $u=u(T_*)$ and $\mu = -\delta$ at $t = 0$ and follow this trajectory, by Theorem \ref{thm:glue} we conclude that the trajectory hit the section $\Delta_{out}$ at the point $(h(\eps), \delta$ with $h(\eps)$ has the expansion \eqref{T_exp_+}.
+which satisfies the assumption of Theorem \ref{thm:glue} if we restart the equation with $u=u(T_*)$ and $\mu = -\delta$ at $t = 0$ and follow this trajectory, by Theorem \ref{thm:glue} we conclude that the trajectory hit the section $\Delta_{out}$ at the point $(h(\eps), \delta)$ with $h(\eps)$ has the expansion \eqref{T_exp_+}.
 
-Since the choice for the staring point $\mu = -2\delta$ was arbitrary, the same argument applies whenever one starts with $\mu \in [-2\delta, -\delta]$ and $u \in K$, this proves there is a rectangular region for which the conclusion of Theorem \ref{thm:main} and Corollary \ref{cor:main} holds, which is what Krupa and Szmolyan demonstrated in their original paper.
+Since the choice for the staring point $\mu = -2\delta$ was arbitrary, the same argument applies whenever one starts with $\mu \in [-2\delta, -\delta]$ and $u \in K$, this proves there is a rectangular region for which we have the dependence $u_i \mapsto \mu(T)$ is of order $\rmO(\eps^{-c/\eps})$. Which proves Theorem \ref{thm:main} and Corollary \ref{cor:main}.
 \end{proof}
 
-\textbf{Remark:} Since $\alpha>0$ could be chosen arbitrary small, expansion \eqref{T_exp_+} suggests that the next order term after $\eps^{2/3}\Omega_0$ is really of order $\eps \log(\eps)$. This is well-known from the matched-asymptotic community and is affirmed by Krupa and Szmolyan using the blow-up methods. 
+\textbf{Remark:} Since $\alpha>0$ could be chosen arbitrary small, expansion \eqref{T_exp_+} suggests that the next order term after $\eps^{2/3}\Omega_0$ might be of order $\eps \log(\eps)$. This is true, a well-known from the matched-asymptotics community and is affirmed by Krupa and Szmolyan using the blow-up methods. 
 \pagebreak
 \section*{Appendix}
 \renewcommand{\thesubsection}{\Alph{subsection}}
