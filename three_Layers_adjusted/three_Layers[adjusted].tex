@@ -101,6 +101,7 @@
   {\color{red}\textbf{Arnd:} #1}%
  }
 
+
 \newenvironment{Proof}[1][.]%
  {\begin{trivlist}\item[]\textbf{Proof#1 }}%
  {\hspace*{\fill}$\rule{0.3\baselineskip}{0.35\baselineskip}$\end{trivlist}}
@@ -676,7 +677,7 @@ in the following
 \begin{proposition}\label{inv_A_r}
 $A_r=A_r(u_0,\eps) : \mathcal{D}\subset \mathcal{C}_r \to \mathcal{C}_r\times \mathbb{R}$ and is invertible, with its inverse  depends smoothly and uniformly bounded in $u_0, \eps$. 
 \end{proposition}
-\begin{proof}
+\begin{Proof}
 Consider the conjugate operator of $A_r$, given by
 \begin{align*}
 \tilde{A}_r v &= \left( e^{(\alpha-2)\sigma}\left(\frac{d}{d\sigma}-a(\sigma;\eps,u_0)\right)e^{(2-\alpha)\sigma} v, v(\sigma_T) \right) \\
@@ -697,10 +698,10 @@ Since $\alpha > 0$ and $|a(\sigma;\eps,u_0) -2| = \rmO(e^{-2\sigma}) \to 0$ as $
 \|w\|_{\mathcal{C}_r} = |v|_\infty \le C(|\eps^{(\alpha-2)/3}e^{(\alpha-2)\sigma} f |_{\infty}+|v_T|) \le C(\|f\|_{\mathcal{C}_r}+|w_T|),
 \end{equation}
 notice $|v_T| \le w_T$ by the asymptotic expansion of $\sigma_T  = \rmO(-\log(\eps^{1/3}))$. By the definition of $\sigma_{\inf}$ and $\sigma_{\sup}$, $A_r$ is uniformly invertible in $u_0$ on $\mathcal{C}_r$, this finishes the proof of the proposition.
-\end{proof}
+\end{Proof}
 
 \iffalse
-\begin{proof}
+\begin{Proof}
 Fix $\eta$ small, then there is $\eps_0>0$ such that for $\eps<\eps_0$, we can choose $\sigma_* \in (\sigma_{\inf}, \sigma_{\sup})$ so that $|a(\sigma; \eps, u_0)-2| \le \eta$ for $\sigma \ge \sigma_*$. As a result there is a constant $C$, independent of $\eps$ and $u_0$, such that $|\sigma_*-\sigma_{\inf}|\le C$. In fact, we can choose $\sigma_* \le \sigma_T$ since $|\sigma_T-\sigma_{\sup}| \le |\sigma_T - (-\log(\eps^{1/3}\delta^{-1})|\le C\eps^{2/3}\delta^{-2}$.
 
 For $\sigma_{\sup} \ge \sigma \ge \sigma_*$, the linear operator $A_r$ is a small perturbation of the invertible linear operator $w \to \left(\frac{dw}{d\sigma}-2w, w(\sigma_T) \right)$. Indeed, for $f \in \mathcal{C}_r$, the equation $\frac{d}{d\sigma}w-2w = f$
@@ -723,7 +724,7 @@ and
 \left\| \int_{\sigma_*}^{\sigma} \exp\left(-\int_{\sigma}^{s}a(\tau)d\tau\right)f(s)ds\right\|_{\mathcal{C}_r} \le \int_{\sigma_*}^{\sigma} \exp\left(-\int_{\sigma}^{s}a(\tau)d\tau\right)e^{(2-\alpha)(s-\sigma)} \|f\|_{\mathcal{C}_r}ds \lar e^{(2-\alpha)C}\|f\|_{\mathcal{C}_r}
 \]
 Combining the case $\sigma< \sigma_*$ and $\sigma \ge \sigma_*$ together, we conclude that $A_r$ is uniformly invertible in $\eps$ and $u_0$ on the space $\mathcal{C}_r$.
-\end{proof}
+\end{Proof}
 \fi
 
 \subsection{Nonlinear estimates}
@@ -739,9 +740,7 @@ If $W_r \in \mathcal{C}_{r}$, then $\eps^{-1/3}\varphi \mathcal{R}_r(W_r) \in \m
 \|\eps^{-1/3}\varphi \mathcal{R}_r \| = \rmO(\delta^{\alpha}).
 \end{align}
 \end{proposition}
-\begin{proof}
-
-Proposition \ref{ric_exp} shows
+\begin{Proof} Proposition \ref{ric_exp} shows
 \begin{align*}
 U_*(\sigma;u_0) =  \eps^{\frac{1}{3}}(e^\sigma+e^{-\sigma} r(e^{-\sigma}; u_0)   ) \text{ as }\sigma \to \infty,
 \end{align*}
@@ -793,11 +792,11 @@ Combining all the estimates we conclude that
 \|\eps^{-1/3}\varphi \Ral_r(W_r) \| = \max\{ \rmO(\delta^\alpha), \rmO(\delta^{1-\alpha})\},
 \]
 since we assumed $\alpha \ll 1$, it follows that $\|\eps^{-1/3}\varphi \Ral_r(W_r) \| = \rmO(\delta^\alpha)$, this completes the proof.
-\end{proof}
+\end{Proof}
 
 \subsection{Fixed point argument and the proof of Theorem \ref{thm:r}}
 In this section we prove theorem \ref{thm:r} by setting up an appropriate fixed point argument.
-\begin{proof}[Proof of theorem \ref{thm:r}]
+\begin{Proof}[ of theorem \ref{thm:r}.]
 Items \ref{thm:r_1} and \ref{thm:r_2} in the assertion of the theorem has been demonstrated in section \ref{exit_time} and \ref{equation_wr}. Items \ref{thm:r_3} is a direct consequence of the fact that $W_r \in \mathcal{C}_r$, to prove this, we first rewrite equation \eqref{rescl_wr} and the boundary condition $W_r(\sigma_T)=w_T$ as 
 \[
 F_r(W_r, w_T; \eps, u_0) = 0,
@@ -907,7 +906,7 @@ combine the two estimates we conclude that
 \text{Lip}_{u_0} \Psi \le \left( \text{Lip}_{u_0} \Psi_2 \right) \left( \text{Lip } \Psi_1 \right) = \rmO(\eps^{2/3}),
 \] 
 which completes the proof of Theorem \ref{thm:r}.
-\end{proof}
+\end{Proof}
 
 \section{Region B}\label{sec_B}
 
@@ -989,7 +988,7 @@ for $w \in \mathcal{D}(A_\ell) \subset \mathcal{C}_\ell.$
 $A_\ell : \mathcal{D}(A_\ell) \subset C_{W_\ell} \to C_{W_\ell} \times \mathbb{R}$, and $A_\ell$ is bounded invertible with its inverse uniformly bounded in $\eps$.
 \end{proposition}
 
-\begin{proof}
+\begin{Proof}
 Similar to the proof of proposition \ref{inv_A_r}, let $v(\sigma) =\eps^{(\alpha-2)/3} \langle\sigma \rangle^{-2/3}w(\sigma)$, we consider the conjugate linear operator
 \begin{align*}
 \tilde{A}_\ell v &= \left( \langle \sigma\rangle^{-2/3}\left(\frac{d}{d\sigma}-b(\sigma;\eps)\right)\langle \sigma\rangle^{2/3} v, v(\sigma^*) \right) \\
@@ -1015,10 +1014,10 @@ Again we apply lemma \ref{pert_inv} to conclude that there exist a constant $C$ 
 \|w\|_{\mathcal{C}_\ell} = |v|_\infty \le C(|\eps^{(\alpha-2)/3}\langle \sigma \rangle^{-2/3} f |_{\infty}+| v^*|) = C(\|f\|_{\mathcal{C}_\ell}+\eps^{\alpha/3-1/2}|w^*|),
 \end{equation}
 which shows the claim, provided that $|w^*| = \rmO(\eps^{1/2-\alpha/3})$.
-\end{proof}
+\end{Proof}
 
 \iffalse
-\begin{proof}
+\begin{Proof}
 Similar to the proof of proposition \ref{inv_A_r}, we may find $\sigma^{**} \in (\sigma^*, \bar{\sigma}_m)$ so that $|b(\sigma)-(-2)|<\eta$ for any small $\eta$ given provided $\sigma < \sigma^{**}$. Moreover, this $\sigma^{**}$ can be chosen to be independent of $\eps$ because $\sigma^* = \rmO(\eps^{-1/4})$ and $\bar{\sigma}_m = \rmO(1)$.
 
 Then, for $\sigma \in (\sigma^*, \sigma^{**})$, $A_\ell$ is a perturbation of the invertible operator 
@@ -1060,7 +1059,7 @@ and
 for some constant $C$ independent of $\eps$.
 
 Combing the cases for $\sigma \in (\sigma^*, \sigma^{**})$ and $\sigma \in (\sigma^{**}, \bar{\sigma}_m)$, we have proved the proposition.
-\end{proof}
+\end{Proof}
 \fi
 
 \subsection{Nonlinear estimates}
@@ -1075,7 +1074,7 @@ For $\sigma \in (\sigma^* , \bar{\sigma}_m)$, we will estimate the nonlinear ter
 If $W_\ell \in \mathcal{C}_{\ell}$, then $ \eps^{-1/3}\varphi \Ral_\ell(W_\ell(\sigma))  \in \mathcal{C}_\ell$ and $\| \eps^{-1/3}\varphi \Ral_\ell \|_{\mathcal{C}_\ell} = \rmO(\eps^{\alpha/3})$.
 \end{proposition}
 
-\begin{proof}
+\begin{Proof}
 From the asymptotic expansion \eqref{ric_asy}, we have that
 \[
 \bar{U}_*(\sigma) = \eps^{1/3} \bar{u}_R(\psi(\sigma)) \lar |\eps \sigma|^{1/3}\le \eps^{1/4}, \hspace{0.2in} \varphi(\sigma) \lar \langle\sigma\rangle^{-1/3} ,
@@ -1118,11 +1117,11 @@ and
 \]
 
 Combining all the estimates we conclude that $\|\eps^{-1/3}\varphi \mathcal{R}_\ell(W_\ell)\|_{\mathcal{C}_\ell} = \rmO(\eps^{\alpha/3})$ if $W_\ell \in \mathcal{C}_\ell$.
-\end{proof}
+\end{Proof}
 
 \subsection{Fixed point argument and the proof of Theorem \ref{thm:l}}
 We are ready to prove theorem \ref{thm:l}.
-\begin{proof}[Proof of theorem \ref{thm:l}]
+\begin{Proof}[ of theorem \ref{thm:l}.]
 The proof consists of rewriting equation \eqref{wr_bp} as a fixed point equation. Using the linear operator $A_\ell$, we define
 $F_\ell : \mathcal{C}_\ell \times \mathbb{R} \to \mathcal{C}_\ell \times \mathbb{R}$ as
 \[
@@ -1148,7 +1147,7 @@ Moreover, for $\|W_{\ell}\|$ small enough and $|w^*| =\rmO(\eps^{1/2-\alpha/3})$
 \end{itemize}
 
 Therefore, for $(W_\ell, w^*)$ in a small ball of $X$, we apply Banach's fixed point argument to the map $\mathcal{S}$ to obtain a solution of equation \eqref{wl_bp} with $W_\ell \in \mathcal{C}_\ell$ and $w^* = \rmO(\eps^{1/2-\alpha/3})$. Scaling back from $\sigma$ to $t$-time, we obtain claim (\ref{thm:l_1}).
-\end{proof}
+\end{Proof}
 
 
 \section{Region C}\label{sec_C}
@@ -1248,7 +1247,7 @@ A_s w = \left(\frac{d}{d\sigma}w - cw, w(\sigma_0)\right).
 \begin{proposition}\label{inv_A_s}
 $A_s : \mathcal{D}(A_s) \subset \mathcal{C}_s \to \mathcal{C}_s \times \mathbb{R}$, and $A_s$ is bounded invertible with its inverse uniformly bounded in $\eps$.
 \end{proposition}
-\begin{proof}Unlike the case for linear operator $A_r$ and $A_\ell$, lemma \ref{pert_inv} cannot be directly used for the operator $A_s$ since from the asymptotic expansion of $c$ we see that $c(\sigma)$ does not converge to $-2$ as $\sigma \to -\infty$, in fact, it diverges to $-\infty$ as $\sigma \to -\infty$. 
+\begin{Proof}Unlike the case for linear operator $A_r$ and $A_\ell$, lemma \ref{pert_inv} cannot be directly used for the operator $A_s$ since from the asymptotic expansion of $c$ we see that $c(\sigma)$ does not converge to $-2$ as $\sigma \to -\infty$, in fact, it diverges to $-\infty$ as $\sigma \to -\infty$. 
 However, for $\sigma \in (\sigma_0, \sigma^*)$, we have
 \[
 |c(\sigma) - (-2) | \lar |\eps\sigma|^{1/3} \lar \delta^{1/2},
@@ -1286,13 +1285,13 @@ for some constant $C$ independent of $\eps$. Equivalently, in terms of $w$ we ha
 \|w\|_{\mathcal{C}_s} \le C(|\delta \eps^{\alpha/3-1}w_0|+ \|f\|_{\mathcal{C}_s}),
 \end{equation}
 which shows the invertibility of $L_s$ and uniformity of the inverse in $\eps$, provided that $w_0 = \rmO(\delta^{-1} \eps^{1-\alpha/3})$. The same property hence holds for $A_s$ as well.
-\end{proof}
+\end{Proof}
 \subsection{Nonlinear estimates}
 For $\sigma \in (\sigma_0, \sigma^*)$, we estimate the nonlinear term $\eps^{-1/3}\varphi \Ral_s(W_s(\sigma))$ in the $\mathcal{C}_s$ norm. Similar to proposition \ref{nl_est_r} and \ref{nl_est_l}, we have
 \begin{proposition}\label{nl_est_s} If $W_s \in \mathcal{C}_s$, then $\eps^{-\frac{1}{3}}\varphi \Ral_s(W_s(\sigma))  \in \mathcal{C}_{s}$ and $\| \eps^{-\frac{1}{3}}\varphi \Ral_s \|_{\mathcal{C}_s} = \rmO(\delta^{1/2})$.
 \end{proposition}
 
-\begin{proof}
+\begin{Proof}
 Recall that
 \[
 \eps^{-1/3}\varphi\Ral_s(W_s;\eps) = \eps^{-1/3}\varphi\left[  W_s^2+ f(U_s+W_s, \mu ; \eps)-f(U_s,\mu;0) \right]- \frac{d}{d\sigma}U_s(\sigma),
@@ -1365,11 +1364,11 @@ Hence $\|\eps^{-1/3}f_2\|_{C_s} = \rmO(\delta^{1/2})$, combining all the estimat
 \|\eps^{-1/3}\varphi \Ral_s(W_s) \| = \rmO(\delta^{1/2}),
 \]
 which finishes the proof.
-\end{proof}
+\end{Proof}
 
 
 \subsection{Fixed point argument and the proof of Theorem \ref{thm:s}}
-\begin{proof}[Proof of theorem \ref{thm:s}]
+\begin{Proof}[ of theorem \ref{thm:s}.]
 The proof is almost identical to the proof of \ref{thm:l}. Using the linear operator $A_s$, we define the nonlinear operator
 $F_s : \mathcal{C}_s \times \mathbb{R} \to \mathcal{C}_s \times \mathbb{R}$ as
 \[
@@ -1397,7 +1396,7 @@ Moreover, for $\|W_{s}\|$ small enough and $|w_0| =\rmO(\delta^{-1}\eps^{1-\alph
 \end{itemize}
 
 Therefore, for $(W_s, w_0)$ in a small ball of $X$, we apply Banach's fixed point argument to the map $\mathcal{S}$ to obtain a solution of equation \eqref{ws_bp} with $W_s \in \mathcal{C}_s$ and $w_0 = \rmO(\eps^{1-\alpha/3})$. Scaling back from $\sigma$ to $t$-time, we obtain claim (\ref{thm:s_1}).
-\end{proof}
+\end{Proof}
 
 
 \section{Gluing}\label{sec_glue}
@@ -1489,7 +1488,7 @@ and
 \end{equation}
 exists on $t \in (0,T)$, where all of the correction functions $w_r, w_\ell$ and $w_s$ satisfy the properties stated in Theorems \ref{thm:r}, \ref{thm:l} and \ref{thm:s}, respectively.
 \end{theorem}
-\begin{proof}[\textbf{Proof of theorem \ref{thm:main} and \ref{cor:main}}]
+\begin{Proof}[\textbf{ of theorem \ref{thm:main} and \ref{cor:main}}]
 Theorem \ref{thm:main} follows from Theorem \ref{thm:glue} almost directly, we just need to show the expansion \eqref{T_exp_+} and \eqref{T_remainder_exp}. 
 
 Recall that $\Omega_\infty(u_0)$ depends smoothly on $u_0$ by Proposition \ref{para_ric}, hence there is a constant $C$ such that
@@ -1557,7 +1556,7 @@ Let $T_*$ be the time of flight for a solution which starts at $\mu = -2\delta$ 
 which satisfies the assumption of Theorem \ref{thm:glue} if we restart the equation with $u=u(T_*)$ and $\mu = -\delta$ at $t = 0$ and follow this trajectory, by Theorem \ref{thm:glue} we conclude that the trajectory hit the section $\Delta_{out}$ at the point $(h(\eps), \delta)$ with $h(\eps)$ has the expansion \eqref{T_exp_+}.
 
 Since the choice for the staring point $\mu = -2\delta$ was arbitrary, the same argument applies whenever one starts with $\mu \in [-2\delta, -\delta]$ and $u \in K$, this proves there is a rectangular region for which we have the dependence $u_i \mapsto \mu(T)$ is of order $\rmO(\eps^{-c/\eps})$. Which proves Theorem \ref{thm:main} and Corollary \ref{cor:main}.
-\end{proof}
+\end{Proof}
 
 \textbf{Remark:} Since $\alpha>0$ could be chosen arbitrary small, expansion \eqref{T_exp_+} suggests that the next order term after $\eps^{2/3}\Omega_0$ might be of order $\eps \log(\eps)$. This is true, a well-known from the matched-asymptotics community and is affirmed by Krupa and Szmolyan using the blow-up methods. 
 \pagebreak
@@ -1567,7 +1566,7 @@ We first show how to extend the asymptotic expansion \eqref{ric_asy} to a more g
 \subsection{A family of the solution to the Riccati equation }
 
 
-\begin{proof}[\textbf{Proof of proposition \ref{para_ric}}] To get the dependence from $u_0$ to $\Omega_\infty$, we first add the equation $\frac{d}{ds}s=1$ to equation \eqref{ric} to get a autonomous $2-$dimensional system in the $(s,u)$ plane. Consider a small neighborhood $I$ containing $\bar{u}_0$ on the vertical $u$-axis, then $u_R(s; u_0)$ is the trajectory that starts at $u_0 \in I$. The map $P_1 : I \to \mathbb{R}$ defined by $P_1(p) = u(2; p)$ is smooth in $p$, as the blow up time for $\bar{u}_R(s;\bar{u}_0)$ is $\Omega_0 >2$. Moreover, the image $P_1(I)$ is a finite interval on the vertical line $s=2$ containing $\bar{u}_R(2;u_0)$ bounded away from $0$, since the trajectory $u_R(s;\bar{u}_0)$ crosses the horizontal axis around $s=1$ and the vector field goes upwards in the first quadrant of the $(s,u)$-plane.
+\begin{Proof}[\textbf{Proof of proposition \ref{para_ric}}] To get the dependence from $u_0$ to $\Omega_\infty$, we first add the equation $\frac{d}{ds}s=1$ to equation \eqref{ric} to get a autonomous $2-$dimensional system in the $(s,u)$ plane. Consider a small neighborhood $I$ containing $\bar{u}_0$ on the vertical $u$-axis, then $u_R(s; u_0)$ is the trajectory that starts at $u_0 \in I$. The map $P_1 : I \to \mathbb{R}$ defined by $P_1(p) = u(2; p)$ is smooth in $p$, as the blow up time for $\bar{u}_R(s;\bar{u}_0)$ is $\Omega_0 >2$. Moreover, the image $P_1(I)$ is a finite interval on the vertical line $s=2$ containing $\bar{u}_R(2;u_0)$ bounded away from $0$, since the trajectory $u_R(s;\bar{u}_0)$ crosses the horizontal axis around $s=1$ and the vector field goes upwards in the first quadrant of the $(s,u)$-plane.
 
 Denote $\tilde{u}_0:= P_1(u_0)$ for brevity (technically, the interval $P_1(I)$ is a small section of the line $s=2$, with a little abuse of notation, we identify $\tilde{u}_0$ with the second coordinate of the point $P_1(u_0)$). Again in the Riccati equation \eqref{ric}, we make a change of variable by setting $z(s) = 1/u(s)$, the equation $z$ satisfies is:
 \[
@@ -1594,7 +1593,7 @@ Hence we can assume the expansion for $\tilde{z}$ near $\xi=0$ is of the form
 for some constant $z_2,z_3$. Differentiating this expansion, use the equation $\tilde{z}$ solves and comparing coefficients, we find that $z_2 = 0, z_3 = \Omega_\infty/3$.  Changing back from $\tilde{z}(\xi)$ to $z=z(s)$ with $s = \Omega_\infty-\xi$ and recall $z(s) = 1/u(s)$, we find that $u_R(s;u_0)$ has expansion \eqref{ric_exp} with remainder $r$ satisfies \eqref{ric_reminder}.
 
 
-\end{proof}
+\end{Proof}
 
 Next we show the main perturbation lemma used to prove the invertibility of the linearized operators at the ansatz.
 \subsection{Uniform invertibility of boundary value problems }
@@ -1629,7 +1628,7 @@ then \eqref{lin_bv} has a unique solutions $u_a,u_b$ which satisfies
 for some constants $C_a, C_b$ independent of $L$ and $M$.
 \end{lemma}
 
-\begin{proof}
+\begin{Proof}
 We only prove the result for \eqref{eqn_pos_line} since the other case is similar. 
 
 \textbf{Step I}
@@ -1684,7 +1683,7 @@ where obviously $C$ does not depend on $L$. Therefore we conclude that
 which is \eqref{ode_est_a}.
 %\cite{plantdisp}
 \nocite{*}
-\end{proof}
+\end{Proof}
 %\subsubsection{Matching at \texorpdfstring{$\sigma^*$}{sigma^*} }
 
 
