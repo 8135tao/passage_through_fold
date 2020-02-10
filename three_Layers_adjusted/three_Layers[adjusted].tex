@@ -693,9 +693,9 @@ A_r w = (f,w_T) \text{ with } f \in \mathcal{C}_r, w_T \in \mathbb{R},
 \]
  
 Since $\alpha > 0$ and $|a(\sigma;\eps,u_0) -2| = \rmO(e^{-2\sigma}) \to 0$ as $\sigma \to \infty$ uniformly in $\eps, u_0$. We apply lemma \ref{lin_bv} with $L= \sigma_T$ to conclude that there exists a constant $C$ independent of $\eps, u_0$ with 
-\[
+\begin{equation}\label{linear_est:r}
 \|w\|_{\mathcal{C}_r} = |v|_\infty \le C(|\eps^{(\alpha-2)/3}e^{(\alpha-2)\sigma} f |_{\infty}+|v_T|) \le C(\|f\|_{\mathcal{C}_r}+|w_T|),
-\]
+\end{equation}
 notice $|v_T| \le w_T$ by the asymptotic expansion of $\sigma_T  = \rmO(-\log(\eps^{1/3}))$. By the definition of $\sigma_{\inf}$ and $\sigma_{\sup}$, $A_r$ is uniformly invertible in $u_0$ on $\mathcal{C}_r$, this finishes the proof of the proposition.
 \end{proof}
 
@@ -1011,9 +1011,9 @@ A_\ell w = (f,w^*) \text{ with } f \in \mathcal{C}_\ell, \text{ and }w^* \in \ma
 \]
 
 Again we apply lemma \ref{pert_inv} to conclude that there exist a constant $C$ independent of $\eps$ such that
-\[
+\begin{equation}\label{linear_est:l}
 \|w\|_{\mathcal{C}_\ell} = |v|_\infty \le C(|\eps^{(\alpha-2)/3}\langle \sigma \rangle^{-2/3} f |_{\infty}+| v^*|) = C(\|f\|_{\mathcal{C}_\ell}+\eps^{\alpha/3-1/2}|w^*|),
-\]
+\end{equation}
 which shows the claim, provided that $|w^*| = \rmO(\eps^{1/2-\alpha/3})$.
 \end{proof}
 
@@ -1282,9 +1282,9 @@ Its linear part is yet another small perturbation of the linear operator $\frac{
 |v|_\infty \le C(|v_0|+|f|_\infty),
 \]
 for some constant $C$ independent of $\eps$. Equivalently, in terms of $w$ we have
-\[
+\begin{equation}\label{linear_est:s}
 \|w\|_{\mathcal{C}_s} \le C(|\delta \eps^{\alpha/3-1}w_0|+ \|f\|_{\mathcal{C}_s}),
-\]
+\end{equation}
 which shows the invertibility of $L_s$ and uniformity of the inverse in $\eps$, provided that $w_0 = \rmO(\delta^{-1} \eps^{1-\alpha/3})$. The same property hence holds for $A_s$ as well.
 \end{proof}
 \subsection{Nonlinear estimates}
@@ -1515,7 +1515,7 @@ u_B(t;u^*) &\mapsto u_B(\eps^{-1}\delta ; u^*),
 \end{align*}
 which are all smooth either because they are evaluation maps or by the smooth dependence of solutions on the initial conditions.
 
-Let $\mathcal{K}$ be the map $u_i\mapsto u_B(\eps^{-1}\delta;u^*)$. It can be seen from Theorem \ref{thm:l}, Theorem \ref{thm:s} and Theorem \ref{thm:r} that
+Let $\mathcal{K}$ be the map $u_i\mapsto u_B(\eps^{-1}\delta;u^*)$. It can be seen from \eqref{linear_est:r},\eqref{linear_est:l}, \eqref{linear_est:s} and the definition of the norms that
 \begin{align*}
 \begin{split}
 \|u_C - \tilde{u}_C\|_{\mathcal{C}_s} &\le C\eps^{\alpha/3-1}|u_i -\tilde{u}_i| ,\\
@@ -1533,7 +1533,7 @@ which implies
 
 Next, recall that the branch $u_0 = u_0(\eps)$ was solved by the condition \eqref{match_ab_exp} which shows the map $u_B(\eps^{-1}\delta) \mapsto u_0$ has Lipschitz constant $\le C\eps^{-1/3}$, which shows the map
 \begin{equation}
-u_i \mapsto u_0 \mapsto \Omega_\infty(u_0)=\Omega_\infty(u_0;u_i)
+u_i \mapsto u_0 \mapsto \Omega_\infty(u_0)=\Omega_\infty(u_0(u_i))
 \end{equation}
 has Lipschitz constant $\le C\eps^{-2/3}$.
 

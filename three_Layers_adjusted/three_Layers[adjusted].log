@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.15)  9 FEB 2020 16:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.15)  10 FEB 2020 12:08
 entering extended mode
 **./three_Layers[adjusted].tex
 (three_Layers[adjusted].tex
@@ -720,14 +720,14 @@ Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1696.
 
 Package rerunfilecheck Info: File `three_Layers[adjusted].out' has not changed.
 
-(rerunfilecheck)             Checksum: 71FFB3654162A7083DDC7350F5019364;2117.
+(rerunfilecheck)             Checksum: 38859154AA1A0197BAF444FDA2BF8442;2118.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1696.
  ) 
 Here is how much of TeX's memory you used:
- 10291 strings out of 492970
- 154437 string characters out of 3126593
- 265736 words of memory out of 3000000
- 13796 multiletter control sequences out of 15000+200000
+ 10297 strings out of 492970
+ 154516 string characters out of 3126593
+ 265898 words of memory out of 3000000
+ 13799 multiletter control sequences out of 15000+200000
  19424 words of font info for 71 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,16n,39p,1091b,557s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -755,9 +755,9 @@ ms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/8135t/AppData
 135t/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam
 10.pfb><C:/Users/8135t/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
 fonts/symbols/msbm10.pfb>
-Output written on three_Layers[adjusted].pdf (33 pages, 461039 bytes).
+Output written on three_Layers[adjusted].pdf (33 pages, 461392 bytes).
 PDF statistics:
- 706 PDF objects out of 1000 (max. 8388607)
- 200 named destinations out of 1000 (max. 500000)
+ 709 PDF objects out of 1000 (max. 8388607)
+ 203 named destinations out of 1000 (max. 500000)
  243 words of extra memory for PDF output out of 10000 (max. 10000000)
 
