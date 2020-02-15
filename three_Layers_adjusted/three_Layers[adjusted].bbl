@@ -1,4 +1,9 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{Bru_tracking}
+P.~Brunovsk\'{y}.
+\newblock Tracking invariant manifolds without differential forms.
+\newblock {\em Acta Math. Univ. Comenian. (N.S.)}, 65(1):23--32, 1996.
 
 \bibitem{chicone2006ordinary}
 C.~Chicone.
@@ -28,6 +33,18 @@ G.~Faye and A.~Scheel.
 C.~K. R.~T. Jones.
 \newblock Geometric singular perturbation theory.
 \newblock 1609:44--118, 1995.
+
+\bibitem{Jones_tracking}
+C.~K. R.~T. Jones, T.~J. Kaper, and N.~Kopell.
+\newblock Tracking invariant manifolds up to exponentially small errors.
+\newblock {\em SIAM J. Math. Anal.}, 27(2):558--577, 1996.
+
+\bibitem{Jones_exchange_lemma}
+T.~J. Kaper and C.~K. R.~T. Jones.
+\newblock A primer on the exchange lemma for fast-slow systems.
+\newblock In {\em Multiple-time-scale dynamical systems ({M}inneapolis, {MN},
+  1997)}, volume 122 of {\em IMA Vol. Math. Appl.}, pages 65--87. Springer, New
+  York, 2001.
 
 \bibitem{KrupaSz}
 M.~Krupa and P.~Szmolyan.

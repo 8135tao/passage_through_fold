@@ -123,7 +123,7 @@ University of Minnesota, School of Mathematics,   206 Church St. S.E., Minneapol
 \end{center}
 
 \begin{abstract}
-\noindent We revisit the classical problem of determine the asymptotic expansion of the solution near the passage of a fold point in a singularly perturbed system, where the theory of normally hyperbolic invariant manifold cannot be directly applied, the standard remedy is the blow-up method first demonstrated by Krupa and Szmolyan. In this paper we show how one can use a functional analytic approach (thus less geometrically-flavored) to achieve the same goal.
+\noindent We revisit the classical problem of determine the asymptotic expansion of the solution near the passage of a fold point in a singularly perturbed system, where the theory of normally hyperbolic invariant manifold cannot be directly applied, the standard remedy is the blow-up method first demonstrated by Krupa and Szmolyan. In this paper we show how one can use a functional analytic approach to achieve the same goal.
 \end{abstract}
 
 \section{Introduction}
@@ -164,14 +164,14 @@ The basic premise of the theory, which was first laid out by Fenichel, is that t
 \[
 S:=  \{ (x,y) \mid f(x,y;0) = 0 \},
 \]
-one then focuses on a \textit{normally hyperbolic submanifold} of equlibra $S_0 \subset S$ of the layer problem \eqref{intro_layer}, which will perturb to a so-called ``slow manifold'', $S_\eps$ for $0<\eps \ll 1$, on which the dynamics of \eqref{intro_slow} is an $\eps$-perturbation of the reduced problem \eqref{intro_reduced}. In addition to the existence of a slow manifold, we have the existence of stable and unstable invariant foliation along with base $S_0$, which also persists for $\eps>0$.
+one then focuses on a \textit{normally hyperbolic submanifold} of equlibra $S_0 \subset S$ of the layer problem \eqref{intro_layer}, which will perturb to a so-called ``slow manifold'', $S_\eps$ for $0<\eps \ll 1$, on which the dynamics of \eqref{intro_slow} is an $\eps$-perturbation of the reduced problem \eqref{intro_reduced}. In addition to the existence of a slow manifold, we have the existence of stable and unstable invariant foliation along with base $S_0$, which also persists for $\eps>0$. More details can be found in \cite{Jones_GSPT} or \cite{chris_kuehn_book}, for example.
 
 The above approach relies heavily on the notion of normal hyperbolicity, which may not be always satisfied in the problems to be studied. The most common case is the so-called \textit{fold point}, where the critical manifold $S$ loses its normal hyperbolicity near bifurcation points due to a zero eigenvalue in the Jacobian $\frac{\partial f }{\partial x}$.
 
-To overcome these difficulties, Krupa and Szmolyan proposed the method of \textit{blow-up} to extend the reach of geometric singular perturbation theory. Roughly speaking, it is a set of coordinate transformations which desingularizes the vector field near the fold point so that information can be gained by using standard tools in dynamical system.
+To overcome these difficulties, Krupa and Szmolyan proposed the method of \textit{blow-up} to extend the reach of geometric singular perturbation theory in \cite{KrupaSz}. Roughly speaking, it is a set of coordinate transformations which desingularizes the vector field near the fold point so that information can be gained by using standard tools in dynamical system.
 
 
-Their example was the following extended system 
+For fold points, their example was the following extended system 
 \begin{align}\label{ori_eqn}
 \begin{split}
 u' &= \mu+u^2+ f(u,\mu; \eps),\\
@@ -210,7 +210,8 @@ Krupa and Szmolyan then proceed by defining the blow up transformation
 u =\bar{r} \bar{u},  \quad \mu = \bar{r}^2 \bar{\mu}, \quad  \eps = \bar{r}^3 \bar{\eps},
 \]
 which ``blows up'' the vector field of the extended $(\mu, u, \eps)$ system near $(0,0,0)$ into a vector field on the ball $B = S^2 \times [0,\eps_0^{1/3}] \ni (\bar{u}, \bar{\mu}, \bar{\eps}, \bar{r})$ for some $\eps_0>0$ small, and further directional blow-ups to obtain charts $K_1,K_2,K_3$ which was used to describe the flows in regions near different parts of the manifold $B$. After a careful and thorough analysis, they were able to prove the following results:
-\begin{theorem}\label{ks_main}
+\begin{theorem}\label{ks_main}(Theorem 2.1 in \cite{KrupaSz})
+
 For $\eps$ sufficiently small, the following statements are true:
 \begin{enumerate}
 \item The manifold $S_{a,\eps} $ passes through  $\Delta_{out}$ at a point $(h(\eps), \sqrt{\delta})$ where $h(\eps) = \rmO(\eps^{2/3})$.
@@ -269,7 +270,7 @@ First, we want to get an idea of what kinds of ansatz one should use. Consider \
 \frac{d}{ds}u(s) = s+u(s)^2,
 \end{equation}
 
-which is the Ricatti equation in its simplest form. We denote any solution to \eqref{ric} as $u_R$, it is known to have a unique solution (denoted by $\bar{u}_R$) with the following asymptotic expansions:
+which is the Ricatti equation in its simplest form. We denote any solution to \eqref{ric} as $u_R$, it is known to have a unique solution (denoted by $\bar{u}_R$) with the following asymptotic expansions (see \cite{KrupaSz} as well).
 
 \begin{equation} \label{ric_asy}
 \bar{u}_R(s)=\begin{cases}
@@ -282,7 +283,7 @@ Here the constant $\Omega_0 \approx 2.3381$ is the smallest positive zero of
 \[
 J_{-1/3}(2z^{3/2}/3)+J_{1/3}(2z^{3/2}/3),
 \]
-where $J_{\pm 1/3}$ are Bessel functions of the first kind. (See [Krupa, Szmolyan])
+where $J_{\pm 1/3}$ are Bessel functions of the first kind.
 
 
 More generally, we consider family of solutions  $u_R(s; u_0)$ of the Riccati equation  \eqref{ric} such that $u_R(0; u_0) = u_0$. That is, we take the initial condition $u_0$ as a parameter to the Riccati equation. For the special Riccati solution $\bar{u}_R$, we denote $\bar{u}_R(0) $ as $\bar{u}_0$. In fact, using simple phase plane analysis, we can extend the asymptotic results about the special Riccati solution $\bar{u}_R$, \eqref{ric_asy} to the $u_0$-parameter dependent family $u_R(s; u_0)$, as the following proposition states.
@@ -384,6 +385,11 @@ For $\alpha,\delta_-,\delta_+>0$, there is a compact interval $K \subset (-\inft
 \end{equation}
 for all $u_i \in K$.
 \end{corollary}
+
+
+
+\textbf{Remark:} Notice $\alpha>0$ could be chosen arbitrary small in the expansion \eqref{exit_loc_exp}. In fact, it is well-known from the matched-asymptotics community that the next order term after $\eps^{2/3}\Omega_0$ is of order $\eps \log(\eps)$.  This is also confirmed in \citep{KrupaSz} using the blow-up methods. 
+
 
  The proof of Theorem \ref{thm:main} and \ref{cor:main} will take up the rest of the paper,  we first prepare ourselves with the setup of the problem in the following sections.
 
@@ -1526,10 +1532,11 @@ which satisfies the assumption of Theorem \ref{thm:glue} if we restart the equat
  \caption{Region $K$ in Corollary \ref{cor:main}}\label{fig:contraction_Fenichel} 
 \end{figure}
 
-The above argument can be seen more directly in figure \ref{fig:contraction_Fenichel}, where $K$ is a rectangular region near the section $\Delta_{in}'=\{(-2\delta_-,u)\}$. What Fenichel theory shows is that this region $K$ contracts into a small neigbourhod $N$ around near the point $(-\delta_-, u_-(-\delta_-))$, with Lipschitz constant of order $e^{-c/\eps}$ for some constant $c>0$ independent of $\eps$. Inside the region $N$, we can apply the conclusion of Theorem \ref{thm:glue} to continue the trajectory until it hits the section $\Delta_{out}$ at the desired $\rmO(\eps^{2/3})$ location.
+The above argument can be seen more directly in figure \ref{fig:contraction_Fenichel}, where $K$ is a rectangular region near the section $\Delta_{in}'=\{(-2\delta_-,u)\}$. What Fenichel theory shows is that this region $K$ contracts into a small neighborhood $N$ around near the point $(-\delta_-, u_-(-\delta_-))$, with Lipschitz constant of order $e^{-c/\eps}$ for some constant $c>0$ independent of $\eps$. Inside the region $N$, we can apply the conclusion of Theorem \ref{thm:glue} to continue the trajectory until it hits the section $\Delta_{out}$ at the desired $\rmO(\eps^{2/3})$ location. 
 \end{Proof}
 
-\textbf{Remark:} Since $\alpha>0$ could be chosen arbitrary small, expansion \eqref{T_exp_+} suggests that the next order term after $\eps^{2/3}\Omega_0$ might be of order $\eps \log(\eps)$. This is true, a well-known from the matched-asymptotics community and is affirmed by Krupa and Szmolyan using the blow-up methods. 
+\textbf{Remark:} The last part where we used Fenichel theory to track how a solution arrives exponentially close to the slow manifold $u_-^\eps(\mu)$ could be done, as in \cite{faye2015existence}, using functional analytic methods as well. By using function spaces with suitably centered exponential weights and exploting the location of ``touchdown'' and ``takeoff'' between the slow manifold and the solution in stable and unstable manifolds as free parameters, Faye and Scheel was able to track the solution in a way similar to the Exchange Lemma as in \cite{Bru_tracking}, \cite{Jones_exchange_lemma}, and \cite{Jones_tracking}.
+
 \pagebreak
 \section*{Appendix}
 \renewcommand{\thesubsection}{\Alph{subsection}}
@@ -1578,7 +1585,7 @@ Consider the following boundary value problems
 \end{align}
 \end{subequations}
 
-where equation \eqref{eqn_pos_line} is posed on $\sigma \in [0,L]$ with $L>0$ and \eqref{eqn_neg_line} is posed on $\sigma \in [-M,0]$ with $M>0$. 
+where equation \eqref{eqn_pos_line} is posed on $\sigma \in [\sigma_0,L]$ with $L>\sigma_0$ and \eqref{eqn_neg_line} is posed on $\sigma \in [-M,\sigma_0]$ with $M>\sigma_0$. 
 
 Assume $a(\sigma), b(\sigma)$ are continuous functions such that 
 \begin{subequations}
@@ -1600,13 +1607,13 @@ for some constants $C_a, C_b$ independent of $L$ and $M$.
 \end{lemma}
 
 \begin{Proof}
-We only prove the result for \eqref{eqn_pos_line} since the other case is similar. 
+We only prove the result for \eqref{eqn_pos_line} since the other case is similar. Also, without loss of generality, we assume that $\sigma_0 = 0$.
 
 \textbf{Step I}
 
 To begin with, consider the asymptotic equation 
 \begin{equation}\label{asy_eq}
-\dot{u} = a_+ u + f(\sigma),\hspace{ 0.5in } u(L) = 0.
+\dot{u} = a_+ u + f(\sigma),\hspace{ 0.5in } u(L) = u_L.
 \end{equation}
 posed on $\sigma \in [0, L]$.
 \eqref{ode_est_a} holds for \eqref{asy_eq} since in this case we have
