@@ -1,11 +1,5 @@
 \begin{thebibliography}{1}
 
-\bibitem{agj}
-J.~Alexander, R.~Gardner, and C.~Jones.
-\newblock A topological invariant arising in the stability analysis of
-  travelling waves.
-\newblock {\em J. Reine Angew. Math.}, 410:167--212, 1990.
-
 \bibitem{chicone2006ordinary}
 C.~Chicone.
 \newblock {\em Ordinary differential equations with applications}, volume~34 of
@@ -30,21 +24,22 @@ G.~Faye and A.~Scheel.
 \newblock Existence of pulses in excitable media with nonlocal coupling.
 \newblock {\em Adv. Math.}, 270:400--456, 2015.
 
-\bibitem{FScmfd}
-G.~Faye and A.~Scheel.
-\newblock Center manifolds without a phase space.
-\newblock {\em arXiv preprint arXiv:1611.07487}, 2016.
+\bibitem{Jones_GSPT}
+C.~K. R.~T. Jones.
+\newblock Geometric singular perturbation theory.
+\newblock 1609:44--118, 1995.
 
-\bibitem{levy}
-B.~Jourdain, S.~M\'el\'eard, and W.~A. Woyczynski.
-\newblock Nonlinear {SDE}s driven by {L}\'evy processes and related {PDE}s.
-\newblock {\em ALEA Lat. Am. J. Probab. Math. Stat.}, 4:1--29, 2008.
+\bibitem{KrupaSz}
+M.~Krupa and P.~Szmolyan.
+\newblock Extending geometric singular perturbation theory to nonhyperbolic
+  points---fold and canard points in two dimensions.
+\newblock {\em SIAM J. Math. Anal.}, 33(2):286--314, 2001.
 
-\bibitem{roman2007advanced}
-S.~Roman.
-\newblock {\em Advanced linear algebra}, volume 135 of {\em Graduate Texts in
-  Mathematics}.
-\newblock Springer, New York, third edition, 2008.
+\bibitem{chris_kuehn_book}
+C.~Kuehn.
+\newblock {\em Multiple time scale dynamics}, volume 191 of {\em Applied
+  Mathematical Sciences}.
+\newblock Springer, Cham, 2015.
 
 \bibitem{runst1996sobolev}
 T.~Runst and W.~Sickel.
