@@ -367,7 +367,7 @@ T = T(\eps ; u_i) = \eps^{-1}\delta_- + \eps^{-1/3}\Omega_0 +  \mathcal{H}(\eps;
 \end{equation}
 with the term $\mathcal{H}(\eps;u_i)$ satisfies 
 \begin{equation}\label{T_remainder_exp}
-\mathcal{H}(\eps;u_i) = \rmO(\eps^{-\alpha/3}), \hspace{0.2in} \text{Lip}_{u_i}\mathcal{H}(\eps;u_i) = \rmO(\eps^{-1}).
+\eps\mathcal{H}(\eps;u_i) = \rmO(\eps^{1-\alpha/3}), \hspace{0.2in} \text{Lip}_{u_i}\eps\mathcal{H}(\eps;u_i) = \rmO(1).
 \end{equation}
 In particular, since $\mu(t) = \eps t -\delta_-$, we have the following expansion of the exit location $\mu(T)$ on the section $\Delta_{out}$ in $\eps$:
 \begin{equation}\label{exit_loc_exp}
@@ -376,7 +376,7 @@ In particular, since $\mu(t) = \eps t -\delta_-$, we have the following expansio
 
 \end{theorem}
 
-To fully recover Theorem \ref{ks_main}, we have  the following corollary, which is proven using the standard Fenichel theory.
+To fully recover Theorem \ref{ks_main}, we have the following corollary.
 \begin{corollary}\label{cor:main}
 For $\alpha,\delta_-,\delta_+>0$, there is a compact interval $K \subset (-\infty, u_+(-\delta_-))$, independent of $\eps$ so that for all $u_i \in K$ with $(u_i,\mu,\eps) \in \mathcal{U}$, the same conclusion of Theorem \ref{thm:main} holds. In fact, there exist a constant $c$ independent of $\eps$, such that the Lipschitz constant of $\mathcal{H}(\eps;u_i)$ in the expansion \eqref{T_exp_+} satisfies
 \begin{equation}\label{T_remainder_exp_+}
@@ -1449,7 +1449,7 @@ T &= \eps^{-1}\delta_- + \eps^{-1/3}\Omega_\infty(u_0(\eps)) + \delta_+^{-1} + \
 \end{align*}
 with $\mathcal{H}(\eps) = \rmO(\eps^{-\alpha/3})$.
 
-To show the dependence of $\mathcal{H}$ on the initial condition $u_i$ in $\eqref{T_remainder_exp}$ takes a little more work, to begin, we consider the following maps:
+Next we show the dependence of $\mathcal{H}$ on the initial condition $u_i$ as in $\eqref{T_remainder_exp}$. First, consider the following maps:
 \begin{align*}
 \begin{split}
 u_i &\mapsto u_C(t;u_i),\\
@@ -1458,9 +1458,7 @@ u_C(t^*; u_i):= u^* &\mapsto u_B(t; u^*), \\
 u_B(t;u^*) &\mapsto u_B(\eps^{-1}\delta_-; u^*),
 \end{split}
 \end{align*}
-which are all smooth either because they are evaluation maps or by the smooth dependence of solutions on the initial conditions.
-
-Let $\mathcal{K}$ be the map $u_i\mapsto u_B(\eps^{-1}\delta_-;u^*)$. It can be seen from \eqref{linear_est:r},\eqref{linear_est:l}, \eqref{linear_est:s} and the definition of the norms that
+which are all smooth either because they are evaluation maps or by the smooth dependence of solutions on the initial conditions. Hence, if we set $\mathcal{K}_1$ to be the map $u_i\mapsto u_B(\eps^{-1}\delta_-;u^*)$. It can be seen from \eqref{linear_est:r},\eqref{linear_est:l}, \eqref{linear_est:s} and the definition of the norms that
 \begin{align*}
 \begin{split}
 \|u_C - \tilde{u}_C\|_{\mathcal{C}_s} &\le C\eps^{\alpha/3-1}|u_i -\tilde{u}_i| ,\\
@@ -1472,27 +1470,42 @@ Let $\mathcal{K}$ be the map $u_i\mapsto u_B(\eps^{-1}\delta_-;u^*)$. It can be 
 \end{align*}
 
 which implies
-\begin{equation}
-\text{Lip}_{u_i} \mathcal{K} \le C\eps^{-1/3}
+\begin{equation}\label{lip:K1}
+\text{Lip } \mathcal{H}_1 \le C\eps^{-1/3},
 \end{equation}
+for some constant $C$ independent of $\eps$.
 
-Next, recall that the branch $u_0 = u_0(\eps)$ was solved by the condition \eqref{match_ab_exp}, which shows the map 
+Next, recall that the branch $u_0 = u_0(\eps)$ was solved by the condition \eqref{match_ab_exp}, from which it reads
 \[
-u_B(\eps^{-1}\delta_-) \mapsto u_0
+u_0+\eps^{-1/3}w_r(\eps^{-1}\delta_-; u_0) = \bar{u}_0 - \eps^{-1/3}w_\ell(\eps^{-1}\delta_-),
 \] 
-has Lipschitz constant $\le C\eps^{-1/3}$, which shows the map
-\begin{equation}
-u_i \mapsto u_0 \mapsto \Omega_\infty(u_0)=\Omega_\infty(u_0(u_i))
+therefore, if we set $\mathcal{K}_2$ to be the map $w_{\ell}(\eps^{-1}\delta_-) \mapsto u_0$, then
+\begin{equation}\label{lip:K2}
+\text{Lip } \mathcal{H}_2 \le C\eps^{-1/3},
 \end{equation}
-has Lipschitz constant $\le C\eps^{-2/3}$.
+for some constant $C$ independent of $\eps$.
 
-Recall now that $\mu(T) = \eps T -\delta_- = \eps^{2/3}\Omega_\infty(u_0) + \rmO(1)$. Therefore we conclude the map
+Moreover, we already showed that the map $\mathcal{H}_3$ 
+\begin{equation}\label{lip:K3} 
+ u_0 \mapsto \Omega_\infty(u_0)=\Omega_\infty(u_0)
+\end{equation}
+satisfies
+\begin{equation}
+\text{Lip } \mathcal{H}_3 \le C, 
+\end{equation}
+for some constant $C$ independent of $\eps$.
+
+Finally, we have $\mu(T) = \eps T -\delta_- = \eps^{2/3}\Omega_\infty(u_0) + \rmO(1)$. Therefore we conclude the map $\mathcal{H}$
 \begin{equation}
 u_i \mapsto \mu(T)
 \end{equation}
-has Lipschitz constant of order $\rmO(1)$.
+satisfies 
+\begin{equation}
+\text{Lip }_{u_i} \mathcal{H} \le C, 
+\end{equation}
+for some constant $C$ independent of $\eps$ from \eqref{lip:K1}, \eqref{lip:K2}, and \eqref{lip:K3}.
 
-But remember the fact that all $u_i$ was chosen such that $|u_i-u_-(-\delta_-)|\le C\eps^{1-\alpha/3}$.
+%But remember the fact that all $u_i$ was chosen such that $|u_i-u_-(-\delta_-)|\le C\eps^{1-\alpha/3}$.
 
 
 Now we prove Corollary \ref{cor:main}, recall $(\mu,u,\eps) \in \mathcal{U}$ where $\mathcal{U}$ is a small neighborhood of the origin $(0,0,0)$. Take a compact interval $K$ such that $(\mu, u, \eps) \subset \mathcal{U}$ for all $u \in K$, consider a trajectory $(\mu, u)$ with initial condition $\mu(0) = -2\delta_-$ and $u(0) \in K$. By standard Fenichel theory, at $\eps = 0$, there exist stable foliations with base the lower branch $u_-(\mu)$ of  the critical manifold $S_0=\{ (\mu, u) : \mu+u^2 + f(\mu, u,0) =0 \}$ for $\mu \in [-2\delta_-, -\delta_-]$. Further, for $0<\eps \ll 1$, the foliation persists and the part of the critical manifold $u_-(\mu)$ perturbs to a nearby slow manifold $u_-^{\eps}(\mu)$. Moreover, there exist asymptotic rate $\gamma = \gamma(\delta_-)>0$ and a constant $C=C(\delta_-)$, independent of $\eps$ such that the solution $u(t)$ starts at $\mu(0)=-2\delta_-$ and $u(0) \in K$ converges exponentially close to the slow manifold:
@@ -1505,7 +1518,15 @@ Let $T_*$ be the time of flight for a solution which starts at $\mu = -2\delta_-
 \]
 which satisfies the assumption of Theorem \ref{thm:glue} if we restart the equation with $u=u(T_*)$ and $\mu = -\delta_-$ at $t = 0$ and follow this trajectory, by Theorem \ref{thm:glue} we conclude that the trajectory hit the section $\Delta_{out}$ at the point $(h(\eps), \delta_+)$ with $h(\eps)$ has the expansion \eqref{T_exp_+}.
 
-Since the choice for the staring point $\mu = -2\delta_-$ was arbitrary, the same argument applies whenever one starts with $\mu \in [-2\delta_-, -\delta_-]$ and $u \in K$, this proves there is a rectangular region for which we have the dependence $u_i \mapsto \mu(T)$ is of order $\rmO(\eps^{-c/\eps})$. Which proves Theorem \ref{thm:main} and Corollary \ref{cor:main}.
+\begin{figure}[ht]
+ \centering % centering figure
+ \scalebox{0.6} % rescale the figure by a factor of 0.3
+ {\includegraphics[angle = 0, origin = c]{pictures/contraction_Fenichel.eps}} % importing figure
+ % labeling to refer it inside the text
+ \caption{Region $K$ in Corollary \ref{cor:main}}\label{fig:contraction_Fenichel} 
+\end{figure}
+
+The above argument can be seen more directly in figure \ref{fig:contraction_Fenichel}, where $K$ is a rectangular region near the section $\Delta_{in}'=\{(-2\delta_-,u)\}$. What Fenichel theory shows is that this region $K$ contracts into a small neigbourhod $N$ around near the point $(-\delta_-, u_-(-\delta_-))$, with Lipschitz constant of order $e^{-c/\eps}$ for some constant $c>0$ independent of $\eps$. Inside the region $N$, we can apply the conclusion of Theorem \ref{thm:glue} to continue the trajectory until it hits the section $\Delta_{out}$ at the desired $\rmO(\eps^{2/3})$ location.
 \end{Proof}
 
 \textbf{Remark:} Since $\alpha>0$ could be chosen arbitrary small, expansion \eqref{T_exp_+} suggests that the next order term after $\eps^{2/3}\Omega_0$ might be of order $\eps \log(\eps)$. This is true, a well-known from the matched-asymptotics community and is affirmed by Krupa and Szmolyan using the blow-up methods. 

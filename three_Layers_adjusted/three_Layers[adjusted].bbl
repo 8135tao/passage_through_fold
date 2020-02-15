@@ -1,70 +1,10 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{1}
 
 \bibitem{agj}
 J.~Alexander, R.~Gardner, and C.~Jones.
 \newblock A topological invariant arising in the stability analysis of
   travelling waves.
 \newblock {\em J. Reine Angew. Math.}, 410:167--212, 1990.
-
-\bibitem{pin}
-T.~Anderson, G.~Faye, A.~Scheel, and D.~Stauffer.
-\newblock Pinning and unpinning in nonlocal systems.
-\newblock {\em J. Dynam. Differential Equations}, 28(3-4):897--923, 2016.
-
-\bibitem{heatnl}
-F.~Andreu-Vaillo, J.~M. Maz\'on, J.~D. Rossi, and J.~J. Toledo-Melero.
-\newblock {\em Nonlocal diffusion problems}, volume 165 of {\em Mathematical
-  Surveys and Monographs}.
-\newblock American Mathematical Society, Providence, RI; Real Sociedad
-  Matem\'atica Espa\~nola, Madrid, 2010.
-
-\bibitem{matsci}
-P.~W. Bates.
-\newblock On some nonlocal evolution equations arising in materials science.
-\newblock In {\em Nonlinear dynamics and evolution equations}, volume~48 of
-  {\em Fields Inst. Commun.}, pages 13--52. Amer. Math. Soc., Providence, RI,
-  2006.
-
-\bibitem{batespleth}
-P.~W. Bates, X.~Chen, and A.~Chmaj.
-\newblock Equilibria and traveling waves for bistable equations with non-local
-  and discrete dissipation.
-\newblock {\em S\=urikaisekikenky\=usho K\=oky\=uroku}, (1178):48--71, 2000.
-\newblock Nonlinear diffusive systems---dynamics and asymptotic analysis
-  (Japanese) (Kyoto, 2000).
-
-\bibitem{Bates1997}
-P.~W. Bates, P.~C. Fife, X.~Ren, and X.~Wang.
-\newblock Traveling waves in a convolution model for phase transitions.
-\newblock {\em Arch. Rational Mech. Anal.}, 138(2):105--136, 1997.
-
-\bibitem{bz}
-P.~W. Bates, K.~Lu, and C.~Zeng.
-\newblock Approximately invariant manifolds and global dynamics of spike
-  states.
-\newblock {\em Invent. Math.}, 174(2):355--433, 2008.
-
-\bibitem{neuralfieldrev}
-P.~C. Bressloff.
-\newblock Spatiotemporal dynamics of continuum neural fields.
-\newblock {\em J. Phys. A}, 45(3):033001, 109, 2012.
-
-\bibitem{waterwave}
-J.~C. Bronski, V.~M. Hur, and M.~A. Johnson.
-\newblock Modulational instability in equations of {K}d{V} type.
-\newblock In {\em New approaches to nonlinear waves}, volume 908 of {\em
-  Lecture Notes in Phys.}, pages 83--133. Springer, Cham, 2016.
-
-\bibitem{plantdisp}
-R.~S. Cantrell, C.~Cosner, Y.~Lou, and D.~Ryan.
-\newblock Evolutionary stability of ideal free dispersal strategies: a nonlocal
-  dispersal model.
-\newblock {\em Can. Appl. Math. Q.}, 20(1):15--38, 2012.
-
-\bibitem{chang2007spectra}
-S.-M. Chang, S.~Gustafson, K.~Nakanishi, and T.-P. Tsai.
-\newblock Spectra of linearized operators for {NLS} solitary waves.
-\newblock {\em SIAM J. Math. Anal.}, 39(4):1070--1111, 2007/08.
 
 \bibitem{chicone2006ordinary}
 C.~Chicone.
@@ -78,26 +18,6 @@ S.~N. Chow and J.~K. Hale.
   der Mathematischen Wissenschaften [Fundamental Principles of Mathematical
   Science]}.
 \newblock Springer-Verlag, New York-Berlin, 1982.
-
-\bibitem{evans}
-J.~W. Evans.
-\newblock Nerve axon equations. {I}. {L}inear approximations.
-\newblock {\em Indiana Univ. Math. J.}, 21:877--885, 1971/72.
-
-\bibitem{evans1972nerve}
-J.~W. Evans.
-\newblock Nerve axon equations. {II}. {S}tability at rest.
-\newblock {\em Indiana Univ. Math. J.}, 22:75--90, 1972/73.
-
-\bibitem{evans1972nerve2}
-J.~W. Evans.
-\newblock Nerve axon equations. {III}. {S}tability of the nerve impulse.
-\newblock {\em Indiana Univ. Math. J.}, 22:577--593, 1972/73.
-
-\bibitem{evans1975stable}
-J.~W. Evans.
-\newblock Nerve axon equations. {IV}. {T}he stable and the unstable impulse.
-\newblock {\em Indiana Univ. Math. J.}, 24(12):1169--1190, 1974/75.
 
 \bibitem{faye2013existence}
 G.~Faye.
@@ -115,51 +35,10 @@ G.~Faye and A.~Scheel.
 \newblock Center manifolds without a phase space.
 \newblock {\em arXiv preprint arXiv:1611.07487}, 2016.
 
-\bibitem{cahn-morral}
-C.~P. Grant.
-\newblock Slow motion in one-dimensional {C}ahn-{M}orral systems.
-\newblock {\em SIAM J. Math. Anal.}, 26(1):21--34, 1995.
-
-\bibitem{harioo}
-M.~Haragus and G.~Iooss.
-\newblock {\em Local bifurcations, center manifolds, and normal forms in
-  infinite-dimensional dynamical systems}.
-\newblock Universitext. Springer-Verlag London, Ltd., London; EDP Sciences, Les
-  Ulis, 2011.
-
-\bibitem{HS2}
-M.~Haragus and A.~Scheel.
-\newblock Finite-wavelength stability of capillary-gravity solitary waves.
-\newblock {\em Comm. Math. Phys.}, 225(3):487--521, 2002.
-
-\bibitem{HS}
-M.~Haragus and A.~Scheel.
-\newblock Linear stability and instability of ion-acoustic plasma solitary
-  waves.
-\newblock {\em Phys. D}, 170(1):13--30, 2002.
-
 \bibitem{levy}
 B.~Jourdain, S.~M\'el\'eard, and W.~A. Woyczynski.
 \newblock Nonlinear {SDE}s driven by {L}\'evy processes and related {PDE}s.
 \newblock {\em ALEA Lat. Am. J. Probab. Math. Stat.}, 4:1--29, 2008.
-
-\bibitem{kiel}
-H.~Kielh\"ofer.
-\newblock {\em Bifurcation theory}, volume 156 of {\em Applied Mathematical
-  Sciences}.
-\newblock Springer, New York, second edition, 2012.
-\newblock An introduction with applications to partial differential equations.
-
-\bibitem{swarmingrev}
-A.~Mogilner and L.~Edelstein-Keshet.
-\newblock A non-local model for a swarm.
-\newblock {\em J. Math. Biol.}, 38(6):534--570, 1999.
-
-\bibitem{bose}
-L.~Pitaevskii and S.~Stringari.
-\newblock {\em Bose-{E}instein condensation}, volume 116 of {\em International
-  Series of Monographs on Physics}.
-\newblock The Clarendon Press, Oxford University Press, Oxford, 2003.
 
 \bibitem{roman2007advanced}
 S.~Roman.
@@ -173,34 +52,5 @@ T.~Runst and W.~Sickel.
   nonlinear partial differential equations}, volume~3 of {\em De Gruyter Series
   in Nonlinear Analysis and Applications}.
 \newblock Walter de Gruyter \& Co., Berlin, 1996.
-
-\bibitem{sandtw}
-B.~Sandstede.
-\newblock Stability of travelling waves.
-\newblock In {\em Handbook of dynamical systems, {V}ol. 2}, pages 983--1055.
-  North-Holland, Amsterdam, 2002.
-
-\bibitem{Srad}
-A.~Scheel.
-\newblock Radially symmetric patterns of reaction-diffusion systems.
-\newblock {\em Mem. Amer. Math. Soc.}, 165(786):viii+86, 2003.
-
-\bibitem{anisoCH}
-J.~E. Taylor and J.~W. Cahn.
-\newblock Diffuse interfaces with sharp corners and facets: phase field models
-  with strongly anisotropic surfaces.
-\newblock {\em Phys. D}, 112(3-4):381--411, 1998.
-\newblock With an appendix by Jason Yunger.
-
-\bibitem{gs}
-J.~Wei and M.~Winter.
-\newblock {\em Mathematical aspects of pattern formation in biological
-  systems}, volume 189 of {\em Applied Mathematical Sciences}.
-\newblock Springer, London, 2014.
-
-\bibitem{mz}
-S.~Zelik and A.~Mielke.
-\newblock Multi-pulse evolution and space-time chaos in dissipative systems.
-\newblock {\em Mem. Amer. Math. Soc.}, 198(925):vi+97, 2009.
 
 \end{thebibliography}
