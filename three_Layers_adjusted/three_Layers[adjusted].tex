@@ -540,7 +540,7 @@ T_\infty = T_\infty(\eps; u_0) := \eps^{-1}\delta_- + \eps^{-1/3}\Omega_\infty(u
 then $w_r$ is continuous with $|w_r(t; u_0)| \le C|T_\infty-t|^{\alpha-2}$ for $t \in (\eps^{-1}\delta_-, T)$;
 
 \item \label{thm:r_4} the function 
-$\mathcal{F}: (\bar{u}_0-\eta, \bar{u}_0+\eta) \to \mathbb{R}$ defined by $\mathcal{F}(u_0)=  w_r(\eps^{-1}\delta_-; u_0)$ is smooth, with Lipschitz constant 
+$\mathcal{F}: (\bar{u}_0-\eta, \bar{u}_0+\eta) \to \mathbb{R}$ defined by $\mathcal{F}(u_0)=  w_r(\eps^{-1}\delta_-; u_0)$ is Lipschitz continuous, with Lipschitz constant 
 \[
 |\text{Lip }\mathcal{F} |\le C\eps^{2/3}. 
 \]
@@ -736,18 +736,18 @@ U_*(\sigma;u_0) =  \eps^{\frac{1}{3}}(e^\sigma+e^{-\sigma} r(e^{-\sigma}; u_0)  
 \end{align*}
 therefore 
 \[
-|U_*(\sigma)| \lar \eps^{\frac{1}{3}}e^\sigma \le \eps^{1/3}e^{\sigma_{\sup}} = \rmO(\delta_+) \text{ for all } \sigma \ge \sigma_{\inf}.
+|U_*(\sigma)| \lar \eps^{\frac{1}{3}}e^\sigma \le \eps^{1/3}e^{\sigma_{\sup}} = \rmO(\delta_+) \text{ for all } \sigma \in [\sigma_{\inf},\sigma_{\sup}].
 \]
 
-From the definition of the time rescaling in section \ref{t_sigma} we have
+From the definition of the time rescaling in Section \ref{t_sigma} we have
 \[
 \mu = \eps t-\delta_-  =\eps^{2/3}\psi(\sigma) \lar \eps^{2/3},
 \]
-for all $\sigma \ge \sigma_{\inf}$.
+for all $\sigma \in [\sigma_{\inf},\sigma_{\sup}]$.
 
 As $W_r \in \mathcal{C}_r$, we have 
 \[
-|W_r(\sigma)| \lar \eps^{\frac{2-\alpha}{3}} e^{(2-\alpha)\sigma} \ll \eps^{1/3}e^\sigma, \text{ for } \sigma \in (\sigma_{\inf}, \sigma_{\sup}).
+|W_r(\sigma)| \lar \eps^{\frac{2-\alpha}{3}} e^{(2-\alpha)\sigma} \ll \eps^{1/3}e^\sigma, \text{ for } \sigma \in [\sigma_{\inf}, \sigma_{\sup}].
 \]
 
 Using these facts, we have
@@ -785,9 +785,9 @@ thus for $\alpha \ll 1$, it follows that $\|\eps^{-1/3}\varphi \Ral_r(W_r) \| = 
 \end{Proof}
 
 \subsection{Fixed point argument and the proof of Theorem \ref{thm:r}}
-In this section we prove theorem \ref{thm:r} by setting up an appropriate fixed point argument.
-\begin{Proof}[ of theorem \ref{thm:r}.]
-Items \ref{thm:r_1} and \ref{thm:r_2} in the assertion of the theorem has been demonstrated in section \ref{exit_time} and \ref{equation_wr}. Items \ref{thm:r_3} is a direct consequence of the fact that $W_r \in \mathcal{C}_r$, to prove this, we first rewrite equation \eqref{rescl_wr} and the boundary condition $W_r(\sigma_T)=w_T$ as 
+In this section we prove Theorem \ref{thm:r} by setting up an appropriate fixed point argument.
+\begin{Proof}[ of Theorem \ref{thm:r}.]
+Items \ref{thm:r_1} and \ref{thm:r_2} in the assertion of the theorem has been demonstrated in Sections \ref{exit_time} and \ref{equation_wr}. Items \ref{thm:r_3} is a direct consequence of the fact that $W_r \in \mathcal{C}_r$, to prove this, we first rewrite equation \eqref{rescl_wr} and the boundary condition $W_r(\sigma_T)=w_T$ as 
 \[
 F_r(W_r, w_T; \eps, u_0) = 0,
 \]
@@ -807,11 +807,11 @@ Let $X = \mathcal{C}_r \times I$, where $I$ is some small interval containing $0
 \mathcal{S}(W_r,w_T; \eps, u_0) = (W_r-A_r^{-1}F_r(W_r,w_T;\eps, u_0), w_T),
 \]
 
-From propositions \ref{inv_A_r} and \ref{nl_est_r}, we conclude 
+From Propositions \ref{inv_A_r} and \ref{nl_est_r}, we conclude 
 \begin{itemize}
 \item $\|\mathcal{S}(0,0;\eps,u_0) \|= \|\left( -A_r^{-1}F_r(0,0;\eps,u_0),0\right)\| \le \|A_r^{-1}\|\|F_r(0,0;\eps,u_0)\| \lar |\|\eps^{-1/3}\varphi \Ral_r(0)\| \lar \delta_+^\alpha$, uniformly in $\eps$ and $u_0$.
 
-\item $\mathcal{S}$ is a smooth map in $W_r,w_T$ as well as the parameters $\eps, u_0$.
+\item $\mathcal{S}$ is a smooth map in $W_r,w_T$.
 
 \item Since the derivative of $f(U_*+W_r,\mu;\eps)$ with respect to $W_r$ is $D_{W_r} f(U_*+W_r,\mu;\eps)=\rmO(\mu, U_*^2)$, the linearization of $\mathcal{S}$ at $(0,0)$, $D_{(W_r,w^*)} \mathcal{S}(0,0)$ satisfies
 \[
@@ -822,7 +822,7 @@ Moreover, for $\|W_r\|, |w_T|$ small enough, we have $D_{(W_r,w_T)}\mathcal{S}(W
 
 \end{itemize}
 
-Therefore, for $(W_r,w_T)$ in a small ball of $X$, we can apply an iteration scheme and utilize the Banach fix point theorem to the existence of a fixed point, hence a solution to equation \eqref{rescl_wr} exists. Moreover, this solution depends smoothly on the parameter $\eps, u_0$. By picking $w_T = 0$, we have shown that a unique fixed point $W_r \in \mathcal{C}_r$ exists and solves equation \eqref{rescl_wr}.
+Therefore, for $(W_r,w_T)$ in a small ball of $X$, we can apply an iteration scheme and utilize the Banach fix point theorem to conclude the existence of a fixed point. If we set $w_T = 0$, we have shown that a unique fixed point $W_r \in \mathcal{C}_r$ exists and consequently solves system \eqref{wr_bp}.
 
 
 Finally, to prove item \ref{thm:r_4} we need to estimate the Lipschitz constant for the map 
@@ -838,9 +838,9 @@ and $\Psi_1 : \mathcal{C}_r \to \mathbb{R}$ is the evaluation map
   W_r(\sigma; u_0) \mapsto W_r(\sigma_m, u_0).
 \]
  
-To estimate the number $\text{Lip}_{u_0} \Psi$, we need to estimate the number $\text{Lip}_{u_0} \Psi_2$ and $\text{Lip } \Psi_1$.
+To estimate $\text{Lip}_{u_0} \Psi$, we need to estimate $\text{Lip}_{u_0} \Psi_2$ and $\text{Lip}_{W_r} \Psi_1$.
 
-To estimate $\text{Lip}_{u_0} \Psi_2$, it suffices to estimate the following two quantities
+For $\text{Lip}_{u_0} \Psi_2$, it suffices to estimate the following two quantities
 \[
 C_1 = \text{Lip}_{W_r} \mathcal{S}, \text{ and }C_2 = \text{Lip}_{u_0} \mathcal{S},
 \]
@@ -853,29 +853,28 @@ From the definition of $\mathcal{S}$, we see that
 \[
 C_1 \le \text{Lip}_{W_r} |\eps^{-1/3}\varphi R_r(W_r)|\le \text{Lip}_{W_r} |\eps^{-1/3}\varphi W_r^2| \le\sup_{W_r \in \mathcal{C}_r} |\eps^{-1/3}\varphi W_r | = \rmO(\delta_+^{1-\alpha}),
 \]
-where the last line follows from proposition \ref{nl_est_r}.
+where the last inequality follows from Proposition \ref{nl_est_r}.
 
 To estimate $C_2$. We notice that 
 \[
-C_2 \le \text{ Lip }_{u_0} |\eps^{-1/3}\varphi U_*^3(\sigma;u_0) |.
+C_2 \le \text{ Lip}_{u_0} |\eps^{-1/3}\varphi U_*^3(\sigma;u_0) |.
 \]
-However if $u_0, \tilde{u}_0$ are two different numbers near $\bar{u}_0$,
+However if $u_0, \tilde{u}_0$ are two different numbers near $\bar{u}_0$, then
 \[
 \|\eps^{-1/3}\varphi [U_*^3(\sigma;u_0)-U_*^3(\sigma;\tilde{u}_0)] \|_{\mathcal{C}_r} \le \|\eps^{-1/3}\varphi U_*^2 \|_{\mathcal{C}_r} \sup|U_*(\sigma;u_0)-U_*(\sigma;\tilde{u}_0)|,
 \] 
-
-proposition \ref{ric_exp} shows
+moreover, by Proposition \ref{ric_exp},
 $U_*(\sigma;u_0)= \eps^{1/3}(e^\sigma + e^{-\sigma} r(e^{-\sigma}; u_0))$ for $\sigma$ large, hence 
 \[
-\partial_{u_0} U_*(\sigma;u_0) \le C\eps^{1/3},
+\partial_{u_0} U_*(\sigma;u_0) \lar \eps^{1/3},
 \]
-for some constant independent of $u_0$, on the other hand
+on the other hand
 \[
 \|\eps^{-1/3}\varphi U_*^2 \|_{\mathcal{C}_r}  = \rmO(\eps^{(\alpha-1)/3}),
 \]
 so we conclude that
 \[
-\|\eps^{-1/3}\varphi [U_*^3(\sigma;u_0)-U_*^3(\sigma;\tilde{u}_0)] \|_{\mathcal{C}_r} \le C\eps^{\alpha/3}|u_0 - \tilde{u}_0|,
+\|\eps^{-1/3}\varphi [U_*^3(\sigma;u_0)-U_*^3(\sigma;\tilde{u}_0)] \|_{\mathcal{C}_r} \lar\eps^{\alpha/3}|u_0 - \tilde{u}_0|,
 \]
 or $C_2 = \rmO(\eps^{\alpha/3})$. Hence 
 \[
@@ -886,13 +885,13 @@ On the other hand, the evaluation map $\Psi_1$ is a linear map which satisfies
 \[
 |\Psi_1(W)-\Psi_1(\widetilde{W})| = |W(\sigma_m) -\widetilde{W}(\sigma_m) | \le\|W - \widetilde{W}\|_{\mathcal{C}_r}\eps^{(2-\alpha)/3} e^{(2-\alpha)\sigma_m} \lar \eps^{(2-\alpha)/3}\|W-\widetilde{W}\|,
 \]
-for $W,\widetilde{W}$ in $\mathcal{C}_r$, from the definition of its norm, therefore
+for $W,\widetilde{W}$ in $\mathcal{C}_r$, therefore
 \[
-\text{Lip } \Psi_1 = \rmO(\eps^{(2-\alpha)/3}),
+\text{Lip}_{W_r} \Psi_1 = \rmO(\eps^{(2-\alpha)/3}).
 \]
-combine the two estimates we conclude that 
+Combining these two estimates we conclude that 
 \[
-\text{Lip}_{u_0} \Psi \le \left( \text{Lip}_{u_0} \Psi_2 \right) \left( \text{Lip } \Psi_1 \right) = \rmO(\eps^{2/3}),
+\text{Lip}_{u_0} \Psi \le \left( \text{Lip}_{u_0} \Psi_2 \right) \left( \text{Lip}_{W_r} \Psi_1 \right) = \rmO(\eps^{2/3}),
 \] 
 which completes the proof of Theorem \ref{thm:r}.
 \end{Proof}
