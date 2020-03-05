@@ -1,5 +1,48 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: three_Layers[adjusted].aux
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: three_Layers[adjusted].aux
 The style file: abbrv.bst
 Database file #1: bib/pass_fold_ref.bib
 Warning--empty journal in Jones_GSPT
+You've used 11 entries,
+            2118 wiz_defined-function locations,
+            581 strings with 5668 characters,
+and the built_in function-call counts, 3383 in all, are:
+= -- 337
+> -- 118
+< -- 6
++ -- 48
+- -- 36
+* -- 244
+:= -- 559
+add.period$ -- 34
+call.type$ -- 11
+change.case$ -- 48
+chr.to.int$ -- 0
+cite$ -- 12
+duplicate$ -- 141
+empty$ -- 291
+format.name$ -- 36
+if$ -- 704
+int.to.chr$ -- 0
+int.to.str$ -- 11
+missing$ -- 15
+newline$ -- 58
+num.names$ -- 22
+pop$ -- 54
+preamble$ -- 1
+purify$ -- 40
+quote$ -- 0
+skip$ -- 85
+stack$ -- 0
+substring$ -- 227
+swap$ -- 27
+text.length$ -- 6
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 36
+warning$ -- 1
+while$ -- 37
+width$ -- 13
+write$ -- 125
 (There was 1 warning)
