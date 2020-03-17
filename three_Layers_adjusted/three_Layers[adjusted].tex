@@ -227,9 +227,9 @@ The reminder of the paper is organized as follows. In Section \ref{sec_main} we 
 
 
 \paragraph{Notation}We use the notation $\mathcal{C}^k(a,b)$ to denote the space of functions with $k$ continuous derivatives on the interval $(a,b)$ for $k\ge 0$.  
-We use $A \lar B$ to indicate that there is a constant $C$ such that $A \le C \cdot B$, independent of the properties of $A$ and $B$. We also use the brackets $\langle x \rangle$ to represent the expression $\sqrt{x^2+1}$. We also use $\|A\|_{op}$ to denote the usual operator norm for the linear operator $A: X\to Y$ which maps from the function space $X$ into $Y$:
+We use $A \lar B$ to indicate that there is a constant $C$ such that $A \le C \cdot B$, independent of the properties of $A$ and $B$. We also use the brackets $\langle x \rangle$ to represent the expression $\sqrt{x^2+1}$. We also use $\|A\|_{X\to Y}$ to denote the usual operator norm for the linear operator $A: X\to Y$ which maps from the function space $X$ into $Y$:
 \[
-\|A\|_{op} := \sup_{ x\neq 0} \frac{\|Ax\|_Y}{\|x\|_X}.
+\|A\|_{X\to Y} := \sup_{ x\neq 0} \frac{\|Ax\|_Y}{\|x\|_X}.
 \]
 
 
@@ -543,9 +543,9 @@ T_\infty = T_\infty(\eps; u_0) := \eps^{-1}\delta_- + \eps^{-1/3}\Omega_\infty(u
 then $w_r$ is continuous with $|w_r(t; u_0)| \le C|T_\infty-t|^{\alpha-2}$ for $t \in (\eps^{-1}\delta_-, T)$;
 
 \item \label{thm:r_4} the function 
-$\mathcal{F}: (\bar{u}_0-\eta, \bar{u}_0+\eta) \to \mathbb{R}$ defined by $\mathcal{F}(u_0)=  w_r(\eps^{-1}\delta_-; u_0)$ is Lipschitz continuous, with Lipschitz constant 
+$\Psi: (\bar{u}_0-\eta, \bar{u}_0+\eta) \to \mathbb{R}$ defined by $\Psi(u_0)=  w_r(\eps^{-1}\delta_-; u_0)$ is Lipschitz continuous, with Lipschitz constant 
 \[
-|\text{Lip }\mathcal{F} |\le C\eps^{2/3}. 
+|\text{Lip}_{u_0}\Psi |\le C\eps^{(2-\alpha)/3}. 
 \]
 \end{enumerate}
 \end{theorem}
@@ -600,17 +600,17 @@ where $\psi, \varphi$ were defined in equations \eqref{psi_def} and \eqref{phi_d
 
 \item The function $W_r(\sigma)$ is the rescaled version of $w_r(t)$ in the $\sigma$-variable, 
 \[
-w_r(t) = w_r(\eps^{-1/3}\psi(\sigma)+\eps^{-1}\delta_-) = W_r(\sigma).
+W_r(\sigma): = w_r(\eps^{-1/3}\psi(\sigma)+\eps^{-1}\delta_-) = w_r(t) .
 \] 
 
 Similarly, $U_*$ is the rescaled version of $u_*$, with 
 \[
-U_*(\sigma;u_0)= u_*(t;u_0) = \eps^{1/3}u_R(\psi(\sigma;u_0);u_0).
+U_*(\sigma;\eps,u_0) :=u_*(\eps^{-1/3}\psi(\sigma)+\eps^{-1}\delta_-;\eps,u_0)= \eps^{1/3}u_R(\psi(\sigma;u_0);u_0) = u_*(t;\eps,u_0).
 \]
 
 \item The function $\Ral_r$ is a rescaled version of $R_r$ such that 
 \[
-\mathcal{R}_r(W_r;\eps,u_0) = W_r^2 + f(U_*+W_r, \mu ; \eps),
+\mathcal{R}_r(W_r;\eps,u_0) := W_r^2 + f(U_*+W_r, \mu ; \eps),
 \]
 \end{itemize}
  
@@ -656,7 +656,7 @@ From the definition of $\sigma_m$ in Section \ref{t_sigma} and equation \eqref{s
 \[
 \sigma_{\inf} = M + \rmO(M^{1/3}), \hspace{0.2in} \sigma_{\sup} = -\log(\eps^{1/3}\delta_+^{-1}) + \rmO(\eps^{2/3}\delta_+^{-2}),
 \]
-We introduce the following weighted function space:
+fix $\alpha>0$, we introduce the following weighted function space:
 \begin{align*}
 \mathcal{C}_r=\mathcal{C}_r(\sigma_{\inf}, \sigma_{\sup}) &= \left\{ w(\sigma) \in \mathcal{C}(\sigma_{\inf}, \sigma_{\sup}) : \sup_{\sigma_{\inf} \le \sigma \le \sigma_{\sup} } \left|\eps^{(\alpha-2)/3} e^{(\alpha-2)\sigma}w(\sigma)\right| < \infty \right\}. \\
 %--------------------------------------
@@ -675,6 +675,12 @@ The linear operator $A_r(u_0,\eps) : \mathcal{D}\subset \mathcal{C}_r \to \mathc
 A_r^{-1}(u_0,\eps) : \mathcal{C}_r \times \mathbb{R} \to \mathbb{R}
 \]
 bounded uniformly in $u_0 \in (\bar{u}_0-\eta, \bar{u}_0+\eta)$ and $\eps \in (-\eps_A,\eps_A)$ with $\eta, \eps_A >0$ defined in Theorem \ref{thm:r}.
+
+Moreover, we have the following estimate on the Lipschitz constant for the map $u_0 \mapsto A_r^{-1}(u_0,\eps)$.
+\begin{equation}\label{Lip:Ar_inv}
+\|A_r^{-1}(\tilde{u}_0,\eps) - A_r^{-1}(u_0,\eps)\|_{\mathcal{C}_r\times\mathbb{R}\to \mathcal{C}_r} \le C|\tilde{u}_0-u_0|
+\end{equation}
+for some constant $C$ independent of $\eps$.
 \end{proposition}
 \begin{Proof}
 Consider the conjugate operator of $A_r$, given by
@@ -717,116 +723,186 @@ Since $\alpha>0$, we may apply Lemma \ref{lin_bv} from the Appendix with $L= \si
 \begin{equation}\label{linear_est:r}
 \|w\|_{\mathcal{C}_r} = |v|_\infty \le C(|\eps^{(\alpha-2)/3}e^{(\alpha-2)\sigma} f |_{\infty}+|v_T|) \le C(\|f\|_{\mathcal{C}_r}+|w_T|).
 \end{equation}
-Notice that $|v_T| \le w_T$ by the asymptotic expansion of $\sigma_T  = \rmO(-\log(\eps^{1/3}))$. By the definition of $\sigma_{\inf}$ and $\sigma_{\sup}$, $A_r$ is uniformly invertible in $u_0$ on $\mathcal{C}_r$, this finishes the proof of the proposition.
+Notice that $|v_T| \le w_T$ by the asymptotic expansion of $\sigma_T  = \rmO(-\log(\eps^{1/3}))$. By the definition of $\sigma_{\inf}$ and $\sigma_{\sup}$, $A_r$ is uniformly invertible in the parameters $u_0,\eps$.
+
+To show the Lipschitz estimates, we observe that if we take $f \in \mathcal{C}_r$ and $u_0, \tilde{u}_0 \in (\bar{u}_0-\eta, \bar{u}_0+\eta)$, then we have
+\[
+(A_r^{-1} -\tilde{A}_r^{-1})f = \tilde{A}_r^{-1}(\tilde{A}_r-A_r)A_r^{-1}f,
+\]
+where we abbreviated $A_r^{-1} = A_r^{-1}(u_0,\eps)$ and $\tilde{A}_r^{-1} = A_r^{-1}(\tilde{u}_0,\eps)$ and similarly for $A_r$. Since we just shown that $A_r^{-1}$ is uniformly bounded in $u_0$ and $\eps$, it suffices to estimate the Lipschitz constant for the map
+\[
+u_0 \mapsto A_r(u_0,\eps).
+\]
+However, by the definition of $A_r$, we have
+\[
+\|A_r-\tilde{A}_r\|_{\mathcal{C}_r\to \mathcal{C}_r\times \mathbb{R}} \le  \sup_{\sigma \in [\sigma_{\inf},\sigma_{\sup}]} |a(\sigma;u_0) - a(\sigma;\tilde{u}_0)|.
+\]
+where $a(\sigma; u_0) =  2\varphi(\sigma)u_R(\psi(\sigma;u_0);u_0)$ was defined in equation \eqref{asy:a}. Now we use the asymptotic expansion \eqref{ric_reminder} of $u_R$
+\[
+u_R(s;u_0) = \frac{1}{\Omega_\infty-s} +  (\Omega_\infty-s) r(\Omega_\infty-s;u_0),
+\]
+with the remainder function $r$ smooth in both of its arguments, to observe that
+\[
+\sup_{\sigma \in [\sigma_{\inf},\sigma_{\sup}]} |a(\sigma;u_0) - a(\sigma;\tilde{u}_0)|\lar 
+\sup_{\sigma \in [\sigma_{\inf},\sigma_{\sup}]} |r(e^{-\sigma};u_0)-r(e^{-\sigma};\tilde{u}_0)|\le C|u_0-\tilde{u}_0|
+\] 
+for some constant $C$ independent of $\eps$. This shows the estimate \eqref{Lip:Ar_inv} and concludes the proof.
 \end{Proof}
 
 \subsection{Nonlinear estimates}
 
 In this section we estimate the nonlinear term
 \[
-\mathcal{R}_r(W_r) = W_r^2 + f(U_*+W_r, \mu ; \eps),
+\mathcal{R}_r(W_r;\eps,u_0)(\sigma) = W_r^2(\sigma) + f(U_*(\sigma;\eps,u_0)+W_r(\sigma), \mu ; \eps),
 \]
-in the $\mathcal{C}_r$ norm to prove 
+in the $\mathcal{C}_r$ norm to prove the following.
 \begin{proposition}\label{nl_est_r}
 If $W_r \in \mathcal{C}_{r}$, then $\eps^{-1/3}\varphi \mathcal{R}_r(W_r) \in \mathcal{C}_{r}$, and
-\begin{align}
-\|\eps^{-1/3}\varphi \mathcal{R}_r \| = \rmO(\delta^{\alpha}).
-\end{align}
+\begin{equation}\label{nl_est:Rr}
+\|\eps^{-1/3}\varphi \mathcal{R}_r(W_r) \|_{\mathcal{C}_r} = \rmO(\delta^{\alpha}).
+\end{equation}
+where $\alpha>0$ is a parameter in the definition of the function space $\mathcal{C}_r$.
+Moreover, we have the following Lipschitz constant estimate for the map $W_r \mapsto \eps^{-1/3}\varphi\mathcal{R}_r(W_r)$.
+\begin{equation}\label{Lip_est:Rr}
+\|\eps^{-1/3}\varphi(\mathcal{R}_r(\widetilde{W}_r) - \mathcal{R}_r(W_r)) \|_{\mathcal{C}_r}\le C\delta^{1-\alpha} \|\widetilde{W}_r - W_r \|_{\mathcal{C}_r},
+\end{equation}
+for some constant $C$ independent of $\eps, \delta$.
 \end{proposition}
-\begin{Proof} Proposition \ref{ric_exp} shows
-\begin{align*}
+
+\begin{Proof} Proposition \ref{ric_exp} shows that
+\begin{equation} \label{u*_asy}
 U_*(\sigma;u_0) =  \eps^{\frac{1}{3}}(e^\sigma+e^{-\sigma} r(e^{-\sigma}; u_0)   ) \text{ as }\sigma \to \infty,
-\end{align*}
-therefore 
+\end{equation}
+with the remainder function $r(\cdot;u_0)$ smooth in both arguments.
+Therefore we have
 \[
-|U_*(\sigma)| \lar \eps^{\frac{1}{3}}e^\sigma \le \eps^{1/3}e^{\sigma_{\sup}} = \rmO(\delta_+) \text{ for all } \sigma \in [\sigma_{\inf},\sigma_{\sup}].
+|U_*(\sigma)| \lar \eps^{\frac{1}{3}}e^\sigma \le \eps^{1/3}e^{\sigma_{\sup}} = \rmO(\delta_+),
 \]
+for all $\sigma \in [\sigma_{\inf},\sigma_{\sup}]$.
 
 From the definition of the time rescaling in Section \ref{t_sigma} we have
 \[
 \mu = \eps t-\delta_-  =\eps^{2/3}\psi(\sigma) \lar \eps^{2/3},
 \]
-for all $\sigma \in [\sigma_{\inf},\sigma_{\sup}]$.
+for all $\sigma \in [\sigma_{\inf},\sigma_{\sup}]$, since $|\psi(\sigma)| \le \Omega_\infty(u_0)$.
 
-As $W_r \in \mathcal{C}_r$, we have 
+Since $W_r \in \mathcal{C}_r$, we have 
 \[
 |W_r(\sigma)| \lar \eps^{\frac{2-\alpha}{3}} e^{(2-\alpha)\sigma} \ll \eps^{1/3}e^\sigma, \text{ for } \sigma \in [\sigma_{\inf}, \sigma_{\sup}].
 \]
-which implies $|W_r(\sigma)| \lar |U_*(\sigma)|$ for $\sigma \in [\sigma_{\inf}, \bar{\sigma}_{\sup}]$.
+which implies $|W_r(\sigma)| \lar |U_*(\sigma)|$ for $\sigma \in [\sigma_{\inf}, \bar{\sigma}_{\sup}]$, using the asymptotic expansion \eqref{u*_asy}.
+
+Now we use the expansion \eqref{nonlinear_asy_new}
+\[
+f(u,\mu; \eps) = \rmO(\eps(1+u+\mu+u^2),u\mu,\mu^2,u^3)
+\] 
+and the fact that $U_*,W_r,\mu$ are all small in sup norm, to observe that
+\begin{equation}\label{nonlinear_asy:fr}
+f(U_*+W_r, \mu ;\eps) = \rmO(\eps, (U_*+W_r)\mu, \mu^2, (U_*+W_r)^3 ) = \rmO(\eps, U_*\mu, \mu^2, U_*^3).
+\end{equation}
 
 Using these facts, we have
+\begin{equation}\label{nl_est:Rr_1}
+\|\eps^{-\frac{1}{3}}\varphi W_r^2\|_{\mathcal{C}_r}=\sup |\eps^{-\frac{1}{3}} \varphi W_r| \lar \eps^{\frac{1-\alpha}{3}} e^{(1-\alpha)\sigma} \lar \eps^{\frac{1-\alpha}{3}} e^{(1-\alpha)\sigma_{\sup}} =  \rmO(\delta^{1-\alpha}_+),
+\end{equation}
+
+and
 \[
-\|\eps^{-\frac{1}{3}}\varphi W_r^2\|_{\mathcal{C}_r}=\sup |\eps^{-\frac{1}{3}} \varphi W_r| \lar \eps^{\frac{1-\alpha}{3}} e^{(1-\alpha)\sigma} \lar \eps^{\frac{1-\alpha}{3}} e^{(1-\alpha)\sigma_{\sup}} \lar \delta_+^{1-\alpha},
+\|\eps^{-1/3}\varphi f(U_*+W_r, \mu ;\eps)\|_{\mathcal{C}_r} \le \|\eps^{\frac{2}{3}}\varphi  \|_{\mathcal{C}_r}+\|\eps^{-\frac{1}{3}}\varphi U_*\mu \|_{\mathcal{C}_r}+\|\eps^{-\frac{1}{3}}\varphi \mu^2 \|_{\mathcal{C}_r}+\|\eps^{-\frac{1}{3}}\varphi U_*^3\|_{\mathcal{C}_r}.
 \]
 
-as $f(u,\mu; \eps) = \rmO(\eps(1+u+\mu+u^2),u\mu,\mu^2,u^3)$ and since $U_*,W_r,\mu$ are all small in sup norm, we have
-
+However we have
 \[
-f(U_*+W_r, \mu ;\eps) = \rmO(\eps, (U_*+W_r)\mu, \mu^2, (U_*+W_r)^3 ) = \rmO(\eps, U_*\mu, \mu^2, U_*^3),
-\]
-
-hence
-\[
-\|\eps^{-\frac{1}{3}}\varphi \eps \|_{\mathcal{C}_r}=\sup |\eps^{-\frac{1}{3}} \varphi  \cdot \eps \cdot \eps^{(\alpha-2)/3}e^{(\alpha-2)\sigma}| \lar \eps^{\alpha/3} e^{(\alpha-3)\sigma_m} = \rmO(\eps^{\alpha/3}) ,
-\]
-
-\[
-\|\eps^{-\frac{1}{3}}\varphi U_*\mu \|_{\mathcal{C}_r} =\sup |\eps^{-\frac{1}{3}} \varphi \cdot U_*\mu \cdot \eps^{(\alpha-2)/3}e^{(\alpha-2)\sigma} | \lar \eps^{\alpha/3} e^{(\alpha-2)\sigma_m}  =\rmO( \eps^{\alpha/3}) ,
+\|\eps^{\frac{2}{3}}\varphi \|_{\mathcal{C}_r}=\sup |\eps^{\frac{2}{3}} \varphi   \eps^{(\alpha-2)/3}e^{(\alpha-2)\sigma}| \lar \eps^{\alpha/3} e^{(\alpha-3)\sigma_m} = \rmO(\eps^{\alpha/3}) ,
 \]
 
 \[
-\|\eps^{-\frac{1}{3}}\varphi \mu^2 \|_{\mathcal{C}_r} \lar \|\eps^{-\frac{1}{3}}\varphi \eps \|_{\mathcal{C}_r} \text{ since } \mu^2 = \rmO(\eps^{4/3}) \ll \eps, 
+\|\eps^{-\frac{1}{3}}\varphi U_*\mu \|_{\mathcal{C}_r} =\sup |\eps^{-\frac{1}{3}} \varphi  U_*\mu  \eps^{(\alpha-2)/3}e^{(\alpha-2)\sigma} | \lar \eps^{\alpha/3} e^{(\alpha-2)\sigma_m}  =\rmO( \eps^{\alpha/3}) ,
 \]
-and lastly
+
+\[
+\|\eps^{-\frac{1}{3}}\varphi \mu^2 \|_{\mathcal{C}_r} \lar \|\eps^{-\frac{1}{3}}\varphi \eps \|_{\mathcal{C}_r} \text{ since } \mu^2 = \rmO(\eps^{4/3}), 
+\]
+and
 \[
 \|\eps^{-\frac{1}{3}}\varphi U_*^3\|_{\mathcal{C}_r} \lar \eps^{\frac{\alpha}{3}} e^{\alpha\sigma} \lar \eps^{\frac{\alpha}{3}} e^{\alpha\sigma_{\sup}} = \rmO(\delta_+^\alpha).
 \]
-Combining all the estimates we conclude that 
+
+Therefore we conclude that
+\begin{equation}\label{nl_est:Rr_2}
+\|\eps^{-1/3}\varphi f(U_*+W_r, \mu ;\eps)\|_{\mathcal{C}_r} = \rmO(\delta^{\alpha}_+)
+\end{equation}
+
+Combining estimates \eqref{nl_est:Rr_1} and \eqref{nl_est:Rr_2} we conclude that 
 \[
-\|\eps^{-1/3}\varphi \Ral_r(W_r) \| = \max\{ \rmO(\delta_+^\alpha), \rmO(\delta_+^{1-\alpha})\},
+\|\eps^{-1/3}\varphi \Ral_r(W_r) \|_{\mathcal{C}_r} = \max\{ \rmO(\delta_+^\alpha), \rmO(\delta_+^{1-\alpha})\},
 \]
-thus for $\alpha \ll 1$, it follows that $\|\eps^{-1/3}\varphi \Ral_r(W_r) \| = \rmO(\delta_+^\alpha)$, this completes the proof.
+thus for $\alpha \le 1/2$, it follows that $\|\eps^{-1/3}\varphi \Ral_r(W_r) \|_{\mathcal{C}_r} = \rmO(\delta_+^\alpha)$, this shows the estimate \eqref{nl_est:Rr}.
+
+To show the Lipschitz constant estimate \eqref{Lip_est:Rr} for the map
+\[ 
+W_r \mapsto \eps^{-1/3}\varphi \mathcal{R}_r(W_r),
+\] 
+we recall equation \eqref{nonlinear_asy:fr} which implies that 
+\[
+\|\eps^{-1/3}\varphi(f(U_*+W_r,\mu;\eps)-f(U_*+\widetilde{W}_r,\mu;\eps))\|_{\mathcal{C}_r} \le C\sup_{\sigma}|\eps^{-1/3}\varphi\mu|\|W_r- \widetilde{W}_r\|_{\mathcal{C}_r} \le C\eps^{1/3}\|W_r- \widetilde{W}_r \|_{\mathcal{C}_r}
+\]
+for some constant $C$ independent of $\eps$ and $\delta$.
+
+On the other hand, we have
+\[
+\|\eps^{-1/3}\varphi(\widetilde{W}_r^2-W_r^2 )\|_{\mathcal{C}_r} \le C\sup_{\sigma}|\eps^{-1/3}(W_r+\tilde{W}_r)|\|W_r- \widetilde{W}_r\|_{\mathcal{C}_r} \le C\delta^{1-\alpha}\|W_r- \widetilde{W}_r \|_{\mathcal{C}_r}
+\]
+for some constant $C$ independent of $\eps$ and $\delta$.
+
+Since $\mathcal{R}_r(W_r) = W_r^2 + f(U_*+W_r;\mu,\eps)$, we therefore conclude that
+\[
+\|\eps^{-1/3}\varphi(\mathcal{R}_r(\widetilde{W}_r) - \mathcal{R}_r(W_r)) \|_{\mathcal{C}_r}\le C\delta^{1-\alpha} \|\widetilde{W}_r - W_r \|_{\mathcal{C}_r}
+\]
+for some constant $C$ independent of $\eps$ and $\delta$, which is the estimate \eqref{Lip_est:Rr}. This concludes the proof.
 \end{Proof}
 
 \subsection{Fixed point argument and the proof of Theorem \ref{thm:r}}
 In this section we prove Theorem \ref{thm:r} by setting up an appropriate fixed point argument.
 \begin{Proof}[ of Theorem \ref{thm:r}.]
-Items \ref{thm:r_1} and \ref{thm:r_2} in the assertion of the theorem has been demonstrated in Sections \ref{exit_time} and \ref{equation_wr}. Items \ref{thm:r_3} is a direct consequence of the fact that $W_r \in \mathcal{C}_r$, to prove this, we first rewrite equation \eqref{rescl_wr} and the boundary condition $W_r(\sigma_T)=w_T$ as 
-\[
-F_r(W_r, w_T; \eps, u_0) = 0,
+Assertions \ref{thm:r_1} and \ref{thm:r_2} in the theorem have been demonstrated in Sections \ref{exit_time} and \ref{equation_wr}. Assertion \ref{thm:r_3} is a direct consequence of the fact that $W_r \in \mathcal{C}_r$. To prove a solution $W_r$ exists, observe that equation \eqref{rescl_wr}
+\[ 
+\left(\frac{d}{d\sigma} - a(\sigma; u_0)\right) W_r =\eps^{-1/3}\varphi \mathcal{R}_r(W_r; \eps,u_0),
 \]
-where $F_r : \mathcal{C}_r\times \mathbb{R} \to \mathcal{C}_r\times \mathbb{R}$ is defined as
+with the boundary condition $W_r(\sigma_T)=0$ can be rewritten as 
 \begin{align*}
-F_r(W_r,w_T;\eps,u_0) &= A_rW_r - \left(\eps^{-1/3}\varphi \Ral_r(W_r), w_T \right)\\
-&=\left( \frac{d}{d\sigma}W_r-aW_r - \eps^{-1/3}\varphi \Ral_r(W_r), W_r(\sigma_T)-w_T \right).
+(0,0) &=\left( \frac{d}{d\sigma}W_r-aW_r - \eps^{-1/3}\varphi \Ral_r(W_r), W_r(\sigma_T) \right)\\
+&=\left( \frac{d}{d\sigma}W_r-aW_r, W_r(\sigma_T) \right)- \left(\eps^{-1/3}\varphi \Ral_r(W_r), 0 \right)\\
+&= A_rW_r - \left(\eps^{-1/3}\varphi \Ral_r(W_r), 0 \right).
 \end{align*} 
-%Now we are ready to use a fixed point argument to solve the equation 
-%\[
-%A_r W_r = (\eps^{-1/3}\varphi \mathcal{R}_r(W_r), w_T).
-%\]
 
 
-Let $X = \mathcal{C}_r \times I$, where $I$ is some small interval containing $0$, we introduce the solution map $\mathcal{S}: X \to \mathcal{C}_r\times \mathbb{R}$ as follows:
-\[
-\mathcal{S}(W_r,w_T; \eps, u_0) = (W_r-A_r^{-1}F_r(W_r,w_T;\eps, u_0), w_T),
-\]
-
-From Propositions \ref{inv_A_r} and \ref{nl_est_r}, we conclude 
+We now use Proposition \ref{inv_A_r} to precondition the above equation with the operator $A_r^{-1}$ to obtain the equivalent equation
+\begin{equation}\label{fix_pt:r}
+ W_r = \mathcal{S}_r(W_r;\eps,u_0):= A_r^{-1}(\eps^{-1/3}\varphi \mathcal{R}_r(W_r), 0).
+\end{equation}
+Note that by Proposition \ref{inv_A_r} and Proposition \ref{nl_est_r}, $\mathcal{S}_r$ is well defined and maps from $\mathcal{C}_r$ into $\mathcal{C}_r$ with $\eps$ and $u_0$ as parameters. Moreover, we have 
 \begin{itemize}
-\item $\|\mathcal{S}(0,0;\eps,u_0) \|= \|\left( -A_r^{-1}F_r(0,0;\eps,u_0),0\right)\| \le \|A_r^{-1}\|\|F_r(0,0;\eps,u_0)\| \lar |\|\eps^{-1/3}\varphi \Ral_r(0)\| \lar \delta_+^\alpha$, uniformly in $\eps$ and $u_0$.
-
-\item $\mathcal{S}$ is a smooth map in $W_r,w_T$.
-
-\item Since the derivative of $f(U_*+W_r,\mu;\eps)$ with respect to $W_r$ is $D_{W_r} f(U_*+W_r,\mu;\eps)=\rmO(\mu, U_*^2)$, the linearization of $\mathcal{S}$ at $(0,0)$, $D_{(W_r,w^*)} \mathcal{S}(0,0)$ satisfies
+\item At $W_r=0$ it holds that
 \[
-\|D_{(W_r,w^*)} \mathcal{S}(0,0)\|_{op} \lar \sup|\eps^{-1/3}\varphi(\mu+U_*^2)| = \rmO(\delta_+),
+\|\mathcal{S}_r(0;\eps,u_0) \|_{\mathcal{C}_r}= \|A_r^{-1}(\eps^{-1/3}\varphi \mathcal{R}_r(0), 0)\|_{\mathcal{C}_r} \le \|A_r^{-1}\|\|(\eps^{-1/3}\varphi \mathcal{R}_r(0), 0)\|_{\mathcal{C}_r} \lar \| \eps^{-1/3}\varphi U_*^3\|_{\mathcal{C}_r} = \rmO(\delta_+^\alpha),
 \]
-where $\|\cdot\|_{op}$ denotes the operator norm of the associated linear operator.
-Moreover, for $\|W_r\|, |w_T|$ small enough, we have $D_{(W_r,w_T)}\mathcal{S}(W_r,w_T;\eps,u_0) =  D_{(0,0)}\mathcal{S}(W_r,w_T;\eps,u_0)+\rmO(\|W_r\|_{\mathcal{C}_r})$, which is uniformly small in $\eps$ and $u_0$.
+ uniformly in $\eps$ and $u_0$.
 
+\item The map $\mathcal{S}_r:\mathcal{C}_r \to \mathcal{C}_r$ is well defined and smooth in $W_r$.
+
+\item Since the derivative of $f(U_*+W_r,\mu;\eps)$ with respect to $W_r$ is $D_{W_r} f(U_*+W_r,\mu;\eps)=\rmO(\mu, U_*^2)$, the linearization of $\mathcal{S}_r$ at $W_r=0$, $D_{W_r} \mathcal{S}_r(0;\eps,u_0)$ satisfies
+\[
+\|D_{W_r} \mathcal{S}_r(0;\eps,u_0)\|_{\mathcal{C}_r \to \mathcal{C}_r} \lar \sup_{\sigma}|\eps^{-1/3}\varphi(\mu+U_*^2)| = \rmO(\delta_+).
+\]
+Moreover, for $\|W_r\|_{\mathcal{C}_r} \le \delta_+^{\alpha}$, we have 
+\[
+\|D_{W_r}\mathcal{S}_r(W_r;\eps,u_0)\|_{\mathcal{C}_r \to \mathcal{C}_r} \le  \|D_{W_r}\mathcal{S}_r(0;\eps,u_0)\|_{\mathcal{C}_r \to \mathcal{C}_r}+\rmO(\|W_r\|_{\mathcal{C}_r}) \le C\delta_+^\alpha,
+\] 
+for some constant $C$ independent of $\eps$ and $u_0$.
 \end{itemize}
 
-Therefore, for $(W_r,w_T)$ in a small ball of $X$, we can apply an iteration scheme and utilize the Banach fix point theorem to conclude the existence of a fixed point. If we set $w_T = 0$, we have shown that a unique fixed point $W_r \in \mathcal{C}_r$ exists and consequently solves system \eqref{wr_bp}.
+Therefore, for $W_r$ in a small ball of radius $\delta_+^{\alpha}$ in $\mathcal{C}_r$, we can apply an iteration scheme and utilize the Banach's fix point theorem to conclude the existence of a fixed point for the map $\mathcal{S}$, uniformly in $\eps, u_0$. The fixed point $W_r$ consequently solves the boundary value problem \eqref{wr_bp} as desired.
 
 
 Finally, to prove item \ref{thm:r_4} we need to estimate the Lipschitz constant for the map 
@@ -846,22 +922,30 @@ To estimate $\text{Lip}_{u_0} \Psi$, we need to estimate $\text{Lip}_{u_0} \Psi_
 
 For $\text{Lip}_{u_0} \Psi_2$, it suffices to estimate the following two quantities
 \[
-C_1 = \text{Lip}_{W_r} \mathcal{S}, \text{ and }C_2 = \text{Lip}_{u_0} \mathcal{S},
+C_1 = \text{Lip}_{W_r} \mathcal{S}_r, \text{ and }C_2 = \text{Lip}_{u_0} \mathcal{S}_r,
 \]
-because $W_r$ is the fixed point of the map $\mathcal{S}$, which implies
+because $W_r$ is the fixed point of the map $\mathcal{S}_r$, this implies
 \[
 \text{Lip}_{u_0} \Psi_2 \le  C_2/(1-C_1).
 \]
 
-From the definition of $\mathcal{S}$, we see that
+From the Lipschitz estimate $\eqref{Lip_est:Rr}$, we see that
 \[
-C_1 \le \text{Lip}_{W_r} |\eps^{-1/3}\varphi R_r(W_r)|\le \text{Lip}_{W_r} |\eps^{-1/3}\varphi W_r^2| \le\sup_{W_r \in \mathcal{C}_r} |\eps^{-1/3}\varphi W_r | = \rmO(\delta_+^{1-\alpha}),
+C_1 \lar \text{Lip}_{W_r} |\eps^{-1/3}\varphi R_r(W_r)| = \rmO(\delta_+^{1-\alpha}).
 \]
-where the last inequality follows from Proposition \ref{nl_est_r}.
 
 To estimate $C_2$. We notice that 
 \[
-C_2 \le \text{ Lip}_{u_0} |\eps^{-1/3}\varphi U_*^3(\sigma;u_0) |.
+\text{Lip}_{u_0} \mathcal{S}_r \le \text{Lip}_{u_0} |A^{-1}| \cdot \sup_{\sigma}|\eps^{-1/3}\mathcal{R}(W_r)|+ \|A_r^{-1}\| \cdot \text{Lip}_{u_0} |\eps^{-1/3}\varphi\mathcal{R}(W_r)|
+\]
+
+First from the estimate \eqref{Lip:Ar_inv} in Proposition \ref{inv_A_r}, we have
+\[
+\text{Lip}_{u_0} |A^{-1}| \cdot \sup|\eps^{-1/3}\mathcal{R}(W_r)| \lar \sup_{\sigma}|\eps^{-1/3}\mathcal{R}(W_r)| \lar \sup_{\sigma}|\eps^{-1/3}U_*^3| =  \rmO(\delta_+^2).
+\]
+Then we observe that
+\[
+\|A_r^{-1}\| \cdot \text{Lip}_{u_0} |\eps^{-1/3}\varphi\mathcal{R}(W_r)| \lar \text{ Lip}_{u_0} |\eps^{-1/3}\varphi U_*^3(\sigma;u_0) |.
 \]
 However if $u_0, \tilde{u}_0$ are two different numbers near $\bar{u}_0$, then
 \[
@@ -878,11 +962,16 @@ on the other hand
 \]
 so we conclude that
 \[
-\|\eps^{-1/3}\varphi [U_*^3(\sigma;u_0)-U_*^3(\sigma;\tilde{u}_0)] \|_{\mathcal{C}_r} \lar\eps^{\alpha/3}|u_0 - \tilde{u}_0|,
+\|\eps^{-1/3}\varphi [U_*^3(\sigma;u_0)-U_*^3(\sigma;\tilde{u}_0)] \|_{\mathcal{C}_r} \lar\eps^{\alpha/3}|u_0 - \tilde{u}_0|.
 \]
-or $C_2 = \rmO(\eps^{\alpha/3})$. Hence 
+
+Therefore we conclude that
 \[
-\text{Lip}_{u_0} \Psi_2 = \rmO(\eps^{\alpha/3}).
+C_2 = \text{Lip}_{u_0} \mathcal{S}_r = \rmO(\delta_+^2),
+\]
+and therefore
+\[
+\text{Lip}_{u_0} \Psi_2 \le C_2/(1-C_1)= \rmO(\delta_+^2).
 \]
 
 On the other hand, the evaluation map $\Psi_1$ is a linear map which satisfies
@@ -895,7 +984,7 @@ for $W,\widetilde{W}$ in $\mathcal{C}_r$, therefore
 \]
 Combining these two estimates we conclude that 
 \[
-\text{Lip}_{u_0} \Psi \le \left( \text{Lip}_{u_0} \Psi_2 \right) \left( \text{Lip}_{W_r} \Psi_1 \right) = \rmO(\eps^{2/3}),
+\text{Lip}_{u_0} \Psi \le \left( \text{Lip}_{u_0} \Psi_2 \right) \left( \text{Lip}_{W_r} \Psi_1 \right) = \rmO(\delta_+^2\eps^{(2-\alpha)/3})=\rmO(\eps^{(2-\alpha)/3}),
 \] 
 which completes the proof of Theorem \ref{thm:r}.
 \end{Proof}
@@ -917,7 +1006,7 @@ u(t^*) = \bar{u}_*(t^*) + w^*, \hspace{0.2in}\mu(t^*) = \eps t^* -\delta_-
 \end{equation}
 exists on the time interval $t \in (t^*, \eps^{-1}\delta_-)$, where 
 \[
-\bar{u}_* = \eps^{1/3}\bar{u}_R(\eps^{1/3}(t-\eps^{-1}\delta_-)),
+\bar{u}_*(t) = \eps^{1/3}\bar{u}_R(\eps^{1/3}(t-\eps^{-1}\delta_-)),
 \] 
 and $\bar{u}_R(\cdot)$ is the special solution of the Riccati equation with asymptotics \eqref{ric_asy}. Moreover, we have that the correction function $w_\ell$ is continuous with
 \begin{equation}\label{thm:l_1}
@@ -944,25 +1033,26 @@ Following previous steps, we next rescale the equation to the $\sigma$-time usin
 
 where 
 \begin{itemize}
-\item The equation is posed on $\sigma \in (\sigma^*, \sigma_m(\bar{u}_0))$ where $\sigma^*<0$ and $|\sigma^*| = \rmO(\eps^{-1/4})$. While $\sigma_m(\bar{u}_0) =: \bar{\sigma}_m$ is defined as in Section \ref{t_sigma}.
+\item The equation is posed on $\sigma \in (\sigma^*, \sigma_m(\bar{u}_0))$ where $\sigma^*<0$ and $|\sigma^*| = \rmO(\eps^{-1/4})$. While $\sigma_m(\bar{u}_0) =: \bar{\sigma}_m$ is defined in Section \ref{t_sigma}.
 
 \item The term $b(\sigma)$ satisfies:
 \[
-b(\sigma) := 2u_R(\psi(\sigma; \bar{u}_0))\varphi(\sigma) = -2 + \rmO(|\sigma|^{-1}) \text{ as } \sigma \to -\infty,
+b(\sigma) := 2u_R(\psi(\sigma; \bar{u}_0))\varphi(\sigma) = -2 + \rmO(|\sigma|^{-1}) \text{ as } \sigma \to -\infty.
 \]
- again, we remark that the convergence is uniform in $\eps$.
+We remark that the convergence is uniform in $\eps$.
 
 \item The function $W_\ell(\sigma)$ is the rescaled version of $w_\ell(t)$ in the $\sigma$-variable, with 
-\[w_\ell(t) = w_\ell(\eps^{-1/3}\psi(\sigma)+\eps^{-1}\delta_-) = W_\ell(\sigma).
+\[
+W_\ell(\sigma):= w_\ell(\eps^{-1/3}\psi(\sigma)+\eps^{-1}\delta_-)=w_\ell(t) .
 \]
 Similarly, $\bar{U}_*$ is the rescaled version of $\bar{u}_*$, with 
 \[
-\bar{U}_*(\sigma)= \bar{u}_*(t) = \eps^{1/3}\bar{u}_R(\psi(\sigma ) ).
+\bar{U}_*(\sigma) := \bar{u}_*(\eps^{-1/3}\psi(\sigma)+\eps^{-1}\delta_-)= \eps^{1/3}\bar{u}_R(\psi(\sigma ) ) =\bar{u}_*(t).
 \]
 
 \item The function $\Ral_\ell$ is a rescaled version of $R_\ell$ such that 
 \[
-\Ral_\ell(W_r;\eps,u_0) = W_\ell^2 + f(\bar{U}_*+W_\ell, \mu;\eps).
+\Ral_\ell(W_r;\eps,u_0) := W_\ell^2 + f(\bar{U}_*+W_\ell, \mu;\eps).
 \] 
 \end{itemize}
 
@@ -994,7 +1084,7 @@ The linear operator $A_\ell : \mathcal{D}(A_\ell)\subset \mathcal{C}_r \to \math
 \[
 A_r^{-1}(\eps) : \mathcal{C}_r \times \mathbb{R} \to \mathbb{R}
 \]
-bounded uniformly in $\eps \in (-\eps_B,\eps_B)$ with $\eps_B >0$ defined in Theorem \ref{thm:l}
+bounded uniformly in $\eps \in (-\eps_B,\eps_B)$ where $\eps_B >0$ is defined in Theorem \ref{thm:l}
 \end{proposition}
 
 \begin{Proof}
@@ -1075,21 +1165,28 @@ Combing the cases for $\sigma \in (\sigma^*, \sigma^{**})$ and $\sigma \in (\sig
 
 Next, we will estimate the nonlinear term 
 \[
-\Ral_{\ell} (W_\ell)=\eps^{-1/3}\varphi(\sigma)\left[ W_\ell^2 + f(\bar{U}_*+W_\ell, \mu;\eps)\right],
+\Ral_{\ell} (W_\ell)=W_\ell^2 + f(\bar{U}_*+W_\ell, \mu;\eps),
 \]
  in the $\mathcal{C}_\ell$ norm. 
 \begin{proposition}\label{nl_est_l}
-If $W_\ell \in \mathcal{C}_{\ell}$, then $ \eps^{-1/3}\varphi \Ral_\ell(W_\ell(\sigma))  \in \mathcal{C}_\ell$ and $\| \eps^{-1/3}\varphi \Ral_\ell \|_{\mathcal{C}_\ell} = \rmO(\eps^{\alpha/3})$.
+If $W_\ell \in \mathcal{C}_{\ell}$, then $ \eps^{-1/3}\varphi \Ral_\ell(W_\ell(\sigma))  \in \mathcal{C}_\ell$ and 
+\begin{equation}\label{nl_est:Rl}
+\| \eps^{-1/3}\varphi \Ral_\ell(W_\ell) \|_{\mathcal{C}_\ell} = \rmO(\eps^{\alpha/3}).
+\end{equation}
 \end{proposition}
 
 \begin{Proof}
 From the asymptotic expansion \eqref{ric_asy}, we have that
-\[
-\bar{U}_*(\sigma) = \eps^{1/3} \bar{u}_R(\psi(\sigma)) \lar |\eps \sigma|^{1/3}\le \eps^{1/4}, \hspace{0.2in} \varphi(\sigma) \lar \langle\sigma\rangle^{-1/3} ,
-\]
+\begin{equation}\label{u*_bar_asy}
+\bar{U}_*(\sigma) = \eps^{1/3} \bar{u}_R(\psi(\sigma)) \lar |\eps \sigma|^{1/3}\le \eps^{1/4},
+\end{equation}
+and
+\begin{equation} 
+\varphi(\sigma) \lar \langle\sigma\rangle^{-1/3} ,
+\end{equation}
 for $\sigma^*\le \sigma \le \bar{\sigma}_m$.
 
-Also, for $\sigma$ in this range, we have $\mu = \eps t -\delta_- = \eps^{2/3}\psi(\sigma)$ which follows from the definition of the time rescaling in Section \ref{t_sigma}, and it satisfies
+Also, for $\sigma$ in this range, we have $\mu = \eps t -\delta_- = \eps^{2/3}\psi(\sigma)$ by definition of $\psi$ in \eqref{psi_def}, since $|\psi(\sigma)|\le |\sigma|^{2/3}$ we have that 
 \[
 |\mu| \lar |\eps \sigma|^{2/3} \le \eps^{1/2}.
 \]
@@ -1097,69 +1194,100 @@ If $W_\ell \in \mathcal{C}_\ell$, then it is true that
 \[
 |W_\ell(\sigma)| \lar \eps^{(2-\alpha)/3} \langle \sigma \rangle^{2/3} \ll |\eps\sigma|^{1/3}, 
 \]
-which implies $|W_\ell(\sigma)| \lar |\bar{U}_*(\sigma)|$ for $\sigma \in [\sigma^*, \bar{\sigma}_m]$. Also recall $|\sigma^*| = \rmO(\eps^{-1/4})$ and $|\bar{\sigma}_m| = \rmO(1)$, from these facts we have
-\[
-\|\eps^{-1/3}\varphi W_\ell^2\|_{\mathcal{C}_\ell} \lar \sup_{\sigma \in (\sigma^{*},\bar{\sigma}_m)} \eps^{(1-\alpha)/3}\langle \sigma\rangle^{1/3}  \le \eps^{(1-\alpha)/3} \langle \sigma^{*} \rangle^{1/3} = \rmO(\eps^{(3-4\alpha)/12}).
-\]
+which implies that $|W_\ell(\sigma)| \lar |\bar{U}_*(\sigma)|$ for $\sigma \in [\sigma^*, \bar{\sigma}_m]$ by the asymptotics \eqref{u*_bar_asy}. 
 
-On the other hand, since $f(u,\mu; \eps) = \rmO(\eps(1+u+\mu+u^2),u\mu,\mu^2,u^3)$, we have
-\[
+Now again we use the expansion \eqref{nonlinear_asy_new} for $f$ to observe that 
+\begin{equation}\label{nonlinear_asy:fl}
 f(\bar{U}_*+W_\ell, \mu ;\eps) = \rmO(\eps, (\bar{U}_*+W_\ell)\mu, \mu^2, (\bar{U}_*+W_\ell)^3 ) = \rmO(\eps, \bar{U}_*\mu, \mu^2, \bar{U}_*^3).
+\end{equation}
+
+Finally recall $|\sigma^*| = \rmO(\eps^{-1/4})$ and $|\bar{\sigma}_m| = \rmO(1)$, from these facts we have
+\begin{equation}\label{nl_est:Rl_1}
+\|\eps^{-1/3}\varphi W_\ell^2\|_{\mathcal{C}_\ell} \lar \sup_{\sigma \in (\sigma^{*},\bar{\sigma}_m)} \eps^{(1-\alpha)/3}\langle \sigma\rangle^{1/3}  \le \eps^{(1-\alpha)/3} \langle \sigma^{*} \rangle^{1/3} = \rmO(\eps^{(3-4\alpha)/12}).
+\end{equation}
+
+Equation \eqref{nonlinear_asy:fl} implies that
+\[
+\|\eps^{-1/3}\varphi f(\bar{U}_*+W_\ell, \mu ;\eps)\|_{\mathcal{C}_\ell} \le \|\eps^{2/3}\varphi \|_{\mathcal{C}_\ell} + \|\eps^{-1/3}\varphi \bar{U}_*\mu \|_{\mathcal{C}_\ell}+\|\eps^{-1/3}\varphi \mu^2 \|_{\mathcal{C}_\ell}  + \|\eps^{-1/3}\varphi \bar{U}_*^3 \|_{\mathcal{C}_\ell},
 \]
 
-Therefore we have the following estimates:
+however we have
 \[
-\|\eps^{-1/3}\varphi \eps \|_{\mathcal{C}_\ell} \lar \sup_{\sigma \in (\sigma^{*},\bar{\sigma}_m)} \eps^{-1/3} \varphi(\sigma) \eps (\eps^{(\alpha-2)/3}\langle \sigma\rangle^{-2/3}) \lar \eps^{\alpha/3} \langle\sigma\rangle^{-1} =\rmO(\eps^{\alpha/3}),
+\|\eps^{2/3}\varphi \|_{\mathcal{C}_\ell} \lar \sup_{\sigma \in (\sigma^{*},\bar{\sigma}_m)} \eps^{-1/3} \varphi(\sigma) \eps (\eps^{(\alpha-2)/3}\langle \sigma\rangle^{-2/3}) \lar \eps^{\alpha/3} \langle\bar{\sigma}_m\rangle^{-1} =\rmO(\eps^{\alpha/3}),
 \]
 
 \[
-\|\eps^{-1/3}\varphi \bar{U}_*\mu \|_{\mathcal{C}_\ell} \lar \sup_{\sigma \in (\sigma^{*},\bar{\sigma}_m)} \eps^{-1/3}\varphi |\eps\sigma|^{2/3}|\eps\sigma|^{1/3}\eps^{(\alpha-2)/3}\langle \sigma\rangle^{-2/3}  = \rmO(\eps^{\alpha/3}),
+\|\eps^{-1/3}\varphi \bar{U}_*\mu \|_{\mathcal{C}_\ell} \lar \sup_{\sigma \in (\sigma^{*},\bar{\sigma}_m)} \eps^{-1/3}\varphi |\eps\sigma|^{2/3}|\eps\sigma|^{1/3}\eps^{(\alpha-2)/3}\langle \bar{\sigma}_m\rangle^{-2/3}  = \rmO(\eps^{\alpha/3}),
 \]
 
 \[
-\|\eps^{-1/3}\varphi \mu^2 \|_{\mathcal{C}_\ell} \lar \|\eps^{-1/3}\varphi \eps \|_{\mathcal{C}_\ell} \text{ since } \mu^2 \lar \eps,
+\|\eps^{-1/3}\varphi \mu^2 \|_{\mathcal{C}_\ell} \lar \|\eps^{2/3}\varphi \|_{\mathcal{C}_\ell}= \rmO(\eps^{\alpha/3}), \text{ since } \mu^2 \lar \eps,
 \]
 and 
 \[
 \|\eps^{-1/3}\varphi \bar{U}_*^3 \|_{\mathcal{C}_\ell}  \lar \sup_{\sigma \in (\sigma^{*},\bar{\sigma}_m)}\eps^{(\alpha-2)/3}\langle \sigma\rangle^{-2/3} |\eps \sigma|^{2/3} = \rmO(\eps^{\alpha/3}).
 \]
 
-Combining all the estimates we conclude that $\|\eps^{-1/3}\varphi \mathcal{R}_\ell(W_\ell)\|_{\mathcal{C}_\ell} = \rmO(\eps^{\alpha/3})$ if $W_\ell \in \mathcal{C}_\ell$.
+Therefore we have
+\begin{equation}\label{nl_est:Rl_2}
+\|\eps^{-1/3}\varphi f(\bar{U}_*+W_\ell, \mu ;\eps)\|_{\mathcal{C}_\ell} = \rmO(\eps^{\alpha/3}).
+\end{equation}
+
+Combining estimates \eqref{nl_est:Rl_1} and \eqref{nl_est:Rl_2} we conclude that $\|\eps^{-1/3}\varphi \mathcal{R}_\ell(W_\ell)\|_{\mathcal{C}_\ell} = \rmO(\eps^{\alpha/3})$ if $W_\ell \in \mathcal{C}_\ell$, which finishes the proof.
 \end{Proof}
 
 \subsection{Fixed point argument and the proof of Theorem \ref{thm:l}}
 We are now ready to prove Theorem \ref{thm:l}.
 \begin{Proof}[ of Theorem \ref{thm:l}.]
-The proof consists of rewriting equation \eqref{wr_bp} as a fixed point equation. Using the linear operator $A_\ell$, we define
-$F_\ell : \mathcal{C}_\ell \times \mathbb{R} \to \mathcal{C}_\ell \times \mathbb{R}$ as
-\[
-F_\ell(W_\ell, w^*; \eps) = A_\ell W_\ell - (\eps^{-1/3}\varphi \Ral_\ell(W_\ell), w^*).
-\]
+The proof consists of rewriting equation \eqref{wr_bp} as a fixed point equation. Using the linear operator $A_\ell$, we rewrite system \eqref{wl_bp}
+ \begin{align*}
+\begin{split}
+\frac{d}{d\sigma} W_\ell - b(\sigma)W_\ell &= \eps^{-1/3}\varphi \Ral_\ell(W_\ell),\\
+W_\ell(\sigma^*) &= w^*.
+\end{split}
+\end{align*}
+as
+\begin{align*}
+(0,0) &=\left( \frac{d}{d\sigma}W_\ell-b W_\ell - \eps^{-1/3}\varphi \Ral_\ell(W_\ell), W_\ell(\sigma^*)-w^* \right)\\
+&=\left( \frac{d}{d\sigma}W_\ell-bW_\ell, W_\ell(\sigma^*) \right)- \left(\eps^{-1/3}\varphi \Ral_\ell(W_\ell), w^* \right)\\
+&= A_\ell W_\ell - \left(\eps^{-1/3}\varphi \Ral_\ell(W_\ell), w^* \right).
+\end{align*} 
 
-Next we set $X = \mathcal{C}_\ell \times (-\eps^{1/2-\alpha/3},\eps^{1/2-\alpha/3})$, we introduce the map $\mathcal{S}: X \to \mathcal{C}_\ell\times \mathbb{R}$ as follows:
-\[
-\mathcal{S}(W_\ell,w^*; \eps) = (W_\ell-A_\ell^{-1}F_\ell(W_\ell,w^*;\eps), w^*).
-\]
+By Proposition \ref{inv_A_l} we precondition the above equation with the operator $A_\ell^{-1}$ to obtain the equivalent equation
+
+\begin{equation}\label{fix_pt:l}
+ W_\ell = \mathcal{S}_\ell(W_\ell; w^*,\eps):= A_\ell^{-1}(\eps^{-1/3}\varphi \mathcal{R}_\ell(W_\ell), w^*).
+\end{equation}
+
 From Propositions \ref{inv_A_l} and \ref{nl_est_l}, we conclude 
 \begin{itemize}
-\item $\|\mathcal{S}(0,0;\eps) \|= \|\left( -A_\ell^{-1}F_\ell(0,0;\eps),0\right)\| \le \|A_\ell^{-1}\|\|F_\ell(0,0;\eps)\| \lar \|\eps^{-1/3}\varphi \Ral_\ell(0)\| \lar \eps^{\alpha/3}$, uniformly in $\eps$.
-
-\item $\mathcal{S}$ is a smooth map in $W_\ell,w^*$.
-
-\item Since the derivative of $f(\bar{U}_*+W_\ell,\mu;\eps)$ with respect to $W_\ell$ is $D_{W_\ell} f(\bar{U}_*+W_\ell,\mu;\eps)=\rmO(\mu, \bar{U}_*^2)$, the linearization of $\mathcal{S}$ at $(0,0)$, $D_{(W_\ell,w^*)} \mathcal{S}(0,0)$ satisfies
+\item At $W_\ell =0 $ it holds that 
 \[
-\|D_{(W_\ell,w^*)} \mathcal{S}(0,0)\|_{op} \lar \sup|\eps^{-1/3}\varphi(\mu+\bar{U}_*^2)| = \rmO(\eps^{1/4}),
+\|\mathcal{S}_\ell(0; w^*,\eps) \|_{\mathcal{C}_\ell}= \|A_\ell^{-1}\left(\eps^{-1/3}\varphi \mathcal{R}_\ell(W_\ell),w^*)\right)\|_{\mathcal{C}_\ell}  \lar \|\eps^{-1/3}\varphi \Ral_\ell(0)\|_{\mathcal{C}_\ell} \lar \|\eps^{-1/3}\varphi \bar{U}_*^3 \|_{\mathcal{C}_\ell}=\rmO(\eps^{\alpha/3}),
 \]
-where $\|\cdot\|_{op}$ denotes the operator norm of the associated linear operator.
-Moreover, for $\|W_{\ell}\|$ small enough and $|w^*| =\rmO(\eps^{1/2-\alpha/3})$, we have $D_{(W_\ell,w^*)}\mathcal{S}(W_\ell,w^*;\eps) =  D_{(0, 0)}\mathcal{S}(W_\ell,w^*;\eps)+\rmO(\|W_\ell\|_{\mathcal{C}_\ell})$, which is uniformly small in $\eps$.
+uniformly in $\eps,w^*$.
+
+\item The map $\mathcal{S}_\ell: \mathcal{C}_\ell \to \mathcal{C}_\ell$ is well defined and smooth in $W_\ell$.
+
+\item The derivative of $f(\bar{U}_*+W_\ell,\mu;\eps)$ with respect to $W_\ell$ satisfies \[
+D_{W_\ell} f(\bar{U}_*+W_\ell,\mu;\eps)=\rmO(\mu, \bar{U}_*^2),
+\] 
+and the linearization of $\mathcal{S}_\ell$ at $W_\ell=0$, $D_{W_\ell} \mathcal{S}_\ell(0;w^*,\eps)$ satisfies
+\[
+\|D_{W_\ell} \mathcal{S}_{\ell}(0;w^*,\eps)\|_{\mathcal{C}_\ell\to\mathcal{C}_\ell} \lar \sup_{\sigma}|\eps^{-1/3}\varphi(\mu+\bar{U}_*^2)| = \rmO(\eps^{1/4}),
+\]
+moreover, for $\|W_{\ell}\|\le \eps^{\alpha/3}$ and $|w^*| =\rmO(\eps^{1/2-\alpha/3})$, we have \[
+\|D_{W_\ell}\mathcal{S}(W_\ell;w^*,\eps)\|_{\mathcal{C}_\ell \to \mathcal{C}_\ell} \le  \|D_{W_\ell}\mathcal{S}(W_\ell;w^*,\eps)\|_{\mathcal{C}_\ell \to \mathcal{C}_\ell}+\rmO(\|W_\ell\|_{\mathcal{C}_\ell}) \le C\eps^{\alpha/3},
+\]
+for some constant $C$ independent of $w^*,\eps$.
 \end{itemize}
 
-Therefore, for $(W_\ell, w^*)$ in a small ball of $X$, we apply Banach's fixed point theorem to the map $\mathcal{S}$ to obtain a solution of equation \eqref{wl_bp} with $W_\ell \in \mathcal{C}_\ell$ and $w^* = \rmO(\eps^{1/2-\alpha/3})$. Scaling back from $\sigma$ to $t$-time, we obtain claim (\ref{thm:l_1}).
+Hence, fix $w^* = \rmO(\eps^{1/2-\alpha/3})$ and in a small ball of radius of $\eps^{\alpha/3}$ in $\mathcal{C}_\ell$, we apply Banach's fixed point theorem to the map $\mathcal{S}_\ell$ to obtain a solution of equation \eqref{wl_bp} with $W_\ell \in \mathcal{C}_\ell$. Scaling back from $\sigma$ to $t$-time, we obtain claim (\ref{thm:l_1})  and concludes the proof.
 \end{Proof}
 
 
 \section{Region C}\label{sec_C}
-This region corresponds to the time-$t$ interval $\{t: 0<t<t^*\}$. We will give the precise form the solution in this region and prove the needed properties.
+This region corresponds to the time-$t$ interval $\{t: 0<t<t^*\}$. We will give the precise form of the solution in this region and prove the needed properties.
 
 \subsection{Solution in region C}
 \begin{theorem}\label{thm:s}
@@ -1200,7 +1328,7 @@ Next we rescale the above equation into $\sigma$-time to obtain
 
 where 
 \begin{itemize}
-\item the equation is posed on $\sigma \in \left(\sigma_0, \sigma^*\right).$ where $\sigma^*$ is the left most point in region $B$ and $\sigma_0  =-\frac{2}{3}\delta_-^{3/2}\eps^{-1}$.
+\item The equation is posed on $\sigma \in \left(\sigma_0, \sigma^*\right).$ Where $\sigma^*<0$ with $|\sigma^*| = \rmO(\eps^{-1/4})$, and $\sigma_0  =-\frac{2}{3}\delta_-^{3/2}\eps^{-1}$.
 
 \item The function $W_s(\sigma)$ is the rescaled version of $w_s(t)$ in the $\sigma$-variable, with 
 \[
@@ -1294,7 +1422,10 @@ which shows the invertibility of $L_s$ and uniformity of the inverse in $\eps$, 
 \end{Proof}
 \subsection{Nonlinear estimates}
 Next we estimate the nonlinear term $\eps^{-1/3}\varphi \Ral_s(W_s(\sigma))$ in the $\mathcal{C}_s$ norm. Similar to Propositions \ref{nl_est_r} and \ref{nl_est_l}, we have
-\begin{proposition}\label{nl_est_s} If $W_s \in \mathcal{C}_s$, then $\eps^{-\frac{1}{3}}\varphi \Ral_s(W_s(\sigma))  \in \mathcal{C}_{s}$ and $\| \eps^{-\frac{1}{3}}\varphi \Ral_s \|_{\mathcal{C}_s} = \rmO(\delta_-^{1/2})$.
+\begin{proposition}\label{nl_est_s} If $W_s \in \mathcal{C}_s$, then $\eps^{-\frac{1}{3}}\varphi \Ral_s(W_s(\sigma))  \in \mathcal{C}_{s}$ and 
+\begin{equation}\label{nl_est:Rs}
+\| \eps^{-\frac{1}{3}}\varphi \Ral_s(W_s) \|_{\mathcal{C}_s} = \rmO(\delta_-^{1/2}).
+\end{equation}
 \end{proposition}
 
 \begin{Proof}
@@ -1323,13 +1454,13 @@ and for $W_s \in \mathcal{C}_s$, it holds that
 \]
 
 Hence we have the following estimates:
-\[
-\left\|\frac{d}{d\sigma}U_s(\sigma) \right\|_{C_s}  \lar \sup_{\sigma \in (\sigma_0, \sigma^{*})}\eps^{\alpha/3-1}\langle \sigma\rangle^{2/3} \eps|\eps \sigma|^{-2/3} = \rmO(\eps^{\alpha/3}),
-\]
+\begin{equation}\label{nl_est:Rs_1}
+\left\|\frac{d}{d\sigma}U_s(\sigma) \right\|_{\mathcal{C}_s}  \lar \sup_{\sigma \in (\sigma_0, \sigma^{*})}\eps^{\alpha/3-1}\langle \sigma\rangle^{2/3} \eps|\eps \sigma|^{-2/3} = \rmO(\eps^{\alpha/3}),
+\end{equation}
 
-\[
-\|\eps^{-1/3}\varphi W_s^2(\sigma) \|_{C_s}  \lar \sup_{\sigma \in (\sigma_0, \sigma^{*})}\eps^{-1/3}|\sigma|^{-1/3}\eps^{1-\alpha/3}\langle \eps \sigma\rangle^{-2/3} = \rmO(\eps^{\frac{1}{4}-\alpha/3}).
-\]
+\begin{equation}\label{nl_est:Rs_2}
+\|\eps^{-1/3}\varphi W_s^2(\sigma) \|_{\mathcal{C}_s}  \lar \sup_{\sigma \in (\sigma_0, \sigma^{*})}\eps^{-1/3}|\sigma|^{-1/3}\eps^{1-\alpha/3}\langle \eps \sigma\rangle^{-2/3} = \rmO(\eps^{\frac{1}{4}-\alpha/3}).
+\end{equation}
 
 Next we estimate the term $\eps^{-1/3}\varphi[ f(U_s+W_s, \mu; \eps)-f(U_s,\mu; 0) ]$ as follows, first we rewrite the term $f(U_s+W_s,\mu;\eps)-f(U_s,\mu;0)$ as $f_1 + f_2$, where
 \[
@@ -1339,75 +1470,93 @@ and
 \[
 f_2 = f(U_s+W_s,\mu;0)  - f(U_s, \mu; 0).
 \]
-Since $f(u,\mu ; \eps) = \rmO(\eps(1+u+\mu+u^2), u\mu,\mu^2,u^3)$, we have
+Recall the asymptotics $f(u,\mu ; \eps) = \rmO(\eps(1+u+\mu+u^2), u\mu,\mu^2,u^3)$, which we use to obtain
 \[
-f_1 = \rmO(\eps(1+U_s+W_s+\mu+U_s^2)) = \rmO(\eps),
+f_1 \le C\eps
 \]
 and 
 \[
-f_2 = \rmO( W_s\mu + U_sW_s^2+U_s^2W_s+W_s^3).
+f_2 \le C( W_s\mu + U_sW_s^2+U_s^2W_s+W_s^3),
 \]
-For $f_1$ we simply have
-\[
-\| \eps^{-1/3}f_1\|_{C_s} \lar \sup_{\sigma \in (\sigma_0, \sigma^{*})} \eps^{-1/3}\varphi (\eps) \eps^{\alpha/3-1}|\eps\sigma|^{2/3} \lar \eps^{\alpha/3}|\eps\sigma_0|^{1/3} = \rmO(\eps^{\alpha/3}).
-\]
+for some constant $C$ independent of $\eps$.
+
+For $f_1$ we have
+\begin{equation}\label{nl_est:Rs_3}
+\| \eps^{-1/3}\varphi f_1\|_{\mathcal{C}_s} \lar \sup_{\sigma \in (\sigma_0, \sigma^{*})} \eps^{2/3}\varphi \eps^{\alpha/3-1}|\eps\sigma|^{2/3} \lar \eps^{\alpha/3}|\eps\sigma_0|^{1/3} = \rmO(\eps^{\alpha/3}).
+\end{equation}
 
 For $f_2$ we have
 \[
-\|\eps^{-1/3}\varphi W_s\mu\|_{C_s} \lar \sup_{\sigma \in (\sigma_0, \sigma^{*})} \eps^{-1/3}|\sigma|^{-1/3}|\mu| \lar |\eps \sigma_0|^{1/3} = \rmO(\delta_-^{1/2}),
+\|\eps^{-1/3}\varphi W_s\mu\|_{\mathcal{C}_s} \lar \sup_{\sigma \in (\sigma_0, \sigma^{*})} \eps^{-1/3}|\sigma|^{-1/3}|\mu| \lar |\eps \sigma_0|^{1/3} = \rmO(\delta_-^{1/2}),
 \]
 \[
-\|\eps^{-1/3}\varphi U_s^2W_s(\sigma) \|_{C_s}  \lar \sup_{\sigma \in (\sigma_0, \sigma^{*})}\eps^{-1/3}|\sigma|^{-1/3} |\eps \sigma|^{2/3} \lar |\eps \sigma_0|^{1/3}= \rmO(\delta_-^{1/2}),
+\|\eps^{-1/3}\varphi U_s^2W_s(\sigma) \|_{\mathcal{C}_s}  \lar \sup_{\sigma \in (\sigma_0, \sigma^{*})}\eps^{-1/3}|\sigma|^{-1/3} |\eps \sigma|^{2/3} \lar |\eps \sigma_0|^{1/3}= \rmO(\delta_-^{1/2}),
 \]
 \[
-\|\eps^{-1/3}\varphi U_sW_s^2(\sigma) \|_{C_s}  \lar \sup_{\sigma \in (\sigma_0, \sigma^{*})}\eps^{-1/3}|\sigma|^{-1/3} |\eps \sigma|^{1/3}\eps^{1-\alpha/3}|\eps\sigma|^{-2/3} = \rmO(\eps^{1/2-\alpha/3}),
+\|\eps^{-1/3}\varphi U_sW_s^2(\sigma) \|_{\mathcal{C}_s}  \lar \sup_{\sigma \in (\sigma_0, \sigma^{*})}\eps^{-1/3}|\sigma|^{-1/3} |\eps \sigma|^{1/3}\eps^{1-\alpha/3}|\eps\sigma|^{-2/3} = \rmO(\eps^{1/2-\alpha/3}),
 \]
 and
 \[
-\|\eps^{-1/3}\varphi W_s^3(\sigma) \|_{C_s}  \lar \sup_{\sigma \in (\sigma_0, \sigma^{*})}\eps^{-1/3}|\sigma|^{-1/3} (\eps^{1-\alpha/3}|\eps\sigma|^{-2/3})^2 = \rmO(\eps^{3/4-2\alpha/3}).
+\|\eps^{-1/3}\varphi W_s^3(\sigma) \|_{\mathcal{C}_s}  \lar \sup_{\sigma \in (\sigma_0, \sigma^{*})}\eps^{-1/3}|\sigma|^{-1/3} (\eps^{1-\alpha/3}|\eps\sigma|^{-2/3})^2 = \rmO(\eps^{3/4-2\alpha/3}).
 \]
-Hence $\|\eps^{-1/3}f_2\|_{C_s} = \rmO(\delta_-^{1/2})$, combining all the estimates we conclude that 
+Hence 
+\begin{equation}\label{nl_est:Rs_4}
+\|\eps^{-1/3}\varphi f_2\|_{\mathcal{C}_s} = \rmO(\delta_-^{1/2}),
+\end{equation} 
+combining estimates \eqref{nl_est:Rs_1}, \eqref{nl_est:Rs_2}, \eqref{nl_est:Rs_3}, and \eqref{nl_est:Rs_4} we conclude that 
 \[
-\|\eps^{-1/3}\varphi \Ral_s(W_s) \| = \rmO(\delta_-^{1/2}),
+\|\eps^{-1/3}\varphi \Ral_s(W_s) \|_{\mathcal{C}_s} = \rmO(\delta_-^{1/2}),
 \]
 which finishes the proof.
 \end{Proof}
 
 
 \subsection{Fixed point argument and the proof of Theorem \ref{thm:s}}
+In this section we prove Theorem \ref{thm:s}.
 \begin{Proof}[ of Theorem \ref{thm:s}.]
-Using the linear operator $A_s$, we define the nonlinear operator
-\[
-F_s : \mathcal{C}_s \times \mathbb{R} \to \mathcal{C}_s \times \mathbb{R}
-\]
- as
-\[
-F_s(W_s, w_0; \eps) := A_s W_s - (\eps^{-1/3}\varphi \Ral_s(W_s), w_0).
-\]
+Using the linear operator $A_s$, we rewrite the system \eqref{ws_bp}
+\begin{align*}
+\begin{split}
+\frac{d}{d\sigma} W_s - c(\sigma)W_s &= \eps^{-1/3}\varphi \Ral_s(W_s), \text{ for }\sigma \in (\sigma_0,\sigma^*),\\
+W_s(\sigma_0) &= w_0.
+\end{split}
+\end{align*}
 
-Let $X = \mathcal{C}_s \times (-\delta_-^{-1}\eps^{1-\alpha/3},\delta_-^{-1}\eps^{1-\alpha/3})$, we introduce the map $\mathcal{S}: X \to \mathcal{C}_s \times \mathbb{R}$ as follows:
-\[
-\mathcal{S}(W_s,w_0; \eps) := (W_s-A_s^{-1}F_s(W_s,w_0;\eps), w_0).
-\]
-We conclude from Propositions \ref{inv_A_s} and \ref{nl_est_s} that:
+as \begin{align*}
+(0,0) &=\left( \frac{d}{d\sigma}W_s-c W_s - \eps^{-1/3}\varphi \Ral_s(W_s), W_s(\sigma_0)-w_0 \right)\\
+&=\left( \frac{d}{d\sigma}W_s-cW_s, W_s(\sigma^*) \right)- \left(\eps^{-1/3}\varphi \Ral_s(W_s), w_0* \right)\\
+&= A_s W_s - \left(\eps^{-1/3}\varphi \Ral_s(W_s), w_0 \right).
+\end{align*} 
+By Proposition \ref{inv_A_s} we precondition the above equation with the operator $A_s^{-1}$ to obtain the equivalent equation
+\begin{equation}\label{fix_pt:s}
+ W_s = \mathcal{S}_s(W_s; w_0,\eps):= A_s^{-1}(\eps^{-1/3}\varphi \mathcal{R}_s(W_s), w_0).
+\end{equation}
+
+From Propositions \ref{inv_A_s} and \ref{nl_est_s}, we conclude 
 \begin{itemize}
-\item $\|\mathcal{S}(0,0;\eps) \|= \|\left( -A_s^{-1}F_s(0,0;\eps),0\right)\| \le \|A_s^{-1}\|\|F_s(0,0;\eps)\| \lar \|\eps^{-1/3}\varphi \Ral_s(0)\| \lar \eps^{\alpha/3}$, uniformly in $\eps$.
-
-\item $\mathcal{S}$ is a smooth map in $W_s,w_0$.
-
-\item Since the derivative of $f(U_s+W_s,\mu;\eps)$ with respect to $W_s$ at $W_s=0$ is $D_{W_s} f(U_s+W_s,\mu;\eps)=\rmO(\mu, U_s^2)$, the linearization of $\mathcal{S}$ at $(0,0)$, $D_{(W_s,w_0)} \mathcal{S}(0,0)$ satisfies
+\item At $W_s =0 $ it holds that  
 \[
-\|D_{(W_s,w_0)} \mathcal{S}(0,0)\|_{op} \lar \sup_{\sigma \in (\sigma_0,\sigma^*)}|\eps^{-1/3}\varphi(\mu+U_s^2)| = \rmO(\delta_-^{1/2}),
+\|\mathcal{S}_s(0; w_0,\eps) \|_{\mathcal{C}_s}= \|A_s^{-1}\left(\eps^{-1/3}\varphi \mathcal{R}_s(0),w_0)\right)\|_{\mathcal{C}_s}  \lar \|\eps^{-1/3}\varphi \Ral_s(0)\|_{\mathcal{C}_s} \lar \|\eps^{2/3}\varphi  \|_{\mathcal{C}_s}=\rmO(\eps^{\alpha/3}).
 \]
-where $\|\cdot\|_{op}$ denotes the operator norm of the associated linear operator.
-Moreover, for $\|W_{s}\|$ small enough and $|w_0| =\rmO(\delta_-^{-1}\eps^{1-\alpha/3})$, we have $D_{(W_s,w_0)}\mathcal{S}(W_s,w_0;\eps) =  D_{(W_s,w_0)}\mathcal{S}(0,0;\eps)+\rmO(\|W_\ell\|_{\mathcal{C}_\ell})$, which is uniformly small in $\eps$.
+uniformly in $\eps,w_0$.
 
+\item The map $\mathcal{S}_s: \mathcal{C}_s \to \mathcal{C}_s$ is well defined and smooth in $W_s$.
 
+\item The derivative of $f(U_s+W_s,\mu;\eps)$ with respect to $W_s$ satisfies \[
+D_{W_s} f(U_s+W_s,\mu;\eps)=\rmO(\mu, U_s^2),
+\] 
+and the linearization of $\mathcal{S}_s$ at $W_s=0$, $D_{W_s} \mathcal{S}_s(0;w_0,\eps)$ satisfies
+\[
+\|D_{W_s} \mathcal{S}_{s}(0;w_0,\eps)\|_{\mathcal{C}_s \to\mathcal{C}_s} \lar \sup_{\sigma}|\eps^{-1/3}\varphi(\mu+U_s^2)| = \rmO(\delta_-^{1/2}),
+\]
+moreover, for $\|W_{s}\|\le \eps^{\alpha/3}$ and $|w_0| =\rmO(\eps^{1-\alpha/3})$, we have \[
+\|D_{W_s}\mathcal{S}(W_s;w_0,\eps)\|_{\mathcal{C}_s  \to \mathcal{C}_s} \le  \|D_{W_s}\mathcal{S}(0;w_0,\eps)\|_{\mathcal{C}_s \to \mathcal{C}_s}+\rmO(\|W_s\|_{\mathcal{C}_s}) \le C\delta_-^{1/2},
+\]
+for some constant $C$ independent of $\eps$.
 \end{itemize}
 
-Therefore, for $(W_s, w_0)$ in a small ball of $X$, we apply Banach's fixed point theorem to the map $\mathcal{S}$ to obtain a solution of equation \eqref{ws_bp} with $W_s \in \mathcal{C}_s$ and $w_0 = \rmO(\eps^{1-\alpha/3})$. Scaling back from $\sigma$ to $t$-time, we obtain claim (\ref{thm:s_1}).
+Hence, fix $w_0 = \rmO(\eps^{1-\alpha/3})$ and in a small ball of radius of $\eps^{\alpha/3}$ in $\mathcal{C}_s$, we apply Banach's fixed point theorem to the map $\mathcal{S}_s$ to obtain a solution of equation \eqref{ws_bp} with $W_s \in \mathcal{C}_s$. Scaling back from $\sigma$ to $t$-time, we obtain claim (\ref{thm:s_1}) and concludes the proof.
 \end{Proof}
-
 
 \section{Gluing}\label{sec_glue}
 So far we have showed solutions of the form $u_A,u_B,$ and $u_C$ exists on region $A$, $B$ and $C$, respectively. To prove Theorem \ref{thm:main} then, we will need to glue solutions $u_A, u_B$ and $u_C$ on the whole time interval $t \in (0,T)$.
@@ -1475,7 +1624,7 @@ Let $\phi(\eps; u_0) :=  w_r(\eps^{-1}\delta_-; u_0)-w_\ell(\eps^{-1}\delta_-)$,
 \]
 uniformly in $u_0$ and 
 \[
-\text{Lip}_{u_0} \phi(\eps; u_0) = \rmO(\eps^{2/3}).
+\text{Lip}_{u_0} \phi(\eps; u_0) = \rmO(\eps^{(2-\alpha)/3}).
 \]
 Hence we divide the right hand side of equation \eqref{match_ab_exp} by $\eps^{1/3}$, and apply the implicit function theorem around the point $(u_0=\bar{u}_0, \eps=0)$ to conclude that there exist a branch $u_0 = u_0(\eps)$ with $u_0(\eps)  = \bar{u}_0 + \rmO(\eps^{(1-\alpha)/3})$, the matching condition \eqref{match_ab} is satisfied. 
 
@@ -1498,8 +1647,8 @@ and
 \end{equation}
 exists on $t \in (0,T)$, where all of the correction functions $w_r, w_\ell$ and $w_s$ satisfy the properties stated in Theorems \ref{thm:r}, \ref{thm:l} and \ref{thm:s}, respectively.
 \end{theorem}
-\begin{Proof}[\textbf{ of Theorem \ref{thm:main} and \ref{cor:main}}]
-Theorem \ref{thm:main} follows from Theorem \ref{thm:glue} almost directly, we just need to show the expansion \eqref{T_exp_+} and \eqref{T_remainder_exp}. 
+\begin{Proof}[\textbf{ of Theorem \ref{thm:main} and \ref{cor:main}}.]
+Theorem \ref{thm:main} follows from Theorem \ref{thm:glue} almost directly, we just need to show the expansions \eqref{T_exp_+} and \eqref{T_remainder_exp}. 
 
 Recall that $\Omega_\infty(u_0)$ depends smoothly on $u_0$ by Proposition \ref{para_ric}, hence there is a constant $C$ such that
 \[
@@ -1522,7 +1671,7 @@ u_C(t^*; u_i):= u^* &\mapsto u_B(t; u^*), \\
 u_B(t;u^*) &\mapsto u_B(\eps^{-1}\delta_-; u^*),
 \end{split}
 \end{align*}
-which are all smooth either because they are evaluation maps or by the smooth dependence of solutions on the initial conditions. Hence, if we set $\mathcal{K}_1$ to be the map $u_i\mapsto u_B(\eps^{-1}\delta_-;u^*)$. It can be seen from equations \eqref{linear_est:r},\eqref{linear_est:l}, \eqref{linear_est:s} and the definition of the norms that
+which are all smooth either because they are evaluation maps or by the smooth dependence of solutions on the initial conditions. Hence, if we set $\mathcal{H}_1$ to be the map $u_i\mapsto u_B(\eps^{-1}\delta_-;u^*)$. It can be seen from equations \eqref{linear_est:r},\eqref{linear_est:l}, \eqref{linear_est:s} and the definition of the norms that
 \begin{align*}
 \begin{split}
 \|u_C - \tilde{u}_C\|_{\mathcal{C}_s} &\le C\eps^{\alpha/3-1}|u_i -\tilde{u}_i| ,\\
@@ -1534,7 +1683,7 @@ which are all smooth either because they are evaluation maps or by the smooth de
 \end{align*}
 
 which implies
-\begin{equation}\label{lip:K1}
+\begin{equation}\label{lip:H1}
 \text{Lip } \mathcal{H}_1 \le C\eps^{-1/3},
 \end{equation}
 for some constant $C$ independent of $\eps$.
@@ -1543,8 +1692,8 @@ Next, recall that the branch $u_0 = u_0(\eps)$ was solved by the condition \eqre
 \[
 u_0+\eps^{-1/3}w_r(\eps^{-1}\delta_-; u_0) = \bar{u}_0 - \eps^{-1/3}w_\ell(\eps^{-1}\delta_-),
 \] 
-therefore, if we set $\mathcal{K}_2$ to be the map $w_{\ell}(\eps^{-1}\delta_-) \mapsto u_0$, then
-\begin{equation}\label{lip:K2}
+therefore, if we set $\mathcal{H}_2$ to be the map $w_{\ell}(\eps^{-1}\delta_-) \mapsto u_0$, then
+\begin{equation}\label{lip:H2}
 \text{Lip } \mathcal{H}_2 \le C\eps^{-1/3},
 \end{equation}
 for some constant $C$ independent of $\eps$.
@@ -1554,7 +1703,7 @@ Moreover, we have that the map $\mathcal{H}_3$
  u_0 \mapsto \Omega_\infty(u_0)=\Omega_\infty(u_0)
 \end{equation}
 satisfies
-\begin{equation}\label{lip:K3} 
+\begin{equation}\label{lip:H3} 
 \text{Lip } \mathcal{H}_3 \le C, 
 \end{equation}
 for some constant $C$ independent of $\eps$ from Proposition \ref{para_ric}.
@@ -1567,7 +1716,7 @@ satisfies
 \begin{equation}
 \text{Lip }_{u_i} \mathcal{H} \le C, 
 \end{equation}
-for some constant $C$ independent of $\eps$ from the estimates \eqref{lip:K1}, \eqref{lip:K2}, and \eqref{lip:K3}.
+for some constant $C$ independent of $\eps$ from the estimates \eqref{lip:H1}, \eqref{lip:H2}, and \eqref{lip:H3}.
 
 %But remember the fact that all $u_i$ was chosen such that $|u_i-u_-(-\delta_-)|\le C\eps^{1-\alpha/3}$.
 
@@ -1593,9 +1742,8 @@ which satisfies the assumption of Theorem \ref{thm:glue} if we restart the equat
 The above argument can be seen more directly in figure \ref{fig:contraction_Fenichel}, where $K$ is a rectangular region near the section $\Delta_{in}'=\{(-2\delta_-,u)\}$. What Fenichel theory shows is that this region $K$ contracts into a small neighborhood $N$ around near the point $(-\delta_-, u_-(-\delta_-))$, with Lipschitz constant of order $e^{-c/\eps}$ for some constant $c>0$ independent of $\eps$. Inside the region $N$, we can apply the conclusion of Theorem \ref{thm:glue} to continue the trajectory until it hits the section $\Delta_{out}$ at the desired $\rmO(\eps^{2/3})$ location. 
 \end{Proof}
 
-\textbf{Remark:} The last part where we used Fenichel theory to track how a solution arrives exponentially close to the slow manifold $u_-^\eps(\mu)$ could be done, as in \cite{faye2015existence}, using functional analytic methods as well. By using function spaces with suitably centered exponential weights and exploting the location of ``touchdown'' and ``takeoff'' between the slow manifold and the solution in stable and unstable manifolds as free parameters, Faye and Scheel was able to track the solution in a way similar to the Exchange Lemma as in \cite{Bru_tracking}, \cite{Jones_exchange_lemma}, and \cite{Jones_tracking}.
+\textbf{Remark:} The last part where we used Fenichel theory to track how a solution arrives exponentially close to the slow manifold $u_-^\eps(\mu)$ could be done, as in \cite{faye2015existence}, using functional analytic methods as well. By using function spaces with suitably centered exponential weights and exploting the location of ``touchdown'' and ``takeoff'' between the slow manifold and the solution in stable and unstable manifolds as free parameters, Faye and Scheel was able to track the solution in a way similar to the Exchange Lemma as in \cite{Bru_tracking}, \cite{Jones_tracking}, and \cite{Jones_exchange_lemma}.
 
-\pagebreak
 \section*{Appendix}
 \renewcommand{\thesubsection}{\Alph{subsection}}
 We first show how to extend the asymptotic expansion \eqref{ric_asy} to a more general family of solutions.
